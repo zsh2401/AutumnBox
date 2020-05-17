@@ -125,6 +125,7 @@
     <Compile Include="Leafx\SnowLakeTest.cs" />
     <Compile Include="Leafx\SunsetLakeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexDraft\Regexes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

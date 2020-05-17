@@ -44,5 +44,6 @@ HistoryRelease/
 DemoPic/
 packages/
 dist/
+debug-dist/
 ##do_not
 !AutumnBox.ADBProvider/adb_tools/*.*

@@ -12,7 +12,7 @@ namespace AutumnBox.OpenFramework.Extension
     public static class ExtensionMetadataKeys
     {
 #pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
-        public const string RUNNABLE_POLICY = "RunnableProlicy";
+        public const string RUNNABLE_POLICY = "RunnablePolicy";
         public const string PRIORITY = "Priority";
         public const string ICON = "Icon";
         public const string AUTH = "Auth";

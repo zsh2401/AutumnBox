@@ -26,7 +26,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
             var dc = new Dictionary<string, ClassTextAttribute>();
             foreach (var attr in type.GetCustomAttributes<ClassTextAttribute>(true))
             {
-                dc.Add(attr.Key.ToLower(), attr);
+                dc[attr.Key.ToLower()] = attr;
             }
             attributes = new ReadOnlyDictionary<string, ClassTextAttribute>(dc);
         }
