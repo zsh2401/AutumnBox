@@ -32,6 +32,12 @@ namespace AutumnBox.Basic.Device.Management.OS
             //ShellCommandHelper.CommandExistsCheck(device, "wm");
         }
         /// <summary>
+        /// 构造窗口管理器
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="executor"></param>
+        public WindowManager(IDevice device, ICommandExecutor executor) : base(device, executor) { }
+        /// <summary>
         /// 获取或设置Size,基于wm size命令
         /// </summary>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>

@@ -8,17 +8,18 @@
     <OutputType>library</OutputType>
     <RootNamespace>AutumnBox.CoreModules</RootNamespace>
     <AssemblyName>AutumnBox.CoreModules</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\dist\Debug\extensions\</OutputPath>
+    <OutputPath>..\..\debug-dist\extensions\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\dist\Debug\extensions\</OutputPath>
+    <OutputPath>..\..\dist\extensions\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,7 +35,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Preview|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\dist\Debug\extensions\</OutputPath>
+    <OutputPath>..\..\dist\extensions\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>full</DebugType>
@@ -85,15 +86,12 @@
     <Compile Include="Extensions\Poweron\Dpm\EAirForzenActivator.cs" />
     <Compile Include="Extensions\Poweron\Dpm\EBlackHole.cs" />
     <Compile Include="Extensions\Poweron\Dpm\ETaiChi.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\GreateDPMActivator.cs" />
     <Compile Include="Extensions\Poweron\EClearAccounts.cs" />
     <Compile Include="Extensions\Poweron\EClearUsers.cs" />
-    <Compile Include="Extensions\Poweron\EFluidPermissionGranter.cs" />
     <Compile Include="Extensions\Poweron\EGCM.cs" />
     <Compile Include="Extensions\Poweron\EGreenifyGranter.cs" />
     <Compile Include="Extensions\Poweron\Dpm\EHideAnzen.cs" />
     <Compile Include="Extensions\Poweron\Dpm\EIslandActivator.cs" />
-    <Compile Include="Extensions\Poweron\EScreenRecorder.cs" />
     <Compile Include="Extensions\Poweron\EShizukuActivator.cs" />
     <Compile Include="Extensions\Poweron\EStopAppMaxWellActivator.cs" />
     <Compile Include="Extensions\Poweron\Dpm\DpmPro.cs" />
@@ -139,6 +137,7 @@
     <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
       <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
       <Name>AutumnBox.Core</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\AutumnBox.GUI\AutumnBox.GUI.csproj">
       <Project>{55081483-1689-4e52-a4f1-22ab75ff8900}</Project>

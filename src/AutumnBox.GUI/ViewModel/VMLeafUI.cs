@@ -4,6 +4,7 @@ using AutumnBox.GUI.View.LeafContent;
 using AutumnBox.GUI.View.Windows;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Open.LKit;
 using HandyControl.Controls;
 using System;
@@ -303,7 +304,7 @@ namespace AutumnBox.GUI.ViewModel
         public void Finish(string tip)
         {
             if (CurrentState == State.Shutdown || CurrentState == State.Finished) return;
-            StatusInfo = tip;
+            StatusInfo = tip ?? StatusMessages.Success;
             Progress = 100;
             CurrentState = State.Finished;
         }

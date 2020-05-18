@@ -1,11 +1,7 @@
-﻿using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Data;
-using AutumnBox.Basic.ManagedAdb;
+﻿using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Util;
 using System;
 using System.Diagnostics;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device.ManagementV2.OS
 {

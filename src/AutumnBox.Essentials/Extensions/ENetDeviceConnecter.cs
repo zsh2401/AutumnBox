@@ -27,6 +27,7 @@ namespace AutumnBox.Essentials.Extensions
     [ExtIcon("Resources.Icons.wireless.png")]
     [ExtName("Connect to net device", "zh-cn:连接网络设备")]
     [ExtAuth("zsh2401")]
+    [ExtPriority(ExtPriority.HIGH)]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     class ENetDeviceConnecter : LeafExtensionBase
     {

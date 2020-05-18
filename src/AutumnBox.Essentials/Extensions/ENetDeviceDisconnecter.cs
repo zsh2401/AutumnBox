@@ -19,6 +19,7 @@ using AutumnBox.OpenFramework.Extension.Leaf;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtHidden]
+    [ExtPriority(ExtPriority.HIGH)]
     class ENetDeviceDisconnecter : LeafExtensionBase
     {
     }

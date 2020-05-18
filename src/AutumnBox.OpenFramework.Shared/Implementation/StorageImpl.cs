@@ -5,7 +5,7 @@ using System.IO;
 namespace AutumnBox.OpenFramework.Implementation
 {
     [Component(SingletonMode = true, Type = typeof(IStorage))]
-    internal class StorageManager : IStorage
+    internal class StorageManager : IStorageManager
     {
         public IStorage Open(string id)
         {

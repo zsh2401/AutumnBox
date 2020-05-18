@@ -15,6 +15,7 @@
     [ExtDeveloperMode(false)]
     [ExtHidden(false)]
     [ExtNormalRunnablePolicy]
+    [ExtRequireRoot(false)]
     public class EmptyExtension
     {
     }

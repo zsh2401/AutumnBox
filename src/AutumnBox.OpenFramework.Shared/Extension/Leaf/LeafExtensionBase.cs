@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.Enhancement.ClassTextKit;
@@ -66,7 +67,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             });
             s_lake.RegisterSingleton<IStorage>(() =>
             {
-                return this.lake!.Get<IStorage>().Open(this.GetType().FullName);
+                return this.lake!.Get<IStorageManager>().Open(this.GetType().FullName);
             });
             s_lake.RegisterSingleton<Dictionary<string, object>>(() =>
             {

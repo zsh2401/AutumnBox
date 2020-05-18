@@ -107,7 +107,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
             const int DEFAULT_VALUE = 0;
             try
             {
-                return (extensionInfo.Metadata[ExtensionMetadataKeys.AUTH]?.Invoke() as int?)
+                return (extensionInfo.Metadata[ExtensionMetadataKeys.PRIORITY]?.Invoke() as int?)
                     ?? DEFAULT_VALUE;
             }
             catch

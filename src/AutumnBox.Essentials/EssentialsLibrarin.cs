@@ -44,7 +44,7 @@ namespace AutumnBox.Essentials
         private readonly IRegisterableLake rlake;
 
         [AutoInject]
-        readonly IStorage storageManager;
+        readonly IStorageManager storageManager;
 
         public IStorage Storage { get; private set; }
         public override void Ready()

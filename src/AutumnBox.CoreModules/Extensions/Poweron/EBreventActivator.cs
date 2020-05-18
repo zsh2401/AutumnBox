@@ -18,7 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtPriority(ExtPriority.LOW)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.brevent.png")]
-    [ClassText("firstMsg",
+    [ClassText("first_msg",
         "This device seems to be the first time to activate the black domain. Please slide to the right in the mobile phone black domain interface, click the boot and then close this popup window.",
         "zh-cn:此设备似乎是第一次激活黑域,请在手机黑域界面向右滑,点击启动后再关闭此弹窗")]
     internal class EBreventActivator : LeafExtensionBase
@@ -51,7 +51,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
             if (executor.AdbShell(device, $"cat {SH_PATH}").ExitCode != 0)
             {
                 //提醒用户打开黑域以释放脚本
-                ui.ShowMessage(this.RxGetClassText("firstMsg"));
+                ui.ShowMessage(this.RxGetClassText("first_msg"));
                 //再等一会儿
                 Thread.Sleep(2000);
             }

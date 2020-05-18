@@ -8,35 +8,28 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.ManagementV2.OS;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
-using AutumnBox.OpenFramework.LeafExtension.Fast;
-using AutumnBox.OpenFramework.LeafExtension.Kit;
+using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Open;
+using AutumnBox.OpenFramework.Open.LKit;
 using HandyControl.Controls;
-using System;
-using System.IO;
 
 namespace AutumnBox.CoreModules.Extensions
 {
-    [ExtName("Screen capture", "zh-cn:截图器V2")]
+    [ExtName("Screen capture", "zh-cn:截图")]
     [ExtIcon("Icons.screenshotv2.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     internal class EScreenShoter : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(IDevice device, ILeafUI ui, IStorage storageManager,
+        public void EntryPoint(IDevice device, ILeafUI ui, IStorage storage,
             IAppManager app, ICommandExecutor executor)
         {
             using (ui)
             {
                 //初始化LeafUI并展示
-                ui.Title = this.GetName();
-                ui.Icon = this.GetIconBytes();
                 executor.OutputReceived += (s, e) =>
                 {
-                    ui.WriteOutput(e.Text);
-                    SLogger<EScreenShoter>.Info(e.Text);
+                    ui.WriteLineToDetails(e.Text);
                 };
                 ui.Closing += (s, e) =>
                 {
@@ -46,10 +39,10 @@ namespace AutumnBox.CoreModules.Extensions
 
                 ui.Show();
 
-                var screencap = new ScreenCap(device, executor, storageManager.CacheDirectory.FullName);
+                var screencap = new ScreenCap(device, executor, storage.CacheDirectory.FullName);
                 var file = screencap.Cap();
 
-                ui.WriteLine(file.FullName);
+                ui.WriteLineToDetails(file.FullName);
                 ShowOnUI(app, file.FullName);
                 //显示出来了,进度窗也没啥用了,直接关闭
                 //ui.Finish();

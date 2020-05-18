@@ -26,6 +26,7 @@ using System.Threading;
 
 namespace AutumnBox.Essentials.Extensions
 {
+    [ExtPriority(ExtPriority.HIGH)]
     [ExtName("Enable device net-debugging", "zh-CN:开启当前设备网络调试")]
     [ExtRequiredDeviceStates(Basic.Device.DeviceState.Poweron)]
     [ClassText("input_hint", "Input port", "zh-CN:输入端口号")]

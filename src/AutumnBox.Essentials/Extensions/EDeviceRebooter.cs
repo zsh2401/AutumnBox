@@ -30,6 +30,7 @@ namespace AutumnBox.Essentials.Extensions
     [ClassText("wait_for_user_select", "Waiting for user's selection", "zh-cn:等待用户选择")]
     [ClassText("rebooting", "Rebooting device", "zh-cn:正在重启设备...")]
     [ExtIcon("Resources.Icons.reboot.png")]
+    [ExtPriority(ExtPriority.HIGH)]
     public class EDeviceRebooter : LeafExtensionBase
     {
         [LMain]

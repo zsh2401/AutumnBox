@@ -3,9 +3,6 @@
 ** date:  2018/8/13 8:27:11 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.OpenFramework.Management.Wrapper;
-using AutumnBox.OpenFramework.Open;
-using System;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 
 namespace AutumnBox.CoreModules
@@ -28,28 +25,9 @@ namespace AutumnBox.CoreModules
         {
             base.Ready();
         }
-
-        protected override IExtensionWrapper GetWrapperFor(Type extType)
-        {
-            return new CustomWrapper(extType);
-        }
         public override void Destory()
         {
             base.Destory();
-            IStorage storageManager = LakeProvider.Lake.Get<IStorage>();
-            storageManager.Initialize(STORAGE_ID);
-            storageManager.ClearCache();
-        }
-        private class CustomWrapper : ClassExtensionWrapper
-        {
-            protected internal CustomWrapper(Type t) : base(t)
-            {
-            }
-
-            public override void Ready()
-            {
-
-            }
         }
     }
 }
