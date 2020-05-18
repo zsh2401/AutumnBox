@@ -64,7 +64,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public void Load()
         {
-            var libsManager = OpenFx.Lake.Get<ILibsManager>();
+            var libsManager = App.Current.Lake.Get<ILibsManager>();
             Libs = LibDock.From(libsManager.Librarians);
         }
     }

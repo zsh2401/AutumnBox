@@ -100,8 +100,8 @@ namespace AutumnBox.GUI.ViewModel
 
         private void Load()
         {
-            var libsManager = OpenFx.Lake.Get<ILibsManager>();
-            var devManager = OpenFx.Lake.Get<IAdbDevicesManager>();
+            var libsManager = App.Current.Lake.Get<ILibsManager>();
+            var devManager = App.Current.Lake.Get<IAdbDevicesManager>();
             Docks = from dock in libsManager.GetAllExtensions().ToDocks()
                     where !dock.ExtensionInfo.Hidden()
                     where (!dock.ExtensionInfo.DeveloperMode()) || Settings.Default.DeveloperMode

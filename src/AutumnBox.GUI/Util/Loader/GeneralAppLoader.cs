@@ -81,7 +81,6 @@ namespace AutumnBox.GUI.Util.Loader
         [Step(3)]
         private void InitAutumnBoxBasic(IOperatingSystemService operatingSystemService)
         {
-            Settings.CreateNewWindow = Properties.Settings.Default.DisplayCmdWindow;
             try
             {
                 Logger.Info("killing other adb processes");

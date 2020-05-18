@@ -30,6 +30,7 @@
 *.dll
 *.psd
 *.txt
+*.msi
 #fast
 gfast.exe
 makezip

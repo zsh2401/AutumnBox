@@ -10,13 +10,9 @@ namespace AutumnBox.Basic.Util
     public static class Settings
     {
         /// <summary>
-        /// 获取新窗口
+        /// 是否在创建命令时创建窗口
         /// </summary>
-#if SDK
-        internal
-#else
-        public
-#endif
-        static bool CreateNewWindow { get; set; } = false;
+        [Obsolete("无用的东西")]
+        public static bool CreateNewWindow { get; set; } = false;
     }
 }

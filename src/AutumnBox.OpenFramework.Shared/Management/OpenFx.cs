@@ -21,6 +21,9 @@ namespace AutumnBox.OpenFramework.Management
 #endif
         static class OpenFx
     {
+#if SDK
+        public static int Fuck{get;} = 0;
+#endif
 
         /// <summary>
         /// 获取OpenFx总湖
