@@ -22,7 +22,7 @@ namespace AutumnBox.OpenFramework.Open
     /// <summary>
     /// 持久化存储API管理器
     /// </summary>
-    public interface IStorageManager
+    public interface IStorage
     {
         /// <summary>
         /// 获取持久化存储对象

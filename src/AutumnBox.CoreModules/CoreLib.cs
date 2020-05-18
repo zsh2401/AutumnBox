@@ -36,7 +36,7 @@ namespace AutumnBox.CoreModules
         public override void Destory()
         {
             base.Destory();
-            IStorageManager storageManager = LakeProvider.Lake.Get<IStorageManager>();
+            IStorage storageManager = LakeProvider.Lake.Get<IStorage>();
             storageManager.Initialize(STORAGE_ID);
             storageManager.ClearCache();
         }

@@ -4,14 +4,9 @@
 ** desc： ...
 *************************************************/
 
-using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.CoreModules.Extensions.Poweron.Dpm;
 using AutumnBox.OpenFramework.Extension;
-using AutumnBox.OpenFramework.LeafExtension;
-using AutumnBox.OpenFramework.LeafExtension.Attributes;
-using AutumnBox.OpenFramework.LeafExtension.Fast;
-using AutumnBox.OpenFramework.LeafExtension.Kit;
 using AutumnBox.OpenFramework.Open;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron

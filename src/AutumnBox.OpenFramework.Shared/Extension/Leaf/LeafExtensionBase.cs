@@ -66,7 +66,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             });
             s_lake.RegisterSingleton<IStorage>(() =>
             {
-                return this.lake!.Get<IStorageManager>().Open(this.GetType().FullName);
+                return this.lake!.Get<IStorage>().Open(this.GetType().FullName);
             });
             s_lake.RegisterSingleton<Dictionary<string, object>>(() =>
             {

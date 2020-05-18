@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AutumnBox.GUI.View.LeafContent"
+             xmlns:local="clr-namespace:AutumnBox.GUI.View.LeafContent" xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
              Background="White"
-             Height="140" Width="300">
-    <StackPanel>
-        <TextBlock Margin="10" x:Name="TBHint"/>
-        <TextBox x:Name="TBInput" Margin="10"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Click="Button_Click_1" Content="X" Margin="10"  HorizontalAlignment="Left"/>
-            <Button Click="Button_Click" Content="OK" HorizontalAlignment="Right"/>
-        </StackPanel>
-    </StackPanel>
+             MinHeight="120" MaxWidth="250">
+    <DockPanel>
+        <hc:ButtonGroup DockPanel.Dock="Bottom" Margin="5">
+            <Button Click="Button_Click_1" Content="X" />
+            <Button Click="Button_Click" Content="OK"/>
+        </hc:ButtonGroup>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Margin="5" FontSize="15" x:Name="TBHint" TextWrapping="Wrap"/>
+            <TextBox Height="10" x:Name="TBInput" Margin="5" TextWrapping="Wrap"/>
+        </DockPanel>
+    </DockPanel>
 </UserControl>

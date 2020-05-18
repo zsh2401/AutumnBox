@@ -19,7 +19,7 @@ namespace AutumnBox.Essentials
         private IXCardsManager XCardManager { get; set; }
 
         [AutoInject]
-        public IStorageManager StorageManager { get; private set; }
+        public IStorage StorageManager { get; private set; }
 
         [AutoInject]
         public ILake Lake { get; private set; }
@@ -44,7 +44,7 @@ namespace AutumnBox.Essentials
         private readonly IRegisterableLake rlake;
 
         [AutoInject]
-        readonly IStorageManager storageManager;
+        readonly IStorage storageManager;
 
         public IStorage Storage { get; private set; }
         public override void Ready()

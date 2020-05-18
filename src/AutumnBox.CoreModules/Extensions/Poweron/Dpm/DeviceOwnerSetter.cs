@@ -98,7 +98,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         /// 入口函数
         /// </summary>
         [LMain]
-        public void EntryPoint(IStorageManager storageManager, IEmbeddedFileManager emb)
+        public void EntryPoint(IStorage storageManager, IEmbeddedFileManager emb)
         {
             storageManager.Init("dos");
             using (UI)

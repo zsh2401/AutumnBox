@@ -25,7 +25,7 @@ namespace AutumnBox.CoreModules.Extensions
     internal class EScreenShoter : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(IDevice device, ILeafUI ui, IStorageManager storageManager,
+        public void EntryPoint(IDevice device, ILeafUI ui, IStorage storageManager,
             IAppManager app, ICommandExecutor executor)
         {
             using (ui)
