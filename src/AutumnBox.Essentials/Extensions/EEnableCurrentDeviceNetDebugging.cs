@@ -17,6 +17,7 @@ using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Leafx.Enhancement.ClassTextKit;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Open.LKit;
@@ -33,8 +34,17 @@ namespace AutumnBox.Essentials.Extensions
     [ClassText("status_connecting", "Connecting to device", "zh-CN:正在尝试连接")]
     [ClassText("can_not_read_ip", "Net-debugging is enabled,but can't read device's ip address. please connect the device manually.", "zh-CN:网络调试开启成功,但无法获取设备IP地址,因此无法进行自动连接")]
     [ClassText("yn_try_to_connect", "It's seems like success.Do you want to try to connect this net device?", "zh-CN:似乎成功了,你想要连接到这个设备吗?")]
+    [DeviceNetDebuggingPolicy]
     class EEnableCurrentDeviceNetDebugging : LeafExtensionBase
     {
+        class DeviceNetDebuggingPolicy : ExtNormalRunnablePolicyAttribute
+        {
+            public override bool IsRunnable(RunnableCheckArgs args)
+            {
+                SLogger<DeviceNetDebuggingPolicy>.Info($"{args.TargetDevice} is {args.TargetDevice?.GetType()?.FullName ?? "Not exists"}" );
+                return base.IsRunnable(args) && args.TargetDevice is UsbDevice;
+            }
+        }
         [LMain]
         public void EntryPoint(ILeafUI ui, IDevice device, ICommandExecutor executor)
         {
