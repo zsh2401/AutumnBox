@@ -32,11 +32,8 @@ namespace AutumnBox.OpenFramework.Implementation
             baseApi.RunOnUIThread(() =>
             {
                 baseApi.Destorying += AutumnBoxDestorying;
+                baseApi.LanguageChanged += (s, e) => UpdateCards();
             });
-            baseApi.LanguageChanged += (s, e) =>
-            {
-                cards.ForEach(card => card.Update());
-            };
         }
 
         private void AutumnBoxDestorying(object sender, EventArgs e)
@@ -46,6 +43,16 @@ namespace AutumnBox.OpenFramework.Implementation
 
         private readonly List<IXCard> cards = new List<IXCard>();
 
+        private void UpdateCards()
+        {
+            cards.ForEach(card =>
+            {
+                baseApi.RunOnUIThread(() =>
+                {
+                    card.Update();
+                });
+            });
+        }
         public void Register(IXCard card)
         {
             baseApi.RunOnUIThread(() =>
