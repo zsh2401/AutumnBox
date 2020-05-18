@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\StatusMessages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionProcedure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IStorageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ClassTextReaderExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\IExtensionUsefulTools.cs" />
@@ -91,8 +92,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\AppManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\CompImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\EmbeddedFileManagerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Implementation\StorageManagerImpl.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Open\IStorageManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\StorageImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Open\IStorage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\UxImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IOperatingSystemAPI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IResourcesManager.cs" />

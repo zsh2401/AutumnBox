@@ -8,6 +8,7 @@ using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Management.ExtInfo;
+using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
@@ -37,7 +38,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             {
                 return methodProxy.Invoke(args ?? new Dictionary<string, object>());
             }
-            catch(TargetInvocationException e)
+            catch (TargetInvocationException e)
             {
                 throw e.InnerException;
             }
@@ -62,6 +63,10 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
                 leafUI.Title = inf.Name();
                 leafUI.Icon = inf.Icon();
                 return leafUI;
+            });
+            s_lake.RegisterSingleton<IStorage>(() =>
+            {
+                return this.lake!.Get<IStorageManager>().Open(this.GetType().FullName);
             });
             s_lake.RegisterSingleton<Dictionary<string, object>>(() =>
             {

@@ -4,8 +4,16 @@ using AutumnBox.OpenFramework.Open;
 using System.IO;
 namespace AutumnBox.OpenFramework.Implementation
 {
-    [Component(SingletonMode = false, Type = typeof(IStorageManager))]
-    internal class StorageManagerImpl : IStorageManager
+    [Component(SingletonMode = true, Type = typeof(IStorageManager))]
+    internal class StorageManager : IStorageManager
+    {
+        public IStorage Open(string id)
+        {
+            return new Storage(id);
+        }
+    }
+
+    internal class Storage : IStorage
     {
         private string storageId;
         private const string CACHE_DIR = "cache";
@@ -16,7 +24,7 @@ namespace AutumnBox.OpenFramework.Implementation
         public DirectoryInfo CacheDirectory { get; private set; }
         private DirectoryInfo ChiefDirectory { get; set; }
         private DirectoryInfo FilesDirectory { get; set; }
-        public void Initialize(string id)
+        public Storage(string id)
         {
             storageId = id.GetHashCode().ToString();
 
@@ -83,10 +91,17 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public TResult ReadJsonObject<TResult>(string jsonId)
         {
-            using var fs = OpenFile(jsonId, false);
-            using var sr = new StreamReader(fs);
-            var json = sr.ReadToEnd();
-            return JsonHelper.DeserializeObject<TResult>(json);
+            try
+            {
+                using var fs = OpenFile(jsonId, false);
+                using var sr = new StreamReader(fs);
+                var json = sr.ReadToEnd();
+                return JsonHelper.DeserializeObject<TResult>(json);
+            }
+            catch
+            {
+                return default;
+            }
         }
 
         public void SaveJsonObject(string jsonId, object jsonObject)

@@ -32,7 +32,6 @@ namespace AutumnBox.OpenFramework.Extension
         /// <returns></returns>
         public override bool IsRunnable(RunnableCheckArgs args)
         {
-            SLogger.CDebug(this,$"is runnable check");
             DeviceState reqDeviceState = args.ExtensionInfo.RequiredDeviceState();
             bool isNM = reqDeviceState == AutumnBoxExtension.NoMatter;
             bool containsCurrentState = false;

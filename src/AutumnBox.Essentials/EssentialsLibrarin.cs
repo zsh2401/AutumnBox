@@ -28,6 +28,8 @@ namespace AutumnBox.Essentials
 
         public override string Name => "autumnbox-essentials";
 
+        public override Version Version => new Version(1, 5, 5);
+
         public override int MinApiLevel => 11;
 
         public override int TargetApiLevel => 11;
@@ -41,13 +43,23 @@ namespace AutumnBox.Essentials
         [AutoInject(Id = "register")]
         private readonly IRegisterableLake rlake;
 
+        [AutoInject]
+        readonly IStorageManager storageManager;
+
+        public IStorage Storage { get; private set; }
         public override void Ready()
         {
             base.Ready();
+            Storage = storageManager.Open(nameof(EssentialsLibrarin));
+
             Current = this;
             SLogger<EssentialsLibrarin>.Info($"{nameof(EssentialsLibrarin)}'s ready");
-
-            extensionTaskManager.Start(nameof(EAutumnBoxUpdateChecker));
+            var last_update_check_time = Storage.ReadJsonObject<DateTime>("last_update_check_time");
+            if (last_update_check_time == default || (last_update_check_time - DateTime.Now).TotalDays >= 1)
+            {
+                extensionTaskManager.Start(nameof(EAutumnBoxUpdateChecker));
+                Storage.SaveJsonObject("last_update_check_time", DateTime.Now);
+            }
             extensionTaskManager.Start(nameof(EAutumnBoxAdFetcher));
             extensionTaskManager.Start(nameof(EDonateCardRegister));
 

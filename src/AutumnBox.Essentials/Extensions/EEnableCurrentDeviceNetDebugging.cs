@@ -41,7 +41,6 @@ namespace AutumnBox.Essentials.Extensions
         {
             public override bool IsRunnable(RunnableCheckArgs args)
             {
-                SLogger<DeviceNetDebuggingPolicy>.Info($"{args.TargetDevice} is {args.TargetDevice?.GetType()?.FullName ?? "Not exists"}" );
                 return base.IsRunnable(args) && args.TargetDevice is UsbDevice;
             }
         }
