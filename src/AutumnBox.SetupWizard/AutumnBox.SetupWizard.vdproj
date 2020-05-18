@@ -460,6 +460,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_717AAC43496F44F98980491622D21290"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_798C3AF6D41AE9E1635D2EBBDB9AABB4"
         "OwnerKey" = "8:_7DFACBF554424F5FBE0EF30049485AF9"
         "MsmSig" = "8:_UNDEFINED"
@@ -790,6 +796,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BFEB7E4158D64F0FBC9AA81B6727EDC2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C27C49AA038D855950FFA1A71012EF46"
         "OwnerKey" = "8:_7DFACBF554424F5FBE0EF30049485AF9"
         "MsmSig" = "8:_UNDEFINED"
@@ -976,6 +988,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DCED964774CF4C85B5EDA03ACB0586C5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DD96C6D600B8BF04990A36E50B01193B"
         "OwnerKey" = "8:_7DFACBF554424F5FBE0EF30049485AF9"
         "MsmSig" = "8:_UNDEFINED"
@@ -1013,12 +1031,6 @@
         "Entry"
         {
         "MsmKey" = "8:_E015D373D49540BA8E802C14F9D7F098"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EE8347F96A0D4792B9B39961BBBE693C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2349,6 +2361,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_717AAC43496F44F98980491622D21290"
+            {
+            "SourcePath" = "8:assets\\app.ico"
+            "TargetName" = "8:app.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_798C3AF6D41AE9E1635D2EBBDB9AABB4"
             {
             "AssemblyRegister" = "3:1"
@@ -2907,6 +2939,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BFEB7E4158D64F0FBC9AA81B6727EDC2"
+            {
+            "SourcePath" = "8:assets\\uninstall.ico"
+            "TargetName" = "8:uninstall.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C27C49AA038D855950FFA1A71012EF46"
             {
             "AssemblyRegister" = "3:1"
@@ -3248,6 +3300,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DCED964774CF4C85B5EDA03ACB0586C5"
+            {
+            "SourcePath" = "8:assets\\uninstall.bat"
+            "TargetName" = "8:uninstall.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DD96C6D600B8BF04990A36E50B01193B"
             {
             "AssemblyRegister" = "3:1"
@@ -3308,26 +3380,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE8347F96A0D4792B9B39961BBBE693C"
-            {
-            "SourcePath" = "8:C:\\Users\\zsh24\\Desktop\\app.ico"
-            "TargetName" = "8:app.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FC059006D3995FB6FC5C843F2680E316"
@@ -3472,6 +3524,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_2FE02C7721DD4BB7B38AC75170364614"
+                    {
+                    "Name" = "8:秋之盒"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_F01C7371FB9940CB9177A019E2D8E39B"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -3491,7 +3554,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutumnBox"
         "ProductCode" = "8:{37DC9A51-57D4-43B0-88C2-B2F6154ED2C7}"
-        "PackageCode" = "8:{21F5986D-20B0-4DA4-95CD-33347D3520AC}"
+        "PackageCode" = "8:{BAEB91F8-FB52-4A5D-A5AB-7EC2CFCBAAB4}"
         "UpgradeCode" = "8:{9F5C573E-2E10-4D05-BC5A-F7106ABEA65D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -3620,9 +3683,9 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_FB9082AF04284D9FB37335555846FEF8"
-            "Folder" = "8:_FF733265A3494B1D8B6B5AF865898D07"
+            "Folder" = "8:_2FE02C7721DD4BB7B38AC75170364614"
             "WorkingFolder" = "8:_0D115BF4172E47B386D46E69989C7126"
-            "Icon" = "8:_EE8347F96A0D4792B9B39961BBBE693C"
+            "Icon" = "8:_717AAC43496F44F98980491622D21290"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_845A25056E2047F8A5A53C8B9ED3CF9A"
@@ -3636,7 +3699,21 @@
             "Target" = "8:_FB9082AF04284D9FB37335555846FEF8"
             "Folder" = "8:_6BF8006C861C49D1A87C3A7F42645A68"
             "WorkingFolder" = "8:_0D115BF4172E47B386D46E69989C7126"
-            "Icon" = "8:_EE8347F96A0D4792B9B39961BBBE693C"
+            "Icon" = "8:_717AAC43496F44F98980491622D21290"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B8CFEA5FDE724815978B2C1FF7C4FAD9"
+            {
+            "Name" = "8:卸载秋之盒"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_DCED964774CF4C85B5EDA03ACB0586C5"
+            "Folder" = "8:_2FE02C7721DD4BB7B38AC75170364614"
+            "WorkingFolder" = "8:_0D115BF4172E47B386D46E69989C7126"
+            "Icon" = "8:_BFEB7E4158D64F0FBC9AA81B6727EDC2"
             "Feature" = "8:"
             }
         }
