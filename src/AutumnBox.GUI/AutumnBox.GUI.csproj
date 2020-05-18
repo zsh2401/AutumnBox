@@ -58,7 +58,7 @@
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Drawable\icon.ico</ApplicationIcon>
+    <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>AutumnBox.GUI.App</StartupObject>
@@ -644,6 +644,7 @@
     <Resource Include="Resources\Drawable\BottomBar\phone.png" />
     <Resource Include="Resources\Drawable\Startup\startup.jpg" />
     <Resource Include="Resources\Drawable\Startup\startup_2.jpg" />
+    <Resource Include="app.ico" />
     <Content Include="Resources\Sound\ok.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

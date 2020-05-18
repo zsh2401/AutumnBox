@@ -1018,6 +1018,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EE8347F96A0D4792B9B39961BBBE693C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FB9082AF04284D9FB37335555846FEF8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1062,6 +1068,12 @@
         {
         "MsmKey" = "8:_FF61D7FDF1DBDCB03C303E11D60DEA9E"
         "OwnerKey" = "8:_FB9082AF04284D9FB37335555846FEF8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FF61D7FDF1DBDCB03C303E11D60DEA9E"
+        "OwnerKey" = "8:_7B2B6F383D15EC1B00E6A38EBCDE1FAB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3298,6 +3310,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE8347F96A0D4792B9B39961BBBE693C"
+            {
+            "SourcePath" = "8:C:\\Users\\zsh24\\Desktop\\app.ico"
+            "TargetName" = "8:app.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FC059006D3995FB6FC5C843F2680E316"
             {
             "AssemblyRegister" = "3:1"
@@ -3459,7 +3491,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutumnBox"
         "ProductCode" = "8:{37DC9A51-57D4-43B0-88C2-B2F6154ED2C7}"
-        "PackageCode" = "8:{D01D72E5-BCA6-48C7-9860-87F3767EDE4E}"
+        "PackageCode" = "8:{21F5986D-20B0-4DA4-95CD-33347D3520AC}"
         "UpgradeCode" = "8:{9F5C573E-2E10-4D05-BC5A-F7106ABEA65D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -3579,9 +3611,9 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2C4C49A8D94B48AF8B075B8D8B6BC7B0"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2FACB839E71C4B288A0189923CE703EC"
             {
-            "Name" = "8:AutumnBox-秋之盒"
+            "Name" = "8:秋之盒"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -3590,7 +3622,21 @@
             "Target" = "8:_FB9082AF04284D9FB37335555846FEF8"
             "Folder" = "8:_FF733265A3494B1D8B6B5AF865898D07"
             "WorkingFolder" = "8:_0D115BF4172E47B386D46E69989C7126"
-            "Icon" = "8:"
+            "Icon" = "8:_EE8347F96A0D4792B9B39961BBBE693C"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_845A25056E2047F8A5A53C8B9ED3CF9A"
+            {
+            "Name" = "8:秋之盒"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_FB9082AF04284D9FB37335555846FEF8"
+            "Folder" = "8:_6BF8006C861C49D1A87C3A7F42645A68"
+            "WorkingFolder" = "8:_0D115BF4172E47B386D46E69989C7126"
+            "Icon" = "8:_EE8347F96A0D4792B9B39961BBBE693C"
             "Feature" = "8:"
             }
         }
