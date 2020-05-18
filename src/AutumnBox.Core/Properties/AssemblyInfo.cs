@@ -35,6 +35,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion(AutumnBox.OpenFramework.BuildInfo.VERSION_STR)]
 [assembly: AssemblyFileVersion(AutumnBox.OpenFramework.BuildInfo.VERSION_STR)]
 #else
-[assembly: AssemblyVersion("2020.5.16")]
-[assembly: AssemblyFileVersion("2020.5.16")]
+[assembly: AssemblyVersion("2020.5.18")]
+[assembly: AssemblyFileVersion("2020.5.18")]
 #endif
