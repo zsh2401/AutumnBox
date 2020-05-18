@@ -10,12 +10,11 @@
         xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
         mc:Ignorable="d"
         Icon="{Binding Icon}"
-         MinHeight="300" MinWidth="450" Height="{Binding Height,Mode=TwoWay}" Width="{Binding Width,Mode=TwoWay}"
-        d:DesignHeight="300" d:DesignWidth="450"
+         Height="250" Width="350"
         FontFamily="{DynamicResource AutumnBox.Font}"
                          ShowInTaskbar="True"
     Background="{DynamicResource RegionBrush}"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
            controls:Dialog.Token="{Binding Token}"
     ResizeMode="NoResize"
         Title="{Binding Title}">
@@ -28,10 +27,11 @@
             <StackPanel DockPanel.Dock="Top" Margin="5" VerticalAlignment="Top">
                 <ProgressBar Visibility="{Binding LoadingLineVisibility}" Style="{StaticResource ProgressBarFlat}" Margin="0" Value="110" Maximum="200" IsIndeterminate="True"/>
                 <ProgressBar Visibility="{Binding ProgressBarVisibility}" BorderBrush="Transparent" Background="Transparent"  Value="{Binding Progress}"/>
-                <TextBlock Margin="5" Text="{Binding StatusInfo}" FontSize="30" />
-                <TextBlock Margin="5" Text="{Binding StatusDescription}" Height="50"/>
+                <controls:Divider Margin="0,0,0,0"/>
+                <TextBlock Margin="2" Text="{Binding StatusInfo}" FontSize="30" />
+                <TextBlock Margin="2" Text="{Binding StatusDescription}" FontSize="15"/>
             </StackPanel>
-            <TextBox Margin="5" DockPanel.Dock="Bottom" IsReadOnly="True" Text="{Binding DetailsContent,Mode=OneWay}" TextChanged="DetailsTextBoxTextChanged"/>
+            <TextBox Margin="5" DockPanel.Dock="Bottom" TextAlignment="Justify" IsReadOnly="True" Text="{Binding DetailsContent,Mode=OneWay}" TextChanged="DetailsTextBoxTextChanged"/>
         </DockPanel>
     </Grid>
 </custom:NiceWindow>

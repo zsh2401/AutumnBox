@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Calling
         public static ICommandProcedure OpenShellCommand(this ICommandProcedureManager cpm,
             IDevice device, params string[] sh)
         {
-            return cpm.OpenADBCommand(device, $"shell {sh}");
+            return cpm.OpenADBCommand(device, $"shell {string.Join(" ",sh)}");
         }
 
         /// <summary>

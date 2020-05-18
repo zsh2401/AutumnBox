@@ -236,6 +236,7 @@ namespace AutumnBox.GUI.ViewModel
             Title = "LeafUI Window";
             Progress = -1;
             StatusInfo = App.Current.Resources["LeafUITipRunning"] as string;
+            StatusDescription = "--";
             Icon = null;
             Copy = new FlexiableCommand(() =>
             {

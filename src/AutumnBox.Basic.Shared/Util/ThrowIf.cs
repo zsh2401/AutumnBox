@@ -56,6 +56,7 @@ namespace AutumnBox.Basic.Util
         /// <summary>
         /// 放返回码不为0时抛出异常
         /// </summary>
+        /// <exception cref="AdbCommandFailedException">ADB命令失败</exception>
         /// <param name="result"></param>
         public static CommandResult ThrowIfExitCodeNotEqualsZero(this CommandResult result)
         {

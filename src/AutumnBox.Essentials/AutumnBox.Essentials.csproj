@@ -63,6 +63,7 @@
     <Compile Include="EssentialsLibrarin.cs" />
     <Compile Include="Extensions\EDeviceRebooter.cs" />
     <Compile Include="Extensions\EDonateCardRegister.cs" />
+    <Compile Include="Extensions\EEnableCurrentDeviceNetDebugging.cs" />
     <Compile Include="Extensions\ENetDeviceConnecter.cs" />
     <Compile Include="Extensions\ENetDeviceDisconnecter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

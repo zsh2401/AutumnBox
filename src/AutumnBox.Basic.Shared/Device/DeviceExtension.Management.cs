@@ -5,12 +5,12 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Util;
+using System.Text.RegularExpressions;
 
 namespace AutumnBox.Basic.Device
 {
     partial class DeviceExtension
     {
-        private const string ipPattern = @"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})";
         /// <summary>
         /// 获取build.prop中的值
         /// </summary>
@@ -19,7 +19,7 @@ namespace AutumnBox.Basic.Device
         /// <returns></returns>
         public static string GetProp(this IDevice device, string key)
         {
-            var result =  device.Shell($"getprop {key}").ThrowIfExitCodeNotEqualsZero();
+            var result = device.Shell($"getprop {key}").ThrowIfExitCodeNotEqualsZero();
             return result.Output.ToString().Trim();
         }
         /// <summary>
@@ -33,15 +33,19 @@ namespace AutumnBox.Basic.Device
             device.Adb($"pull {fileOnDevice} {savePath}")
                 .ThrowIfExitCodeNotEqualsZero();
         }
+
+        static readonly Regex ipRegex = new Regex(@"(?<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})", RegexOptions.Compiled);
         /// <summary>
         /// 获取该设备在局域网中的IP
         /// </summary>
         /// <param name="device"></param>
+        /// <exception cref="System.Exception">无法正确获取数据</exception>
         /// <returns></returns>
         public static System.Net.IPAddress GetLanIP(this IDevice device)
         {
             var result = device.Shell("ifconfig wlan0");
-            var match = System.Text.RegularExpressions.Regex.Match(result.ToString(), ipPattern);
+            AutumnBox.Logging.SLogger.Info(nameof(DeviceExtension), result.Output);
+            var match = ipRegex.Match(result.Output.ToString());
             if (match.Success)
             {
                 return System.Net.IPAddress.Parse(match.Result("${ip}"));
@@ -49,13 +53,13 @@ namespace AutumnBox.Basic.Device
             else
             {
                 result = device.Shell("ifconfig netcfg");
-                match = System.Text.RegularExpressions.Regex.Match(result.ToString(), ipPattern);
+                match = ipRegex.Match(result.Output.ToString());
                 if (match.Success)
                 {
                     return System.Net.IPAddress.Parse(match.Result("${ip}"));
                 }
             }
-            return null;
+            throw new System.Exception("can not get lan ip address");
         }
         /// <summary>
         /// 检查是否有SU权限

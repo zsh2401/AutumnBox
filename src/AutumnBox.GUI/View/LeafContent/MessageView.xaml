@@ -7,11 +7,13 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              Background="White"
-             Width="350" Height="200">
-    <DockPanel>
-        <Button Click="Button_Click" IsCancel="True" IsDefault="True"  Margin="10" DockPanel.Dock="Bottom">OK</Button>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <TextBlock TextWrapping="Wrap" x:Name="TBContent"/>
-        </ScrollViewer>
-    </DockPanel>
+             >
+    <Border CornerRadius="10">
+        <DockPanel>
+            <Button Click="Button_Click" IsCancel="True" IsDefault="True"  Margin="10" DockPanel.Dock="Bottom">OK</Button>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <TextBlock TextWrapping="Wrap" x:Name="TBContent"/>
+            </ScrollViewer>
+        </DockPanel>
+    </Border>
 </UserControl>

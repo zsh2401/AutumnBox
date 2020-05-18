@@ -9,7 +9,7 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              FontFamily="{DynamicResource AutumnBox.Font}"
              Background="White"
-             Width="350" Height="200">
+             MinWidth="200" MinHeight="100">
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
             <Button Click="BtnCancel_Click" Margin="5" IsCancel="True" x:Name="BtnCancel" HorizontalAlignment="Left" Content="{DynamicResource ChoiceWindowBtnCancel}"/>
