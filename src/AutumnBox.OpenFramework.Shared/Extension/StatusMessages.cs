@@ -47,11 +47,15 @@ namespace AutumnBox.OpenFramework.Extension
         /// 文本载体
         /// </summary>
         private static readonly TextCarrier carrier = new TextCarrier();
-
+        static StatusMessages()
+        {
+            //加载缓存,避免线程问题
+            ClassTextReaderCache.Acquire(typeof(TextCarrier));
+        }
         private const string KEY_SUCCESS = "success";
         private const string KEY_FAILED = "failed";
         private const string KEY_FATAL = "fatal";
-        private const string KEY_CANCELLED_BY_USER = "failed";
+        private const string KEY_CANCELLED_BY_USER = "cancelled_by_user";
 
         /// <summary>
         /// 载体
