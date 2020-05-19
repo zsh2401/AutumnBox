@@ -99,7 +99,10 @@ namespace AutumnBox.GUI.Model
             Execute = new FlexiableCommand(p =>
             {
                 ExecuteImpl();
-            });
+            })
+            {
+                CanExecuteProp = ExtensionInfo.IsRunnableCheck(devicesManager.SelectedDevice)
+            };
             devicesManager.DeviceSelectionChanged += DeviceSelectionChanged;
         }
 

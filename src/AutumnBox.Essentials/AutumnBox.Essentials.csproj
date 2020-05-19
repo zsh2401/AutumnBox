@@ -13,8 +13,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\Icons\devpanelswitcher.png" />
+    <None Remove="Resources\Icons\disconnect-netdebbugging.png" />
+    <None Remove="Resources\Icons\enable-dev-netdebugging.png" />
     <None Remove="Resources\Icons\reboot.png" />
     <None Remove="Resources\Icons\wireless.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\disconnect-netdebbugging.png" />
+    <EmbeddedResource Include="Resources\Icons\enable-dev-netdebugging.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\devpanelswitcher.png" />
