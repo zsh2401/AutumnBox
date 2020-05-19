@@ -21,11 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.Essentials", "Aut
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Leafx.Shared", "AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.shproj", "{D6013EC3-DD68-4945-916D-F77F1EAD7FFF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App-Windows", "App-Windows", "{FCF05A08-6C3E-46DC-A99B-F72B56CD22EB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App-NetCore", "App-NetCore", "{FCF05A08-6C3E-46DC-A99B-F72B56CD22EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B7A3E560-D3F6-4600-A222-2B4B15064381}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App-CrossPlatform", "App-CrossPlatform", "{678DE614-FE81-4ABD-AB53-6AFAE17A2939}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App-Avalonia", "App-Avalonia", "{678DE614-FE81-4ABD-AB53-6AFAE17A2939}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.CPGUI", "AutumnBox.CPGUI\AutumnBox.CPGUI.csproj", "{51E2AD13-BB4F-4844-A685-3FBC0041BF38}"
 EndProject
@@ -39,9 +39,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3CC3E2
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutumnBox.SetupWizard", "AutumnBox.SetupWizard\AutumnBox.SetupWizard.vdproj", "{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.GUI.Shared", "AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.shproj", "{68535995-A317-4E7A-B401-4350A305AB2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App-NetFx", "App-NetFx", "{82F193CA-117F-4F78-8D00-48C17F60E72E}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{49e6d09e-b234-4aa4-97b0-e82fb60c36d2}*SharedItemsImports = 13
+		AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems*{587d3a22-98e8-43ec-82e0-41574dc9c487}*SharedItemsImports = 5
+		AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems*{68535995-a317-4e7a-b401-4350a305ab2c}*SharedItemsImports = 13
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{8e101f07-8c10-4ab6-a427-f24618c25de5}*SharedItemsImports = 13
 		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{b29dea5d-d4c3-4c8b-810e-52466875835d}*SharedItemsImports = 13
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{c6a6a6ba-d10e-479e-91b9-64691fe1f008}*SharedItemsImports = 5
@@ -329,9 +335,10 @@ Global
 		{587D3A22-98E8-43EC-82E0-41574DC9C487} = {FCF05A08-6C3E-46DC-A99B-F72B56CD22EB}
 		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D} = {FCF05A08-6C3E-46DC-A99B-F72B56CD22EB}
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6} = {FCF05A08-6C3E-46DC-A99B-F72B56CD22EB}
+		{68535995-A317-4E7A-B401-4350A305AB2C} = {2377CBDA-1330-43FC-BBD0-9D6B26FD9DA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal

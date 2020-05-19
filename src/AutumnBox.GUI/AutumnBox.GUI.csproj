@@ -12,24 +12,20 @@
     <Description>Free,Simple,Easy to use.</Description>
     <Copyright>Copyright © 2017 - 2020 zsh2401,All Rights Reserved</Copyright>
     <Product>AutumnBox</Product>
+    <StartupObject>AutumnBox.GUI.App</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath></OutputPath>
+    <DefineConstants>TRACE;NETCORE31</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath></OutputPath>
     <DocumentationFile></DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <DefineConstants>TRACE;NETCORE31</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Resources\Drawable\MenuBar\**" />
-    <EmbeddedResource Remove="Resources\Drawable\MenuBar\**" />
-    <None Remove="Resources\Drawable\MenuBar\**" />
-    <Page Remove="Resources\Drawable\MenuBar\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="2.4.0" />
@@ -49,37 +45,9 @@
   </ItemGroup>
 
  <ItemGroup>
-    <Resource Include="Resources\Drawable\android.png" />
-    <Resource Include="Resources\Drawable\DeviceBar\phone.png" />
-    <Resource Include="Resources\Drawable\Donate\alishop.png" />
-    <Resource Include="Resources\Drawable\Donate\redpacket.jpg" />
-    <Resource Include="Resources\Drawable\Donate\wechatpay.jpg" />
-    <Resource Include="Resources\Drawable\Extension\defaultExtIcon.png" />
-    <Resource Include="Resources\Drawable\github.png" />
-    <Resource Include="Resources\Drawable\Home\donate.png" />
-    <Resource Include="Resources\Drawable\icon.ico" />
-    <Resource Include="Resources\Drawable\icon.png" />
-    <Resource Include="Resources\Drawable\Misaka\adbfail.png" />
-    <Resource Include="Resources\Drawable\More\halo.png" />
-    <Resource Include="Resources\MenuIcon\cmd.png" />
-    <Resource Include="Resources\MenuIcon\exit.png" />
-    <Resource Include="Resources\MenuIcon\icon.png" />
-    <Resource Include="Resources\Icon\adb.png" />
-    <Resource Include="Resources\Drawable\Home\mail.png" />
-    <Resource Include="Resources\Drawable\Home\help.png" />
-    <Resource Include="Resources\MenuIcon\donate.png" />
-    <Resource Include="Resources\Drawable\Donate\pot4winter.png" />
-    <Resource Include="Resources\MenuIcon\powershell.png" />
-    <Resource Include="Resources\MenuIcon\debug.png" />
-    <Resource Include="Resources\MenuIcon\settings.png" />
-    <Resource Include="Resources\MenuIcon\guide-book.png" />
-    <Resource Include="Resources\Drawable\BottomBar\phone.png" />
-    <Resource Include="Resources\Drawable\Startup\startup.jpg" />
-    <Resource Include="Resources\Drawable\Startup\startup_2.jpg" />
     <Resource Include="app.ico" />
-    <Content Include="Resources\Sound\ok.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
+
+ <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
 
 </Project>

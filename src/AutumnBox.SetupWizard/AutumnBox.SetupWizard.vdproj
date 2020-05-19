@@ -28,6 +28,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4DDD90BFB0804DA7A45A788F3175B7B0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_717AAC43496F44F98980491622D21290"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -276,7 +282,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutumnBox"
         "ProductCode" = "8:{37DC9A51-57D4-43B0-88C2-B2F6154ED2C7}"
-        "PackageCode" = "8:{1FFD4E3F-59A0-4B78-96C3-9940B63F7CC0}"
+        "PackageCode" = "8:{BA2DD631-2F97-4379-A8C2-C05F8E9BED55}"
         "UpgradeCode" = "8:{9F5C573E-2E10-4D05-BC5A-F7106ABEA65D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -888,6 +894,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{0B61F868-4017-4AFD-89C5-15E08ECF441E}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4DDD90BFB0804DA7A45A788F3175B7B0"
+            {
+            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Debug\\netcoreapp3.1\\AutumnBox.GUI.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:PublishItems"
+            "OutputProjectGuid" = "8:{587D3A22-98E8-43EC-82E0-41574DC9C487}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
