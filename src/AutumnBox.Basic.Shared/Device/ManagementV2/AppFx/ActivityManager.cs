@@ -10,15 +10,15 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
     /// </summary>
     public class ActivityManager
     {
-        private readonly IDevice device;
-        private readonly ICommandExecutor executor;
+        readonly IDevice device;
+        readonly ICommandExecutor executor;
 
         /// <summary>
         /// 构造AM
         /// </summary>
         /// <param name="device"></param>
         /// <param name="executor"></param>
-        public ActivityManager(IDevice device, ICommandExecutor? executor = null)
+        public ActivityManager(IDevice device, ICommandExecutor executor)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));

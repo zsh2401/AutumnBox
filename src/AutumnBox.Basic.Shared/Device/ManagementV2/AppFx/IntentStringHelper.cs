@@ -14,16 +14,16 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
     /// </summary>
     public static class IntentStringHelper
     {
-        private const string FLAG_INT = "ei";
-        private const string FLAG_STRING = "e";
-        private const string FLAG_BOOL = "ez";
-        private const string FLAG_LONG = "el";
-        private const string FLAG_CN = "ecn";
-        private const string FLAG_URI = "eu";
-        private const string FLAG_FLOAT = "ef";
-        private const string FLAG_INT_ARR = "eia";
-        private const string FLAG_LONG_ARR = "ela";
-        private const string FMT_INTENT_KEY_VALUE = "--{0} \"{1}\" {2}";
+        const string FLAG_INT = "ei";
+        const string FLAG_STRING = "e";
+        const string FLAG_BOOL = "ez";
+        const string FLAG_LONG = "el";
+        const string FLAG_CN = "ecn";
+        const string FLAG_URI = "eu";
+        const string FLAG_FLOAT = "ef";
+        const string FLAG_INT_ARR = "eia";
+        const string FLAG_LONG_ARR = "ela";
+        const string FMT_INTENT_KEY_VALUE = "--{0} \"{1}\" {2}";
 
         private static string ToIntentValue(this int intValue)
         {
@@ -122,7 +122,8 @@ namespace AutumnBox.Basic.Device.ManagementV2.AppFx
         /// </summary>
         /// <param name="intent"></param>
         /// <returns></returns>
-        public static string ToAdbArguments(this Intent intent) {
+        public static string ToAdbArguments(this Intent intent)
+        {
             StringBuilder sb = new StringBuilder();
             foreach (var kv in intent.collection)
             {

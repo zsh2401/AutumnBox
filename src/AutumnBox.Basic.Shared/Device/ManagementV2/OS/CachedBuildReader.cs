@@ -20,6 +20,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <param name="device">目标设备</param>
         /// <param name="executor">执行器</param>
         /// <param name="refreshOnCreating">指示是否在创建时进行刷新</param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         public CachedBuildReader(IDevice device, ICommandExecutor executor, bool refreshOnCreating = true)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
@@ -38,7 +39,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         public void Refresh()
         {
             cache.Clear();
-            var exeResult = executor.AdbShell(device, $"getprop");
+            var exeResult = executor.AdbShell(device, $"getprop").ThrowIfError();
             var matches = propRegex.Matches(exeResult.Output);
             foreach (Match match in matches)
             {
@@ -59,6 +60,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="key"></param>
         /// <exception cref="KeyNotFoundException">键不存在</exception>
+        /// <exception cref="ArgumentNullException">key值为NULL</exception>
         /// <returns></returns>
         public string Get(string key)
         {
@@ -80,7 +82,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        /// <returns></returns>
+        /// <returns>是否成功</returns>
         public bool TryGet(string key, out string value)
         {
             try

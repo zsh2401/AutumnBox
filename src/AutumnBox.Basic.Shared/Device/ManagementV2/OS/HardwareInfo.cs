@@ -22,26 +22,32 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// 设备序列号
         /// </summary>
         public string Serial { get; set; }
+
         /// <summary>
         /// 屏幕信息
         /// </summary>
         public string ScreenInfo { get; set; }
+
         /// <summary>
         /// 电量信息
         /// </summary>
         public int? BatteryLevel { get; set; }
+
         /// <summary>
         /// Ram大小
         /// </summary>
         public double? SizeofRam { get; set; }
+
         /// <summary>
         /// Rom大小
         /// </summary>
         public double? SizeofRom { get; set; }
+
         /// <summary>
         /// 闪存信息
         /// </summary>
         public string FlashMemoryType { get; set; }
+
         /// <summary>
         /// Soc信息
         /// </summary>

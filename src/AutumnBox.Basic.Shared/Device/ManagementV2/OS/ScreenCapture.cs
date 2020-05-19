@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,6 +40,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 捕获,并保存到电脑指定文件夹
         /// </summary>
+        /// <exception cref="CommandErrorException">命令执行失败</exception>
         /// <param name="savePath"></param>
         public void CaptureAndSaveToFile(string savePath)
         {

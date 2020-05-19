@@ -10,6 +10,8 @@ using AutumnBox.Basic.Exceptions;
 
 namespace AutumnBox.Basic.Device.ManagementV2.OS
 {
+
+
     /// <summary>
     /// Windows Manager,基于android wm命令
     /// </summary>
@@ -27,6 +29,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="device"></param>
         /// <param name="executor"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         public WindowManager(IDevice device, ICommandExecutor executor)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
@@ -35,7 +38,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 获取或设置Size,基于wm size命令
         /// </summary>
-        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        /// <exception cref="CommandErrorException"></exception>
         public Data.Size Size
         {
             get
@@ -48,7 +51,6 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
                 {
                     return PhysicalSize;
                 }
-                throw new NotImplementedException();
             }
             set
             {
@@ -58,6 +60,8 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 物理分辨率
         /// </summary>
+        /// <exception cref="CommandErrorException">无法正确执行命令</exception>
+        /// <exception cref="Exception">无法读取</exception>
         public Data.Size OverrideSize
         {
             get
@@ -106,7 +110,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 获取或设置Density,基于wm density命令
         /// </summary>
-        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        /// <exception cref="CommandErrorException">命令无法执行</exception>
         public int Density
         {
             get
@@ -128,6 +132,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 物理DPI
         /// </summary>
+        /// <exception cref="CommandErrorException">命令无法执行</exception>
         public int PhysicalDensity
         {
             get
@@ -148,6 +153,8 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 被修改过的DPI
         /// </summary>
+        /// <exception cref="CommandErrorException">命令无法执行</exception>
+        /// <exception cref="Exception">输出不匹配</exception>
         public int OverrideDensity
         {
             get
@@ -176,7 +183,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 重设Density
         /// </summary>
-        /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
+        /// <exception cref="CommandErrorException"></exception>
         public void ResetDensity()
         {
             executor.AdbShell(device, "wm density reset").ThrowIfError();
@@ -188,6 +195,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <param name="top">顶部的留白像素</param>
         /// <param name="right">右边的留白像素</param>
         /// <param name="bottom">底部的留白像素</param>
+        /// <exception cref="CommandErrorException">命令无法执行</exception>
         public void SetOverscan(int left, int top, int right, int bottom)
         {
             executor.AdbShell(device, $"wm overscan {left} {top} {right} {bottom}").ThrowIfError();
@@ -195,6 +203,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 重设显示区域
         /// </summary>
+        /// <exception cref="CommandErrorException">命令无法执行</exception>
         public void ResetOverscan()
         {
             executor.AdbShell(device, $"wm overscan reset").ThrowIfError();
