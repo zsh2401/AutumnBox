@@ -65,7 +65,15 @@ namespace AutumnBox.GUI.ViewModel
             UpdateCheck = new MVVMCommand(P => openFxManager.RunExtension("EAutumnBoxUpdateChecker"));
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
             InstallExtension = new MVVMCommand(p => openFxManager.RunExtension("EExtensionInstaller"));
-            OpenExtFloder = new MVVMCommand(p => Process.Start("explorer.exe", BuildInfo.DEFAULT_EXTENSION_PATH));
+            OpenExtFloder = new MVVMCommand(p =>
+            {
+                string path = Path.Combine(AppContext.BaseDirectory, BuildInfo.DEFAULT_EXTENSION_PATH);
+                Process.Start(new ProcessStartInfo(path)
+                {
+                    UseShellExecute = true,
+                    Verb = "open"
+                });
+            });
             ViewLibs = new MVVMCommand(p => windowManager.ShowDialog("Libs"));
         }
         private static void OpenShellMethod(string fileName)

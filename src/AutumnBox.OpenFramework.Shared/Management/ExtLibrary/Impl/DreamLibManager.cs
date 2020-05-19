@@ -88,9 +88,23 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             var extDir = new DirectoryInfo(BuildInfo.DEFAULT_EXTENSION_PATH);
             if (!extDir.Exists) extDir.Create();
             List<FileInfo> files = new List<FileInfo>();
-            files.Concat(extDir.GetFiles(PATTERN_DEFAULT));
-            files.Concat(extDir.GetFiles(PATTERN_ATMBEXT));
-            files.Concat(extDir.GetFiles(PATTERN_OEXT));
+
+            extDir.GetFiles();
+            extDir.GetFiles();
+            extDir.GetFiles();
+
+            foreach (var file in extDir.GetFiles())
+            {
+                SLogger<DreamLibManager>.Info($"{file.Name}{file.Extension}");
+            }
+
+            var extensionFiles = from file in extDir.GetFiles()
+                                 where file.Extension == ".dll" || file.Extension == ".aext"
+                                 select file;
+
+
+
+            files.Concat(extensionFiles);
 
 #if DEBUG
             files.Add(new FileInfo("../../../../AutumnBox.Essentials/bin/Debug/netcoreapp3.1/AutumnBox.Core.dll"));
