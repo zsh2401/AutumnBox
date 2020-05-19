@@ -15,23 +15,8 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Windows;
-[assembly: AssemblyTitle("AutumnBox")]
-[assembly: AssemblyDescription("Open source,free,easy to use")]
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
-[assembly: AssemblyCompany("zsh2401")]
-[assembly: AssemblyProduct("AutumnBox")]
-[assembly: AssemblyCopyright("Copyright © 2017 - 2020 zsh2401,All Rights Reserved")]
-[assembly: AssemblyTrademark("AutumnBox")]
-[assembly: AssemblyCulture("")]
-[assembly: ComVisible(false)]
+
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //主题特定资源词典所处位置
     ResourceDictionaryLocation.SourceAssembly //常规资源词典所处位置
 )]
-[assembly: AssemblyVersion("2020.5.18")]
-[assembly: AssemblyFileVersion("2020.5.18")]
-[assembly: NeutralResourcesLanguage("")]

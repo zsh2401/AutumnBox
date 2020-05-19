@@ -8,15 +8,16 @@
                 
                 <!--基础语言-->
                 <ResourceDictionary Source="/Resources/Languages/zh-CN.xaml"/>
+                
                 <!--可变更语言-->
                 <ResourceDictionary Source="/Resources/Languages/en-US.xaml"/>
                 
                 <!--基础主题-->
                 <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
+                
                 <!--可变更主题-->
                 <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
-                
-                <ResourceDictionary Source="/Resources/SomeAppResources.xaml"/>
+               
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

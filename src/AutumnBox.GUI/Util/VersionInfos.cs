@@ -78,7 +78,7 @@ namespace AutumnBox.GUI.Util
             OpenFx = typeof(OpenFramework.BuildInfo).Assembly.GetName().Version;
             Logging = typeof(Logging.SLogger).Assembly.GetName().Version;
 
-            JsonLib = typeof(Newtonsoft.Json.JsonException).Assembly.GetName().Version;
+            JsonLib = new Version(1, 0, 0);
             HandyControl = typeof(HandyControl.Controls.AnimationPath).Assembly.GetName().Version;
             SharpZipLib = typeof(ICSharpCode.SharpZipLib.SharpZipBaseException).Assembly.GetName().Version;
 

@@ -17,6 +17,8 @@
 using Newtonsoft.Json;
 #endif
 
+using System.Text.Json;
+
 namespace AutumnBox.Core
 {
     /// <summary>
@@ -28,12 +30,16 @@ namespace AutumnBox.Core
         {
 #if USE_NT_JSON
             return JsonConvert.DeserializeObject<T>(json);
+#else
+            return JsonSerializer.Deserialize<T>(json);
 #endif
         }
         public static string SerializeObject(object jsonObject)
         {
 #if USE_NT_JSON
             return JsonConvert.SerializeObject(jsonObject);
+#else
+            return JsonSerializer.Serialize(jsonObject);
 #endif
         }
     }

@@ -1,5 +1,6 @@
 ﻿using AutumnBox.GUI.Properties;
 using System.Linq;
+using System.Threading;
 
 namespace AutumnBox.GUI.Services
 {
@@ -14,7 +15,7 @@ namespace AutumnBox.GUI.Services
 
         public static void ApplyByEnvoriment(this ILanguageManager languageManager)
         {
-            switch (App.Current.Dispatcher.Thread.CurrentCulture.Name)
+            switch (Thread.CurrentThread.CurrentCulture.Name)
             {
                 case "zh-TW":
                 case "zh-CN":

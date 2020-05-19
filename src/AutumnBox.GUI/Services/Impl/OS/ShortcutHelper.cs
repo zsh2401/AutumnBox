@@ -11,7 +11,9 @@
 * Company: I am free man
 *
 \* =============================================================================*/
+#if NETFX
 using IWshRuntimeLibrary;
+#endif
 using System;
 using System.IO;
 
@@ -37,6 +39,7 @@ namespace AutumnBox.GUI.Services.Impl.OS
             string targetPath,
             string description = null, string iconLocation = null)
         {
+#if NETFX
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
@@ -51,6 +54,9 @@ namespace AutumnBox.GUI.Services.Impl.OS
             shortcut.Description = description;//设置备注
             shortcut.IconLocation = string.IsNullOrWhiteSpace(iconLocation) ? targetPath : iconLocation;//设置图标路径
             shortcut.Save();//保存快捷方式
+#else
+            throw new PlatformNotSupportedException();
+#endif
         }
         /// <summary>
         /// 创建桌面快捷方式

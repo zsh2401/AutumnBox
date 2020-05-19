@@ -75,13 +75,6 @@
     <EmbeddedResource Include="Resources\Icons\reboot.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
-      <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
-      <Name>AutumnBox.Core</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\wireless.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
