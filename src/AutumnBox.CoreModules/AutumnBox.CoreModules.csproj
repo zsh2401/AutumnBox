@@ -1,251 +1,84 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <RootNamespace>AutumnBox.CoreModules</RootNamespace>
-    <AssemblyName>AutumnBox.CoreModules</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>8.0</LangVersion>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\debug-dist\extensions\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\..\dist\extensions\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Preview|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\dist\extensions\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SDK|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\SDK\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <!-- 如果你的项目是 Exe，则设为 WinExe；如果是 WPF 类库，则删掉这一行 -->
+    <OutputType>Library</OutputType>
+    <Authors>zsh2401</Authors>
+    <Company>zsh2401</Company>
+
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HandyControl, Version=1.5.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HandyControl.1.5.5\lib\net45\HandyControl.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CoreLib.cs" />
-    <Compile Include="Extensions\Fastboot\EFlashBoot.cs" />
-    <Compile Include="Extensions\Fastboot\EFlashRecovery.cs" />
-    <Compile Include="Extensions\Fastboot\EOemLock.cs" />
-    <Compile Include="Extensions\Mix\EDeviceOwnerRemover.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EAnzenboksuActivator.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EFreezeYou.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EAirForzenActivator.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EBlackHole.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\ETaiChi.cs" />
-    <Compile Include="Extensions\Poweron\EClearAccounts.cs" />
-    <Compile Include="Extensions\Poweron\EClearUsers.cs" />
-    <Compile Include="Extensions\Poweron\EGCM.cs" />
-    <Compile Include="Extensions\Poweron\EGreenifyGranter.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EHideAnzen.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EIslandActivator.cs" />
-    <Compile Include="Extensions\Poweron\EShizukuActivator.cs" />
-    <Compile Include="Extensions\Poweron\EStopAppMaxWellActivator.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\DpmPro.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\DpmFailedMessageParser.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\DeviceOwnerSetter.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EIceBox.cs" />
-    <Compile Include="Extensions\Poweron\Dpm\EStopApp.cs" />
-    <Compile Include="Extensions\Poweron\EApkInstaller.cs" />
-    <Compile Include="Extensions\Poweron\EBreventActivator.cs" />
-    <Compile Include="Extensions\Poweron\EDpiModifier.cs" />
-    <Compile Include="Extensions\Mix\EFilePusher.cs" />
-    <Compile Include="Extensions\Poweron\EScreenShoter.cs" />
-    <Compile Include="Extensions\Poweron\EUnlockSystemParation.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="View\ScreenRecorderWindow.xaml.cs">
-      <DependentUpon>ScreenRecorderWindow.xaml</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <EmbeddedResource Include="Res\godpower.apk" />
-    <EmbeddedResource Include="Res\dpmpro" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
-      <Project>{57722f44-8dbe-46ee-8b7a-80237803a1ec}</Project>
-      <Name>AutumnBox.Core</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\android.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\brevent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\stopapp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\AirForzen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\Anzenbokusu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\anzenbokusufake.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\appopsx.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\blackhole.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\freezeYou.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\gcm.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\Greenify.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\icebox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\Island.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\ShizukuManager.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\Usersir.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\taichi.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\dpi.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="View\ScreenRecorderWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\flash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\filepush.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\screenshot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\lock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\cd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\nuclear.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\recorder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\knife.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\unlock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\restart.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\download.png" />
+    <None Remove="Icons\add.png" />
+    <None Remove="Icons\AirForzen.png" />
+    <None Remove="Icons\android.png" />
+    <None Remove="Icons\Anzenbokusu.png" />
+    <None Remove="Icons\anzenbokusufake.png" />
+    <None Remove="Icons\appopsx.png" />
+    <None Remove="Icons\blackhole.png" />
+    <None Remove="Icons\brevent.png" />
+    <None Remove="Icons\cd.png" />
+    <None Remove="Icons\download.png" />
+    <None Remove="Icons\dpi.png" />
+    <None Remove="Icons\filepush.png" />
+    <None Remove="Icons\flash.png" />
+    <None Remove="Icons\freezeYou.png" />
+    <None Remove="Icons\gcm.png" />
+    <None Remove="Icons\Greenify.png" />
+    <None Remove="Icons\icebox.png" />
+    <None Remove="Icons\Island.png" />
+    <None Remove="Icons\knife.png" />
+    <None Remove="Icons\lock.png" />
+    <None Remove="Icons\nuclear.png" />
+    <None Remove="Icons\recorder.png" />
+    <None Remove="Icons\restart.png" />
+    <None Remove="Icons\restartdevice.png" />
+    <None Remove="Icons\screenshot.png" />
+    <None Remove="Icons\screenshotv2.png" />
+    <None Remove="Icons\ShizukuManager.png" />
+    <None Remove="Icons\stopapp.png" />
+    <None Remove="Icons\taichi.png" />
+    <None Remove="Icons\unlock.png" />
+    <None Remove="Icons\Usersir.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\add.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Icons\AirForzen.png" />
+    <EmbeddedResource Include="Icons\android.png" />
+    <EmbeddedResource Include="Icons\Anzenbokusu.png" />
+    <EmbeddedResource Include="Icons\anzenbokusufake.png" />
+    <EmbeddedResource Include="Icons\appopsx.png" />
+    <EmbeddedResource Include="Icons\blackhole.png" />
+    <EmbeddedResource Include="Icons\brevent.png" />
+    <EmbeddedResource Include="Icons\cd.png" />
+    <EmbeddedResource Include="Icons\download.png" />
+    <EmbeddedResource Include="Icons\dpi.png" />
+    <EmbeddedResource Include="Icons\filepush.png" />
+    <EmbeddedResource Include="Icons\flash.png" />
+    <EmbeddedResource Include="Icons\freezeYou.png" />
+    <EmbeddedResource Include="Icons\gcm.png" />
+    <EmbeddedResource Include="Icons\Greenify.png" />
+    <EmbeddedResource Include="Icons\icebox.png" />
+    <EmbeddedResource Include="Icons\Island.png" />
+    <EmbeddedResource Include="Icons\knife.png" />
+    <EmbeddedResource Include="Icons\lock.png" />
+    <EmbeddedResource Include="Icons\nuclear.png" />
+    <EmbeddedResource Include="Icons\recorder.png" />
+    <EmbeddedResource Include="Icons\restart.png" />
     <EmbeddedResource Include="Icons\restartdevice.png" />
+    <EmbeddedResource Include="Icons\screenshot.png" />
+    <EmbeddedResource Include="Icons\screenshotv2.png" />
+    <EmbeddedResource Include="Icons\ShizukuManager.png" />
+    <EmbeddedResource Include="Icons\stopapp.png" />
+    <EmbeddedResource Include="Icons\taichi.png" />
+    <EmbeddedResource Include="Icons\unlock.png" />
+    <EmbeddedResource Include="Icons\Usersir.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Icons\screenshotv2.png" />
+    <PackageReference Include="HandyControl" Version="2.4.0" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>del /S System.*.dll
-del /S Microsoft.Win32.Primitives.dll
-del /S netstandard.dll
-if $(ConfigurationName) == Release (
-del /S *.pdb
-)</PostBuildEvent>
-  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj" />
+  </ItemGroup>
 </Project>

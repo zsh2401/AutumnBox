@@ -16,13 +16,25 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_2113A1A232CC488FA88634A17C5A93AE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_39CB6D73CDAE4376AB33296281B1BD67"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_717AAC43496F44F98980491622D21290"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_976EA4C1F68244F19FD97F671967FE69"
+        "MsmKey" = "8:_BBBF4297A2C34363B5B2E026E6E6DB30"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -35,12 +47,6 @@
         "Entry"
         {
         "MsmKey" = "8:_DCED964774CF4C85B5EDA03ACB0586C5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DD2B147A88EF473CB5FC8E6638018147"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -71,11 +77,6 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
-                    {
-                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
-                    }
                 }
             }
         }
@@ -88,7 +89,7 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:3"
+        "Compression" = "3:2"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -103,11 +104,6 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5.2"
-                    {
-                    "Name" = "8:Microsoft .NET Framework 4.5.2 (x86 和 x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.5.2"
-                    }
                 }
             }
         }
@@ -220,7 +216,7 @@
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_E7B30B656AA7427DA636AD38DE62AB22"
                     {
                     "Name" = "8:extensions"
-                    "AlwaysCreate" = "11:FALSE"
+                    "AlwaysCreate" = "11:TRUE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_FE0947DB347747ACABAF9B4F620253CD"
@@ -280,7 +276,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutumnBox"
         "ProductCode" = "8:{37DC9A51-57D4-43B0-88C2-B2F6154ED2C7}"
-        "PackageCode" = "8:{5ECCD85D-821F-4D00-8851-4667BD41AAF9}"
+        "PackageCode" = "8:{1FFD4E3F-59A0-4B78-96C3-9940B63F7CC0}"
         "UpgradeCode" = "8:{9F5C573E-2E10-4D05-BC5A-F7106ABEA65D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -400,7 +396,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3D27D777F2B641BD9888A1E237687744"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_31C31B42382542C28D8654EC03ACEF5B"
             {
             "Name" = "8:秋之盒"
             "Arguments" = "8:"
@@ -408,13 +404,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DD2B147A88EF473CB5FC8E6638018147"
+            "Target" = "8:_2113A1A232CC488FA88634A17C5A93AE"
             "Folder" = "8:_2FE02C7721DD4BB7B38AC75170364614"
             "WorkingFolder" = "8:_0D115BF4172E47B386D46E69989C7126"
-            "Icon" = "8:"
+            "Icon" = "8:_717AAC43496F44F98980491622D21290"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_AA7F09E36EBB46EE93A23601C2B9DDEA"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_479D59D3D21741C5AC555F12AEAC7607"
             {
             "Name" = "8:秋之盒"
             "Arguments" = "8:"
@@ -422,7 +418,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DD2B147A88EF473CB5FC8E6638018147"
+            "Target" = "8:_2113A1A232CC488FA88634A17C5A93AE"
             "Folder" = "8:_6BF8006C861C49D1A87C3A7F42645A68"
             "WorkingFolder" = "8:_0D115BF4172E47B386D46E69989C7126"
             "Icon" = "8:_717AAC43496F44F98980491622D21290"
@@ -841,37 +837,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_976EA4C1F68244F19FD97F671967FE69"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2113A1A232CC488FA88634A17C5A93AE"
             {
-            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Debug\\netcoreapp3.1\\AutumnBox.GUI.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{587D3A22-98E8-43EC-82E0-41574DC9C487}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_DD2B147A88EF473CB5FC8E6638018147"
-            {
-            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Debug\\netcoreapp3.1\\AutumnBox.GUI.exe"
+            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Release\\netcoreapp3.1\\AutumnBox.GUI.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
@@ -892,6 +860,62 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{587D3A22-98E8-43EC-82E0-41574DC9C487}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_39CB6D73CDAE4376AB33296281B1BD67"
+            {
+            "SourcePath" = "8:..\\AutumnBox.Essentials\\obj\\Release\\netcoreapp3.1\\AutumnBox.Essentials.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7B30B656AA7427DA636AD38DE62AB22"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{0B61F868-4017-4AFD-89C5-15E08ECF441E}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BBBF4297A2C34363B5B2E026E6E6DB30"
+            {
+            "SourcePath" = "8:..\\AutumnBox.CoreModules\\obj\\Release\\netcoreapp3.1\\AutumnBox.CoreModules.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E7B30B656AA7427DA636AD38DE62AB22"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

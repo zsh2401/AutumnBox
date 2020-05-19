@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -86,10 +87,15 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         {
             var extDir = new DirectoryInfo(BuildInfo.DEFAULT_EXTENSION_PATH);
             if (!extDir.Exists) extDir.Create();
-            var files = new List<FileInfo>()
-                .Concat(extDir.GetFiles(PATTERN_DEFAULT))
-                .Concat(extDir.GetFiles(PATTERN_ATMBEXT))
-                .Concat(extDir.GetFiles(PATTERN_OEXT));
+            List<FileInfo> files = new List<FileInfo>();
+            files.Concat(extDir.GetFiles(PATTERN_DEFAULT));
+            files.Concat(extDir.GetFiles(PATTERN_ATMBEXT));
+            files.Concat(extDir.GetFiles(PATTERN_OEXT));
+
+#if DEBUG
+            files.Add(new FileInfo("../../../../AutumnBox.Essentials/bin/Debug/netcoreapp3.1/AutumnBox.Core.dll"));
+            files.Add(new FileInfo("../../../../AutumnBox.CoreModules/bin/Debug/netcoreapp3.1/AutumnBox.CoreModules.dll"));
+#endif
             SLogger<DreamLibManager>.Debug($"There are {files.Count()} extension file");
             return files;
         }

@@ -9,6 +9,8 @@ using AutumnBox.OpenFramework;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.ViewModel
@@ -63,7 +65,7 @@ namespace AutumnBox.GUI.ViewModel
             UpdateCheck = new MVVMCommand(P => openFxManager.RunExtension("EAutumnBoxUpdateChecker"));
             OpenShell = new MVVMCommand(p => OpenShellMethod(p?.ToString()));
             InstallExtension = new MVVMCommand(p => openFxManager.RunExtension("EExtensionInstaller"));
-            OpenExtFloder = new MVVMCommand(p => Process.Start(BuildInfo.DEFAULT_EXTENSION_PATH));
+            OpenExtFloder = new MVVMCommand(p => Process.Start("explorer.exe", BuildInfo.DEFAULT_EXTENSION_PATH));
             ViewLibs = new MVVMCommand(p => windowManager.ShowDialog("Libs"));
         }
         private static void OpenShellMethod(string fileName)
