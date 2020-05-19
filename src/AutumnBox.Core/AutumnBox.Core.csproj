@@ -5,8 +5,13 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>zsh2401</Authors>
-    <Version>11.4</Version>
+    <Version>11.4.1</Version>
     <Configurations>Debug;Release;SDK</Configurations>
+    <Description>AutumnBox core library,which includes a serials of tools useful for AutumnBox and third party developers.</Description>
+    <PackageReleaseNotes>Bug fixes and API enhancements.</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/zsh2401/AutumnBox</RepositoryUrl>
+    <PackageProjectUrl>https://www.atmb.top/</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -18,7 +23,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
-    <DocumentationFile>bin\AutumnBox.Core.xml</DocumentationFile>
+    <DocumentationFile>AutumnBox.Core.xml</DocumentationFile>
+    <DefineConstants>TRACE;SDK</DefineConstants>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <Import Project="..\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />
@@ -30,7 +37,19 @@
   <Import Project="..\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
 
   <ItemGroup>
+    <None Remove="icon.png" />
+    <None Include="..\AutumnBox.GUI\Resources\Drawable\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="..\AutumnBox.GUI\Resources\Drawable\icon.png" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.CoreModules", "AutumnBox.CoreModules\AutumnBox.CoreModules.csproj", "{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.CoreModules", "AutumnBox.CoreModules\AutumnBox.CoreModules.csproj", "{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Basic.Shared", "AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.shproj", "{8E101F07-8C10-4AB6-A427-F24618C25DE5}"
 EndProject
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Tests", "AutumnBo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{15CDF29D-896C-46F4-86D7-92FEED9D4C40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Essentials", "AutumnBox.Essentials\AutumnBox.Essentials.csproj", "{0B61F868-4017-4AFD-89C5-15E08ECF441E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.Essentials", "AutumnBox.Essentials\AutumnBox.Essentials.csproj", "{0B61F868-4017-4AFD-89C5-15E08ECF441E}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Leafx.Shared", "AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.shproj", "{D6013EC3-DD68-4945-916D-F77F1EAD7FFF}"
 EndProject
@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.GUI", "AutumnBox.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.ADBProvider", "AutumnBox.ADBProvider\AutumnBox.ADBProvider.csproj", "{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Universal-Library", "Universal-Library", "{3CC3E255-95DB-4823-9541-E1DF32382C93}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3CC3E255-95DB-4823-9541-E1DF32382C93}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutumnBox.SetupWizard", "AutumnBox.SetupWizard\AutumnBox.SetupWizard.vdproj", "{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}"
 EndProject
@@ -94,7 +94,6 @@ Global
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.Release|x86.ActiveCfg = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.Release|x86.Build.0 = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|Any CPU.ActiveCfg = Release|Any CPU
-		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|Any CPU.Build.0 = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|ARM.ActiveCfg = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|ARM.Build.0 = Release|Any CPU
 		{8D9EB8B7-0271-4368-AA27-3DD6B62EEBDE}.SDK|x64.ActiveCfg = Release|Any CPU
@@ -214,8 +213,8 @@ Global
 		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.Release|x64.Build.0 = Release|Any CPU
 		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.Release|x86.ActiveCfg = Release|Any CPU
 		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.Release|x86.Build.0 = Release|Any CPU
-		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.SDK|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.SDK|Any CPU.Build.0 = Debug|Any CPU
+		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.SDK|Any CPU.ActiveCfg = SDK|Any CPU
+		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.SDK|Any CPU.Build.0 = SDK|Any CPU
 		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.SDK|ARM.ActiveCfg = Debug|Any CPU
 		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.SDK|ARM.Build.0 = Debug|Any CPU
 		{C6A6A6BA-D10E-479E-91B9-64691FE1F008}.SDK|x64.ActiveCfg = SDK|Any CPU
@@ -247,7 +246,6 @@ Global
 		{587D3A22-98E8-43EC-82E0-41574DC9C487}.Release|x86.ActiveCfg = Release|Any CPU
 		{587D3A22-98E8-43EC-82E0-41574DC9C487}.Release|x86.Build.0 = Release|Any CPU
 		{587D3A22-98E8-43EC-82E0-41574DC9C487}.SDK|Any CPU.ActiveCfg = Debug|Any CPU
-		{587D3A22-98E8-43EC-82E0-41574DC9C487}.SDK|Any CPU.Build.0 = Debug|Any CPU
 		{587D3A22-98E8-43EC-82E0-41574DC9C487}.SDK|ARM.ActiveCfg = Debug|Any CPU
 		{587D3A22-98E8-43EC-82E0-41574DC9C487}.SDK|ARM.Build.0 = Debug|Any CPU
 		{587D3A22-98E8-43EC-82E0-41574DC9C487}.SDK|x64.ActiveCfg = Debug|Any CPU
@@ -278,7 +276,6 @@ Global
 		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}.Release|x86.ActiveCfg = Release|Any CPU
 		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}.Release|x86.Build.0 = Release|Any CPU
 		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}.SDK|Any CPU.ActiveCfg = Debug|Any CPU
-		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}.SDK|Any CPU.Build.0 = Debug|Any CPU
 		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}.SDK|ARM.ActiveCfg = Debug|Any CPU
 		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}.SDK|ARM.Build.0 = Debug|Any CPU
 		{303A77DF-5B5C-42B7-9911-C0FF1DEDA36D}.SDK|x64.ActiveCfg = Debug|Any CPU
@@ -309,7 +306,6 @@ Global
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}.Release|x86.ActiveCfg = Release
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}.Release|x86.Build.0 = Release
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}.SDK|Any CPU.ActiveCfg = Release
-		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}.SDK|Any CPU.Build.0 = Release
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}.SDK|ARM.ActiveCfg = Release
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}.SDK|ARM.Build.0 = Release
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6}.SDK|x64.ActiveCfg = Release
@@ -335,7 +331,7 @@ Global
 		{48C2D558-B6E9-4E7D-B4F1-3E9DB6A4D2E6} = {FCF05A08-6C3E-46DC-A99B-F72B56CD22EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
