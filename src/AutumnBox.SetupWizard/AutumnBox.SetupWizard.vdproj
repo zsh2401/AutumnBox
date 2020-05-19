@@ -97,7 +97,7 @@
         "InstallerBootstrapper" = "3:2"
             "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
             {
-            "Enabled" = "11:TRUE"
+            "Enabled" = "11:FALSE"
             "PromptEnabled" = "11:TRUE"
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
@@ -839,7 +839,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2113A1A232CC488FA88634A17C5A93AE"
             {
-            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Release\\netcoreapp3.1\\AutumnBox.GUI.exe"
+            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Debug\\netcoreapp3.1\\AutumnBox.GUI.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_0D115BF4172E47B386D46E69989C7126"
@@ -867,7 +867,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_39CB6D73CDAE4376AB33296281B1BD67"
             {
-            "SourcePath" = "8:..\\AutumnBox.Essentials\\obj\\Release\\netcoreapp3.1\\AutumnBox.Essentials.dll"
+            "SourcePath" = "8:..\\AutumnBox.Essentials\\obj\\Debug\\netcoreapp3.1\\AutumnBox.Essentials.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E7B30B656AA7427DA636AD38DE62AB22"
@@ -895,7 +895,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BBBF4297A2C34363B5B2E026E6E6DB30"
             {
-            "SourcePath" = "8:..\\AutumnBox.CoreModules\\obj\\Release\\netcoreapp3.1\\AutumnBox.CoreModules.dll"
+            "SourcePath" = "8:..\\AutumnBox.CoreModules\\obj\\Debug\\netcoreapp3.1\\AutumnBox.CoreModules.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E7B30B656AA7427DA636AD38DE62AB22"
