@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:AutumnBox.GUI.View.Panel"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              mc:Ignorable="d" 
+                      FontFamily="{DynamicResource AutumnBox.Font}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <viewmodel:VMUpdateLogs/>

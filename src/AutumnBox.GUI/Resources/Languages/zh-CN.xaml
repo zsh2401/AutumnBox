@@ -75,14 +75,12 @@
     <s:String x:Key="Dash.Boot.Time">开机时间</s:String>
 
     <s:String x:Key="Version.AutumnBox">秋之盒版本</s:String>
-    <s:String x:Key="Version.GUI">图形界面</s:String>
-    <s:String x:Key="Version.CoreModules">核心模块</s:String>
+    <s:String x:Key="Version.Basic">ADB交互模块</s:String>
+    <s:String x:Key="Version.OpenFx">SDK</s:String>
     <s:String x:Key="Version.ADB">ADB</s:String>
-    <s:String x:Key="Version.Basic">Basic封装库</s:String>
-    <s:String x:Key="Version.OpenFx">开放框架</s:String>
-    <s:String x:Key="Version.Logging">调试器</s:String>
+    
     <s:String x:Key="Version.OS">操作系统</s:String>
-    <s:String x:Key="Version.Net">.NET环境</s:String>
+    <s:String x:Key="Version.Net">.NET Core</s:String>
     
    <s:String x:Key="QQGroup">QQ群</s:String>
    <s:String x:Key="EMail">电子邮件</s:String>
@@ -238,6 +236,8 @@
     
     <!--LoadingWindow-->
      <s:String x:Key="LoadingWindowMessage">请耐心等待 :)</s:String>
+    
+        <s:String x:Key="Uni.Copy">复制</s:String>
     
 <!--LeafWindow-->
     <s:String x:Key="LeafUITipRunning">运行中</s:String>

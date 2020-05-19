@@ -9,6 +9,7 @@ using AutumnBox.Basic.Device;
 using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Open.LKit;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace AutumnBox.OpenFramework.Management
@@ -24,6 +25,14 @@ namespace AutumnBox.OpenFramework.Management
     interface IBaseApi
     {
         /// <summary>
+        /// 存储空间
+        /// </summary>
+        DirectoryInfo StorageDirectory { get; }
+        /// <summary>
+        /// 临时空间
+        /// </summary>
+        DirectoryInfo TempDirectory { get; }
+        /// <summary>
         /// 语言变更了
         /// </summary>
         event EventHandler LanguageChanged;
@@ -34,7 +43,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="message"></param>
         /// <param name="arg"></param>
         /// <returns></returns>
-        object? UnstableInternalApiCall(string message, object? arg=null);
+        object? UnstableInternalApiCall(string message, object? arg = null);
         /// <summary>
         /// 全局湖
         /// </summary>
@@ -69,10 +78,6 @@ namespace AutumnBox.OpenFramework.Management
         /// 秋之盒正在结束
         /// </summary>
         event EventHandler Destorying;
-        /// <summary>
-        /// 获取NewtonsoftJson的版本号
-        /// </summary>
-        Version NewtonsoftJsonVersion { get; }
         /// <summary>
         /// 获取日志器版本号
         /// </summary>
@@ -125,7 +130,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <param name="title"></param>
         /// <param name="sketch"></param>
         /// <param name="exceptionMessage"></param>
-        void ShowException(string title, string sketch, string exceptionMessage);
+        void ShowException(string title,string sketch, string exceptionMessage);
         /// <summary>
         /// 播放成功音效
         /// </summary>

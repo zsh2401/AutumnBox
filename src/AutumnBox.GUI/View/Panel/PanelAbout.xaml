@@ -9,6 +9,7 @@
              mc:Ignorable="d" 
                       xmlns:util="clr-namespace:AutumnBox.GUI.Util"
              Foreground="{DynamicResource PrimaryTextBrush}"
+             FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
              d:DesignHeight="450" d:DesignWidth="400">
     <UserControl.DataContext>
@@ -47,25 +48,17 @@
 
             <DockPanel Margin="30,10,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.GUIString}"/>
-                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.GUI}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.AutumnBox}"/>
             </DockPanel>
+            
             <DockPanel Margin="30,0,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.BasicString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Basic}"/>
-            </DockPanel>
-            <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.LoggingString}"/>
-                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Logging}"/>
             </DockPanel>
 
             <DockPanel Margin="30,0,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.OpenFxString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OpenFx}"/>
-            </DockPanel>
-
-            <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.CoreLibString}"/>
-                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.CoreModules}"/>
             </DockPanel>
 
             <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
@@ -89,11 +82,6 @@
             <DockPanel Margin="30,0,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.HandyControlString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="HandyControl"/>
-            </DockPanel>
-
-            <DockPanel Margin="30,0,30,0">
-                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.JsonLibString}"/>
-                <TextBlock DockPanel.Dock="Left" Text="Newtonsoft.Json"/>
             </DockPanel>
 
             <DockPanel Margin="30,0,30,0">

@@ -76,7 +76,11 @@ namespace AutumnBox.GUI.View.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(ExceptionMessage);
+            try
+            {
+                Clipboard.SetText(ExceptionMessage);
+            }
+            catch { }
         }
     }
 }

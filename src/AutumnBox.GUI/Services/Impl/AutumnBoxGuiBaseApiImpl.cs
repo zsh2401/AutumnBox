@@ -18,6 +18,7 @@ using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.Leafx.Container.Support;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AutumnBox.GUI.Services.Impl
 {
@@ -47,8 +48,6 @@ namespace AutumnBox.GUI.Services.Impl
 
         public bool ShouldDisplayCmdWindow => Settings.Default.DisplayCmdWindow;
 
-        public Version NewtonsoftJsonVersion => VersionInfos.JsonLib;
-
         public Version AutumnBoxLoggingVersion => VersionInfos.Logging;
 
         public Version AutumnBoxGUIVersion => VersionInfos.GUI;
@@ -56,6 +55,10 @@ namespace AutumnBox.GUI.Services.Impl
         public Version AutumnBoxBasicVersion => VersionInfos.Basic;
 
         public IRegisterableLake GlobalLake => (IRegisterableLake)App.Current.Lake;
+
+        public DirectoryInfo StorageDirectory => this.GetComponent<IStorageManager>().StorageDirectory;
+
+        public DirectoryInfo TempDirectory => this.GetComponent<IStorageManager>().CacheDirectory;
 
         public void ShowDebugUI()
         {
@@ -128,7 +131,8 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 LanguageChanged?.Invoke(this, new EventArgs());
             };
-        }
+        } 
+
         private static LoadingWindow loadingWindow;
 
         public event EventHandler LanguageChanged;

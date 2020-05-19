@@ -10,7 +10,7 @@ using System;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
-    [Component(Type =typeof(IAppManager))]
+    [Component(Type = typeof(IAppManager))]
     internal partial class AppManagerImpl : IAppManager
     {
         private readonly IBaseApi sourceApi;
@@ -143,8 +143,10 @@ namespace AutumnBox.OpenFramework.Implementation
             {
                 throw new ArgumentNullException(nameof(e));
             }
-
-            sourceApi.ShowException(title, sketch, e.ToString());
+            sourceApi.RunOnUIThread(() =>
+            {
+                sourceApi.ShowException(title, sketch, e.ToString());
+            });
         }
 
         public void ShutdownApp()

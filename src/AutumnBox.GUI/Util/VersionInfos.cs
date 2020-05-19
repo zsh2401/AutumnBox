@@ -36,9 +36,6 @@ namespace AutumnBox.GUI.Util
         public static Version OS { get; }
         public static string OSString => OS.ToString();
 
-        public static Version JsonLib { get; }
-        public static string JsonLibString => JsonLib.ToString();
-
         public static Version HandyControl { get; }
         public static string HandyControlString => HandyControl.ToString();
 
@@ -59,33 +56,20 @@ namespace AutumnBox.GUI.Util
                 return "unknown";
             }
         }
-        private static Version GetCoreLibVersion()
-        {
-            var libsManager = AutumnBox.OpenFramework.Management.OpenFx.Lake.Get<ILibsManager>();
-            var coreLibFilterResult = from lib in libsManager.Librarians
-                                      where lib.Name == "AutumnBox Core Modules"
-                                      select lib;
-            if (coreLibFilterResult.Count() == 0) return new Version(0, 0, 1);
-            var assemblyLib = coreLibFilterResult.First() as AssemblyLibrarian;
-            Assembly assembly = assemblyLib.ManagedAssembly;
-            return assembly.GetName().Version;
-        }
 
         static VersionInfos()
         {
-            Basic = typeof(BasicBooter).Assembly.GetName().Version;
+            Basic = AutumnBox.Basic.ModuleInfo.Version;
             GUI = Self.Version;
-            OpenFx = typeof(OpenFramework.BuildInfo).Assembly.GetName().Version;
+            OpenFx = AutumnBox.OpenFramework.BuildInfo.SDK_VERSION;
             Logging = typeof(Logging.SLogger).Assembly.GetName().Version;
 
-            JsonLib = new Version(1, 0, 0);
             HandyControl = typeof(HandyControl.Controls.AnimationPath).Assembly.GetName().Version;
             SharpZipLib = typeof(ICSharpCode.SharpZipLib.SharpZipBaseException).Assembly.GetName().Version;
 
             DotNetFramework = Environment.Version;
             OS = Environment.OSVersion.Version;
             Adb = GetAdbVersion();
-            CoreLib = GetCoreLibVersion();
         }
     }
 }

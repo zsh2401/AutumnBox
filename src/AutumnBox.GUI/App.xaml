@@ -19,6 +19,8 @@
                 <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
                
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
+
+                <ResourceDictionary Source="/Resources/AppCommonResource.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

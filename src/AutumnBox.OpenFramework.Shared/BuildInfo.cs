@@ -5,6 +5,7 @@
 *************************************************/
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 
 namespace AutumnBox.OpenFramework
@@ -15,9 +16,9 @@ namespace AutumnBox.OpenFramework
     public static class BuildInfo
     {
         /// <summary>
-        /// 拓展模块路径
+        /// 拓展模块存放点
         /// </summary>
-        public const string DEFAULT_EXTENSION_PATH = "extensions";
+        public static DirectoryInfo ExtensionStore { get; }
 
         /// <summary>
         /// SDK版本,不设计为Const是为了防止编译器优化
@@ -49,8 +50,10 @@ namespace AutumnBox.OpenFramework
         /// </summary>
         internal const string AUTUMNBOX_LOGGING_ASSEMBLY_NAME = "AutumnBox.Logging";
 
+        const string DEFAULT_EXTENSION_PATH = "extensions";
         static BuildInfo()
         {
+            ExtensionStore = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, DEFAULT_EXTENSION_PATH));
             SDK_VERSION = Assembly.GetExecutingAssembly().GetName().Version;
             API_LEVEL = SDK_VERSION.Major;
         }

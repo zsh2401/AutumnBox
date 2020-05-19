@@ -41,7 +41,14 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             }
             catch (TargetInvocationException e)
             {
-                throw e.InnerException;
+                if (e.InnerException?.GetType() == typeof(LeafUIExtension.LeafExtensionTerminatedException))
+                {
+                    return default;
+                }
+                else
+                {
+                    throw e.InnerException ?? e;
+                }
             }
         }
 

@@ -1,7 +1,12 @@
 ﻿using AutumnBox.Core;
+using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
+using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
+using System;
 using System.IO;
+using System.Linq;
+
 namespace AutumnBox.OpenFramework.Implementation
 {
     [Component(SingletonMode = true, Type = typeof(IStorage))]
@@ -15,46 +20,36 @@ namespace AutumnBox.OpenFramework.Implementation
 
     internal class Storage : IStorage
     {
-        private string storageId;
         private const string CACHE_DIR = "cache";
         private const string FILES_DIR = "files";
         private const string JSON_EXT = ".ajson";
         private const string FILE_EXT = ".aextf";
 
         public DirectoryInfo CacheDirectory { get; private set; }
-        private DirectoryInfo ChiefDirectory { get; set; }
         private DirectoryInfo FilesDirectory { get; set; }
         public Storage(string id)
         {
-            storageId = id.GetHashCode().ToString();
+            var baseApi = LakeProvider.Lake.Get<IBaseApi>();
 
-            /*初始化Chief Directory*/
-            string chiefDirName = storageId.GetHashCode().ToString();
-            string chiefPath = Path.Combine(BuildInfo.DEFAULT_EXTENSION_PATH, chiefDirName);
-            ChiefDirectory = new DirectoryInfo(chiefPath);
-            if (!ChiefDirectory.Exists) ChiefDirectory.Create();
+            string cacheDirPath = Path.Combine(baseApi.TempDirectory.FullName, $"extcache_{id}");
+            string filesDirPath = Path.Combine(baseApi.StorageDirectory.FullName, $"extfiles_{id}");
 
-            /*初始化子文件夹*/
-            CacheDirectory = InitChildDirectory(CACHE_DIR);
-            FilesDirectory = InitChildDirectory(FILES_DIR);
-        }
-        private DirectoryInfo InitChildDirectory(string dirName)
-        {
-            string path = Path.Combine(ChiefDirectory.FullName, dirName);
-            DirectoryInfo dir = new DirectoryInfo(path);
-            if (!dir.Exists) dir.Create();
-            return dir;
+            CacheDirectory = new DirectoryInfo(cacheDirPath);
+            FilesDirectory = new DirectoryInfo(filesDirPath);
+
+            if (!CacheDirectory.Exists) CacheDirectory.Create();
+            if (!FilesDirectory.Exists) FilesDirectory.Create();
         }
 
         public void ClearCache()
         {
             CacheDirectory.Delete(true);
-            InitChildDirectory(CACHE_DIR);
+            CacheDirectory.Create();
         }
 
         public void ClearFiles()
         {
-            FileInfo[] files = FilesDirectory.GetFiles($"*{FILE_EXT}");
+            FileInfo[] files = FilesDirectory.GetFiles();
             foreach (var file in files)
             {
                 file.Delete();
@@ -63,8 +58,11 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public void ClearJsonObjects()
         {
-            FileInfo[] files = FilesDirectory.GetFiles($"*{JSON_EXT}");
-            foreach (var file in files)
+            var jsonFiles = from file in FilesDirectory.GetFiles($"*{JSON_EXT}")
+                            where file.Extension == JSON_EXT
+                            select file;
+
+            foreach (var file in jsonFiles)
             {
                 file.Delete();
             }
@@ -72,7 +70,7 @@ namespace AutumnBox.OpenFramework.Implementation
 
         private string GenerateFileName(string fileId)
         {
-            return fileId.GetHashCode().ToString();
+            return fileId.ToString();
         }
 
         public void DeleteFile(string fileId)
@@ -110,6 +108,7 @@ namespace AutumnBox.OpenFramework.Implementation
             using var sw = new StreamWriter(fs);
             var json = JsonHelper.SerializeObject(jsonObject);
             sw.Write(json);
+            sw.Flush();
         }
 
         public void Restore()
@@ -119,7 +118,7 @@ namespace AutumnBox.OpenFramework.Implementation
             ClearJsonObjects();
         }
 
-        public FileInfo WriteToFile(Stream srcSource, string fileId = null)
+        public FileInfo WriteToFile(Stream srcSource, string fileId)
         {
             string path = Path.Combine(FilesDirectory.FullName, GenerateFileName(fileId) + FILE_EXT);
             using (var writer = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))

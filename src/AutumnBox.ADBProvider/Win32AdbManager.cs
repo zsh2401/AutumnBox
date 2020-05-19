@@ -11,11 +11,13 @@ namespace AutumnBox.ADBProvider
         private static readonly string[] files = { "adb.exe", "AdbWinApi.dll", "AdbWinUsbApi.dll", "fastboot.exe", "libwinpthread-1.dll" };
         private const string FILES_NAMESPACE = "AutumnBox.ADBProvider.adb_tools";
 
+        public static DirectoryInfo AdbToolsDirectory { get; set; } = null;
+
         protected override DirectoryInfo InitializeClientFiles()
         {
             string temp = Environment.GetEnvironmentVariable("TEMP");
             var toolsPath = Path.Combine(temp, "autumnbox_adb_tools/");
-            var toolsDir = new DirectoryInfo(toolsPath);
+            var toolsDir = AdbToolsDirectory ?? new DirectoryInfo(toolsPath);
             if (!toolsDir.Exists) toolsDir.Create();
             ExtractFilesTo(toolsDir);
             return toolsDir;

@@ -67,8 +67,7 @@ namespace AutumnBox.GUI.ViewModel
             InstallExtension = new MVVMCommand(p => openFxManager.RunExtension("EExtensionInstaller"));
             OpenExtFloder = new MVVMCommand(p =>
             {
-                string path = Path.Combine(AppContext.BaseDirectory, BuildInfo.DEFAULT_EXTENSION_PATH);
-                Process.Start(new ProcessStartInfo(path)
+                Process.Start(new ProcessStartInfo(BuildInfo.ExtensionStore.FullName)
                 {
                     UseShellExecute = true,
                     Verb = "open"
