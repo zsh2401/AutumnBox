@@ -3,7 +3,7 @@
 ### 开发者群
 [![](https://img.shields.io/badge/QQGroup-153424015-brightgreen.svg)](https://jq.qq.com/?_wv=1027&k=M6X9BBCR)
 
-![](https://raw.githubusercontent.com/zsh2401/AutumnBox/blob/master/assets/qq_group.png)
+![](https://raw.githubusercontent.com/zsh2401/AutumnBox/master/assets/qq_group.png)
 ### 简介
 秋之盒是一个对Google ADB工具包进行GUI封装的Windows桌面应用,方便小白,帮助老鸟
 - 代码行数:26000+ (不包含.xaml)
