@@ -135,6 +135,11 @@
   <ItemGroup>
     <Folder Include="Calling\" />
   </ItemGroup>
+  <Import Project="..\Shared\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems" Label="Shared" />
+  <Import Project="..\Shared\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

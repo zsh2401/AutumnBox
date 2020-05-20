@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>296957ae-70ab-40d6-b291-55eb291ce4a3</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutumnBox.Extensions.Essentials</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\devpanelswitcher.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\disconnect-netdebbugging.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\enable-dev-netdebugging.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\reboot.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\wireless.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)EssentialsLibrarin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxAdFetcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxExtensionStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxGuideViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxRestarter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxUpdateChecker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EDeviceRebooter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EDonateCardRegister.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EEnableCurrentDeviceNetDebugging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceConnecter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceDisconnecter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ETest.cs" />
+  </ItemGroup>
+</Project>
