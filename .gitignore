@@ -36,6 +36,7 @@ gfast.exe
 makezip
 ##dirs
 .vs/
+publish/
 out/
 sdk/
 bin/
