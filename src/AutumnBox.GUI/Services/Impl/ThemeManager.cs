@@ -13,6 +13,7 @@
 *
 * ==============================================================================
 */
+using AutumnBox.GUI.Util;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
 using System;
@@ -23,21 +24,21 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(IThemeManager))]
     sealed class ThemeManager : IThemeManager
     {
-        [AutoInject] ISettings Settings { get; set; }
         public ThemeMode ThemeMode
         {
-            get => Settings.Theme;
-            set
+            get => _themeMode; set
             {
-                Settings.Theme = value;
+                _themeMode = value;
                 Reload();
             }
         }
+        ThemeMode _themeMode;
+
         private const int INDEX_OF_THEME = 3;
 
         private readonly ResourceDictionary LightTheme;
         private readonly ResourceDictionary DarkTheme;
-        public ThemeManager()
+        public ThemeManager(ISettings settings)
         {
             LightTheme = new ResourceDictionary()
             {
@@ -47,34 +48,30 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 Source = new Uri("pack://application:,,,/AutumnBox.GUI;component/Resources/Themes/ThemeDark.xaml")
             };
+            _themeMode = settings.Theme;
         }
         public void Reload()
         {
-            switch (ThemeMode)
+            var themeDictionary = ThemeMode switch
             {
-                case ThemeMode.Light:
-                    App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = LightTheme;
-                    break;
-                case ThemeMode.Dark:
-                    App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = DarkTheme;
-                    break;
-                default:
-                case ThemeMode.Auto:
-                    if (ShouldUseDarkTheme())
-                    {
-                        App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = LightTheme;
-                    }
-                    else
-                    {
-                        App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = LightTheme;
-                    }
-                    Settings.Theme = ThemeMode.Auto;
-                    break;
-            }
+                ThemeMode.Light => LightTheme,
+                ThemeMode.Dark => DarkTheme,
+                _ => ShouldUseDarkTheme() ? DarkTheme : LightTheme
+            };
+            ApplyTheme(themeDictionary);
+        }
+        private void ApplyTheme(ResourceDictionary themeDictionary)
+        {
+            App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = themeDictionary;
+        }
+        ~ThemeManager()
+        {
+            this.GetComponent<ISettings>().Theme = ThemeMode;
         }
         private bool ShouldUseDarkTheme()
         {
-            return false;
+            int hour = DateTime.Now.Hour;
+            return (hour > 18 || hour < 6);
         }
     }
 }

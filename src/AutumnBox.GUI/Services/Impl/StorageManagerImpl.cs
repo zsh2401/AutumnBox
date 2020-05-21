@@ -39,7 +39,7 @@ namespace AutumnBox.GUI.Services.Impl
             StorageDirectory = new DirectoryInfo(Path.Combine(atmbDirectory.FullName, Self.Version.ToString()));
             if (!StorageDirectory.Exists)
             {
-                _isFirstLaunch = true;
+                IsFirstLaunch = true;
                 StorageDirectory.Create();
             }
         }
@@ -47,35 +47,6 @@ namespace AutumnBox.GUI.Services.Impl
 
         public DirectoryInfo StorageDirectory { get; }
 
-        public bool IsFirstLaunch
-        {
-            get
-            {
-                _isFirstLaunch ??= ReadVersionLock();
-                return (bool)_isFirstLaunch;
-            }
-        }
-        bool? _isFirstLaunch;
-        readonly object readLockLock = new object();
-        private bool ReadVersionLock()
-        {
-            lock (readLockLock)
-            {
-                using var fs = new FileStream(
-                    Path.Combine(StorageDirectory.FullName, "version_lock"), FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                using var sr = new StreamReader(fs);
-                string verStr = sr.ReadToEnd();
-
-                bool result = verStr != Self.Version.ToString();
-                if (!result)
-                {
-                    using var sw = new StreamWriter(fs);
-                    fs.SetLength(0);
-                    fs.Flush();
-                    sw.WriteLine(Self.Version.ToString());
-                }
-                return result;
-            }
-        }
+        public bool IsFirstLaunch { get; set; } = false;
     }
 }

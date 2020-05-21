@@ -32,35 +32,19 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
-
-        public const int ERR_BANNED_VERSION = 2501;
-        public const string UI_DISPATCHER_ID = "uidspc";
-
         /// <summary>
         /// 构造应用
         /// </summary>
         public App() : base()
         {
             Current = this;
-            FrameworkElement.StyleProperty.OverrideMetadata(typeof(Window), new FrameworkPropertyMetadata
-            {
-                DefaultValue = FindResource(typeof(Window))
-            });
             Thread.CurrentThread.Name = "Application Main Thread";
         }
 
         /// <summary>
         /// 获取全局湖对象
         /// </summary>
-        public IRegisterableLake Lake
-        {
-            get
-            {
-                _cache ??= new SunsetLake();
-                return _cache;
-            }
-        }
-        private IRegisterableLake _cache;
+        public IRegisterableLake Lake { get; set; }
 
         /// <summary>
         /// 获取当前的应用
@@ -69,12 +53,6 @@ namespace AutumnBox.GUI
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            if (!CheckOther(e.Args))
-            {
-                Shutdown(0);
-                return;
-            };
-
 #if DEBUG && STRICT_CHECK
             if (!Lang.FileCheck())
             {
@@ -84,34 +62,8 @@ namespace AutumnBox.GUI
                 Shutdown(1);
             }
 #endif
-            LoadComponent();
             this.GetComponent<IThemeManager>().Reload();
             base.OnStartup(e);
-        }
-
-        private bool CheckOther(string[] args)
-        {
-            var process = OtherProcessChecker.ThereIsOtherAutumnBoxProcess();
-            if (process != null && (!args.Contains("--wait")))
-            {
-                NativeMethods.SetForegroundWindow(process.MainWindowHandle);
-                App.Current.Shutdown(0);
-                return false;
-            }
-            process?.WaitForExit();
-            return true;
-        }
-
-        /// <summary>
-        /// 将AutumnBox.GUI的部分组件加载到Leafx框架中
-        /// </summary>
-        private void LoadComponent()
-        {
-            Current.Lake.RegisterSingleton(UI_DISPATCHER_ID, Dispatcher);
-            new ClassComponentsLoader(
-                "AutumnBox.GUI.Services.Impl",
-                Current.Lake)
-                .Do();
         }
 
         protected override void OnExit(ExitEventArgs e)

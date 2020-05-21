@@ -38,6 +38,7 @@ namespace AutumnBox.GUI.Services.Impl
             }
         }
         [JsonIgnore] string _languageCode = "zh-CN";
+
         public ThemeMode Theme
         {
             get => _theme; set

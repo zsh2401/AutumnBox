@@ -22,12 +22,12 @@ namespace AutumnBox.GUI.ViewModel
         #region MVVM
         public bool ShouldUseDarkTheme
         {
-            get => themeManager.ThemeMode == ThemeMode.Dark;
+            get => ThemeManager.ThemeMode == ThemeMode.Dark;
             set
             {
                 if (value)
                 {
-                    themeManager.ThemeMode = ThemeMode.Dark;
+                    ThemeManager.ThemeMode = ThemeMode.Dark;
                 }
                 RaisePropertyChanged();
             }
@@ -35,25 +35,24 @@ namespace AutumnBox.GUI.ViewModel
 
         public bool ShouldUseAutoTheme
         {
-            get => themeManager.ThemeMode == ThemeMode.Auto;
+            get => ThemeManager.ThemeMode == ThemeMode.Auto;
             set
             {
                 if (value)
                 {
-                    themeManager.ThemeMode = ThemeMode.Auto;
+                    ThemeManager.ThemeMode = ThemeMode.Auto;
                 }
                 RaisePropertyChanged();
             }
         }
-
         public bool ShouldUseLightTheme
         {
-            get => Settings.Theme == ThemeMode.Light;
+            get => ThemeManager.ThemeMode == ThemeMode.Light;
             set
             {
                 if (value)
                 {
-                    Settings.Theme = ThemeMode.Light;
+                    ThemeManager.ThemeMode = ThemeMode.Light;
                 }
                 RaisePropertyChanged();
             }
@@ -153,8 +152,7 @@ namespace AutumnBox.GUI.ViewModel
 
 
         #endregion
-        [AutoInject]
-        private readonly IThemeManager themeManager;
+        [AutoInject] IThemeManager ThemeManager { get; set; }
 
         [AutoInject]
         private readonly ILanguageManager languageManager;

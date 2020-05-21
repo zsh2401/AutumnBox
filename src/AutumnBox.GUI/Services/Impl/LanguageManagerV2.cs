@@ -57,8 +57,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         ~LanguageManagerV2()
         {
-            var settings = this.GetComponent<ISettings>();
-            settings.LanguageCode = this.Current.LanCode;
+            this.GetComponent<ISettings>().LanguageCode = this.Current.LanCode;
         }
 
         private class Language : ILanguage, IEquatable<ILanguage>

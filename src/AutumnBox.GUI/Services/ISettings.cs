@@ -16,11 +16,12 @@
 */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace AutumnBox.GUI.Services
 {
-    interface ISettings
+    interface ISettings : INotifyPropertyChanged
     {
         string LanguageCode { get; set; }
         ThemeMode Theme { get; set; }
