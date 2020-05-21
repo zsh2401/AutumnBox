@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:AutumnBox.GUI.Util.UI.Converters">
+    <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"></converters:NullToVisibilityConverter>
+    <converters:EndPointConverter x:Key="EndPointConverter"/>
+    <converters:NonBoolConverter x:Key="NonBoolConverter"/>
+    <converters:VisibleIf x:Key="VisibleIfConverter"/>
+    <converters:VisibleIfNot x:Key="VisibleIfNotConverter"/>
+    <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    <converters:ObjectEqualsToVisibilityConverter x:Key="ObjectEqualsToVisibilityConverter"></converters:ObjectEqualsToVisibilityConverter>
+    <converters:BoolToVisibilityConverterParameter x:Key="VisibleIf_IsTrue">VisibleIf_IsTrue</converters:BoolToVisibilityConverterParameter>
+    <converters:BoolToVisibilityConverterParameter x:Key="VisibleIf_IsFalse">VisibleIf_IsFalse</converters:BoolToVisibilityConverterParameter>
+    <converters:NullToVisibilityConverterParameter x:Key="VisibleIf_IsNull">VisibleIf_IsNull</converters:NullToVisibilityConverterParameter>
+    <converters:NullToVisibilityConverterParameter x:Key="VisibleIf_IsNotNull">VisibleIf_IsNotNull</converters:NullToVisibilityConverterParameter>
+</ResourceDictionary>

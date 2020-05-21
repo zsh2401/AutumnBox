@@ -1,6 +1,5 @@
 ﻿using AutumnBox.Basic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutumnBox.ADBProvider;
 using System.Diagnostics;
 using AutumnBox.Logging;
 
@@ -12,7 +11,7 @@ namespace AutumnBox.Tests.Basic.MADB
         [TestMethod]
         public void LoadManager()
         {
-            BasicBooter.Use<Win32AdbManager>();
+            //BasicBooter.Use<Win32AdbManager>();
 
             using var cpm = BasicBooter.CommandProcedureManager;
             using var cmd = cpm.OpenCommand("adb", "devices");

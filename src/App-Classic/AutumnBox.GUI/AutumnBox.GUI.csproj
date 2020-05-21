@@ -78,15 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
-      <Project>{4e2c1047-195d-42aa-ac95-5af9a7ef3a14}</Project>
-      <Name>AutumnBox.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="app.ico" />
   </ItemGroup>
-  <Import Project="..\..\Shared\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo $(ProjectDir)$(OutDir)adb_binary\

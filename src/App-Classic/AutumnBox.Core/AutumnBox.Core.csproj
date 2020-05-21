@@ -57,9 +57,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\..\Shared\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />
-  <Import Project="..\..\Shared\AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems" Label="Shared" />
-  <Import Project="..\..\Shared\AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems" Label="Shared" />
-  <Import Project="..\..\Shared\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="AutumnBox.GUI.View.Windows.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModel"
+        mc:Ignorable="d"
+        FontFamily="{DynamicResource AutumnBox.Font}"
+        Background="Black"
+        WindowStartupLocation="CenterScreen" MinHeight="525" MinWidth="800"
+        Title="AutumnBox Debug Window-Select and Ctrl+C to copy">
+    <Window.DataContext>
+        <viewmodel:VMLog></viewmodel:VMLog>
+    </Window.DataContext>
+    <Grid>
+        <ScrollViewer Style="{x:Null}" x:Name="SViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+            <Grid>
+                <ListBox Style="{x:Null}" Background="Transparent" PreviewMouseWheel="LB_PreviewMouseWheel" SelectionMode="Extended"  Foreground="#F1EAE3" x:Name="LB" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Logs}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0" Background="Transparent">
+                                <DockPanel>
+                                    <StackPanel  Orientation="Horizontal" DockPanel.Dock="Left">
+                                        <TextBlock Text="["/>
+                                        <TextBlock Text="{Binding Time}"/>
+                                        <TextBlock Text="/"/>
+                                        <TextBlock Foreground="#FF8BF78E" Text="{Binding Category}"/>
+                                        <TextBlock Text="/"/>
+                                        <TextBlock Text="{Binding Level}"/>
+                                        <TextBlock Text="]: "/>
+                                    </StackPanel>
+                                    <TextBlock Foreground="LightGray" TextWrapping="Wrap" DockPanel.Dock="Right" Text="{Binding Message}"/>
+                                </DockPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+           
+        </ScrollViewer>
+    </Grid>
+</Window>

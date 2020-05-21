@@ -1,13 +1,8 @@
-﻿using AutumnBox.ADBProvider;
-using AutumnBox.Basic;
+﻿using AutumnBox.Basic;
 using AutumnBox.Basic.MultipleDevices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutumnBox.Tests.Basic.Devices
 {
@@ -17,7 +12,7 @@ namespace AutumnBox.Tests.Basic.Devices
         [TestMethod]
         public void Test()
         {
-            BasicBooter.Use<Win32AdbManager>();
+            //BasicBooter.Use<Win32AdbManager>();
             var getter = new DevicesGetter();
             getter.GetDevices().All((dev) =>
             {
