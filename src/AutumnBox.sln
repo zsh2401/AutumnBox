@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Extensions.Essent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Extensions.Standard", "AutumnBox.Extensions.Standard\AutumnBox.Extensions.Standard.csproj", "{C06BD4B1-4F4E-4005-99DB-0889C6E24B2B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutumnBox.SetupWizard", "AutumnBox.SetupWizard\AutumnBox.SetupWizard.vdproj", "{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{0842a8fd-44c3-4423-9dde-488cb3706ed0}*SharedItemsImports = 4
@@ -186,6 +188,18 @@ Global
 		{C06BD4B1-4F4E-4005-99DB-0889C6E24B2B}.SDK|x64.Build.0 = Release|Any CPU
 		{C06BD4B1-4F4E-4005-99DB-0889C6E24B2B}.SDK|x86.ActiveCfg = Release|Any CPU
 		{C06BD4B1-4F4E-4005-99DB-0889C6E24B2B}.SDK|x86.Build.0 = Release|Any CPU
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Debug|Any CPU.ActiveCfg = Debug
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Debug|ARM.ActiveCfg = Debug
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Debug|x64.ActiveCfg = Debug
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Debug|x86.ActiveCfg = Debug
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Release|Any CPU.ActiveCfg = Release
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Release|ARM.ActiveCfg = Release
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Release|x64.ActiveCfg = Release
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.Release|x86.ActiveCfg = Release
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.SDK|Any CPU.ActiveCfg = Release
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.SDK|ARM.ActiveCfg = Release
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.SDK|x64.ActiveCfg = Release
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}.SDK|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -202,6 +216,7 @@ Global
 		{31A08C89-F8F6-4F46-9E15-EF7561A878FA} = {82F193CA-117F-4F78-8D00-48C17F60E72E}
 		{22B3DE43-0D9A-4393-97B1-48F19CC58AC5} = {82F193CA-117F-4F78-8D00-48C17F60E72E}
 		{C06BD4B1-4F4E-4005-99DB-0889C6E24B2B} = {82F193CA-117F-4F78-8D00-48C17F60E72E}
+		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496} = {82F193CA-117F-4F78-8D00-48C17F60E72E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
