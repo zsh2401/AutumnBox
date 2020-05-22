@@ -13,6 +13,7 @@
     Title="{DynamicResource App.Name}"
     Icon="/Resources/Drawable/icon.ico"
     FontFamily="{DynamicResource AutumnBox.Font}"
+    ShowInTaskbar="False"
         Height="300" Width="500">
     <Window.DataContext>
         <viewmodel:VMStartup/>

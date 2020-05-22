@@ -576,9 +576,7 @@
     <Resource Include="Resources\MenuIcon\settings.png" />
     <Content Include="Resources\Sound\ok.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Util\Impl\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
       <Project>{0842a8fd-44c3-4423-9dde-488cb3706ed0}</Project>

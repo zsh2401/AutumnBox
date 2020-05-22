@@ -69,10 +69,12 @@ namespace AutumnBox.GUI.Util.Loader
         private void PrintInformations()
         {
             Logger.Info("======================");
-            Logger.Info($"Run as " + (Self.HaveAdminPermission ? "Admin" : "Normal user"));
+            Logger.Info($"Installed as {Environment.CurrentDirectory}");
+            Logger.Info($"Run as {(Self.HaveAdminPermission ? "Admin" : "Normal user")}");
             Logger.Info($"AutumnBox version: {Self.Version}");
-            Logger.Info($"SDK version: {BuildInfo.SDK_VERSION}");
-            Logger.Info($"Windows version {Environment.OSVersion.Version}");
+            Logger.Info($"Core library version: {BuildInfo.SDK_VERSION}");
+            Logger.Info($"Windows version: {Environment.OSVersion.Version}");
+            Logger.Info($"Clr version: {Environment.Version}");
             Logger.Info("======================");
         }
 
@@ -113,6 +115,7 @@ namespace AutumnBox.GUI.Util.Loader
         {
             devicesManager.Initialize();
         }
+
         [Step(10)]
         private void AddLeafCards(ILeafCardManager leafCardManager)
         {

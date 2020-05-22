@@ -27,15 +27,34 @@ namespace AutumnBox.GUI.Services.Impl
     {
         public StorageManagerImpl()
         {
-            string temp = Environment.GetEnvironmentVariable("TEMP");
-            CacheDirectory = new DirectoryInfo(Path.Combine(temp, "autumnbox_temp"));
-            if (!CacheDirectory.Exists) CacheDirectory.Create();
+            InitializeCacheDirectory();
+            InitializeStorageDirectory();
+        }
 
+        private void InitializeCacheDirectory()
+        {
+#if DEBUG || GREEN_RELEASE
+            string temp = Environment.GetEnvironmentVariable("TEMP");
+            CacheDirectory = new DirectoryInfo("cache");
+#else
+            string temp = Environment.GetEnvironmentVariable("TEMP");
+            CacheDirectory = new DirectoryInfo(Path.Combine(temp, "AutumnBox"));
+#endif
+
+            if (!CacheDirectory.Exists) CacheDirectory.Create();
+        }
+
+        private void InitializeStorageDirectory()
+        {
+#if DEBUG || GREEN_RELEASE
+            var atmbDirectory = new DirectoryInfo("storage");
+            if (!atmbDirectory.Exists) atmbDirectory.Create();
+#else
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
             DirectoryInfo atmbDirectory = new DirectoryInfo(Path.Combine(appData, "AutumnBox"));
             if (!atmbDirectory.Exists) atmbDirectory.Create();
-
+#endif
             StorageDirectory = new DirectoryInfo(Path.Combine(atmbDirectory.FullName, Self.Version.ToString()));
             if (!StorageDirectory.Exists)
             {
@@ -43,10 +62,11 @@ namespace AutumnBox.GUI.Services.Impl
                 StorageDirectory.Create();
             }
         }
-        public DirectoryInfo CacheDirectory { get; }
 
-        public DirectoryInfo StorageDirectory { get; }
+        public DirectoryInfo CacheDirectory { get; private set; }
 
-        public bool IsFirstLaunch { get; set; } = false;
+        public DirectoryInfo StorageDirectory { get; private set; }
+
+        public bool IsFirstLaunch { get; private set; } = false;
     }
 }
