@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AutumnBox.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("AutumnBox's Core library,which also inlcudes a serials of tools for third party developers.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox.Core")]
 [assembly: AssemblyCopyright("Copyright ©zsh2401 2017-2020")]
 [assembly: AssemblyTrademark("")]
