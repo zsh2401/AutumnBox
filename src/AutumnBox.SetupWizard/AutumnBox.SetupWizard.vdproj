@@ -225,6 +225,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_34DA3436D411448C9EC5D8BA92265EAF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_361D73F295376511B011A70310E25551"
         "OwnerKey" = "8:_795BECD6B41248B9A8FE75545DCCC407"
         "MsmSig" = "8:_UNDEFINED"
@@ -316,7 +322,7 @@
         "Entry"
         {
         "MsmKey" = "8:_3E64ED49915757D5347332FF461D4023"
-        "OwnerKey" = "8:_BBC4764C40CD27B8AA4F7827C1FC3B2A"
+        "OwnerKey" = "8:_9ABC800CF2258EE93C43B9BE79F775B1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -479,6 +485,12 @@
         {
         "MsmKey" = "8:_4FE47F01D27891FCD870EE660F6245BB"
         "OwnerKey" = "8:_AE51EC9DAEDF4EF7BFD7D9DA972310F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5392D01BCF264B629C847807F14E5179"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -687,6 +699,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8A5FF77426B94CD59D52E325807C5A62"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8E01BA62F80538D504D20B8C5B6A7D9F"
         "OwnerKey" = "8:_795BECD6B41248B9A8FE75545DCCC407"
         "MsmSig" = "8:_UNDEFINED"
@@ -765,6 +783,24 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9ABC800CF2258EE93C43B9BE79F775B1"
+        "OwnerKey" = "8:_0D0E21896BA442489277983B04B00084"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9ABC800CF2258EE93C43B9BE79F775B1"
+        "OwnerKey" = "8:_AE51EC9DAEDF4EF7BFD7D9DA972310F5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9ABC800CF2258EE93C43B9BE79F775B1"
+        "OwnerKey" = "8:_795BECD6B41248B9A8FE75545DCCC407"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9F5DCCAE2CD8035D8880C35A78EA668E"
         "OwnerKey" = "8:_795BECD6B41248B9A8FE75545DCCC407"
         "MsmSig" = "8:_UNDEFINED"
@@ -825,6 +861,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B3070C43F6B7407E894194CAFF338DCE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B8C4522A81F034AB64BD9092B1B00E9A"
         "OwnerKey" = "8:_795BECD6B41248B9A8FE75545DCCC407"
         "MsmSig" = "8:_UNDEFINED"
@@ -838,24 +880,6 @@
         "Entry"
         {
         "MsmKey" = "8:_B8C4522A81F034AB64BD9092B1B00E9A"
-        "OwnerKey" = "8:_AE51EC9DAEDF4EF7BFD7D9DA972310F5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BBC4764C40CD27B8AA4F7827C1FC3B2A"
-        "OwnerKey" = "8:_795BECD6B41248B9A8FE75545DCCC407"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BBC4764C40CD27B8AA4F7827C1FC3B2A"
-        "OwnerKey" = "8:_0D0E21896BA442489277983B04B00084"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BBC4764C40CD27B8AA4F7827C1FC3B2A"
         "OwnerKey" = "8:_AE51EC9DAEDF4EF7BFD7D9DA972310F5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -958,7 +982,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D033174D3D27682D12E1D01743BA44FC"
-        "OwnerKey" = "8:_BBC4764C40CD27B8AA4F7827C1FC3B2A"
+        "OwnerKey" = "8:_9ABC800CF2258EE93C43B9BE79F775B1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1126,6 +1150,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9ABC800CF2258EE93C43B9BE79F775B1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0D0E21896BA442489277983B04B00084"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1157,12 +1187,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C7D132DC80A61E16143071BB287B5B8D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BBC4764C40CD27B8AA4F7827C1FC3B2A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1911,6 +1935,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_34DA3436D411448C9EC5D8BA92265EAF"
+            {
+            "SourcePath" = "8:assets\\extmgr.ico"
+            "TargetName" = "8:extmgr.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_361D73F295376511B011A70310E25551"
             {
             "AssemblyRegister" = "3:1"
@@ -2345,6 +2389,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5392D01BCF264B629C847807F14E5179"
+            {
+            "SourcePath" = "8:assets\\viewlogs.ico"
+            "TargetName" = "8:viewlogs.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_562C6CE3EB3B66D8F2F29DBF093287EC"
             {
             "AssemblyRegister" = "3:1"
@@ -2724,6 +2788,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8A5FF77426B94CD59D52E325807C5A62"
+            {
+            "SourcePath" = "8:assets\\viewlogs.bat"
+            "TargetName" = "8:viewlogs.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8E01BA62F80538D504D20B8C5B6A7D9F"
             {
             "AssemblyRegister" = "3:1"
@@ -2848,6 +2932,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9ABC800CF2258EE93C43B9BE79F775B1"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AutumnBox.Core, Version=11.5.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9ABC800CF2258EE93C43B9BE79F775B1"
+                    {
+                    "Name" = "8:AutumnBox.Core.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AutumnBox.Core.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9F5DCCAE2CD8035D8880C35A78EA668E"
             {
             "AssemblyRegister" = "3:1"
@@ -2941,6 +3056,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B3070C43F6B7407E894194CAFF338DCE"
+            {
+            "SourcePath" = "8:assets\\extmgr.bat"
+            "TargetName" = "8:extmgr.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B8C4522A81F034AB64BD9092B1B00E9A"
             {
             "AssemblyRegister" = "3:1"
@@ -2955,37 +3090,6 @@
                     }
                 }
             "SourcePath" = "8:System.Linq.Parallel.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BBC4764C40CD27B8AA4F7827C1FC3B2A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AutumnBox.Core, Version=11.5.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_BBC4764C40CD27B8AA4F7827C1FC3B2A"
-                    {
-                    "Name" = "8:AutumnBox.Core.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AutumnBox.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
@@ -3598,7 +3702,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutumnBox"
         "ProductCode" = "8:{AF7DF473-1080-4D8B-AF84-3920F125AD0F}"
-        "PackageCode" = "8:{C7217B55-D5F1-41CD-AED0-2042FC7C5BCB}"
+        "PackageCode" = "8:{9F8C7EB9-5892-475E-B00D-0AA4CF8CBF9F}"
         "UpgradeCode" = "8:{E7287B5A-C3CB-45FC-AE72-1A7747ABFB83}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -3758,6 +3862,20 @@
             "Folder" = "8:_BD566E56A6A5450F918EF5751B8F4D50"
             "WorkingFolder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
             "Icon" = "8:_84F3C6311A7141AF9573D078E5014E26"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_9557346E367C4EE2B676460CB17937C2"
+            {
+            "Name" = "8:拓展模块管理"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_B3070C43F6B7407E894194CAFF338DCE"
+            "Folder" = "8:_BD566E56A6A5450F918EF5751B8F4D50"
+            "WorkingFolder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
+            "Icon" = "8:_34DA3436D411448C9EC5D8BA92265EAF"
             "Feature" = "8:"
             }
         }
@@ -4161,7 +4279,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0D0E21896BA442489277983B04B00084"
             {
-            "SourcePath" = "8:..\\AutumnBox.Extensions.Standard\\obj\\Debug\\AutumnBox.Extensions.Standard.dll"
+            "SourcePath" = "8:..\\AutumnBox.Extensions.Standard\\obj\\Release\\AutumnBox.Extensions.Standard.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BA10F15989AF4B328BD471A8CB0FF437"
@@ -4217,7 +4335,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_795BECD6B41248B9A8FE75545DCCC407"
             {
-            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Debug\\AutumnBox.GUI.exe"
+            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Release\\AutumnBox.GUI.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
@@ -4245,7 +4363,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AE51EC9DAEDF4EF7BFD7D9DA972310F5"
             {
-            "SourcePath" = "8:..\\AutumnBox.Extensions.Essentials\\obj\\Debug\\AutumnBox.Extensions.Essentials.dll"
+            "SourcePath" = "8:..\\AutumnBox.Extensions.Essentials\\obj\\Release\\AutumnBox.Extensions.Essentials.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BA10F15989AF4B328BD471A8CB0FF437"

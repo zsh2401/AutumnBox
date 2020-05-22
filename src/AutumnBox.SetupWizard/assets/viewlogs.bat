@@ -1,0 +1,1 @@
+explorer.exe %APPDATA%\AutumnBox\logs
