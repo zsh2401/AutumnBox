@@ -49,6 +49,7 @@ namespace AutumnBox.Logging.Management
         }
         protected override void Dispose(bool disposing)
         {
+            Log(new Internal.Log("Info", nameof(WriteOnLastFileLogger), "Ended"));
             WriteAllToFile();
             if (disposing)
             {
