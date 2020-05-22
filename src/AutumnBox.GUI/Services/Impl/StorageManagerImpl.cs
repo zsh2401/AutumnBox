@@ -16,9 +16,7 @@
 using AutumnBox.GUI.Util;
 using AutumnBox.Leafx.Container.Support;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace AutumnBox.GUI.Services.Impl
 {
