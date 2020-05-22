@@ -62,7 +62,6 @@ namespace AutumnBox.Logging
         /// <param name="e"></param>
         public static void Warn(this ILogger logger, object message, Exception e)
         {
-            Trace.WriteLine("wtf!!!");
             logger.Log(nameof(Warn), message, e);
         }
     }

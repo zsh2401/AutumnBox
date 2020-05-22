@@ -5,34 +5,19 @@
 *************************************************/
 using AutumnBox.Basic;
 using AutumnBox.GUI.Services;
+using AutumnBox.Logging.Management;
 using AutumnBox.OpenFramework.Management;
 
 namespace AutumnBox.GUI.Util
 {
-    public class AppUnloader
+    internal static class AppUnloader
     {
-        public static AppUnloader Instance
+        public static void Unload()
         {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new AppUnloader();
-                }
-                return _instance;
-            }
-        }
-        private static AppUnloader _instance;
-        private AppUnloader() { }
-        public void Unload()
-        {
-            try
-            {
-                try { OpenFx.Unload(); } catch { }
-                BasicBooter.Free();
-                //TaskKill.Kill("adb.exe");
-            }
-            catch { }
+            try { App.Current.Lake.GetComponent<ISettings>().Save(); } catch { }
+            try { OpenFx.Unload(); } catch { }
+            try { BasicBooter.Free(); } catch { }
+            try { LoggingManager.Free(); } catch { }
         }
     }
 }

@@ -24,7 +24,7 @@ namespace AutumnBox.Logging.Management
         /// 优化已记录日志
         /// </summary>
         public static void OptimizeLogsCollection() { }
-        private static readonly CoreLoggerProxy proxy = new CoreLoggerProxy();
+        static readonly CoreLoggerProxy proxy = new CoreLoggerProxy();
         static LoggingManager()
         {
             proxy.InnerLogger = new ConsoleLogger(false);
@@ -41,6 +41,14 @@ namespace AutumnBox.Logging.Management
             }
 
             proxy.InnerLogger = coreLogger;
+        }
+
+        /// <summary>
+        /// 释放日志器
+        /// </summary>
+        public static void Free()
+        {
+            proxy.Dispose();
         }
 
         /// <summary>

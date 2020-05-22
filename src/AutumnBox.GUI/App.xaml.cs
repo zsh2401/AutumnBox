@@ -68,8 +68,8 @@ namespace AutumnBox.GUI
 
         protected override void OnExit(ExitEventArgs e)
         {
+            AppUnloader.Unload();
             base.OnExit(e);
-            AppUnloader.Instance.Unload();
         }
     }
 }

@@ -9,8 +9,8 @@ namespace AutumnBox.GUI.Services
     {
         public static ILanguage FindLanguageByCode(this ILanguageManager languageManager, string langCode)
         {
-            return (from lang in languageManager.LoadedLanguages
-                    where lang.LanCode.ToLower() == langCode.ToLower()
+            return (from lang in languageManager.Languages
+                    where lang.Code.ToLower() == langCode.ToLower()
                     select lang).FirstOrDefault();
         }
 
@@ -32,7 +32,7 @@ namespace AutumnBox.GUI.Services
 
         public static void ApplyByLanguageCode(this ILanguageManager languageManager, string langCode)
         {
-            languageManager.Current = languageManager.FindLanguageByCode(langCode) ?? languageManager.LoadedLanguages.ElementAt(0);
+            languageManager.Current = languageManager.FindLanguageByCode(langCode) ?? languageManager.Languages.ElementAt(0);
         }
 
         public static void ApplyBySetting(this ILanguageManager languageManager)

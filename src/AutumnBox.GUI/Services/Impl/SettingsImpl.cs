@@ -15,9 +15,9 @@
 */
 using AutumnBox.GUI.MVVM;
 using AutumnBox.Leafx.Container.Support;
-using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 #if USE_NT_JSON
 using JsonIgnoreAttribute = Newtonsoft.Json.JsonIgnoreAttribute;
@@ -115,43 +115,41 @@ namespace AutumnBox.GUI.Services.Impl
         [JsonIgnore] bool _soundEffect = true;
 
         [JsonIgnore] readonly FileInfo settingsFile;
+
         public SettingsImpl(IStorageManager storageManager)
         {
             var filePath = Path.Combine(storageManager.StorageDirectory.FullName, "settings.json");
             settingsFile = new FileInfo(filePath);
             Load();
         }
+
         private void Load()
         {
-
             try
             {
                 using var fs = settingsFile.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 using var sr = new StreamReader(fs);
                 JsonConvert.PopulateObject(sr.ReadToEnd(), this);
             }
-            catch (FileNotFoundException)
-            {
-                //Use default settings;
-            }
-            catch (JsonSerializationException)
+            catch (Exception)
             {
                 //Use default settings;
             }
         }
+
         ~SettingsImpl()
         {
-            SLogger<SettingsImpl>.Info("Saving settings");
             Save();
-            SLogger<SettingsImpl>.Info("Settings are saved");
         }
+
         [JsonIgnore]
         readonly object _saveLock = new object();
-        private void Save()
+        public void Save()
         {
             lock (_saveLock)
             {
                 using var fs = new FileStream(settingsFile.FullName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+
                 //clear content
                 fs.SetLength(0);
                 fs.Flush();

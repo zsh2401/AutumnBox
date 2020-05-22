@@ -31,5 +31,6 @@ namespace AutumnBox.GUI.Services
         bool EnvVarCmdWindow { get; set; }
         bool GuidePassed { get; set; }
         bool SoundEffect { get; set; }
+        void Save();
     }
 }

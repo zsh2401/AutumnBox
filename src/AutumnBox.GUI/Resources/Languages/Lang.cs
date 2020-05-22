@@ -25,7 +25,7 @@ namespace AutumnBox.GUI.Resources.Languages
     /// </summary>
     internal static class Lang
     {
-        public static List<(string, string, string)> Langs { get; }
+        public static List<(string name, string code, string resourceUri)> Langs { get; }
 
         static Lang()
         {
@@ -34,6 +34,7 @@ namespace AutumnBox.GUI.Resources.Languages
                 ("English","en-US","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/en-US.xaml"),
             };
         }
+
         public static bool FileCheck()
         {
             IEnumerable<ResourceDictionary> langResourceDictionaries =

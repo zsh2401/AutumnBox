@@ -105,7 +105,7 @@ namespace AutumnBox.GUI.ViewModel
             Docks = from dock in libsManager.GetAllExtensions().ToDocks()
                     where !dock.ExtensionInfo.Hidden()
                     where (!dock.ExtensionInfo.DeveloperMode()) || Settings.DeveloperMode
-                    where (!dock.ExtensionInfo.Regions().Any()) || dock.ExtensionInfo.Regions().Contains(LanguageManager.Current.LanCode)
+                    where (!dock.ExtensionInfo.Regions().Any()) || dock.ExtensionInfo.Regions().Contains(LanguageManager.Current.Code)
                     select dock;
             Order();
         }

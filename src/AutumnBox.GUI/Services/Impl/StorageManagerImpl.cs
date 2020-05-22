@@ -32,13 +32,11 @@ namespace AutumnBox.GUI.Services.Impl
         private void InitializeCacheDirectory()
         {
 #if DEBUG || GREEN_RELEASE
-            string temp = Environment.GetEnvironmentVariable("TEMP");
             CacheDirectory = new DirectoryInfo("cache");
 #else
             string temp = Environment.GetEnvironmentVariable("TEMP");
             CacheDirectory = new DirectoryInfo(Path.Combine(temp, "AutumnBox"));
 #endif
-
             if (!CacheDirectory.Exists) CacheDirectory.Create();
         }
 

@@ -10,8 +10,8 @@ namespace AutumnBox.GUI.Services
 {
     interface ILanguage : IEquatable<ILanguage>
     {
-        string LanCode { get; }
-        string LangName { get; }
+        string Code { get; }
+        string Name { get; }
         ResourceDictionary Resource { get; }
     }
 }

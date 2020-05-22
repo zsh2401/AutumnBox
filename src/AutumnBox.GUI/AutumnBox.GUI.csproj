@@ -121,7 +121,6 @@
     <Compile Include="Services\Impl\AppLifecycleManager.cs" />
     <Compile Include="Services\Impl\AutumnBoxGuiBaseApiImpl.cs" />
     <Compile Include="Services\Impl\LanguageManager.cs" />
-    <Compile Include="Services\Impl\LanguageManagerV2.cs" />
     <Compile Include="Services\Impl\LeafCardManager.cs" />
     <Compile Include="Services\Impl\LoggingManager.cs" />
     <Compile Include="Services\Impl\LoggingObject.cs" />

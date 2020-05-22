@@ -135,7 +135,7 @@ namespace AutumnBox.GUI.ViewModel
 
         public IEnumerable<ILanguage> Languages
         {
-            get => languageManager.LoadedLanguages;
+            get => languageManager.Languages;
         }
 
         public ILanguage SelectedLanguage
@@ -148,7 +148,7 @@ namespace AutumnBox.GUI.ViewModel
             }
         }
 
-        public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.LangName);
+        public string LanguageDisplayMemberPath { get; set; } = nameof(ILanguage.Name);
 
 
         #endregion
