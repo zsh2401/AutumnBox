@@ -20,7 +20,7 @@ namespace AutumnBox.GUI.Services.Impl
         }
         public void Initialize()
         {
-            var logger = new ConsoleLogger(false) + new WriteOnLastFileLogger(OpenLogFileStream());
+            var logger = new ConsoleLogger(false) + new AsyncFileLogger(OpenLogFileStream());
             Logging.Management.LoggingManager.Use(logger);
         }
         private FileStream OpenLogFileStream()
