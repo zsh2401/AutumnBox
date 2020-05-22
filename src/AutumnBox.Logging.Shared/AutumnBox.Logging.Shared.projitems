@@ -11,11 +11,12 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoggerExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\AsyncBufferedFSCoreLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\AsyncBufferedRealtimeFileLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\AsyncFileLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ConsoleLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\CoreLoggerBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ICoreLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\WriteOnLastFileLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SLogger.Generic.cs" />

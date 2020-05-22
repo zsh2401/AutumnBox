@@ -1,4 +1,5 @@
-﻿/*
+﻿#nullable enable
+/*
 
 * ==============================================================================
 *
@@ -26,22 +27,18 @@ namespace AutumnBox.Logging.Management
     /// <summary>
     /// (存在问题,析构时无法将剩下的日志输出)缓冲的文件系统核心日志器
     /// </summary>
-    public class AsyncBufferedFSCoreLogger : CoreLoggerBase
+    public class AsyncBufferedRealtimeFileLogger : CoreLoggerBase
     {
         private ConcurrentQueue<ILog> buffer = new ConcurrentQueue<ILog>();
         private readonly FileStream fs;
         private readonly StreamWriter sw;
 
-
-
         /// <summary>
         /// 构建 AsyncBufferedFSCoreLogger 的新实例
         /// </summary>
-        public AsyncBufferedFSCoreLogger()
+        public AsyncBufferedRealtimeFileLogger(FileStream _fs)
         {
-            string logFileName = $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.log";
-            FileInfo logFile = new FileInfo(Path.Combine(AsyncFileLogger.LogsDirectory.FullName, logFileName));
-            fs = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
+            fs = _fs;
             sw = new StreamWriter(fs)
             {
                 AutoFlush = true
@@ -96,10 +93,11 @@ namespace AutumnBox.Logging.Management
                     sw.WriteLine(log.ToFormatedString());
                 }
                 sw.Flush();
+                fs.Flush();
+
                 sw.Dispose();
                 fs.Dispose();
             }
-            buffer = null;
             base.Dispose(disposing);
         }
     }

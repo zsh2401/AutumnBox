@@ -16,6 +16,7 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.Logging;
 using Newtonsoft.Json;
 using System.IO;
 #if USE_NT_JSON
@@ -140,7 +141,9 @@ namespace AutumnBox.GUI.Services.Impl
         }
         ~SettingsImpl()
         {
+            SLogger<SettingsImpl>.Info("Saving settings");
             Save();
+            SLogger<SettingsImpl>.Info("Settings are saved");
         }
         [JsonIgnore]
         readonly object _saveLock = new object();

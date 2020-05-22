@@ -59,13 +59,13 @@ namespace AutumnBox.GUI.Util.Loader
 #endif
         }
 
-        [Step(1)]
+        [Step(0)]
         private void InitLogSystem(ILoggingManager loggingManager)
         {
             loggingManager.Initialize();
         }
 
-        [Step(7)]
+        [Step(1)]
         private void PrintInformations()
         {
             Logger.Info("======================");

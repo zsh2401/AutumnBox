@@ -48,10 +48,9 @@ namespace AutumnBox.GUI.Util.Loader
             {
                 try
                 {
-                    Logger.Info($"BEGIN {stepMethods.ElementAt(i).Name}");
+                    Logger.Info($"Loading: {stepMethods.ElementAt(i).Name}()");
                     var methodProxy = new MethodProxy(this, stepMethods.ElementAt(i), App.Current.Lake);
                     methodProxy.Invoke();
-                    Logger.Info($"END {stepMethods.ElementAt(i).Name}");
                     StepFinished?.Invoke(this, new StepFinishedEventArgs((uint)i, (uint)stepMethods.Count()));
                 }
                 catch (Exception e)
