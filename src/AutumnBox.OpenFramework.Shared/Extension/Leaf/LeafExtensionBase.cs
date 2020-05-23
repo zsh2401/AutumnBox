@@ -39,16 +39,17 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
             {
                 return methodProxy.Invoke(args ?? new Dictionary<string, object>());
             }
+            catch (TargetInvocationException e) when (e.InnerException?.GetType() == typeof(LeafUIExtension.LeafExtensionTerminatedException))
+            {
+                return default;
+            }
             catch (TargetInvocationException e)
             {
-                if (e.InnerException?.GetType() == typeof(LeafUIExtension.LeafExtensionTerminatedException))
-                {
-                    return default;
-                }
-                else
-                {
-                    throw e.InnerException ?? e;
-                }
+                throw e.InnerException ?? e;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 

@@ -11,7 +11,7 @@ namespace AutumnBox.Essentials.Extensions
         private const string URL_GUIDE = "https://www.atmb.top/guide";
 
         [LMain]
-        public void EntryPoint(string path = null)
+        public void EntryPoint(string path = "")
         {
             Process.Start(Path.Combine(URL_GUIDE, path));
         }
