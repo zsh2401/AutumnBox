@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Extensions.Standa
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutumnBox.SetupWizard", "AutumnBox.SetupWizard\AutumnBox.SetupWizard.vdproj", "{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.GUI.Shared", "AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.shproj", "{3B1EEF09-325C-4F4F-B449-0E963C68F7D3}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{0842a8fd-44c3-4423-9dde-488cb3706ed0}*SharedItemsImports = 4
@@ -51,6 +53,8 @@ Global
 		AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
 		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 4
+		AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems*{31a08c89-f8f6-4f46-9e15-ef7561a878fa}*SharedItemsImports = 4
+		AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems*{3b1eef09-325c-4f4f-b449-0e963c68f7d3}*SharedItemsImports = 13
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{49e6d09e-b234-4aa4-97b0-e82fb60c36d2}*SharedItemsImports = 13
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{8e101f07-8c10-4ab6-a427-f24618c25de5}*SharedItemsImports = 13
 		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{b29dea5d-d4c3-4c8b-810e-52466875835d}*SharedItemsImports = 13
@@ -217,9 +221,10 @@ Global
 		{22B3DE43-0D9A-4393-97B1-48F19CC58AC5} = {82F193CA-117F-4F78-8D00-48C17F60E72E}
 		{C06BD4B1-4F4E-4005-99DB-0889C6E24B2B} = {82F193CA-117F-4F78-8D00-48C17F60E72E}
 		{70BD00BB-1253-4CBD-A7B4-8A5B7B5E8496} = {82F193CA-117F-4F78-8D00-48C17F60E72E}
+		{3B1EEF09-325C-4F4F-B449-0E963C68F7D3} = {2377CBDA-1330-43FC-BBD0-9D6B26FD9DA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal
