@@ -3,7 +3,7 @@
 ** date:  2018/9/10 19:33:53 (UTC +8:00)
 ** desc： ...
 *************************************************/
-using AutumnBox.GUI.View.Windows;
+using AutumnBox.GUI.Views.Windows;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Logging;
 using System;
@@ -48,23 +48,13 @@ namespace AutumnBox.GUI.Util
                 case "zh-TW":
                 case "zh-SG":
                 case "zh-HK":
-                    try
-                    {
-                        App.Current.Dispatcher.Invoke(() =>
-                        {
-                            new FatalWindow(exstr).ShowDialog();
-                        });
-                    }
-                    catch
-                    {
-                        MessageBox.Show(
-                                $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}" +
-                                $"出问题不发logs,开发者永远不可能解决你遇到的问题{Environment.NewLine}" +
-                                 $"邮件/QQ: zsh2401@163.com{Environment.NewLine}",
-                                "AutumnBox 错误",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Error);
-                    }
+                    MessageBox.Show(
+                            $"一个未知的错误的发生了,将logs文件夹压缩并发送给开发者以解决问题{Environment.NewLine}" +
+                            $"出问题不发logs,开发者永远不可能解决你遇到的问题{Environment.NewLine}" +
+                             $"邮件/QQ: zsh2401@163.com{Environment.NewLine}",
+                            "AutumnBox 错误",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
                     break;
                 default:
                     MessageBox.Show(

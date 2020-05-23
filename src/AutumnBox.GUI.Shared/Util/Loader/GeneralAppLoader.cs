@@ -1,6 +1,6 @@
 ﻿using AutumnBox.Basic;
 using AutumnBox.GUI.Services;
-using AutumnBox.GUI.View.Controls;
+using AutumnBox.GUI.Views.Controls;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework;
 using HandyControl.Data;

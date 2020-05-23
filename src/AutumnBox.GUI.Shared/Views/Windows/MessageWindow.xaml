@@ -1,0 +1,22 @@
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.Views.Custom"
+    x:Class="AutumnBox.GUI.Views.Windows.MessageWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+        FontFamily="{DynamicResource AutumnBox.Font}"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        Title="{Binding MsgTitle}" MinHeight="220" MinWidth="460" Height="220" Width="460" >
+    <Grid>
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Margin="10,5,10,5" Text="{Binding MsgTitle}" TextAlignment="Center" FontSize="20"/>
+            <ScrollViewer DockPanel.Dock="Bottom" Margin="10" Template="{DynamicResource AtmbxScrollViewer}">
+                <TextBlock MouseDown="Window_MouseDown" Text="{Binding Message}" FontSize="15" TextWrapping="Wrap"/>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</custom:NiceWindow>

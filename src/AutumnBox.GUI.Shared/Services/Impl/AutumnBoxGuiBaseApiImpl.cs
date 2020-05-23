@@ -4,17 +4,17 @@
 ** desc： ...
 *************************************************/
 using System;
-using AutumnBox.GUI.View.Windows;
+using AutumnBox.GUI.Views.Windows;
 using AutumnBox.OpenFramework.Management;
 using System.Reflection;
 using AutumnBox.Basic.Device;
-using AutumnBox.GUI.View.DialogContent;
 using AutumnBox.OpenFramework.Open.LKit;
 using AutumnBox.Leafx.Container;
 using AutumnBox.GUI.Util;
 using AutumnBox.Leafx.Container.Support;
 using System.Threading.Tasks;
 using System.IO;
+using AutumnBox.GUI.Views.Windows;
 
 namespace AutumnBox.GUI.Services.Impl
 {
@@ -260,11 +260,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         public object GetNewView(string viewId)
         {
-            return viewId switch
-            {
-                "inputIpEndPoint" => new ContentConnectNetDevice(),
-                _ => null,
-            };
+            throw new NotSupportedException();
         }
 
 

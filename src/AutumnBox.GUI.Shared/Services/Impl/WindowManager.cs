@@ -11,7 +11,7 @@ namespace AutumnBox.GUI.Services.Impl
 
         public Window CreateWindow(string windowName, params object[] args)
         {
-            var type = Type.GetType("AutumnBox.GUI.View.Windows." + windowName + "Window");
+            var type = Type.GetType("AutumnBox.GUI.Views.Windows." + windowName + "Window");
             var window = (Window)Activator.CreateInstance(type, args);
             window.Owner = App.Current.MainWindow;
             return window;

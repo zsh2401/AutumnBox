@@ -12,10 +12,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Model\ExtensionDock.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\LibDock.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\OpenSourceProject.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\VersionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ExtensionDock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LibDock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\OpenSourceProject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\VersionInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\FlexiableCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\InjectableObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\ModelBase.cs" />
@@ -98,151 +98,107 @@
     <Compile Include="$(MSBuildThisFileDirectory)Util\UI\Converters\VisibleIfNot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\VersionInfos.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Win32AdbManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMAbout.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMBottomBar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMDeviceBar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMDeviceDash.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMDeviceSelector.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMExtensionsFinder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMGuide.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMHome.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMInputWindow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMLeafCards.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMLeafUI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMLibsView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMLog.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainMenu.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainTabs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainWindow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainWindowV2.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMMainWindowV3.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMOpenSource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMPanelMain.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMSettingsDialog.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMStartup.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\VMUpdateLogs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\DeviceBar.xaml.cs">
-      <DependentUpon>DeviceBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\DeviceDash.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMAbout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMBottomBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMDeviceBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMDeviceDash.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMDeviceSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMExtensionsFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMGuide.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMHome.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMInputWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMLeafCards.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMLeafUI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMLibsView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMLog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMMainMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMMainTabs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMMainWindowV3.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMOpenSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMPanelMain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMSettingsDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMStartup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\VMUpdateLogs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\DeviceDash.xaml.cs">
       <DependentUpon>DeviceDash.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\DeviceSelector.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\DeviceSelector.xaml.cs">
       <DependentUpon>DeviceSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\ExtensionsFinder.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\ExtensionsFinder.xaml.cs">
       <DependentUpon>ExtensionsFinder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\MainMenu.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\StatusBar.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\StatusBar.xaml.cs">
       <DependentUpon>StatusBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\TabsViewer.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\TabsViewer.xaml.cs">
       <DependentUpon>TabsViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Controls\XCardsViewer.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\XCardsViewer.xaml.cs">
       <DependentUpon>XCardsViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Custom\NiceWindow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)View\DialogContent\ContentConnectNetDevice.xaml.cs">
-      <DependentUpon>ContentConnectNetDevice.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\DialogContent\ContentGuide.xaml.cs">
-      <DependentUpon>ContentGuide.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\LeafContent\ChoiceView.xaml.cs">
-      <DependentUpon>ChoiceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\LeafContent\InputView.xaml.cs">
-      <DependentUpon>InputView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\LeafContent\MessageView.xaml.cs">
-      <DependentUpon>MessageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\LeafContent\SingleSelectView.xaml.cs">
-      <DependentUpon>SingleSelectView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\LeafContent\YNView.xaml.cs">
-      <DependentUpon>YNView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Panel\PanelAbout.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Custom\NiceWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\Guide.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafChoiceView.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUIInputView.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUIMessageView.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUISingleSelectView.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUIYNView.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\PanelAbout.xaml.cs">
       <DependentUpon>PanelAbout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Panel\PanelDefaultInformation.xaml.cs">
-      <DependentUpon>PanelDefaultInformation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Panel\PanelLoading.xaml.cs">
-      <DependentUpon>PanelLoading.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Panel\PanelMain.xaml.cs">
-      <DependentUpon>PanelMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Panel\PanelMainV2.xaml.cs">
-      <DependentUpon>PanelMainV2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Panel\PanelMore.xaml.cs">
-      <DependentUpon>PanelMore.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Panel\PanelUpdateLogs.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Controls\PanelUpdateLogs.xaml.cs">
       <DependentUpon>PanelUpdateLogs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\AboutWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\AdbFailedWindow.xaml.cs">
-      <DependentUpon>AdbFailedWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\ChoiceWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\DonateWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\DonateWindow.xaml.cs">
       <DependentUpon>DonateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\ExceptionWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\FatalWindow.xaml.cs">
-      <DependentUpon>FatalWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\InputWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\LeafWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\LeafWindow.xaml.cs">
       <DependentUpon>LeafWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\LibsWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\LibsWindow.xaml.cs">
       <DependentUpon>LibsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\LicenseWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\LicenseWindow.xaml.cs">
       <DependentUpon>LicenseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\LoadingWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\LogWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\LogWindow.xaml.cs">
       <DependentUpon>LogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\MainWindowV2.xaml.cs">
-      <DependentUpon>MainWindowV2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\MainWindowV3.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\MainWindowV3.xaml.cs">
       <DependentUpon>MainWindowV3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\MessageWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\OpenSourceWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\OpenSourceWindow.xaml.cs">
       <DependentUpon>OpenSourceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\SettingsWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\StartupWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\StartupWindow.xaml.cs">
       <DependentUpon>StartupWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\Windows\YNWindow.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Windows\YNWindow.xaml.cs">
       <DependentUpon>YNWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -255,173 +211,132 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\DeviceBar.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\DeviceDash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\DeviceDash.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\DeviceSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\DeviceSelector.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\ExtensionsFinder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\ExtensionsFinder.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\MainMenu.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\StatusBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\StatusBar.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\TabsViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\TabsViewer.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\XCardsViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Controls\XCardsViewer.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\Guide.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Custom\NiceWindowStyle.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUIChoiceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\DialogContent\ContentConnectNetDevice.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUIInputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\DialogContent\ContentGuide.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUIMessageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\LeafContent\ChoiceView.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUISingleSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\LeafContent\InputView.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\LeafUIYNView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\LeafContent\MessageView.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\PanelAbout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\LeafContent\SingleSelectView.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Controls\PanelUpdateLogs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\LeafContent\YNView.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Panel\PanelAbout.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\ChoiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Panel\PanelDefaultInformation.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\DonateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Panel\PanelLoading.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\ExceptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Panel\PanelMain.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\InputWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Panel\PanelMainV2.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\LeafWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Panel\PanelMore.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\LibsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Panel\PanelUpdateLogs.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\LicenseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\AboutWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\AdbFailedWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\LogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\ChoiceWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\MainWindowV3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\DonateWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\ExceptionWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\OpenSourceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\FatalWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\InputWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\StartupWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\LeafWindow.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\Windows\YNWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\LibsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\LicenseWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\LoadingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\LogWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\MainWindowV2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\MainWindowV3.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\MessageWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\OpenSourceWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\SettingsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\StartupWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)View\Windows\YNWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\SubWindowViews\" />
   </ItemGroup>
 </Project>

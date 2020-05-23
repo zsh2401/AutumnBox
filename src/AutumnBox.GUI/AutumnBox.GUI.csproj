@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\dist\debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET45 USE_NT_JSON</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET45 USE_NT_JSON WIN32</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -45,7 +45,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\dist\release\</OutputPath>
-    <DefineConstants>TRACE;NET45 USE_NT_JSON</DefineConstants>
+    <DefineConstants>TRACE;NET45 USE_NT_JSON WIN32</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -56,7 +56,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Drawable\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HandyControl, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -96,7 +96,7 @@
     <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources\AppCommonResource.xaml">
+    <Page Include="Resources\CommonResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -122,35 +122,26 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Drawable\android.png" />
-    <Resource Include="Resources\Drawable\aqk47-y4u56-001.ico" />
-    <Resource Include="Resources\Drawable\BottomBar\phone.png" />
-    <Resource Include="Resources\Drawable\DeviceBar\phone.png" />
-    <Resource Include="Resources\Drawable\Donate\alishop.png" />
-    <Resource Include="Resources\Drawable\Donate\pot4winter.png" />
-    <Resource Include="Resources\Drawable\Donate\redpacket.jpg" />
-    <Resource Include="Resources\Drawable\Donate\wechatpay.jpg" />
-    <Resource Include="Resources\Drawable\Extension\defaultExtIcon.png" />
-    <Resource Include="Resources\Drawable\github.png" />
-    <Resource Include="Resources\Drawable\Home\donate.png" />
-    <Resource Include="Resources\Drawable\Home\help.png" />
-    <Resource Include="Resources\Drawable\Home\mail.png" />
-    <Resource Include="Resources\Drawable\icon.png" />
-    <Resource Include="Resources\Drawable\Misaka\adbfail.png" />
-    <Resource Include="Resources\Drawable\More\halo.png" />
-    <Resource Include="Resources\Drawable\Startup\startup.jpg" />
-    <Resource Include="Resources\Drawable\Startup\startup_2.jpg" />
-    <Resource Include="Resources\Icon\adb.png" />
-    <Resource Include="Resources\MenuIcon\cmd.png" />
-    <Resource Include="Resources\MenuIcon\debug.png" />
-    <Resource Include="Resources\MenuIcon\donate.png" />
-    <Resource Include="Resources\MenuIcon\exit.png" />
-    <Resource Include="Resources\MenuIcon\guide-book.png" />
-    <Resource Include="Resources\MenuIcon\icon.png" />
-    <Resource Include="Resources\MenuIcon\powershell.png" />
-    <Resource Include="Resources\MenuIcon\settings.png" />
-    <Resource Include="Resources\Drawable\icon.ico" />
-    <Content Include="Resources\Sound\ok.wav" />
+    <Resource Include="Resources\Icons\new_leaf.ico" />
+    <Resource Include="Resources\Images\android_phone2.png" />
+    <Resource Include="Resources\Images\android_phone.png" />
+    <Resource Include="Resources\Images\donate_alishop.png" />
+    <Resource Include="Resources\Images\donate_pot4winter.png" />
+    <Resource Include="Resources\Images\donate_wechatpay.jpg" />
+    <Resource Include="Resources\Images\github.png" />
+    <Resource Include="Resources\Images\icon.png" />
+    <Resource Include="Resources\Icons\Menu\cmd.png" />
+    <Resource Include="Resources\Icons\Menu\debug.png" />
+    <Resource Include="Resources\Icons\Menu\donate.png" />
+    <Resource Include="Resources\Icons\Menu\exit.png" />
+    <Resource Include="Resources\Icons\Menu\guide-book.png" />
+    <Resource Include="Resources\Icons\Menu\icon.png" />
+    <Resource Include="Resources\Icons\Menu\powershell.png" />
+    <Resource Include="Resources\Icons\Menu\settings.png" />
+    <Resource Include="Resources\Icons\icon.ico" />
+    <Content Include="Resources\Sounds\ok.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
