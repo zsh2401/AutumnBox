@@ -29,7 +29,7 @@ jobs:
       run: git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary
       
     - name: Build
-      run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
+      run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained false
 
     - name: Download 7zip.exe
       run: git clone https://github.com/zsh2401/7Zip-Binaries-Store.git 7z_binary
@@ -43,9 +43,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Canary ${{ github.ref }}
-        draft: false
+        release_name: canary-${{ github.ref }}
         prerelease: true
 
     - name: Upload
