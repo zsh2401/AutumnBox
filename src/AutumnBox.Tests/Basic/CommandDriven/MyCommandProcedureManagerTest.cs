@@ -18,7 +18,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
         public void ExitCodeTest()
         {
             var cpm = new ProcedureManager();
-            using var command = cpm.OpenCommand("cmd.exe", "/c", "ping baidu.com");
+            using var command = cpm.OpenCommand("cmd.exe", "/c", "ping 8.8.8.8");
             var result = command.Execute();
             if (result.ExitCode != 0)
             {
