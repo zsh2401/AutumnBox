@@ -30,4 +30,11 @@ jobs:
       
     - name: Build
       run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
+
+    - name: Download 7zip.exe
+      run: git clone https://github.com/zsh2401/7Zip-Binaries-Store.git 7z_binary
+    
+    - name: Compress Files
+      run: 7z_binary/7z.exe a build.zip ./src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/
+    
       
