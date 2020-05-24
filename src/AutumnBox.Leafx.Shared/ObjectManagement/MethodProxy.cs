@@ -49,8 +49,8 @@ namespace AutumnBox.Leafx.ObjectManagement
         /// <param name="source"></param>
         public MethodProxy(object instance, string methodName, ILake source)
         {
-            this.method = FindMethodByName(methodName);
             this.instance = instance;
+            this.method = FindMethodByName(methodName);
             this.source = source ?? throw new ArgumentNullException(nameof(source));
         }
 

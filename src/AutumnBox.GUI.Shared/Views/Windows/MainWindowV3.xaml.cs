@@ -15,11 +15,16 @@ namespace AutumnBox.GUI.Views.Windows
         {
             InitializeComponent();
         }
+
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
             this.GetComponent<INotificationManager>().Token = "mainv3";
-            NativeMethods.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+            {
+                NativeMethods.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
+            }
         }
+
     }
 }

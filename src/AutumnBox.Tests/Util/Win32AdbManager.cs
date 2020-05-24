@@ -1,10 +1,27 @@
-﻿using AutumnBox.Basic.ManagedAdb.CommandDriven;
+﻿/*
+
+* ==============================================================================
+*
+* Filename: Win32AdbManager
+* Description: 
+*
+* Version: 1.0
+* Created: 2020/5/24 16:40:03
+* Compiler: Visual Studio 2019
+*
+* Author: zsh2401
+*
+* ==============================================================================
+*/
+using AutumnBox.Basic.ManagedAdb.CommandDriven;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Text;
 
-namespace AutumnBox.GUI.Util
+namespace AutumnBox.Tests.Util
 {
     public class Win32AdbManager : StandardAdbManager, IAdbManager
     {

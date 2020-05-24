@@ -6,7 +6,7 @@
     <SharedGUID>3b1eef09-325c-4f4f-b449-0e963c68f7d3</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>AutumnBox.GUI.Shared</Import_RootNamespace>
+    <Import_RootNamespace>AutumnBox.GUI</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
