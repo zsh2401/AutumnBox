@@ -35,5 +35,20 @@ jobs:
         name: Test-Artifact
         path: src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/ # or path/to/artifact
       
+    - uses: actions/checkout@master
+    - name: Create release
+      uses: Roang-zero1/github-create-release-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create GitHub release
+      uses: Roang-zero1/github-upload-release-artifacts-action@master
+      with:
+        args:
+        - dist/bin/
+        - dist/shell/compiled.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Unit Test
       run: dotnet test src/AutumnBox.Tests --no-restore --verbosity normal
