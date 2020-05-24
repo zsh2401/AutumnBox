@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 3.1.101
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore src/
       
     - name: App Build Test
       run: dotnet build src/AutumnBox.DNCGUI --configuration Release --no-restore
