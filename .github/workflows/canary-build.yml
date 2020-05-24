@@ -38,15 +38,15 @@ jobs:
       run: 7z_binary/7z.exe a build.zip ./src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/publish
 
     - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: true
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Canary ${{ github.ref }}
+        draft: false
+        prerelease: true
 
     - name: Upload
       id: upload-release-asset 
