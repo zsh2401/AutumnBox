@@ -1,4 +1,10 @@
 @ECHO OFF
-rmdir /s/q extensions
-rmdir /s/q logs
-start msiexec.exe /x {37DC9A51-57D4-43B0-88C2-B2F6154ED2C7}
+rmdir /s/q extensions || echo ""
+
+rmdir /s/q storage || echo ""
+rmdir /s/q cache || echo ""
+
+rmdir /s/q %TEMP%\AutumnBox || echo ""
+rmdir /s/q %APPDATA%\AutumnBox || echo ""
+
+start msiexec.exe /x {AF7DF473-1080-4D8B-AF84-3920F125AD0F}

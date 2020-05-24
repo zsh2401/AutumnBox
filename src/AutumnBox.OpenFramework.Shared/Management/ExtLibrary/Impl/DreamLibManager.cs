@@ -99,11 +99,6 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                                  select file;
 
             files.AddRange(extensionFiles);
-
-#if DEBUG
-            files.Add(new FileInfo("../../../../AutumnBox.Essentials/bin/Debug/netcoreapp3.1/AutumnBox.Essentials.dll"));
-            files.Add(new FileInfo("../../../../AutumnBox.CoreModules/bin/Debug/netcoreapp3.1/AutumnBox.CoreModules.dll"));
-#endif
             SLogger<DreamLibManager>.Debug($"There are {files.Count()} extension file");
             return files;
         }
@@ -158,7 +153,11 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                     SLogger<DreamLibManager>.Warn($"Can not create the instance of {assembly.GetName().Name}'s librarian", e);
                 }
             }
-            SLogger<DreamLibManager>.Info($"Found {result.Count()} lib");
+            SLogger<DreamLibManager>.Info($"There are {result.Count()} librarians");
+            foreach (var lib in result)
+            {
+                SLogger<DreamLibManager>.Info($"{lib.Name}");
+            }
             return result;
         }
     }

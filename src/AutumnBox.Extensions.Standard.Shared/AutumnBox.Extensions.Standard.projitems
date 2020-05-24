@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d41be8e2-8b49-461d-bd30-601f9e34f83f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AutumnBox.Extensions.Standard</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\add.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\AirForzen.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\android.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\Anzenbokusu.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\anzenbokusufake.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\appopsx.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\blackhole.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\brevent.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\cd.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\download.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\dpi.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\filepush.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\flash.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\freezeYou.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\gcm.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\Greenify.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\icebox.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\Island.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\knife.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\lock.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\nuclear.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\recorder.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\restart.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\restartdevice.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\screenshot.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\screenshotv2.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\ShizukuManager.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\stopapp.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\taichi.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\unlock.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\Usersir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CoreLib.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EFlashBoot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EFlashRecovery.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EOemLock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Mix\EDeviceOwnerRemover.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Mix\EFilePusher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\DeviceOwnerSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\DpmFailedMessageParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\DpmPro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EAirForzenActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EAnzenboksuActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EBlackHole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EFreezeYou.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EHideAnzen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EIceBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EIslandActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\EStopApp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\ETaiChi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EApkInstaller.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EBreventActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EClearAccounts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EClearUsers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EDpiModifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EGCM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EGreenifyGranter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EScreenShoter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EShizukuActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EStopAppMaxWellActivator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EUnlockSystemParation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\ScreenRecorderWindow.xaml.cs">
+      <DependentUpon>ScreenRecorderWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)View\ScreenRecorderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Res\dpmpro" />
+    <None Include="$(MSBuildThisFileDirectory)Res\godpower.apk" />
+  </ItemGroup>
+</Project>

@@ -1,9 +1,7 @@
-﻿using AutumnBox.Core;
-using AutumnBox.Leafx.Container;
+﻿using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
-using System;
 using System.IO;
 using System.Linq;
 
@@ -94,7 +92,11 @@ namespace AutumnBox.OpenFramework.Implementation
                 using var fs = OpenFile(jsonId, false);
                 using var sr = new StreamReader(fs);
                 var json = sr.ReadToEnd();
-                return JsonHelper.DeserializeObject<TResult>(json);
+#if USE_NT_JSON
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<TResult>(json);
+#elif USE_SYS_JSON
+                return System.Text.Json.JsonSerializer.Deserialize<TResult>(json);
+#endif
             }
             catch
             {
@@ -106,7 +108,11 @@ namespace AutumnBox.OpenFramework.Implementation
         {
             using var fs = OpenFile(jsonId);
             using var sw = new StreamWriter(fs);
-            var json = JsonHelper.SerializeObject(jsonObject);
+#if USE_NT_JSON
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
+#elif USE_SYS_JSON
+            var json = System.Text.Json.JsonSerializer.Serialize(jsonObject);
+#endif
             sw.Write(json);
             sw.Flush();
         }

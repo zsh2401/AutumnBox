@@ -53,7 +53,7 @@ namespace AutumnBox.OpenFramework
         const string DEFAULT_EXTENSION_PATH = "extensions";
         static BuildInfo()
         {
-            ExtensionStore = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, DEFAULT_EXTENSION_PATH));
+            ExtensionStore = new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, DEFAULT_EXTENSION_PATH));
             SDK_VERSION = Assembly.GetExecutingAssembly().GetName().Version;
             API_LEVEL = SDK_VERSION.Major;
         }

@@ -139,7 +139,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (TypeNotFoundException)
             {
-                SLogger.Warn(nameof(LakeExtension), $"Can not get component by type: {t.FullName}");
+                //SLogger.Warn(nameof(LakeExtension), $"Can not get component by type: {t.FullName}");
                 value = default;
                 return false;
             }
@@ -169,7 +169,7 @@ namespace AutumnBox.Leafx.Container
             }
             catch (IdNotFoundException)
             {
-                SLogger.Warn(nameof(LakeExtension), $"Can not get component by id: {id}");
+                //SLogger.Warn(nameof(LakeExtension), $"Can not get component by id: {id}");
                 value = default;
                 return false;
             }
