@@ -24,7 +24,6 @@ jobs:
     - name: App Build Test
       run: dotnet build src/AutumnBox.DNCGUI --configuration Release --no-restore
       
-    - name: Create Artifact
     - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
