@@ -37,13 +37,17 @@ jobs:
     - name: Compress Files
       run: 7z_binary/7z.exe a build.zip src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
 
+    - name: Get DateTime as Version
+      run: echo "::set-env name={dv}::{Get-Date -Format 'yyyy.MM.dd'}"
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        release_name: canary-release
+        tag_name: v${{ dv }}-canary
+        release_name: v${{ dv }}-canary
         prerelease: true
 
     
