@@ -16,17 +16,18 @@
 using AutumnBox.GUI.MVVM;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Logging;
-using Newtonsoft.Json;
 using System;
 using System.IO;
 #if USE_NT_JSON
+using Newtonsoft.Json;
 using JsonIgnoreAttribute = Newtonsoft.Json.JsonIgnoreAttribute;
-#elif USE_SYS_JSON
-//TODO
 #endif
 
 namespace AutumnBox.GUI.Services.Impl
 {
+#if USE_SYS_JSON
+    class JsonIgnoreAttribute : Attribute { }
+#endif
     [Component(Type = typeof(ISettings))]
     class SettingsImpl : NotificationObject, ISettings
     {
@@ -129,14 +130,45 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 using var fs = settingsFile.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 using var sr = new StreamReader(fs);
+#if USE_NT_JSON
                 JsonConvert.PopulateObject(sr.ReadToEnd(), this);
+#elif USE_SYS_JSON
+                PopulateObject(this, sr.ReadToEnd());
+#endif
             }
             catch (Exception)
             {
                 //Use default settings;
             }
         }
+#if USE_SYS_JSON
+        void PopulateObject<T>(T target, string jsonSource) where T : class
+        {
+            var json = System.Text.Json.JsonDocument.Parse(jsonSource).RootElement;
 
+            foreach (var property in json.EnumerateObject())
+            {
+                OverwriteProperty(target, property);
+            }
+        }
+
+        void OverwriteProperty<T>(T target, System.Text.Json.JsonProperty updatedProperty) where T : class
+        {
+            var propertyInfo = typeof(T).GetProperty(updatedProperty.Name);
+
+            if (propertyInfo == null)
+            {
+                return;
+            }
+
+            var propertyType = propertyInfo.PropertyType;
+            var parsedValue = System.Text.Json.JsonSerializer.Deserialize(
+                updatedProperty.Value.GetRawText(),
+                propertyType);
+
+            propertyInfo.SetValue(target, parsedValue);
+        }
+#endif
         ~SettingsImpl()
         {
             Save();

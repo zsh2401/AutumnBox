@@ -94,6 +94,8 @@ namespace AutumnBox.OpenFramework.Implementation
                 var json = sr.ReadToEnd();
 #if USE_NT_JSON
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<TResult>(json);
+#elif USE_SYS_JSON
+                return System.Text.Json.JsonSerializer.Deserialize<TResult>(json);
 #endif
             }
             catch
@@ -108,6 +110,8 @@ namespace AutumnBox.OpenFramework.Implementation
             using var sw = new StreamWriter(fs);
 #if USE_NT_JSON
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObject);
+#elif USE_SYS_JSON
+            var json = System.Text.Json.JsonSerializer.Serialize(jsonObject);
 #endif
             sw.Write(json);
             sw.Flush();

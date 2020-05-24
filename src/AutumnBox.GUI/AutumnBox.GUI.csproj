@@ -36,7 +36,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\dist\debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET45 USE_NT_JSON WIN32</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET45 USE_NT_JSON WIN32 NETFX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -45,7 +45,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\dist\release\</OutputPath>
-    <DefineConstants>TRACE;NET45 USE_NT_JSON WIN32</DefineConstants>
+    <DefineConstants>TRACE;NET45 USE_NT_JSON WIN32 NETFX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
