@@ -38,7 +38,8 @@ jobs:
       run: 7z_binary/7z.exe a build.zip src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
 
     - name: Get DateTime as Version
-      run: echo "::set-env name={dv}::{Get-Date -Format 'yyyy.MM.dd'}"
+      id: get_dv
+      run: echo "::set-output name={dv}::{Get-Date -Format 'yyyy.MM.dd'}"
 
     - name: Create Release
       id: create_release
@@ -46,8 +47,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ dv }}-canary
-        release_name: v${{ dv }}-canary
+        tag_name: v${{ steps.get_dv.outputs.dv}}-canary
+        release_name: v${{ steps.get_dv.outputs.dv }}-canary
         prerelease: true
 
     
