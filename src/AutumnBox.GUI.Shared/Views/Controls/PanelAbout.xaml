@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
                       xmlns:util="clr-namespace:AutumnBox.GUI.Util"
              Foreground="{DynamicResource PrimaryTextBrush}"
@@ -41,8 +42,8 @@
                 </StackPanel>
             </StackPanel>
 
-            <controls:Shield Command="{Binding OpenUrl}" CommandParameter="mailto:zsh2401@163.com" Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
-            <controls:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
+            <hc:Shield Command="{Binding OpenUrl}" CommandParameter="mailto:zsh2401@163.com" Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
+            <hc:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
 
             <DockPanel Margin="30,10,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.GUIString}"/>

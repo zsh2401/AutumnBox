@@ -11,7 +11,7 @@
 * Company: I am free man
 *
 \* =============================================================================*/
-#if NETFX
+#if SUPPORT_IWsh
 using IWshRuntimeLibrary;
 #endif
 using System;
@@ -39,7 +39,7 @@ namespace AutumnBox.GUI.Services.Impl.OS
             string targetPath,
             string description = null, string iconLocation = null)
         {
-#if NETFX
+#if SUPPORT_IWsh
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);

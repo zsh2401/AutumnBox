@@ -98,7 +98,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy $(ProjectDir)..\..\adb_binary $(ProjectDir)$(OutDir)\adb_binary\ /e /d" />
+    <Exec Command="xcopy $(ProjectDir)..\..\adb_binary $(ProjectDir)$(OutDir)\adb_binary\ /e /d /y" />
   </Target>
 
 </Project>

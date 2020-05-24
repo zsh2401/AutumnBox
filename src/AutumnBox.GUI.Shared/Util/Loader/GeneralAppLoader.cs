@@ -32,13 +32,11 @@ namespace AutumnBox.GUI.Util.Loader
             return default(SystemVersionInfo);
         }
 
-#if NETFX
         [Step(2)]
         private void InitHandyControl()
         {
-            ConfigHelper.Instance.SetSystemVersionInfo(GetSystemVersionInfo());
+            ConfigHelper.Instance.SystemVersionInfo = GetSystemVersionInfo();
         }
-#endif
 
         [Step(6)]
         private void InitializeLanguageSystem(ILanguageManager languageManager, ISettings settings, IStorageManager storageManager)

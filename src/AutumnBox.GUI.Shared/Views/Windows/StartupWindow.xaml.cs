@@ -42,13 +42,6 @@ namespace AutumnBox.GUI.Views.Windows
             }
         }
 
-
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
-            NativeMethods.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
-        }
-
         [ClassText("err_msg_fmt",
             "Can not load AutumnBox\nStep name: {0}\nException name: {1}\nClick 'Yes' button to copy exception message to clipboard.\nSee more details in logs",
             "zh-CN:无法加载秋之盒! \n 步骤名: {0}\n 异常名:{1} \n 点击是按钮,将完整错误信息复制到剪贴板中\n更多内容详见日志")]
