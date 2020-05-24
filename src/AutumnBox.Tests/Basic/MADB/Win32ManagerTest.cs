@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic;
+using AutumnBox.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace AutumnBox.Tests.Basic.MADB
         {
             bool cpmDisposed = false;
             bool cmdDisposed = false;
-            //BasicBooter.Use<Win32AdbManager>();
+            BasicBooter.Use<Win32AdbManager>();
             BasicBooter.CommandProcedureManager.Disposed += (s, e) => cpmDisposed = true;
             using var cmd = BasicBooter.CommandProcedureManager.OpenCommand("cmd.exe");
             cmd.Disposed += (s, e) => cmdDisposed = true;

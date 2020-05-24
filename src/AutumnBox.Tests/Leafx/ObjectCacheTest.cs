@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.Tests.Leafx
 {
     [TestClass]
-    public class CacheTest
+    public class ObjectCacheTest
     {
         [TestMethod]
         public void ReferenceEqualsTest()
@@ -73,12 +73,12 @@ namespace AutumnBox.Tests.Leafx
                 tasks.Add(Task.Run(task));
             }
             Task.WaitAll(tasks.ToArray());
-            Assert.IsTrue(ObjectCache<string, object>.CachedCount == taskCount * totalTimes);
+            Assert.IsTrue(ObjectCache<string, float>.CachedCount == taskCount * totalTimes);
             static void task()
             {
                 for (int i = 0; i < totalTimes; i++)
                 {
-                    ObjectCache<string, object>.Acquire(Guid.NewGuid().ToString(), () => new object());
+                    ObjectCache<string, float>.Acquire(Guid.NewGuid().ToString(), () => 1.0F);
                 }
             }
         }

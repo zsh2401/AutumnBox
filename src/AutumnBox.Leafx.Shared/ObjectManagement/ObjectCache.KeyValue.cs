@@ -26,7 +26,7 @@ namespace AutumnBox.Leafx.ObjectManagement
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
-    public static class ObjectCache<TKey, TValue>
+    public static class ObjectCache<TKey, TValue> where TKey : notnull
     {
         /// <summary>
         /// 内部维护的缓存

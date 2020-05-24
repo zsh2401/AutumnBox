@@ -24,10 +24,10 @@ using System.Threading.Tasks;
 namespace AutumnBox.Tests.RegexDraft
 {
     [TestClass]
-    public class Regexes
+    public class RegexesTest
     {
         [TestMethod]
-        public void Test()
+        public void Parse_IPEndPoint()
         {
             Regex regex = new Regex(@"^(?<ip>\d{0,3}\.\d{1,3}\.\d{0,3}\.\d{0,3}):{0,1}(?<port>\d{0,5})$");
 

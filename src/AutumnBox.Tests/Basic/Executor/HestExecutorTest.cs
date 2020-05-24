@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Basic;
 using AutumnBox.Basic.Calling;
+using AutumnBox.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
@@ -10,7 +11,7 @@ namespace AutumnBox.Tests.Basic.Executor
     {
         public HestExecutorTest()
         {
-            //BasicBooter.Use<Win32AdbManager>();
+            BasicBooter.Use<Win32AdbManager>();
         }
         ~HestExecutorTest()
         {

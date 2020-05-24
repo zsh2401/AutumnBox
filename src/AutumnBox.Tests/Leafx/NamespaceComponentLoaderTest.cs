@@ -16,7 +16,7 @@ namespace AutumnBox.Tests.Leafx
         public void MainTest()
         {
             IRegisterableLake lake = new SunsetLake();
-            new ClassComponentsLoader("AutumnBox.Tests.OpenFX.Leafx", lake).Do();
+            new ClassComponentsLoader("AutumnBox.Tests.Leafx", lake).Do();
             Assert.IsTrue(lake.Get<Fuck>().Yes());
         }
     }
