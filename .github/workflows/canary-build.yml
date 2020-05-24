@@ -29,5 +29,5 @@ jobs:
       run: git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary
       
     - name: Build
-      run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --no-restore --self-contained true
+      run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
       
