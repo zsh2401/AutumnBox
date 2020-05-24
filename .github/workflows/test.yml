@@ -24,5 +24,11 @@ jobs:
     - name: App Build Test
       run: dotnet build src/AutumnBox.DNCGUI --configuration Release --no-restore
       
+    - name: Create Artifact
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/ # or path/to/artifact
+      
     - name: Unit Test
       run: dotnet test src/AutumnBox.Tests --no-restore --verbosity normal
