@@ -1,8 +1,9 @@
-name: dnc GUI building test
+name: Build .NET Core WPF Application
 
 on:
   push:
     branches: [ master ]
+    tags: "v*"
 
 jobs:
   build:
@@ -18,5 +19,5 @@ jobs:
     - name: Install dependencies
       run: dotnet restore src/
       
-    - name: Build-DNCGUI
+    - name: Build
       run: dotnet build src/AutumnBox.DNCGUI --configuration Release --no-restore
