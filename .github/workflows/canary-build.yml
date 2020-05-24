@@ -1,0 +1,27 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+ 
+    - name: Install dependencies
+      run: dotnet restore src/
+      
+    - name: Build
+      run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --no-restore --self-contained true
+      
