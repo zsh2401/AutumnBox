@@ -35,6 +35,26 @@ jobs:
       run: git clone https://github.com/zsh2401/7Zip-Binaries-Store.git 7z_binary
     
     - name: Compress Files
-      run: 7z_binary/7z.exe a build.zip ./src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/
-    
-      
+      run: 7z_binary/7z.exe a build.zip ./src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/publish
+
+    - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: true
+
+    - name: Upload
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./build.zip
+        asset_name: canary.zip
+        asset_content_type: application/zip
