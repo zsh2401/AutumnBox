@@ -2,7 +2,6 @@ name: Build Canary
 
 on:
   push:
-    branch: ["master"]
     tags: ["v*-canary"]
 
 jobs:
@@ -21,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore src/
     
-    - name: Clear binaries floder
+    - name: Clear adb binaries floder
       run: Remove-Item -Path adb_binary -Recurse -Force
       
     - name: Download adb binaries.
@@ -36,6 +35,9 @@ jobs:
         pathSource: src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
         pathTarget: archive.zip
 
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
 
     - name: Create Canary Release
       id: create_release
@@ -43,8 +45,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${GITHUB_REF##*/}
-        release_name: ${GITHUB_REF##*/}
+        tag_name: ${{steps.tag.outputs.tag}}
+        release_name: ${{steps.tag.outputs.tag}}
         prerelease: true
 
 
@@ -55,6 +57,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./build.zip
-        asset_name: canary.zip
+        asset_path: ./archive.zip
+        asset_name: AutumnBox-${{steps.tag.outputs.tag}}-win-x86.zip
         asset_content_type: application/zip
