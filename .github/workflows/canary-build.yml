@@ -34,7 +34,7 @@ jobs:
     - name: Create Archive
       uses: DuckSoft/create-7z-action@master
       with:
-        pathSource: src/AutumnBox.DNCGUI/Release/netcoreapp3.1/win-x86/
+        pathSource: src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
         pathTarget: build.zip
 
     - name: Create Release
