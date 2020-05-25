@@ -43,8 +43,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v$(Get-Date -Format:'yyyy.MM.dd')-canary
-        release_name: v$(Get-Date -Format:'yyyy.MM.dd')-canary
+        tag_name: ${GITHUB_REF##*/}
+        release_name: ${GITHUB_REF##*/}
         prerelease: true
 
 
