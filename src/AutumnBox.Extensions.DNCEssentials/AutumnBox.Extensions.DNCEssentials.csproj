@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>AutumnBox.Extensions.Essentials</AssemblyName>
+    <AssemblyName>AutumnBox.Extensions.DNCEssentials</AssemblyName>
+    <RootNamespace>AutumnBox.Extensions.Essentials</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
