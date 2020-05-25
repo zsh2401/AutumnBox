@@ -31,15 +31,11 @@ jobs:
     - name: Build
       run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
 
-    - name: Download 7zip.exe
-      run: git clone https://github.com/zsh2401/7Zip-Binaries-Store.git 7z_binary
-    
-    - name: Compress Files
-      run: 7z_binary/7z.exe a build.zip src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
-
-    - name: Get DateTime as Version
-      id: get_dv
-      run: echo "::set-output name={dv}::{Get-Date -Format 'yyyy.MM.dd'}"
+    - name: Create Archive
+      uses: DuckSoft/create-7z-action@master
+      with:
+        pathSource: src/AutumnBox.DNCGUI/Release/netcoreapp3.1/win-x86/
+        pathTarget: build.zip
 
     - name: Create Release
       id: create_release
