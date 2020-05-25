@@ -5,14 +5,17 @@
     <AssemblyName>AutumnBox.Core</AssemblyName>
     <RootNamespace>AutumnBox.Core</RootNamespace>
     <Nullable>enable</Nullable>
+    <Version>11.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
 
   <Import Project="..\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />

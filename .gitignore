@@ -35,6 +35,7 @@
 gfast.exe
 makezip
 ##dirs
+AutumnBox-Canary
 .vs/
 publish/
 out/

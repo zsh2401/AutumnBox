@@ -26,18 +26,26 @@ jobs:
     - name: Download adb binaries.
       run: git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary
       
-    - name: Build
-      run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
+    - name: Build DNCGUI
+      run: |
+        dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
+        Copy-Item -R src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/ AutumnBox-Canary
 
-    - name: Create Archive
-      uses: DuckSoft/create-7z-action@master
-      with:
-        pathSource: src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
-        pathTarget: archive.zip
+    - name: Build Essentials Extension
+      run: |
+        dotnet build src/AutumnBox.Extensions.DNCEssentials -c Release
+        Copy-Item -R src/AutumnBox.Extensions.DNCEssentials/bin/Release/netstandard2.1/AutumnBox.Extensions.Essentials.dll AutumnBox-Canary/extensions/
 
     - name: Get tag
       id: tag
       uses: dawidd6/action-get-tag@v1
+
+    - name: Create Archive
+      uses: DuckSoft/create-7z-action@master
+      with:
+        pathSource: AutumnBox-Canary
+        pathTarget: archive.zip
+
 
     - name: Create Canary Release
       id: create_release

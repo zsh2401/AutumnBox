@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>AutumnBox.Extensions.Essentials</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.Extensions.Essentials\AutumnBox.Extensions.Essentials.csproj" />
+    <ProjectReference Include="..\AutumnBox.STDCore\AutumnBox.STDCore.csproj" />
+  </ItemGroup>
+
+</Project>
