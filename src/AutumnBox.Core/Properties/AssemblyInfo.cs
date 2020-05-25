@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AutumnBox.Core")]
-[assembly: AssemblyDescription("AutumnBox Core Library")]
+[assembly: AssemblyDescription("AutumnBox's Core library,which also inlcudes a serials of tools for third party developers.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zsh2401")]
 [assembly: AssemblyProduct("AutumnBox.Core")]
-[assembly: AssemblyCopyright("Copyright ©zsh2401  2017-2020")]
+[assembly: AssemblyCopyright("Copyright ©zsh2401 2017-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("57722f44-8dbe-46ee-8b7a-80237803a1ec")]
+[assembly: Guid("0842a8fd-44c3-4423-9dde-488cb3706ed0")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -31,10 +32,5 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-#if SDK
-[assembly: AssemblyVersion(AutumnBox.OpenFramework.BuildInfo.VERSION_STR)]
-[assembly: AssemblyFileVersion(AutumnBox.OpenFramework.BuildInfo.VERSION_STR)]
-#else
-[assembly: AssemblyVersion("2020.5.18")]
-[assembly: AssemblyFileVersion("2020.5.18")]
-#endif
+[assembly: AssemblyVersion("11.5.0.0")]
+[assembly: AssemblyFileVersion("11.5.0.0")]

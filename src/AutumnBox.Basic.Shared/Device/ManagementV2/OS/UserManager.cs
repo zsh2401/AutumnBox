@@ -5,6 +5,7 @@
 *************************************************/
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 构造一个用户管理器
         /// </summary>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         public UserManager(IDevice device, ICommandExecutor executor)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
@@ -58,20 +60,18 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// 获取设备上的所有用户
         /// </summary>
         /// <param name="ignoreZeroUser">是否忽略0号用户</param>
+        /// <exception cref="CommandErrorException">命令无法执行</exception>
         /// <returns>用户</returns>
         public UserInfo[] GetUsers(bool ignoreZeroUser = true)
         {
-            var executeResult = executor.AdbShell(device, "pm list users");
-            if (executeResult.ExitCode != 0)
-                return null;
-            else
-                return ParseOutput(executeResult.Output, ignoreZeroUser);
+            var executeResult = executor.AdbShell(device, "pm list users").ThrowIfError();
+            return ParseOutput(executeResult.Output, ignoreZeroUser);
         }
         /// <summary>
         /// 移除某个用户
         /// </summary>
         /// <param name="uid">UID</param>
-        /// <returns></returns>
+        /// <returns>命令执行的结果</returns>
         public CommandResult RemoveUser(int uid)
         {
             return executor.AdbShell(device, $"pm remove-user {uid}");

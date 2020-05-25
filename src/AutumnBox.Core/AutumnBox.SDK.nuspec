@@ -1,17 +1,17 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <package >
   <metadata>
     <id>AutumnBox.SDK</id>
     <version>$version$-beta</version>
     <title>AutumnBox.SDK</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>zsh2401</authors>
+    <owners>zsh2401</owners>
     <licenseUrl>https://github.com/zsh2401/AutumnBox/blob/master/LICENSE</licenseUrl>
     <projectUrl>http://github.com/zsh2401/AutumnBox</projectUrl>
-    <iconUrl>http://atmb.top/favicon.ico</iconUrl>
+    <iconUrl>http://atmb.top/images/leaves.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Let's develop AutumnBox extensions now!</description>
-    <releaseNotes>This version includes wew features and bug fixes</releaseNotes>
+    <description>Let's develop AutumnBox extension together!This assembly includes a serials of tools useful for third party developers.</description>
+    <releaseNotes>11.5 update logs: Bug fixes,change target to .net fx 4.5 again.</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>ADB AutumnBox</tags>
     <language>zh-CN</language>

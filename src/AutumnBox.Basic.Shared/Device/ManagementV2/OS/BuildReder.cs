@@ -17,6 +17,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
     /// <summary>
     /// 设备Build.prop信息获取器
     /// </summary>
+    [Obsolete("尽可能使用CachedBuilderReader")]
     public sealed class BuildReder
     {
         private readonly IDevice device;

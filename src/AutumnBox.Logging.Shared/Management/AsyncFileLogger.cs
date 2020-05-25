@@ -49,11 +49,9 @@ namespace AutumnBox.Logging.Management
         /// <summary>
         /// 初始化新的异步日志文件记录器
         /// </summary>
-        public AsyncFileLogger()
+        public AsyncFileLogger(FileStream _fs)
         {
-            string logFileName = $"{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.log";
-            FileInfo logFile = new FileInfo(Path.Combine(LogsDirectory.FullName, logFileName));
-            fs = logFile.Open(FileMode.OpenOrCreate, FileAccess.Write);
+            fs = _fs;
             sw = new StreamWriter(fs)
             {
                 AutoFlush = true

@@ -1,0 +1,105 @@
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.Views.Custom"
+    x:Class="AutumnBox.GUI.Views.Windows.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModels"
+xmlns:hc="https://handyorg.github.io/handycontrol"
+    mc:Ignorable="d"
+    ShowInTaskbar="False"
+    ResizeMode="NoResize"
+    Background="{DynamicResource RegionBrush}"
+    WindowStartupLocation="CenterOwner"
+    FontFamily="{DynamicResource AutumnBox.Font}"
+    Title="{DynamicResource Settings.Title}"
+          Height="250" Width="400">
+    <Window.DataContext>
+        <viewmodel:VMSettingsDialog/>
+    </Window.DataContext>
+    <Grid>
+        <TabControl Background="Transparent">
+            <TabItem Background="Transparent" Header="{DynamicResource Settings.Ux}">
+                <StackPanel Margin="5" Orientation="Vertical">
+                    <DockPanel Margin="5">
+                        <ComboBox DockPanel.Dock="Right" ItemsSource="{Binding Languages}" DisplayMemberPath="{Binding LanguageDisplayMemberPath}" SelectedItem="{Binding SelectedLanguage}"/>
+                        <TextBlock DockPanel.Dock="Left" Margin="0,0,15,0"  VerticalAlignment="Center" Text="{DynamicResource Settings.Language}"/>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding SoundEffectEnable}"  ToolTip="{DynamicResource Settings.Sounds}"/>
+                        <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource Settings.Sounds}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.SoundsTip}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+
+                        <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                            <TextBlock Margin="0,0,0,10" Text="{DynamicResource Settings.Theme}"/>
+                            <hc:ButtonGroup>
+                                <RadioButton  IsChecked="{Binding ShouldUseLightTheme}" Content="{DynamicResource Settings.ThemeLight}"/>
+                                <RadioButton IsChecked="{Binding ShouldUseAutoTheme}" Content="{DynamicResource Settings.ThemeAuto}"/>
+                                <RadioButton  IsChecked="{Binding ShouldUseDarkTheme}" Content="{DynamicResource Settings.ThemeDark}"/>
+                            </hc:ButtonGroup>
+                        </StackPanel>
+                    </DockPanel>
+
+                </StackPanel>
+            </TabItem>
+
+
+
+            <TabItem Background="Transparent" Header="{DynamicResource Settings.Debug}">
+                <StackPanel  Margin="5">
+
+                    <DockPanel Margin="5">
+                        <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right" IsChecked="{Binding DebugOnNext}"/>
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource Settings.LaunchDebugWindowOnNextLaunch}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.LaunchDebugWindowOnNextLaunchTip}"/>
+                        </StackPanel>
+
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right"  IsChecked="{Binding DeveloperMode}" />
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource Settings.DeveloperMode}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.DeveloperModeTip}"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Margin="5">
+                        <ToggleButton Style="{DynamicResource ToggleButtonSwitch}" DockPanel.Dock="Right"  IsChecked="{Binding DisplayCmdWindow}" />
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{DynamicResource Settings.DisplayCmdWindow}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.DisplayCmdWindowTip}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+
+
+            <TabItem Background="Transparent" Header="{DynamicResource Settings.Cmd}">
+                <StackPanel Margin="5" Orientation="Vertical">
+                    <DockPanel Margin="5">
+                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding UseEnvVarCmd}" />
+                        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                            <TextBlock Text="{DynamicResource Settings.EnvVarCmdWindow}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.EnvVarCmdWindowTip}"/>
+                        </StackPanel>
+
+                    </DockPanel>
+                    <DockPanel IsEnabled="{Binding UseEnvVarCmd}" Margin="5">
+                        <ToggleButton DockPanel.Dock="Right" Style="{DynamicResource ToggleButtonSwitch}" IsChecked="{Binding StartCmdAtDesktop}"/>
+                        <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                            <TextBlock Text="{DynamicResource Settings.CmdAtDesktopTip}"/>
+                            <TextBlock Foreground="{DynamicResource SecondaryTextBrush}" TextWrapping="Wrap" FontSize="12" Text="{DynamicResource Settings.CmdAtDesktopTip}"/>
+                        </StackPanel>
+
+                    </DockPanel>
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</custom:NiceWindow>

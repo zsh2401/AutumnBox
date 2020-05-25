@@ -1,0 +1,29 @@
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.Views.Custom"
+    x:Class="AutumnBox.GUI.Views.Windows.LibsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModels"
+        mc:Ignorable="d"
+    WindowStartupLocation="CenterOwner"
+        x:Name="thisCtrl"
+        ShowInTaskbar="False"
+    Background="{DynamicResource RegionBrush}"
+        Title="Librarian Viewer" ResizeMode="NoResize" Height="300" Width="250">
+    <Window.DataContext>
+        <viewmodel:VMLibsView x:Name="mContext"/>
+    </Window.DataContext>
+    <Grid>
+        <ItemsControl ItemsSource="{Binding Libs}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding ShowInformation,ElementName=mContext}" CommandParameter="{Binding Lib}" Margin="10">
+                        <TextBlock Text="{Binding Lib.Name}"/>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</custom:NiceWindow>

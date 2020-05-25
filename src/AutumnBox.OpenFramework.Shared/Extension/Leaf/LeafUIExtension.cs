@@ -6,6 +6,7 @@ using AutumnBox.OpenFramework.Open.LKit;
 using System.Threading;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Enhancement.ClassTextKit;
+using System;
 
 namespace AutumnBox.OpenFramework.Extension.Leaf
 {
@@ -18,6 +19,12 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
     [ClassText("cancel", "Cancel", "zh-cn:取消")]
     public static class LeafUIExtension
     {
+
+        /// <summary>
+        /// Leaf拓展被终结的信号
+        /// </summary>
+        internal class LeafExtensionTerminatedException : Exception { }
+
         /// <summary>
         /// 
         /// </summary>
@@ -26,7 +33,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         public static void EFinish(this ILeafUI ui, int exitCode = 0)
         {
             ui.Finish(exitCode.ToString());
-            Thread.CurrentThread.Abort();
+            throw new LeafExtensionTerminatedException();
         }
 
         /// <summary>
@@ -37,7 +44,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         public static void EFinish(this ILeafUI ui, string tip)
         {
             ui.Finish(tip);
-            Thread.CurrentThread.Abort();
+            throw new LeafExtensionTerminatedException();
         }
 
         /// <summary>
@@ -47,7 +54,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         public static void EShutdown(this ILeafUI ui)
         {
             ui.Shutdown();
-            Thread.CurrentThread.Abort();
+            throw new LeafExtensionTerminatedException();
         }
 
         /// <summary>

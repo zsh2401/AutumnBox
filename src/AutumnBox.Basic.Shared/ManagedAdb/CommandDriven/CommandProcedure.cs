@@ -249,6 +249,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         {
             if (!disposedValue)
             {
+                if (Status == CommandStatus.Executing)
+                {
+                    Cancel();
+                }
                 if (disposing)
                 {
                     // TODO: 释放托管状态(托管对象)。
@@ -262,11 +266,6 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                         }
                     }
                 }
-                if (Status == CommandStatus.Executing)
-                {
-                    Cancel();
-                }
-
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。
                 process = null;

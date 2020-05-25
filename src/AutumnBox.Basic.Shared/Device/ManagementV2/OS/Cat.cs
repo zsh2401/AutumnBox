@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="device"></param>
         /// <param name="executor"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         public Cat(IDevice device, ICommandExecutor executor)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
@@ -26,7 +28,8 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// 读取
         /// </summary>
         /// <param name="fileName"></param>
-        /// <returns></returns>
+        /// <exception cref="CommandErrorException">命令执行失败</exception>
+        /// <returns>文件的文本内容</returns>
         public string Read(string fileName)
         {
             return executor.AdbShell(device, $"cat {fileName}")

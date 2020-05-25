@@ -1,8 +1,8 @@
 ﻿using AutumnBox.Basic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AutumnBox.ADBProvider;
 using System.Diagnostics;
 using AutumnBox.Logging;
+using AutumnBox.Tests.Util;
 
 namespace AutumnBox.Tests.Basic.MADB
 {

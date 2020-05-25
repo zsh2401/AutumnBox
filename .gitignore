@@ -30,11 +30,13 @@
 *.dll
 *.psd
 *.txt
+*.msi
 #fast
 gfast.exe
 makezip
 ##dirs
 .vs/
+publish/
 out/
 sdk/
 bin/
@@ -44,6 +46,7 @@ HistoryRelease/
 DemoPic/
 packages/
 dist/
+publish/
 debug-dist/
 ##do_not
 !AutumnBox.ADBProvider/adb_tools/*.*

@@ -18,7 +18,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
         public void ExitCodeTest()
         {
             var cpm = new ProcedureManager();
-            using var command = cpm.OpenCommand("cmd.exe", "/c", "ping baidu.com");
+            using var command = cpm.OpenCommand("cmd.exe", "/c", "ping 127.0.0.1");
             var result = command.Execute();
             if (result.ExitCode != 0)
             {
@@ -46,7 +46,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
         {
             bool outputReceived = false;
             var cpm = new ProcedureManager();
-            using var command = cpm.OpenCommand("cmd.exe", "/c", "ping baidu.com");
+            using var command = cpm.OpenCommand("cmd.exe", "/c", "ping 127.0.0.1");
             command.OutputReceived += (s, e) =>
             {
                 outputReceived = true;

@@ -1,4 +1,5 @@
 ﻿using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,19 +20,22 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="device"></param>
         /// <param name="executor"></param>
-        /// <param name="tmpDir"></param>
-        public ScreenCap(IDevice device, ICommandExecutor executor, string tmpDir = null)
+        /// <param name="tempDirectory"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        public ScreenCap(IDevice device, ICommandExecutor executor, string tempDirectory = null)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));
             this.executor = executor ?? throw new ArgumentNullException(nameof(executor));
-            this.tmpDir = tmpDir ?? ".";
+            this.tmpDir = tempDirectory ?? ".";
         }
         /// <summary>
         /// 截图
         /// </summary>
+        /// <exception cref="CommandErrorException">命令执行失败</exception>
         /// <returns>保存到PC上的截图文件名</returns>
         public FileInfo Cap(bool wakeUpDevice = true)
         {
+
             if (wakeUpDevice)
             {
                 new KeyInputer(device, executor).RaiseKeyEvent(AndroidKeyCode.WakeUp);

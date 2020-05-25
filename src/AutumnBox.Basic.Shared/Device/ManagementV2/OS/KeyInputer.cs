@@ -18,6 +18,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// </summary>
         /// <param name="device"></param>
         /// <param name="executor"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         public KeyInputer(IDevice device, ICommandExecutor executor)
         {
             this.device = device ?? throw new ArgumentNullException(nameof(device));

@@ -1,0 +1,104 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <StartupObject>AutumnBox.GUI.Program</StartupObject>
+    <AssemblyName>AutumnBox.GUI</AssemblyName>
+    <RootNamespace>AutumnBox.GUI</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\icon.ico" />
+    <None Remove="Resources\Icons\Menu\cmd.png" />
+    <None Remove="Resources\Icons\Menu\debug.png" />
+    <None Remove="Resources\Icons\Menu\donate.png" />
+    <None Remove="Resources\Icons\Menu\exit.png" />
+    <None Remove="Resources\Icons\Menu\guide-book.png" />
+    <None Remove="Resources\Icons\Menu\icon.png" />
+    <None Remove="Resources\Icons\Menu\powershell.png" />
+    <None Remove="Resources\Icons\Menu\settings.png" />
+    <None Remove="Resources\Icons\new_leaf.ico" />
+    <None Remove="Resources\Images\android_phone.png" />
+    <None Remove="Resources\Images\android_phone2.png" />
+    <None Remove="Resources\Images\donate_alishop.png" />
+    <None Remove="Resources\Images\donate_pot4winter.png" />
+    <None Remove="Resources\Images\donate_wechatpay.jpg" />
+    <None Remove="Resources\Images\github.png" />
+    <None Remove="Resources\Images\icon.png" />
+    <None Remove="Resources\Sounds\ok.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Sounds\ok.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HandyControl" Version="2.5.0.1" />
+    <PackageReference Include="SharpZipLib" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutumnBox.STDCore\AutumnBox.STDCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\icon.ico" />
+    <Resource Include="Resources\Icons\Menu\cmd.png" />
+    <Resource Include="Resources\Icons\Menu\debug.png" />
+    <Resource Include="Resources\Icons\Menu\donate.png" />
+    <Resource Include="Resources\Icons\Menu\exit.png" />
+    <Resource Include="Resources\Icons\Menu\guide-book.png" />
+    <Resource Include="Resources\Icons\Menu\icon.png" />
+    <Resource Include="Resources\Icons\Menu\powershell.png" />
+    <Resource Include="Resources\Icons\Menu\settings.png" />
+    <Resource Include="Resources\Icons\new_leaf.ico" />
+    <Resource Include="Resources\Images\android_phone.png" />
+    <Resource Include="Resources\Images\android_phone2.png" />
+    <Resource Include="Resources\Images\donate_alishop.png" />
+    <Resource Include="Resources\Images\donate_pot4winter.png" />
+    <Resource Include="Resources\Images\donate_wechatpay.jpg" />
+    <Resource Include="Resources\Images\github.png" />
+    <Resource Include="Resources\Images\icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resources\CommonResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Languages\en-US.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Languages\zh-CN.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Themes\ThemeDark.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Themes\ThemeLight.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(ProjectDir)..\..\adb_binary $(ProjectDir)$(OutDir)\adb_binary\ /e /d /y" />
+  </Target>
+
+</Project>

@@ -70,7 +70,7 @@ namespace AutumnBox.Leafx.ObjectManagement
                 }
                 else
                 {
-                    args.Add(default);
+                    args.Add(p.DefaultValue);
                 }
             }
             return args.ToArray();

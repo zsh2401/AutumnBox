@@ -24,6 +24,7 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// <summary>
         /// 构造
         /// </summary>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         public HardwareInfoGetter(IDevice device, ICommandExecutor executor)
         {
             logger = LoggerFactory.Auto<HardwareInfoGetter>();

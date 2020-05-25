@@ -3,6 +3,7 @@
 ** date:  2018/8/30 4:53:29 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Util;
 using System;
 using System.Net;
@@ -63,12 +64,12 @@ namespace AutumnBox.Basic.Device
         {
             if (closeNetDebugging)
             {
-                using var cmd = BasicBooter.CommandProcedureManager.OpenCommand("adb.exe", $"usb");
+                using var cmd = BasicBooter.CommandProcedureManager.OpenADBCommand(this, $"usb");
                 cmd.Execute().ThrowIfExitCodeNotEqualsZero();
             }
             else
             {
-                using var cmd = BasicBooter.CommandProcedureManager.OpenCommand("adb.exe", $"disconnect {SerialNumber}");
+                using var cmd = BasicBooter.CommandProcedureManager.OpenADBCommand(null, $"disconnect {SerialNumber}");
                 cmd.Execute().ThrowIfExitCodeNotEqualsZero();
             }
         }

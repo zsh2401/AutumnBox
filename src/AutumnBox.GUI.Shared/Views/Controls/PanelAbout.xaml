@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="AutumnBox.GUI.Views.Controls.PanelAbout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             mc:Ignorable="d" 
+                      xmlns:util="clr-namespace:AutumnBox.GUI.Util"
+             Foreground="{DynamicResource PrimaryTextBrush}"
+             FontFamily="{DynamicResource AutumnBox.Font}"
+             xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModels"
+             d:DesignHeight="450" d:DesignWidth="400">
+    <UserControl.DataContext>
+        <viewmodel:VMAbout/>
+    </UserControl.DataContext>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,10">
+            <TextBlock HorizontalAlignment="Center" Text="www.atmb.top" TextDecorations="Underline">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" Text="{DynamicResource UserLicense.Name}" TextDecorations="Underline">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding ShowWindowDialog}" CommandParameter="License"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" Text="{DynamicResource OpenSource}" TextDecorations="Underline">
+                <TextBlock.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding ShowWindowDialog}" CommandParameter="OpenSource"/>
+                </TextBlock.InputBindings>
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Top">
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
+                <StackPanel>
+                    <TextBlock FontSize="20" Text="{DynamicResource  App.NameWithVersion}"/>
+                    <TextBlock Text="{DynamicResource App.Slogan}" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <hc:Shield Command="{Binding OpenUrl}" CommandParameter="mailto:zsh2401@163.com" Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
+            <hc:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
+
+            <DockPanel Margin="30,10,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.GUIString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.AutumnBox}"/>
+            </DockPanel>
+            
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.BasicString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Basic}"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.OpenFxString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OpenFx}"/>
+            </DockPanel>
+
+            <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.Adb}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.ADB}"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.OSString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.OS}"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.DotNetFrameworkString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Net}"/>
+            </DockPanel>
+
+            <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.HandyControlString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="HandyControl"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.SharpZipLibString}"/>
+                <TextBlock DockPanel.Dock="Left" Text="SharpZipLib"/>
+            </DockPanel>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

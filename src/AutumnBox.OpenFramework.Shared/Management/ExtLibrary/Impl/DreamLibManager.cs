@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -84,12 +85,20 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 
         private IEnumerable<FileInfo> GetFiles()
         {
-            var extDir = new DirectoryInfo(BuildInfo.DEFAULT_EXTENSION_PATH);
+            var extDir = BuildInfo.ExtensionStore;
             if (!extDir.Exists) extDir.Create();
-            var files = new List<FileInfo>()
-                .Concat(extDir.GetFiles(PATTERN_DEFAULT))
-                .Concat(extDir.GetFiles(PATTERN_ATMBEXT))
-                .Concat(extDir.GetFiles(PATTERN_OEXT));
+            List<FileInfo> files = new List<FileInfo>();
+
+            foreach (var file in extDir.GetFiles())
+            {
+                SLogger<DreamLibManager>.Info($"{file.Name}{file.Extension}");
+            }
+
+            var extensionFiles = from file in extDir.GetFiles()
+                                 where file.Extension == ".dll" || file.Extension == ".aext"
+                                 select file;
+
+            files.AddRange(extensionFiles);
             SLogger<DreamLibManager>.Debug($"There are {files.Count()} extension file");
             return files;
         }
@@ -144,7 +153,11 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                     SLogger<DreamLibManager>.Warn($"Can not create the instance of {assembly.GetName().Name}'s librarian", e);
                 }
             }
-            SLogger<DreamLibManager>.Info($"Found {result.Count()} lib");
+            SLogger<DreamLibManager>.Info($"There are {result.Count()} librarians");
+            foreach (var lib in result)
+            {
+                SLogger<DreamLibManager>.Info($"{lib.Name}");
+            }
             return result;
         }
     }

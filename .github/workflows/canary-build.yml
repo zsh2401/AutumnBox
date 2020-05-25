@@ -1,0 +1,64 @@
+name: Build Canary
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+ 
+    - name: Install dependencies
+      run: dotnet restore src/
+    
+    - name: Clear binaries floder
+      run: Remove-Item -Path adb_binary -Recurse -Force
+      
+    - name: Download adb binaries.
+      run: git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary
+      
+    - name: Build
+      run: dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
+
+    - name: Download 7zip.exe
+      run: git clone https://github.com/zsh2401/7Zip-Binaries-Store.git 7z_binary
+    
+    - name: Compress Files
+      run: 7z_binary/7z.exe a build.zip src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
+
+    - name: Get DateTime as Version
+      id: get_dv
+      run: echo "::set-output name={dv}::{Get-Date -Format 'yyyy.MM.dd'}"
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.get_dv.outputs.dv}}-canary
+        release_name: v${{ steps.get_dv.outputs.dv }}-canary
+        prerelease: true
+
+    
+    - name: Upload
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./build.zip
+        asset_name: canary.zip
+        asset_content_type: application/zip
