@@ -1,15 +1,14 @@
 <div align="center">
 <br/><br/>
-<img style="width:90px" src="https://www.atmb.top/favicon.ico">
+<img style="height:60px" src="https://www.atmb.top/favicon.ico">
+<br/><br/>
 
-# 秋之盒-ADB GUI TOOL BOX
-## [秋之盒-WEB站点](http://www.atmb.top)  
+# [秋之盒-AutumnBox](http://www.atmb.top)
+免费,简单,易用的图形化ADB工具箱。
 ## 贡献者
-欢迎提交PR，请确保您的编码符合C#规范。
-
 ![](https://opencollective.com/AutumnBox/contributors.svg?button=false)
 
-</div>
+
 
 
 [![](https://github.com/zsh2401/AutumnBox/workflows/Test/badge.svg)](https://github.com/zsh2401/AutumnBox/actions?query=workflow%3ATest)
@@ -19,8 +18,8 @@
 ![](https://img.shields.io/badge/GUI-WPF-blue.svg)
 [![](https://img.shields.io/badge/开发者群-153424015-orange.svg)](https://jq.qq.com/?_wv=1027&k=M6X9BBCR)
 
-<!-- ![](https://raw.githubusercontent.com/zsh2401/AutumnBox/master/assets/qq_group.png) -->
- 
+
+ </div>
 ## 简介
 秋之盒是一个对Google ADB工具包进行GUI封装的Windows桌面应用,方便小白,帮助老鸟. 
 - 技术关键词: C# / .NET / WPF / ADB
