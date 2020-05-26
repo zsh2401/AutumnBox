@@ -1,6 +1,7 @@
 # 秋之盒-开放源代码
 ![](https://github.com/zsh2401/AutumnBox/workflows/Test/badge.svg)
-![](https://github.com/zsh2401/AutumnBox/workflows/Build%20Canary/badge.svg)
+![](https://github.com/zsh2401/AutumnBox/workflows/Canary/badge.svg)
+![](https://github.com/zsh2401/AutumnBox/workflows/Dev-Canary%20Build%20Test/badge.svg)
 ![](https://img.shields.io/badge/C%23-8.0-brightgreen.svg)
 ![](https://img.shields.io/badge/GUI-WPF-blue.svg)
 [![](https://img.shields.io/badge/开发者群-153424015-orange.svg)](https://jq.qq.com/?_wv=1027&k=M6X9BBCR)

@@ -1,0 +1,62 @@
+name: Canary
+
+on:
+  push:
+    tags: ["v*-canary"]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+ 
+    - name: Install dependencies
+      run: dotnet restore src/
+    
+    - name: Clear adb binaries floder
+      run: Remove-Item -Path adb_binary -Recurse -Force
+      
+    - name: Download adb binaries.
+      run: git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary
+      
+    - name: Building with script
+      run: ./scripts/build_canary.ps1
+
+
+    - name: Get tag information
+      id: tag
+      uses: dawidd6/action-get-tag@v1
+
+    - name: Create archive
+      uses: DuckSoft/create-7z-action@master
+      with:
+        pathSource: AutumnBox-Canary
+        pathTarget: archive.zip
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{steps.tag.outputs.tag}}
+        release_name: ${{steps.tag.outputs.tag}}
+        prerelease: true
+
+    - name: Upload release assets
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./archive.zip
+        asset_name: AutumnBox-${{steps.tag.outputs.tag}}.zip
+        asset_content_type: application/zip
