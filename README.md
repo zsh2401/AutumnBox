@@ -21,8 +21,8 @@
 ![](https://img.shields.io/badge/GUI-WPF-blue.svg)
 [![](https://img.shields.io/badge/开发者群-153424015-orange.svg)](https://jq.qq.com/?_wv=1027&k=M6X9BBCR)
 
-
  </div>
+
 ## 简介
 秋之盒是一个对Google ADB工具包进行GUI封装的Windows桌面应用,方便小白,帮助老鸟. 
 - 技术关键词: C# / .NET / WPF / ADB
