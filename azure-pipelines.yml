@@ -4,6 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
 trigger:
+- master
 - dev
 
 pool:
@@ -49,6 +50,19 @@ steps:
     verbose: true
 
 - task: AppCenterDistribute@3
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    serverEndpoint: 'AppCenter'
+    appSlug: 'Autumn2077/AutumnBox'
+    appFile: 'AutumnBox.zip'
+    buildVersion: '$(Build.SourceVersion)'
+    releaseNotesOption: 'input'
+    releaseNotesInput: '$(Build.SourceVersionMessage)'
+    destinationType: 'groups'
+    distributionGroupId: '41f1b280-60af-43da-8a90-b06940e8babc'
+
+- task: AppCenterDistribute@3
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
   inputs:
     serverEndpoint: 'AppCenter'
     appSlug: 'Autumn2077/AutumnBox'
