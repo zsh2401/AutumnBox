@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>AutumnBox.Core</AssemblyName>
+    <AssemblyName>AutumnBox.STDCore</AssemblyName>
     <RootNamespace>AutumnBox.Core</RootNamespace>
     <Nullable>enable</Nullable>
     <Version>11.5</Version>

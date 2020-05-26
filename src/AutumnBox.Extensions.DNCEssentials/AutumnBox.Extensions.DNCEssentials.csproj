@@ -15,8 +15,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Extensions.Essentials\AutumnBox.Extensions.Essentials.csproj" />
     <ProjectReference Include="..\AutumnBox.STDCore\AutumnBox.STDCore.csproj" />
   </ItemGroup>
+
+  <Import Project="..\AutumnBox.Extensions.Essentials.Shared\AutumnBox.Extensions.Essentials.Shared.projitems" Label="Shared" />
 
 </Project>

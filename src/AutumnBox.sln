@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.DNCGUI", "AutumnB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.STDCore", "AutumnBox.STDCore\AutumnBox.STDCore.csproj", "{70C20F62-E87B-49E6-B263-41A53825A706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Extensions.DNCEssentials", "AutumnBox.Extensions.DNCEssentials\AutumnBox.Extensions.DNCEssentials.csproj", "{E9276362-70DE-4FC8-A8D4-8301F270562E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.Extensions.DNCEssentials", "AutumnBox.Extensions.DNCEssentials\AutumnBox.Extensions.DNCEssentials.csproj", "{E9276362-70DE-4FC8-A8D4-8301F270562E}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -73,6 +73,7 @@ Global
 		AutumnBox.Extensions.Standard.Shared\AutumnBox.Extensions.Standard.projitems*{c06bd4b1-4f4e-4005-99db-0889c6e24b2b}*SharedItemsImports = 4
 		AutumnBox.Extensions.Standard.Shared\AutumnBox.Extensions.Standard.projitems*{d41be8e2-8b49-461d-bd30-601f9e34f83f}*SharedItemsImports = 13
 		AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems*{d6013ec3-dd68-4945-916d-f77f1ead7fff}*SharedItemsImports = 13
+		AutumnBox.Extensions.Essentials.Shared\AutumnBox.Extensions.Essentials.Shared.projitems*{e9276362-70de-4fc8-a8d4-8301f270562e}*SharedItemsImports = 5
 		AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems*{f5208b48-2f0d-4d84-a095-5bfff725fae8}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -312,7 +313,7 @@ Global
 		{E9276362-70DE-4FC8-A8D4-8301F270562E} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal
