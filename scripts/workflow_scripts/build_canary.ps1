@@ -19,7 +19,7 @@ Write-Green "Restoring dependencies"
 dotnet restore src/
 
 Write-Green "Compiling AutumnBox.DNCGUI"
-dotnet publish src/AutumnBox.DNCGUI -c $CompileConfigure -r $Runtime --no-dependencies --self-contained true --no-restore --output $CanaryPath
+dotnet publish src/AutumnBox.DNCGUI -c $CompileConfigure -r $Runtime --no-dependencies --self-contained true --output $CanaryPath
 
 Write-Green "Compiling Extensions."
 dotnet publish src/AutumnBox.Extensions.DNCEssentials -c $CompileConfigure -r $Runtime --output $CanaryExtensionsPath
