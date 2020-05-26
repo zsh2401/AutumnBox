@@ -1,5 +1,5 @@
 # should working on root directory
-# You should run this script as :  ./scripts/workflow_scripts/build_canary.ps1
+# You should run this script as :  ./scripts/canary_build.ps1
 
 # Functions
 function Write-Green($message) {
@@ -23,6 +23,10 @@ dotnet publish src/AutumnBox.DNCGUI -c $CompileConfigure -r $Runtime --no-depend
 
 Write-Green "Compiling Extensions."
 dotnet publish src/AutumnBox.Extensions.DNCEssentials -c $CompileConfigure -r $Runtime --output $CanaryExtensionsPath
+dotnet publish src/AutumnBox.Extensions.DNCStandard -c $CompileConfigure -r $Runtime --output $CanaryExtensionsPath
+
+Write-Green "Place adb binaries."
+Copy-Item -Recurse -Force .\adb_binary $([System.IO.Path]::Combine($CanaryPath,"adb_binary"))
 
 #Finishing
 Write-Green "Clear Useless files."

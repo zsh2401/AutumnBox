@@ -41,7 +41,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// 获取或设置Size,基于wm size命令
         /// </summary>
         /// <exception cref="Exceptions.AdbShellCommandFailedException"></exception>
-        public Size Size
+        public Data.Size Size
         {
             get
             {
@@ -64,7 +64,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <summary>
         /// 物理分辨率
         /// </summary>
-        public Size OverrideSize
+        public Data.Size OverrideSize
         {
             get
             {
@@ -73,7 +73,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 var match = Regex.Match(exeResult.Output.ToString(), PATTERN_OVR_SIZE);
                 if (match.Success)
                 {
-                    return new Size
+                    return new Data.Size
                     {
                         Height = int.Parse(match.Result("${h}")),
                         Width = int.Parse(match.Result("${w}")),
@@ -89,7 +89,7 @@ namespace AutumnBox.Basic.Device.Management.OS
         /// <summary>
         /// 被修改过的分辨率
         /// </summary>
-        public Size PhysicalSize
+        public Data.Size PhysicalSize
         {
             get
             {
@@ -98,7 +98,7 @@ namespace AutumnBox.Basic.Device.Management.OS
                 var match = Regex.Match(exeResult.Output.ToString(), PATTERN_PHY_SIZE);
                 if (match.Success)
                 {
-                    return new Size
+                    return new Data.Size
                     {
                         Height = int.Parse(match.Result("${h}")),
                         Width = int.Parse(match.Result("${w}")),

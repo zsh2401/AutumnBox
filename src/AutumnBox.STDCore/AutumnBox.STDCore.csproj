@@ -1,7 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWpf>true</UseWpf>
     <AssemblyName>AutumnBox.STDCore</AssemblyName>
     <RootNamespace>AutumnBox.Core</RootNamespace>
     <Nullable>enable</Nullable>

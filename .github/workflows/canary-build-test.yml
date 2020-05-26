@@ -28,7 +28,7 @@ jobs:
       run: git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary
       
     - name: Building with script
-      run: ./scripts/workflow_scripts/build_canary.ps1
+      run: ./scripts/build_canary.ps1
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2

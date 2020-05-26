@@ -49,6 +49,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.STDCore", "Autumn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.Extensions.DNCEssentials", "AutumnBox.Extensions.DNCEssentials\AutumnBox.Extensions.DNCEssentials.csproj", "{E9276362-70DE-4FC8-A8D4-8301F270562E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutumnBox.Extensions.DNCStandard", "AutumnBox.Extensions.DNCStandard\AutumnBox.Extensions.DNCStandard.csproj", "{AFE22E15-E431-41B8-BAE6-89919A71B70A}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{0842a8fd-44c3-4423-9dde-488cb3706ed0}*SharedItemsImports = 4
@@ -69,6 +71,7 @@ Global
 		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{70c20f62-e87b-49e6-b263-41a53825a706}*SharedItemsImports = 5
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{70c20f62-e87b-49e6-b263-41a53825a706}*SharedItemsImports = 5
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{8e101f07-8c10-4ab6-a427-f24618c25de5}*SharedItemsImports = 13
+		AutumnBox.Extensions.Standard.Shared\AutumnBox.Extensions.Standard.projitems*{afe22e15-e431-41b8-bae6-89919a71b70a}*SharedItemsImports = 5
 		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{b29dea5d-d4c3-4c8b-810e-52466875835d}*SharedItemsImports = 13
 		AutumnBox.Extensions.Standard.Shared\AutumnBox.Extensions.Standard.projitems*{c06bd4b1-4f4e-4005-99db-0889c6e24b2b}*SharedItemsImports = 4
 		AutumnBox.Extensions.Standard.Shared\AutumnBox.Extensions.Standard.projitems*{d41be8e2-8b49-461d-bd30-601f9e34f83f}*SharedItemsImports = 13
@@ -290,6 +293,30 @@ Global
 		{E9276362-70DE-4FC8-A8D4-8301F270562E}.SDK|x64.Build.0 = Debug|Any CPU
 		{E9276362-70DE-4FC8-A8D4-8301F270562E}.SDK|x86.ActiveCfg = Debug|Any CPU
 		{E9276362-70DE-4FC8-A8D4-8301F270562E}.SDK|x86.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|x64.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Debug|x86.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|ARM.Build.0 = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|x64.ActiveCfg = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|x64.Build.0 = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|x86.ActiveCfg = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.Release|x86.Build.0 = Release|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|Any CPU.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|ARM.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|ARM.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|x64.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|x64.Build.0 = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|x86.ActiveCfg = Debug|Any CPU
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A}.SDK|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -311,6 +338,7 @@ Global
 		{F5208B48-2F0D-4D84-A095-5BFFF725FAE8} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 		{70C20F62-E87B-49E6-B263-41A53825A706} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 		{E9276362-70DE-4FC8-A8D4-8301F270562E} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
+		{AFE22E15-E431-41B8-BAE6-89919A71B70A} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
