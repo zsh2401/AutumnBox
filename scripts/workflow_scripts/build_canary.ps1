@@ -15,6 +15,9 @@ $Runtime = "win-x86";
 $CompileConfigure = "Release";
 
 #Build
+Write-Green "Restoring dependencies"
+dotnet restore src/
+
 Write-Green "Compiling AutumnBox.DNCGUI"
 dotnet publish src/AutumnBox.DNCGUI -c $CompileConfigure -r $Runtime --no-dependencies --self-contained true --no-restore --output $CanaryPath
 
