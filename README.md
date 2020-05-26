@@ -1,13 +1,16 @@
 <div align="center">
-<br/><br/>
-<img style="height:60px" src="https://www.atmb.top/favicon.ico">
-<br/><br/>
+<br/><br/><br/>
+<!-- <img style="height:60px" src="https://www.atmb.top/favicon.ico"> -->
+
 
 # [秋之盒-AutumnBox](http://www.atmb.top)
-免费,简单,易用的图形化ADB工具箱。
+免费,简单,易用的图形化ADB工具箱。   
+<br/>
+
 ## 贡献者
 ![](https://opencollective.com/AutumnBox/contributors.svg?button=false)
 
+<br/>
 
 
 
