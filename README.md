@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 <br/><br/>
 <img style="width:90px" src="https://www.atmb.top/favicon.ico">
 
@@ -9,7 +9,7 @@
 
 ![](https://opencollective.com/AutumnBox/contributors.svg?button=false)
 
-</center>
+</div>
 
 
 [![](https://github.com/zsh2401/AutumnBox/workflows/Test/badge.svg)](https://github.com/zsh2401/AutumnBox/actions?query=workflow%3ATest)
