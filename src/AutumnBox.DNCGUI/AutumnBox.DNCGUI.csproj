@@ -8,6 +8,9 @@
     <StartupObject>AutumnBox.GUI.Program</StartupObject>
     <AssemblyName>AutumnBox.GUI</AssemblyName>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
+    <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
+    <Version>2020.5.27</Version>
+    <AssemblyVersion>2020.5.27.3</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

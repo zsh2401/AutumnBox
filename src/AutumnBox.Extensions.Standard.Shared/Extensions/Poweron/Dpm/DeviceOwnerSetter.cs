@@ -55,11 +55,10 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 
     [ExtDesc("使用奇淫技巧暴力设置设备管理员", "en-us:Use the sneaky skills to set up the device administrator")]
     [ExtAuth("zsh2401")]
-    [ExtMinApi(8)]
-    [ExtTargetApi(8)]
+    [ExtMinApi(11)]
+    [ExtTargetApi(11)]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.nuclear.png")]
-    [ExtHidden]
     public abstract class DeviceOwnerSetter : LeafExtensionBase
     {
         /// <summary>
@@ -73,224 +72,182 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         protected abstract string PackageName { get; }
 
         /// <summary>
-        /// LeafUI
-        /// </summary>
-        [AutoInject]
-        public ILeafUI UI { get; set; }
-
-        /// <summary>
         /// TextManager
         /// </summary>
-        ClassTextReader text = ClassTextReaderCache.Acquire<DeviceOwnerSetter>();
-
-        /// <summary>
-        /// 日志器
-        /// </summary>
-        [AutoInject]
-        private ILogger Logger { get; set; }
-
-        /// <summary>
-        /// Device
-        /// </summary>
-        [AutoInject]
-        public IDevice Device { get; set; }
+        static readonly ClassTextReader text = ClassTextReaderCache.Acquire<DeviceOwnerSetter>();
 
         /// <summary>
         /// 入口函数
         /// </summary>
         [LMain]
-        public void EntryPoint(IStorage storage, IEmbeddedFileManager emb, ICommandExecutor _executor)
+        public void EntryPoint(ILeafUI _ui, IDevice device, IStorage storage, IEmbeddedFileManager emb, ICommandExecutor _executor)
         {
-            //using (UI)
-            //{
-            //    UI.Show();    //显示ui
-            //    InitUI();   //初始化ui
+            //确保资源被正确释放
+            using var ui = _ui;
+            using var executor = _executor;
 
+            //显示UI后初始化一些细节
+            ui.Show();
+            InitUI(ui);
 
-            //    ////执行前的一些检查与提示
-            //    //SetProgress("Checking", 10);
-            //    //if (!DoAppCheck()) return;//进行APP安装检查
-            //    //if (!DoWarn()) return;//进行一系列提示与警告
+            //做出一系列警告与提示,只要一个不被同意,立刻再见
+            if (!(DoAppCheck(ui, device, PackageName) && DoWarn(ui)))
+            {
+                ui.Shutdown();//直接关闭UI
+                return;//退出函数
+            }
 
-            //    //做出一系列警告与提示,只要一个不被同意,立刻再见
-            //    if (!(DoAppCheck() && DoWarn()))
-            //    {
-            //        UI.Shutdown();//直接关闭UI
-            //        return;//退出函数
-            //    }
+            /* 正式开始流程 */
 
-            //    /* 正式开始流程 */
+            //创建一个OutputBuilder
+            OutputBuilder outputBuilder = new OutputBuilder();
 
-            //    //构造一个命令执行器
-            //    using (CommandExecutor executor = new CommandExecutor())
-            //    {
-            //        //创建一个OutputBuilder
-            //        OutputBuilder outputBuilder = new OutputBuilder();
+            //接收并记录所有executor的输出
+            outputBuilder.Register(executor);
 
-            //        //接收并记录所有executor的输出
-            //        outputBuilder.Register(executor);
+            //将命令执行器输出定向到界面
+            executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
 
-            //        //将命令执行器输出定向到界面
-            //        executor.To(e => UI.WriteOutput(e.Text));
+            //构造一个dpmpro的控制器
+            var dpmpro = new DpmPro(executor, emb, storage, device);
 
-            //        //构造一个dpmpro的控制器
-            //        var dpmpro = new DpmPro(executor, emb, storage, Device);
+            //将dpmpro提取到临时目录
+            SetProgress(ui, "Extract", 0);
+            dpmpro.Extract();
 
-            //        //将dpmpro提取到临时目录
-            //        SetProgress("Extract", 0);
-            //        dpmpro.Extract();
+            //推送dpmpro到设备
+            SetProgress(ui, "Push", 20);
+            dpmpro.PushToDevice();
 
-            //        //推送dpmpro到设备
-            //        SetProgress("Push", 20);
-            //        dpmpro.PushToDevice();
+            //移除账户
+            SetProgress(ui, "RMAcc", 40);
+            dpmpro.RemoveAccounts();
 
-            //        //移除账户
-            //        SetProgress("RMAcc", 40);
-            //        dpmpro.RemoveAccounts();
+            //移除用户
+            SetProgress(ui, "RMUser", 60);
+            dpmpro.RemoveUsers();
 
-            //        //移除用户
-            //        SetProgress("RMUser", 60);
-            //        dpmpro.RemoveUsers();
+            //使用可能的方式设置管理员,并记录结果
+            SetProgress(ui, "SettingDpm", 80);
 
-            //        //使用可能的方式设置管理员,并记录结果
-            //        SetProgress("SettingDpm", 80);
-            //        var codeOfSetDeviceOwner = SetDeviceOwner(executor, dpmpro).ExitCode;
+            var codeOfSetDeviceOwner = SetDeviceOwner(device, ui, ComponentName, executor, dpmpro).ExitCode;
 
-            //        if (codeOfSetDeviceOwner == 0 && //如果设置成功并且
-            //            (PackageName == "com.catchingnow.icebox" //目标包名是冰箱
-            //            || PackageName == "web1n.stopapp")) //小黑屋
-            //        {
-            //            //给予APPOPS权限
-            //            executor.AdbShell(Device, $"pm grant {PackageName} android.permission.GET_APP_OPS_STATS");
-            //        }
+            if (codeOfSetDeviceOwner == 0 && //如果设置成功并且
+                (PackageName == "com.catchingnow.icebox" //目标包名是冰箱
+                || PackageName == "web1n.stopapp")) //小黑屋
+            {
+                //给予APPOPS权限
+                executor.AdbShell(device, $"pm grant {PackageName} android.permission.GET_APP_OPS_STATS");
+            }
 
-            //        //使用输出解析器,对记录的输出进行解析
-            //        DpmFailedMessageParser.Parse(codeOfSetDeviceOwner, outputBuilder.ToString(), out string tip, out string message);
+            //使用输出解析器,对记录的输出进行解析
+            DpmFailedMessageParser.Parse(codeOfSetDeviceOwner, outputBuilder.ToString(), out string tip, out string message);
 
 
 
-            //        //在输出框写下简要信息与建议
-            //        UI.WriteLine(message);
-            //        UI.ShowMessage(message);
+            //在输出框写下简要信息与建议
+            ui.WriteLineToDetails(message);
+            ui.ShowMessage(message);
 
-            //        //去除输出信息事件注册
-            //        outputBuilder.Unregister(executor);
+            //去除输出信息事件注册
+            outputBuilder.Unregister(executor);
 
-            //        //ui流程结束
-            //        UI.Finish(tip);
-            //    }
-            //}
+            //ui流程结束
+            ui.Finish(tip);
         }
 
-//        /// <summary>
-//        /// 用所有可能的方法设置设备管理员,并返回结果
-//        /// </summary>
-//        /// <param name="device"></param>
-//        /// <param name="executor"></param>
-//        /// <param name="dpmpro"></param>
-//        /// <returns></returns>
-//        private ICommandResult SetDeviceOwner(CommandExecutor executor, DpmPro dpmpro)
-//        {
-//            ICommandResult result = null;
-//            //先用自带dpm进行设置
-//            result = executor.AdbShell(Device, "dpm set-device-owner", ComponentName);
-//            //如果返回值为127,也就是说这设备连dpm都阉割了,就询问用户是否用dpmpro来设置设备管理员
-//            if (result.ExitCode == 127 && UI.DoYN(text["UseDpmPro"]))
-//            {
-//                //用dpmpro设置设备管理员,并记录结果(覆盖普通dpm设置器的记录)
-//                result = dpmpro.SetDeviceOwner(ComponentName);
-//            }
-//            return result;
-//        }
+        /// <summary>
+        /// 用所有可能的方法设置设备管理员,并返回结果
+        /// </summary>
+        /// <param name="device"></param>
+        /// <param name="executor"></param>
+        /// <param name="dpmpro"></param>
+        /// <returns></returns>
+        static CommandResult SetDeviceOwner(IDevice targetDevice, ILeafUI ui, string componentName, ICommandExecutor executor, DpmPro dpmpro)
+        {
+            //先用自带dpm进行设置
+            CommandResult result = executor.AdbShell(targetDevice, "dpm set-device-owner", componentName);
+            //如果返回值为127,也就是说这设备连dpm都阉割了,就询问用户是否用dpmpro来设置设备管理员
+            if (result.ExitCode == 127 && ui.DoYN(text["UseDpmPro"]))
+            {
+                //用dpmpro设置设备管理员,并记录结果(覆盖普通dpm设置器的记录)
+                result = dpmpro.SetDeviceOwner(componentName);
+            }
+            return result;
+        }
 
-//        /// <summary>
-//        /// 设置进度信息,与核心代码无关
-//        /// </summary>
-//        /// <param name="keyOfTip"></param>
-//        /// <param name="progress"></param>
-//        private void SetProgress(string keyOfTip, int progress)
-//        {
-//            string tip = text[keyOfTip] ?? keyOfTip;
-//            UI.StatusInfo = tip;
-//            UI.Progress = progress;
-//            UI.WriteLine(tip);
-//        }
+        /// <summary>
+        /// 设置进度信息,与核心代码无关
+        /// </summary>
+        /// <param name="keyOfTip"></param>
+        /// <param name="progress"></param>
+        static void SetProgress(ILeafUI ui, string keyOfTip, int progress)
+        {
+            string tip = text[keyOfTip] ?? keyOfTip;
+            ui.StatusInfo = tip;
+            ui.Progress = progress;
+            ui.WriteLineToDetails(tip);
+        }
 
-//        /// <summary>
-//        /// 接收摧毁消息,将重要字段置null
-//        /// </summary>
-//        [LSignalReceive(Signals.COMMAND_DESTORY)]
-//        private void OnDestory()
-//        {
-//            UI = null;
-//            text = null;
-//            Logger = null;
-//            Device = null;
-//        }
+        #region 几个辅助函数
+        /// <summary>
+        /// 进行一系列警告,只要一条不同意便返回false
+        /// </summary>
+        /// <param name="ui"></param>
+        /// <param name="texts"></param>
+        /// <returns></returns>
+        static bool DoWarn(ILeafUI ui)
+        {
+            string[] warnMessageKeys = new string[]
+            {
+                        "Warning", //第一次警告
+                        "RiskWarning",//风险自负
+                        "WarningRemoveLock",   //提示用户移除屏幕锁等
+                        "DomesticRomWarning",//国产ROM注意事项
+                        "SumsungSonyWarning",//三星索尼注意事项
+                        "WarningLastChance",   //最后一次机会取消
+            };
+            foreach (string key in warnMessageKeys)
+            {
+                bool yn = ui.DoYN(text[key]);
+                if (!yn) return false;
+            }
+            return true;
+        }
 
-//        #region 几个辅助函数
-//        /// <summary>
-//        /// 进行一系列警告,只要一条不同意便返回false
-//        /// </summary>
-//        /// <param name="ui"></param>
-//        /// <param name="texts"></param>
-//        /// <returns></returns>
-//        private bool DoWarn()
-//        {
-//            string[] warnMessageKeys = new string[]
-//            {
-//                "Warning", //第一次警告
-//                "RiskWarning",//风险自负
-//                "WarningRemoveLock",   //提示用户移除屏幕锁等
-//                "DomesticRomWarning",//国产ROM注意事项
-//                "SumsungSonyWarning",//三星索尼注意事项
-//                "WarningLastChance",   //最后一次机会取消
-//            };
-//            foreach (string key in warnMessageKeys)
-//            {
-//                bool yn = UI.DoYN(text[key]);
-//                if (!yn) return false;
-//            }
-//            return true;
-//        }
+        /// <summary>
+        ///  初始化UI
+        /// </summary>
+        static void InitUI(ILeafUI ui)
+        {
+            ui.EnableHelpBtn(() =>
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start("http://www.atmb.top/guide/dpm/");
+                }
+                catch (Exception e)
+                {
+                    SLogger<DeviceOwnerSetter>.Warn("can not open dpm help link", e);
+                }
+            });
+        }
 
-//        /// <summary>
-//        ///  初始化UI
-//        /// </summary>
-//        private void InitUI()
-//        {
-//            UI.Icon = this.GetIconBytes();
-//            UI.Title = this.GetName();
-//            UI.Height += 100;
-//            UI.Width += 100;
-//            UI.EnableHelpBtn(() =>
-//            {
-//                try
-//                {
-//                    System.Diagnostics.Process.Start("http://www.atmb.top/go/help/dpmhelp?from=dpmext");
-//                }
-//                catch (Exception e)
-//                {
-//                    Logger.Warn("cannot go to dpm setter's help", e);
-//                }
-//            });
-//        }
-
-//        /// <summary>
-//        /// 对相关APP进行检查
-//        /// </summary>
-//        /// <returns></returns>
-//        private bool DoAppCheck()
-//        {
-//            if (PackageName == null) return true;
-//#pragma warning disable CS0618 // 类型或成员已过时
-//            var pm = new PackageManager(Device);
-//#pragma warning restore CS0618 // 类型或成员已过时
-//            var isInstall = pm.IsInstall(PackageName);
-//            return isInstall || UI.DoChoice(text["HaveNotInstallApp"],
-//                btnYes: text["BtnOkay"], btnNo: text["BtnIgnore"],
-//               btnCancel: text["BtnCancel"]) == false;
-//        }
-        //#endregion
+        /// <summary>
+        /// 对相关APP进行检查
+        /// </summary>
+        /// <returns></returns>
+        static bool DoAppCheck(ILeafUI ui, IDevice device, string packageName)
+        {
+            if (packageName == null) return true;
+#pragma warning disable CS0618 // 类型或成员已过时
+            var pm = new PackageManager(device);
+#pragma warning restore CS0618 // 类型或成员已过时
+            var isInstall = pm.IsInstall(packageName);
+            return isInstall || ui.DoChoice(text["HaveNotInstallApp"],
+                btnYes: text["BtnOkay"], btnNo: text["BtnIgnore"],
+               btnCancel: text["BtnCancel"]) == false;
+        }
+        #endregion
     }
 }

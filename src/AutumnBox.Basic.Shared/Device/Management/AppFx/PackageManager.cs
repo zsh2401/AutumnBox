@@ -15,7 +15,7 @@ namespace AutumnBox.Basic.Device.Management.AppFx
     /// <summary>
     /// 包管理器实现
     /// </summary>
-    [Obsolete("等待重做,请勿使用,如需相关功能,请自行实现", true)]
+    [Obsolete("等待重做,请勿使用,如需相关功能,请自行实现")]
     public class PackageManager : DeviceCommander
     {
         /// <summary>
