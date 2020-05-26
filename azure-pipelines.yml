@@ -1,0 +1,60 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+trigger:
+- dev
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/t:restore'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: 'dist/Release'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: 'AutumnBox.zip'
+    replaceExistingArchive: true
+    verbose: true
+
+- task: AppCenterDistribute@3
+  inputs:
+    serverEndpoint: 'AppCenter'
+    appSlug: 'Autumn2077/AutumnBox'
+    appFile: 'AutumnBox.zip'
+    buildVersion: '$(Build.SourceVersion)'
+    releaseNotesOption: 'input'
+    releaseNotesInput: '$(Build.SourceVersionMessage)'
+    destinationType: 'groups'
+    distributionGroupId: '4f967e87-b760-4a38-87a5-495daccb7cb5'
