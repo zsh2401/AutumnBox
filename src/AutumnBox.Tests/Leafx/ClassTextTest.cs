@@ -1,28 +1,39 @@
 ﻿using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading;
+using System.Collections.Generic;
 
 namespace AutumnBox.Tests.Leafx
 {
     [TestClass]
-    [ClassText(TEST_1_KEY, TEST_1_DFT_VALUE, TEST_1_CHINESE_VALUE)]
     public class ClassTextTest
     {
-        private const string TEST_1_KEY = "k_dtt";
-        private const string TEST_1_DFT_VALUE = "Hello!My Dream!";
-        private const string TEST_1_CHINESE_VALUE = "zh-CN:你好！我的梦！";
+        [ClassText("UPPER", "1")]
+        [ClassText("lower", "2")]
+        [ClassText("Mixed", "3")]
+        private class KeyTestObject { }
         [TestMethod]
-        public void DefaultTextTest()
+        public void KeyTest()
         {
-            var reader = ClassTextReaderCache.Acquire<ClassTextTest>();
+            var tr = new ClassTextReader(typeof(KeyTestObject));
+            Assert.AreEqual(tr["UPPER"], "1");
+            Assert.AreEqual(tr["lower"], "2");
+            Assert.AreEqual(tr["Mixed"], "3");
+            Assert.ThrowsException<KeyNotFoundException>(() =>
+            {
+                _ = tr["NotFound"];
+            });
+        }
 
-            Assert.IsTrue(reader[TEST_1_KEY] == TEST_1_DFT_VALUE);
-            Assert.IsTrue(reader[TEST_1_KEY, "zh-CN"] == "你好！我的梦！");
+        [ClassText("test", "English", "zh-CN:中文")]
+        private class I18NClassTextTestObject { }
+        [TestMethod]
+        public void I18NLanguageSupport()
+        {
+            var tr = new ClassTextReader(typeof(I18NClassTextTestObject));
 
-            Assert.IsTrue(reader.Get(TEST_1_KEY) == TEST_1_DFT_VALUE);
-            Assert.IsTrue(reader.Get(TEST_1_KEY, "zh-CN") == "你好！我的梦！");
-
-            Assert.IsTrue(reader.Get(TEST_1_KEY, "zh-cn") == "你好！我的梦！");
+            Assert.AreEqual(tr["test"], "English");
+            Assert.AreEqual(tr["test","zh-CN"], "中文");
+            Assert.AreEqual(tr["test", "zh-SG"], "English");
         }
     }
 }
