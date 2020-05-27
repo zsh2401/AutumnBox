@@ -21,11 +21,8 @@ jobs:
     - name: Install dependencies
       run: dotnet restore src/
     
-    - name: Clear adb binaries floder
-      run: Remove-Item -Path adb_binary -Recurse -Force
-      
     - name: Download adb binaries.
-      run: git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary
+      run: ./scripts/get_adb.ps1
       
     - name: Building with script
       run: ./scripts/build_canary.ps1
