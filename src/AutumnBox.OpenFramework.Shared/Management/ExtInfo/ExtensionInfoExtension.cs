@@ -86,7 +86,8 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
                     if (ceinf != null)
                     {
                         string path = ceinf.ClassExtensionType.Assembly.GetName().Name + "." + source;
-                        Stream stream = ceinf.ClassExtensionType.Assembly.GetManifestResourceStream(path);
+                        Stream stream = ceinf?.ClassExtensionType?.Assembly?.GetManifestResourceStream(path);
+                        if (stream == null) return null;
                         byte[] buffer = new byte[stream.Length];
                         stream.Read(buffer, 0, buffer.Length);
                         return buffer;

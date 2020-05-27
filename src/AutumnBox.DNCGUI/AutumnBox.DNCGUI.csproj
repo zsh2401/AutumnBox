@@ -11,6 +11,7 @@
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
     <Version>2020.5.27</Version>
     <AssemblyVersion>2020.5.27.3</AssemblyVersion>
+    <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

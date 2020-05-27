@@ -7,6 +7,7 @@ using System.Windows;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
+#if WINFX
 [assembly: AssemblyTitle("AutumnBox.GUI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -53,3 +54,4 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2020.5.27.2")]
 [assembly: AssemblyFileVersion("2020.5.27.2")]
+#endif

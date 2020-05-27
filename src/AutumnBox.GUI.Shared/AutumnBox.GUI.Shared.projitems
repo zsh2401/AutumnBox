@@ -23,6 +23,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\NotificationObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Program.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\IAcrylicHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IAdbDevicesManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IAppLifecycleManager.cs" />
@@ -204,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)App.config" />
+    <None Include="$(MSBuildThisFileDirectory)Properties\app.manifest" />
     <None Include="$(MSBuildThisFileDirectory)Services\Impl\Acrylic\README.md" />
   </ItemGroup>
   <ItemGroup>
