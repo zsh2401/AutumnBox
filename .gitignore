@@ -36,6 +36,7 @@ gfast.exe
 makezip
 ##dirs
 AutumnBox-Canary
+adb_binary/
 .vs/
 publish/
 out/

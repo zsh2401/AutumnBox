@@ -102,8 +102,8 @@
     </Page>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy $(ProjectDir)..\..\adb_binary $(ProjectDir)$(OutDir)\adb_binary\ /e /d /y" />
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="powershell $(ProjectDir)afterbuild.ps1 $(TargetDir) $(ConfigurationName)" />
   </Target>
 
 </Project>
