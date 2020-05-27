@@ -59,6 +59,17 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Canary|AnyCPU'">
+    <OutputPath>bin\Canary\</OutputPath>
+    <DefineConstants>TRACE;NET45 USE_NT_JSON NETFX WIN32</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="HandyControl, Version=2.5.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HandyControl.2.5.0.1\lib\net45\HandyControl.dll</HintPath>

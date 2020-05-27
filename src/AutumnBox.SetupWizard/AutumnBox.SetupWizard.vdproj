@@ -1504,6 +1504,38 @@
     }
     "Configurations"
     {
+        "Canary"
+        {
+        "DisplayName" = "8:Canary"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:Canary\\AutumnBox.SetupWizard.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:3"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:https://atmb.top/download/env/"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5.2 (x86 和 x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5.2"
+                    }
+                }
+            }
+        }
         "Debug"
         {
         "DisplayName" = "8:Debug"
@@ -4309,7 +4341,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0D0E21896BA442489277983B04B00084"
             {
-            "SourcePath" = "8:..\\AutumnBox.Extensions.Standard\\obj\\Release\\AutumnBox.Extensions.Standard.dll"
+            "SourcePath" = "8:..\\AutumnBox.Extensions.Standard\\obj\\Canary\\AutumnBox.Extensions.Standard.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BA10F15989AF4B328BD471A8CB0FF437"
@@ -4365,7 +4397,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_795BECD6B41248B9A8FE75545DCCC407"
             {
-            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Release\\AutumnBox.GUI.exe"
+            "SourcePath" = "8:..\\AutumnBox.GUI\\obj\\Canary\\AutumnBox.GUI.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_39C42BEE8AB8494AA256CD0D60D775F9"
@@ -4393,7 +4425,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AE51EC9DAEDF4EF7BFD7D9DA972310F5"
             {
-            "SourcePath" = "8:..\\AutumnBox.Extensions.Essentials\\obj\\Release\\AutumnBox.Extensions.Essentials.dll"
+            "SourcePath" = "8:..\\AutumnBox.Extensions.Essentials\\obj\\Canary\\AutumnBox.Extensions.Essentials.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BA10F15989AF4B328BD471A8CB0FF437"

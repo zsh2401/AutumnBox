@@ -5,6 +5,7 @@
     <AssemblyName>AutumnBox.Extensions.DNCEssentials</AssemblyName>
     <RootNamespace>AutumnBox.Extensions.Essentials</RootNamespace>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -13,6 +14,10 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
+    <OutputPath />
   </PropertyGroup>
 
   <ItemGroup>

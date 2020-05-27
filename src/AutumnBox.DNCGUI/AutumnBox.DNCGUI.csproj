@@ -12,6 +12,7 @@
     <Version>2020.5.27</Version>
     <AssemblyVersion>2020.5.27.3</AssemblyVersion>
     <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -22,6 +23,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
     <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE CANARY</DefineConstants>
+    <OutputPath />
   </PropertyGroup>
 
   <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />

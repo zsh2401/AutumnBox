@@ -1,6 +1,7 @@
 ﻿using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.GUI.Util;
+using HandyControl.Controls;
 using System;
 using System.Diagnostics;
 
@@ -24,7 +25,9 @@ namespace AutumnBox.GUI.Views.Windows
             {
                 NativeMethods.SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
             }
+#if CANARY
+                this.GetComponent<INotificationManager>().Info("Canary");
+#endif
         }
-
     }
 }
