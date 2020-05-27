@@ -64,13 +64,14 @@ namespace AutumnBox.Logging.Management
         /// <param name="log"></param>
         public override void Log(ILog log)
         {
-            Task.Run(() =>
+            lock (sw)
             {
-                lock (sw)
+                try
                 {
                     sw.WriteLine(log);
                 }
-            });
+                catch { }
+            }
         }
 
         /// <summary>

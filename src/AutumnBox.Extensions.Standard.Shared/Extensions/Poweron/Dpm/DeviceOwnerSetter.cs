@@ -18,41 +18,6 @@ using System;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 {
-    #region 激活前的警告文本
-    [ClassText("Warning",
-        "This module will violently delete your account and users, and set this app as the device owner. Are you sure you want to do this?",
-        "zh-cn:本模块将会暴力删除你的账户与用户,并设置这个应用为设备管理员(免ROOT)\n\n看!点击右上角问号可以浏览在线说明书")]
-    [ClassText("RiskWarning",
-        "This module has some risks. Although I will try my best to ensure its safety, it may still cause some software failures on your device. If you decide to continue, you will be at your own risk.",
-        "zh-cn:本模块具有一定的风险,虽然我会尽力确保其安全,但如果造成可能的设备损坏,我不进行负责\n\n如果你决定继续,则视为你已了解并自负后果\n如果你决定继续,则视为你已了解并自负后果\n如果你决定继续,则视为你已了解并自负后果")]
-    [ClassText("WarningRemoveLock",
-        "there is only one thing you need to do:\n\ndelete screen lock and fingerprint lock\ndelete screen lock and fingerprint lock\ndelete screen lock and fingerprint lock\n\ngo to next step after you finished this step",
-        "zh-cn:在开始前,你必须:\n\n删除屏幕锁和指纹锁\n删除屏幕锁和指纹锁\n删除屏幕锁和指纹锁\n\n完成后继续")]
-    [ClassText("DomesticRomWarning",
-        "In addition, China mobile phone users pay attention:\n\n1. Xiaomi mobile phone (MIUI) needs to enable MIUI security setting and close MIUI optimization in the developer settings\n2. Huawei mobile phone needs to manually exit Huawei account \n3. After activation, many mobile phones will show that your device has been taken over in notification bar, not beautiful but harmless\n4.Dual App may not be available",
-        "zh-cn:另外,国产手机用户注意:\n\n1.小米手机(MIUI)需要在开发者选项开启MIUI安全设置,关闭MIUI优化\n2.华为手机需要手动退出华为账号\n3.在激活后,许多手机会显示您的设备被接管,不美观但无害\n4.应用双开将可能无法使用\n\n点击右上角问号可以浏览在线说明书")]
-    [ClassText("SumsungSonyWarning",
-        "Samsung and Sony users should also pay attention: \n\nSamsung devices may be locked after activation of DPM\n Device owner on Sony devices cannot be activated by adb after android 9.0, please use QR code\nYou can view detail of above two points in the manual",
-        "zh-cn:三星和索尼用户也要注意:\n\n三星设备在激活DPM后可能会被锁住\n索尼设备在9.0后无法使用adb方式激活,请使用二维码方式\n\n以上两点在说明书中有详细说到\n\n点击右上角问号可以浏览在线说明书")]
-    [ClassText("WarningLastChance",
-        "This is the last chance to cancel,are u sure to continue?",
-        "zh-cn:这是你最后一次取消的机会,一旦开始操作将不可停止")]
-    #endregion
-
-    #region 激活途中要用的文本
-    [ClassText("HaveNotInstallApp", "You have not install the relative application!", "zh-cn:秋之盒检测到你没有安装相关应用!")]
-    [ClassText("BtnIgnore", "Continue!", "zh-cn:强行继续")]
-    [ClassText("BtnOk", "Okay", "zh-cn:确认")]
-    [ClassText("BtnCancel", "Extracting dpmpro to device", "zh-cn:取消")]
-    [ClassText("Checking", "Checking", "zh-cn:正在准备")]
-    [ClassText("Extract", "Extracting dpmpro to device", "zh-cn:提取dpmpro")]
-    [ClassText("Push", "Pushing dpmpro to device", "zh-cn:推送dpmpro")]
-    [ClassText("RMAcc", "Removing accounts", "zh-cn:正在移除所有账号")]
-    [ClassText("RMUser", "Removing users", "zh-cn:正在移除所有用户")]
-    [ClassText("SettingDpm", "Setting device owner", "zh-cn:正在设置设备管理员")]
-    [ClassText("UseDpmPro", "The dpm command not found,do you wanna try dpmpro?", "zh-cn:您的设备缺少DPM,使用DPMPRO吗?")]
-    #endregion
-
     [ExtDesc("使用奇淫技巧暴力设置设备管理员", "en-us:Use the sneaky skills to set up the device administrator")]
     [ExtAuth("zsh2401")]
     [ExtMinApi(11)]
@@ -61,6 +26,50 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
     [ExtIcon("Icons.nuclear.png")]
     public abstract class DeviceOwnerSetter : LeafExtensionBase
     {
+        #region 激活前的警告文本
+        [ClassText("Warning",
+            "This module will violently delete your account and users, and set this app as the device owner. Are you sure you want to do this?",
+            "zh-cn:本模块将会暴力删除你的账户与用户,并设置这个应用为设备管理员(免ROOT)\n\n看!点击右上角问号可以浏览在线说明书")]
+        [ClassText("RiskWarning",
+            "This module has some risks. Although I will try my best to ensure its safety, it may still cause some software failures on your device. If you decide to continue, you will be at your own risk.",
+            "zh-cn:本模块具有一定的风险,虽然我会尽力确保其安全,但如果造成可能的设备损坏,我不进行负责\n\n如果你决定继续,则视为你已了解并自负后果\n如果你决定继续,则视为你已了解并自负后果\n如果你决定继续,则视为你已了解并自负后果")]
+        [ClassText("WarningRemoveLock",
+            "there is only one thing you need to do:\n\ndelete screen lock and fingerprint lock\ndelete screen lock and fingerprint lock\ndelete screen lock and fingerprint lock\n\ngo to next step after you finished this step",
+            "zh-cn:在开始前,你必须:\n\n删除屏幕锁和指纹锁\n删除屏幕锁和指纹锁\n删除屏幕锁和指纹锁\n\n完成后继续")]
+        [ClassText("DomesticRomWarning",
+            "In addition, China mobile phone users pay attention:\n\n1. Xiaomi mobile phone (MIUI) needs to enable MIUI security setting and close MIUI optimization in the developer settings\n2. Huawei mobile phone needs to manually exit Huawei account \n3. After activation, many mobile phones will show that your device has been taken over in notification bar, not beautiful but harmless\n4.Dual App may not be available",
+            "zh-cn:另外,国产手机用户注意:\n\n1.小米手机(MIUI)需要在开发者选项开启MIUI安全设置,关闭MIUI优化\n2.华为手机需要手动退出华为账号\n3.在激活后,许多手机会显示您的设备被接管,不美观但无害\n4.应用双开将可能无法使用\n\n点击右上角问号可以浏览在线说明书")]
+        [ClassText("SumsungSonyWarning",
+            "Samsung and Sony users should also pay attention: \n\nSamsung devices may be locked after activation of DPM\n Device owner on Sony devices cannot be activated by adb after android 9.0, please use QR code\nYou can view detail of above two points in the manual",
+            "zh-cn:三星和索尼用户也要注意:\n\n三星设备在激活DPM后可能会被锁住\n索尼设备在9.0后无法使用adb方式激活,请使用二维码方式\n\n以上两点在说明书中有详细说到\n\n点击右上角问号可以浏览在线说明书")]
+        [ClassText("WarningLastChance",
+            "This is the last chance to cancel,are u sure to continue?",
+            "zh-cn:这是你最后一次取消的机会,一旦开始操作将不可停止")]
+        #endregion
+
+        #region 激活途中要用的文本
+        [ClassText("HaveNotInstallApp", "You have not install the relative application!", "zh-cn:秋之盒检测到你没有安装相关应用!")]
+        [ClassText("BtnIgnore", "Continue!", "zh-cn:强行继续")]
+        [ClassText("BtnOk", "Okay", "zh-cn:确认")]
+        [ClassText("BtnCancel", "Extracting dpmpro to device", "zh-cn:取消")]
+        [ClassText("Checking", "Checking", "zh-cn:正在准备")]
+        [ClassText("Extract", "Extracting dpmpro to device", "zh-cn:提取dpmpro")]
+        [ClassText("Push", "Pushing dpmpro to device", "zh-cn:推送dpmpro")]
+        [ClassText("RMAcc", "Removing accounts", "zh-cn:正在移除所有账号")]
+        [ClassText("RMUser", "Removing users", "zh-cn:正在移除所有用户")]
+        [ClassText("SettingDpm", "Setting device owner", "zh-cn:正在设置设备管理员")]
+        [ClassText("UseDpmPro", "The dpm command not found,do you wanna try dpmpro?", "zh-cn:您的设备缺少DPM,使用DPMPRO吗?")]
+        #endregion
+        private class TextCarrier
+        {
+            public string this[string key]
+            {
+                get
+                {
+                    return this.RxGetClassText(key);
+                }
+            }
+        }
         /// <summary>
         /// 必须是完整的组件名,包括包名
         /// </summary>
@@ -74,7 +83,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
         /// <summary>
         /// TextManager
         /// </summary>
-        static readonly ClassTextReader text = ClassTextReaderCache.Acquire<DeviceOwnerSetter>();
+        static readonly TextCarrier text = new TextCarrier();
 
         /// <summary>
         /// 入口函数
