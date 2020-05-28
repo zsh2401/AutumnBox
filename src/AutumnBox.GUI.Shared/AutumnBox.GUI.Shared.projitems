@@ -84,6 +84,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Util\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\FatalHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AbstractAppLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AppLoaderExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AppLoaderFailedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AppLoadingException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\GeneralAppLoader.cs" />

@@ -103,6 +103,7 @@
     <Compile Include="Resources\Languages\Lang.cs" />
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="postbuild.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\CommonResources.xaml">
@@ -171,6 +172,10 @@
   <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>powershell $(SolutionDir)..\scripts\copy_adb $(OutDir)adb_binary</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>powershell $(ProjectDir)postbuild.ps1 $(ProjectDir)$(OutDir)</PreBuildEvent>
   </PropertyGroup>
 </Project>

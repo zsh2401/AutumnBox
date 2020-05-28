@@ -17,29 +17,23 @@ namespace AutumnBox.GUI.Views.Windows
         public StartupWindow()
         {
             InitializeComponent();
-            (DataContext as INotifyPropertyChanged).PropertyChanged += DataContextPropertyChanged;
-        }
-
-        private void DataContextPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (sender is VMStartup vmstartup)
+            App.Current.AppLoaderCreated += (s, e) =>
             {
-                if (vmstartup.Loaded)
+                e.AppLoader.Failed += (s, e) =>
                 {
-                    App.Current.MainWindow = new MainWindowV3();
-                    App.Current.MainWindow.Show();
+                    ErrorMessageBox.Show(this, e.Exception);
                     Close();
-                }
-                else if (vmstartup.Exception != null)
+                };
+                e.AppLoader.Succeced += (s, e) =>
                 {
-                    try
+                    this.Dispatcher.Invoke(() =>
                     {
-                        ErrorMessageBox.Show(this, vmstartup.Exception);
-                    }
-                    catch { }
-                    App.Current.Shutdown(0);
-                }
-            }
+                        App.Current.MainWindow = new MainWindowV3();
+                        App.Current.MainWindow.Show();
+                        Close();
+                    });
+                };
+            };
         }
 
         [ClassText("err_msg_fmt",
