@@ -8,7 +8,7 @@ using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
 using System.Threading.Tasks;
-
+#nullable enable
 namespace AutumnBox.OpenFramework.Implementation
 {
     [Component(Type = typeof(IUx))]
@@ -21,7 +21,7 @@ namespace AutumnBox.OpenFramework.Implementation
             this.sourceApi = baseApi;
         }
 
-        public bool DoYN(string message, string btnYes = null, string btnNo = null)
+        public bool DoYN(string message, string? btnYes = null, string? btnNo = null)
         {
             bool? result = false;
             RunOnUIThread(() =>
@@ -31,7 +31,7 @@ namespace AutumnBox.OpenFramework.Implementation
             return result == true;
         }
 
-        public ChoiceResult DoChoice(string message, string btnLeft = null, string btnRight = null, string btnCancel = null)
+        public ChoiceResult DoChoice(string message, string? btnLeft = null, string? btnRight = null, string? btnCancel = null)
         {
             ChoiceResult result = ChoiceResult.Cancel;
             RunOnUIThread(() =>

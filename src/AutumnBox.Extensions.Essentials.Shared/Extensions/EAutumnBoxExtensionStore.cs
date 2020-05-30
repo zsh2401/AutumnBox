@@ -12,7 +12,12 @@ namespace AutumnBox.Essentials.Extensions
         [LMain]
         public void EntryPoint()
         {
-            Process.Start(URL_EXTENSION_STORE);
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = URL_EXTENSION_STORE,
+                UseShellExecute = true
+            };
+            Process.Start(psi);
         }
     }
 }

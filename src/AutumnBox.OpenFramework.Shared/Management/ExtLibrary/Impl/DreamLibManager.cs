@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 
@@ -11,15 +13,29 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 {
     internal sealed class DreamLibManager : ILibsManager
     {
-        [AutoInject]
-        private IManagementObjectBuilder mObjBuilder { get; set; }
+        [AutoInject] IManagementObjectBuilder? MObjBuilder { get; set; }
 
         private const string PATTERN_DEFAULT = "*.dll";
         private const string PATTERN_ATMBEXT = "*.aext";
         private const string PATTERN_OEXT = "*.aoext";
 
-        public IEnumerable<ILibrarian> Librarians { get; private set; }
+        public event EventHandler? ExtensionRegistryModified;
 
+        public IEnumerable<ILibrarian> Librarians { get; private set; } = new ILibrarian[0];
+
+        public ICollection<IRegisteredExtensionInfo> ExtensionRegistry => InnerRegistry;
+        readonly ObservableCollection<IRegisteredExtensionInfo> InnerRegistry = new ObservableCollection<IRegisteredExtensionInfo>();
+
+        public DreamLibManager()
+        {
+            InnerRegistry.CollectionChanged += (s, e) =>
+            {
+                Task.Run(() =>
+                {
+                    ExtensionRegistryModified?.Invoke(this, new EventArgs());
+                });
+            };
+        }
         public void Reload()
         {
             Librarians = ReloadLibs(Check(GetLibManagers(GetAssemblies(GetFiles()))));
@@ -139,13 +155,14 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                     var libManagerTypes = (from type in assembly.GetTypes()
                                            where typeof(ILibrarian).IsAssignableFrom(type)
                                            select type);
+
                     if (libManagerTypes.Any())
                     {
-                        result.Add(mObjBuilder.BuildLibrarian(libManagerTypes.First()));
+                        result.Add(MObjBuilder!.BuildLibrarian(libManagerTypes.First()));
                     }
                     else
                     {
-                        result.Add(mObjBuilder.BuildLibrarian(assembly));
+                        result.Add(MObjBuilder!.BuildLibrarian(assembly));
                     }
                 }
                 catch (Exception e)

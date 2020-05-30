@@ -11,10 +11,6 @@ namespace AutumnBox.Essentials.Extensions
         public void EntryPoint(IAppManager appManager, IXCardsManager xCardsManager)
         {
             return;
-            appManager.RunOnUIThread(() =>
-            {
-                xCardsManager.Register(new AdCard());
-            });
         }
 
         private class AdCard : IXCard

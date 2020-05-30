@@ -14,8 +14,6 @@
 * ==============================================================================
 */
 using AutumnBox.GUI.Services.Impl.OS;
-using AutumnBox.Leafx.Container;
-using AutumnBox.Leafx.Container.Support;
 using System;
 using System.Linq;
 
@@ -26,34 +24,20 @@ namespace AutumnBox.GUI
         [STAThread]
         public static int Main(string[] args)
         {
-            if (!HandleArguments(args)) return 0;
-            var application = new App()
-            {
-                Lake = BuildLake()
-            };
-            application.InitializeComponent();
-            return application.Run();
+            ResolveArguments(args);
+            var app = new App();
+            app.InitializeComponent();
+            return app.Run();
         }
-        private static bool HandleArguments(string[] args)
+        private static void ResolveArguments(string[] args)
         {
             var process = OtherProcessChecker.ThereIsOtherAutumnBoxProcess();
             if (process != null && (!args.Contains("--wait")))
             {
                 NativeMethods.SetForegroundWindow(process.MainWindowHandle);
-                App.Current.Shutdown(0);
-                return false;
+                Environment.Exit(0);
             }
             process?.WaitForExit();
-            return true;
-        }
-        private static IRegisterableLake BuildLake()
-        {
-            SunsetLake lake = new SunsetLake();
-            new ClassComponentsLoader(
-            "AutumnBox.GUI.Services.Impl",
-            lake)
-            .Do();
-            return lake;
         }
     }
 }

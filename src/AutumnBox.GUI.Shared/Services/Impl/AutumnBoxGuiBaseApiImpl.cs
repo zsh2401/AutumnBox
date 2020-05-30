@@ -14,7 +14,7 @@ using AutumnBox.GUI.Util;
 using AutumnBox.Leafx.Container.Support;
 using System.Threading.Tasks;
 using System.IO;
-using AutumnBox.GUI.Views.Windows;
+using System.Collections.Generic;
 
 namespace AutumnBox.GUI.Services.Impl
 {
@@ -27,6 +27,10 @@ namespace AutumnBox.GUI.Services.Impl
             get
             {
                 return this.GetComponent<IAdbDevicesManager>().SelectedDevice;
+            }
+            set
+            {
+                this.GetComponent<IAdbDevicesManager>().SelectedDevice = value;
             }
         }
 
@@ -55,6 +59,8 @@ namespace AutumnBox.GUI.Services.Impl
         public DirectoryInfo StorageDirectory => this.GetComponent<IStorageManager>().StorageDirectory;
 
         public DirectoryInfo TempDirectory => this.GetComponent<IStorageManager>().CacheDirectory;
+
+        public IEnumerable<IDevice> ConnectedDevices => this.GetComponent<IAdbDevicesManager>().ConnectedDevices;
 
         public void ShowDebugUI()
         {
@@ -127,11 +133,31 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 LanguageChanged?.Invoke(this, new EventArgs());
             };
+            this.GetComponent<IAdbDevicesManager>().ConnectedDevicesChanged += (s, e) =>
+            {
+                try
+                {
+                    this.ConnectedDeviceChanged?.Invoke(this, new EventArgs());
+                }
+                catch { }
+            };
+            this.GetComponent<IAdbDevicesManager>().DeviceSelectionChanged += (s, e) =>
+            {
+                try
+                {
+                    this.SelectedDeviceChanged?.Invoke(this, new EventArgs());
+                }
+                catch { }
+            };
         }
 
-        private static LoadingWindow loadingWindow;
+        private static LoadingWindow? loadingWindow;
 
-        public event EventHandler LanguageChanged;
+        public event EventHandler? LanguageChanged;
+
+        public event EventHandler? SelectedDeviceChanged;
+
+        public event EventHandler? ConnectedDeviceChanged;
 
         public event EventHandler Destorying
         {

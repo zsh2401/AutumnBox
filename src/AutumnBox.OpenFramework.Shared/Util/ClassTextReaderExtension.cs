@@ -1,6 +1,7 @@
 ﻿using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Open;
 
+#nullable enable
 namespace AutumnBox.Leafx.Enhancement.ClassTextKit
 {
     /// <summary>
@@ -8,6 +9,16 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
     /// </summary>
     public static class ClassTextReaderExtension
     {
+        static IAppManager AppManagerCache
+        {
+            get
+            {
+                _appManager ??= LakeProvider.Lake.Get<IAppManager>();
+                return _appManager;
+            }
+        }
+        static IAppManager? _appManager;
+
         /// <summary>
         /// 根据OpenFx当前的语言环境获取对应区域的类文本值
         /// </summary>
@@ -18,8 +29,7 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         {
             try
             {
-                var appManager = LakeProvider.Lake.Get<IAppManager>();
-                return reader.Get(key, appManager.CurrentLanguageCode);
+                return reader.Get(key, AppManagerCache.CurrentLanguageCode);
             }
             catch
             {

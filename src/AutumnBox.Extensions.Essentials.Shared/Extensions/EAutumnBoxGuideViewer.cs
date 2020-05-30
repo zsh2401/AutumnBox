@@ -13,7 +13,12 @@ namespace AutumnBox.Essentials.Extensions
         [LMain]
         public void EntryPoint(string path = "")
         {
-            Process.Start(Path.Combine(URL_GUIDE, path));
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = Path.Combine(URL_GUIDE, path),
+                UseShellExecute = true
+            };
+            Process.Start(psi);
         }
     }
 }

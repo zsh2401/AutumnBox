@@ -23,6 +23,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\NotificationObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Program.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\IAcrylicHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IAdbDevicesManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IAppLifecycleManager.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Util\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\FatalHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AbstractAppLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AppLoaderExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AppLoaderFailedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\AppLoadingException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\Loader\GeneralAppLoader.cs" />
@@ -204,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)App.config" />
+    <None Include="$(MSBuildThisFileDirectory)Properties\app.manifest" />
     <None Include="$(MSBuildThisFileDirectory)Services\Impl\Acrylic\README.md" />
   </ItemGroup>
   <ItemGroup>

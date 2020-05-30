@@ -19,6 +19,7 @@ using AutumnBox.OpenFramework.Open;
 using System;
 using System.Collections.Generic;
 
+#nullable enable
 namespace AutumnBox.OpenFramework.Implementation
 {
     [Component(Type = typeof(IXCardsManager))]
@@ -36,7 +37,7 @@ namespace AutumnBox.OpenFramework.Implementation
             });
         }
 
-        private void AutumnBoxDestorying(object sender, EventArgs e)
+        private void AutumnBoxDestorying(object? sender, EventArgs e)
         {
             cards.ForEach(card => Unregister(card));
         }

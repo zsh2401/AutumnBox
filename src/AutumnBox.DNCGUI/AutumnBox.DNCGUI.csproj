@@ -8,6 +8,11 @@
     <StartupObject>AutumnBox.GUI.Program</StartupObject>
     <AssemblyName>AutumnBox.GUI</AssemblyName>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
+    <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
+    <Version>2020.5.30</Version>
+    <AssemblyVersion>2020.5.30.0</AssemblyVersion>
+    <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,6 +23,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
     <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE CANARY</DefineConstants>
+    <OutputPath />
   </PropertyGroup>
 
   <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
@@ -99,8 +109,8 @@
     </Page>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy $(ProjectDir)..\..\adb_binary $(ProjectDir)$(OutDir)\adb_binary\ /e /d /y" />
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="powershell $(ProjectDir)afterbuild.ps1 $(TargetDir) $(ConfigurationName)" />
   </Target>
 
 </Project>

@@ -15,6 +15,7 @@
     <Deterministic>true</Deterministic>
     <LangVersion>8.0</LangVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,7 +37,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\dist\debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET45 USE_NT_JSON WIN32 NETFX</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET45 USE_NT_JSON NETFX WIN32</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -46,7 +46,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\dist\release\</OutputPath>
-    <DefineConstants>TRACE;NET45 USE_NT_JSON WIN32 NETFX</DefineConstants>
+    <DefineConstants>TRACE;NET45 USE_NT_JSON NETFX WIN32</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -54,10 +54,21 @@
     <StartupObject>AutumnBox.GUI.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Canary|AnyCPU'">
+    <OutputPath>bin\Canary\</OutputPath>
+    <DefineConstants>TRACE;NET45 USE_NT_JSON NETFX WIN32</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>8.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HandyControl, Version=2.5.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -89,13 +100,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Resources\Languages\Lang.cs" />
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Properties\app.manifest" />
+    <None Include="postbuild.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\CommonResources.xaml">
@@ -145,7 +153,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
       <Project>{0842a8fd-44c3-4423-9dde-488cb3706ed0}</Project>
@@ -162,6 +172,10 @@
   <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(ProjectDir)..\..\adb_binary $(ProjectDir)$(OutDir)\adb_binary\ /e /d /y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>powershell $(ProjectDir)postbuild.ps1 $(ProjectDir)$(OutDir)</PreBuildEvent>
   </PropertyGroup>
 </Project>

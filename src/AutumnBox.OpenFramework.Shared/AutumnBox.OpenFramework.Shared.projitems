@@ -26,7 +26,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\Attribute\RunnableCheckArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\AutumnBoxExtension.Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\StatusMessages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implementation\OpenFxManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionProcedure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Management\RegisteredExtensionInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IStorageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ClassTextReaderExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extension\EmptyExtension.cs" />

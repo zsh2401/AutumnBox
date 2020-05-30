@@ -15,9 +15,11 @@ using AutumnBox.GUI.Resources.Languages;
 using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Services.Impl.OS;
 using AutumnBox.GUI.Util;
+using AutumnBox.GUI.Util.Loader;
 using AutumnBox.Leafx;
 using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.Container.Support;
+using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -33,6 +35,22 @@ namespace AutumnBox.GUI
     public partial class App : Application
     {
         /// <summary>
+        /// AppLoader被创建了
+        /// </summary>
+        internal event EventHandler<AppLoaderCreatedEventArgs> AppLoaderCreated;
+        /// <summary>
+        /// AppLoader创建事件
+        /// </summary>
+        internal class AppLoaderCreatedEventArgs : EventArgs
+        {
+            public AppLoaderCreatedEventArgs(AbstractAppLoader appLoader)
+            {
+                AppLoader = appLoader ?? throw new ArgumentNullException(nameof(appLoader));
+            }
+
+            public AbstractAppLoader AppLoader { get; }
+        }
+        /// <summary>
         /// 构造应用
         /// </summary>
         public App() : base()
@@ -44,7 +62,7 @@ namespace AutumnBox.GUI
         /// <summary>
         /// 获取全局湖对象
         /// </summary>
-        public IRegisterableLake Lake { get; set; }
+        public IRegisterableLake Lake { get; private set; }
 
         /// <summary>
         /// 获取当前的应用
@@ -53,6 +71,7 @@ namespace AutumnBox.GUI
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
 #if DEBUG && STRICT_CHECK
             if (!Lang.FileCheck())
             {
@@ -62,10 +81,23 @@ namespace AutumnBox.GUI
                 Shutdown(1);
             }
 #endif
+            Lake = new SunsetLake();
+            ScanComponents();
             this.GetComponent<IThemeManager>().Reload();
-            base.OnStartup(e);
         }
 
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            var appLoader = new GeneralAppLoader();
+            AppLoaderCreated?.Invoke(this, new AppLoaderCreatedEventArgs(appLoader));
+            _ = appLoader.LoadAsync();
+        }
+        private void ScanComponents()
+        {
+            new ClassComponentsLoader(
+            "AutumnBox.GUI.Services.Impl", Lake).Do();
+        }
         protected override void OnExit(ExitEventArgs e)
         {
             AppUnloader.Unload();

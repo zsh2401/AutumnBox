@@ -16,32 +16,36 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.Leafx.Container.Support;
+using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open.ADBKit;
 using System;
+using System.Linq;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
     [Component(Type = typeof(IDeviceManager))]
     class DeviceManager : IDeviceManager
     {
-
-        private readonly IBaseApi baseApi;
-
+        readonly IBaseApi baseApi;
         public DeviceManager(IBaseApi baseApi)
         {
-            if (baseApi is null)
-            {
-                throw new ArgumentNullException(nameof(baseApi));
-            }
-
             this.baseApi = baseApi;
+            baseApi.SelectedDeviceChanged += (s, e) =>
+            {
+                this.SelectedDeviceChanged?.Invoke(this, new EventArgs());
+            };
+            baseApi.ConnectedDeviceChanged += (s, e) =>
+            {
+                this.DevicesChanged?.Invoke(this, new DevicesChangedEventArgs(ConnectedDevices));
+            };
         }
-        public IDevice Selected { get => baseApi.SelectedDevice; set => throw new NotImplementedException(); }
 
-        public IDevice[] ConnectedDevices => throw new NotImplementedException();
+        public IDevice Selected { get => baseApi!.SelectedDevice; set => baseApi!.SelectedDevice = value; }
 
-        public event DevicesChangedHandler DevicesChanged;
-        public event EventHandler SelectedDeviceChanged;
+        public IDevice[] ConnectedDevices => baseApi!.ConnectedDevices.ToArray();
+
+        public event DevicesChangedHandler? DevicesChanged;
+        public event EventHandler? SelectedDeviceChanged;
     }
 }

@@ -5,6 +5,7 @@
     <AssemblyName>AutumnBox.Extensions.DNCEssentials</AssemblyName>
     <RootNamespace>AutumnBox.Extensions.Essentials</RootNamespace>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,8 +16,14 @@
     <OutputPath></OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
+    <OutputPath />
+  </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.STDCore\AutumnBox.STDCore.csproj" />
+    <ProjectReference Include="..\AutumnBox.STDCore\AutumnBox.STDCore.csproj">
+      <Private>false</Private>
+    </ProjectReference>
   </ItemGroup>
 
   <Import Project="..\AutumnBox.Extensions.Essentials.Shared\AutumnBox.Extensions.Essentials.Shared.projitems" Label="Shared" />
