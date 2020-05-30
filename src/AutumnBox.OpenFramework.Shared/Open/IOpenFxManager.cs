@@ -33,12 +33,13 @@ namespace AutumnBox.OpenFramework.Open
         /// <summary>
         /// 获取所有库管理器
         /// </summary>
-        List<ILibrarian> Librarians { get; }
+        IEnumerable<ILibrarian> Librarians { get; }
 
         /// <summary>
         /// 获取库管理器
         /// </summary>
-        ILibrarian LibrarianOf(object context);
+        /// <returns>未找到时返回NULL</returns>
+        ILibrarian LibrarianOf(object extensionInstance);
 
         /// <summary>
         /// 当拓展列表发生变动时触发

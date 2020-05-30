@@ -3,6 +3,7 @@
 ** date:  2018/8/1 0:58:55 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
@@ -59,6 +60,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 return GetType().Assembly.GetName().Version;
             }
         }
+
         /// <summary>
         /// 拓展模块
         /// </summary>
@@ -81,11 +83,14 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             SLogger.Info(GetType().Name, $"librarian {Name} 's ready");
         }
 
+        bool loaded = false;
         /// <summary>
         /// 重载内部信息
         /// </summary>
         public virtual void Reload()
         {
+            if (loaded) return;//不可变
+
             if (ManagedAssembly == null)
             {
                 throw new NullReferenceException("ManagedAssembly must be setted");
@@ -93,6 +98,12 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             Extensions = from type in ManagedAssembly.GetTypes()
                          where IsExt(type)
                          select CreateExtensionInfo(type);
+            foreach (var ext in Extensions)
+            {
+                var rext = new RegisteredExtensionInfo(ext, this);
+                LakeProvider.Lake.Get<ILibsManager>().ExtensionRegistry.Add(rext);
+            }
+            loaded = true;
         }
 
         /// <summary>
@@ -126,11 +137,9 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             SLogger.Info(this, $"librarian {Name}'s destorying");
         }
 
-        [AutoInject]
-        IAppManager appManager;
+        [AutoInject] IAppManager appManager;
 
-        [AutoInject]
-        INotificationManager notificationManager;
+        [AutoInject] INotificationManager notificationManager;
 
         /// <summary>
         /// <inheritdoc/>

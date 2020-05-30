@@ -32,14 +32,11 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
 
         private readonly Dictionary<string, TaskInfo> taskInfos = new Dictionary<string, TaskInfo>();
 
-        [AutoInject]
-        private ILibsManager? libsManager;
+        [AutoInject] ILibsManager? libsManager;
 
-        [AutoInject]
-        private ILake? lake;
+        [AutoInject] ILake? lake;
 
-        [AutoInject]
-        private IDeviceManager? deviceManager;
+        [AutoInject] IDeviceManager? deviceManager;
 
         public IExtensionInfo GetExtensionByTask(Task<object?> task)
         {
@@ -78,9 +75,9 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             {
                 throw new InvalidOperationException("Librarian has not been inject to here!");
             }
-            var types = (from inf in libsManager.GetAllExtensions()
-                         where inf.Id == id
-                         select inf);
+            var types = (from rext in libsManager.ExtensionRegistry
+                         where rext.ExtensionInfo.Id == id
+                         select rext.ExtensionInfo);
             if (types.Any())
             {
                 return types.First();

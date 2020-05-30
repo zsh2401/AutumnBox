@@ -18,7 +18,7 @@ function Write-Green($message) {
     Write-Output $message
     [System.Console]::ResetColor()
 }
-function Init-Canary(){
+function Initialize-Canary(){
     if($CanaryDir.Exists){
         Write-Green $CanaryDir.FullName;
         $CanaryDir.Delete($true)
@@ -26,7 +26,7 @@ function Init-Canary(){
     [System.IO.Directory]::CreateDirectory($CanaryPath)
 }
 
-Init-Canary
+Initialize-Canary
 
 #Build
 Write-Green "Restoring dependencies"

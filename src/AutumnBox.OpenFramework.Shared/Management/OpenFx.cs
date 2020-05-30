@@ -87,6 +87,7 @@ namespace AutumnBox.OpenFramework.Management
             Lake.RegisterSingleton<INotificationManager, NotificationManager>();
             Lake.RegisterSingleton<IXCardsManager, XCardsManager>();
             Lake.RegisterSingleton<IStorageManager, StorageManager>();
+            Lake.RegisterSingleton<IOpenFxManager, OpenFxManagerImpl>();
             SLogger.Info(nameof(OpenFx), "Open API components are registered");
 
             //一些特殊的实时构建组件
