@@ -9,8 +9,8 @@
     <AssemblyName>AutumnBox.GUI</AssemblyName>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
-    <Version>2020.5.27</Version>
-    <AssemblyVersion>2020.5.27.3</AssemblyVersion>
+    <Version>2020.5.30</Version>
+    <AssemblyVersion>2020.5.30.0</AssemblyVersion>
     <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
     <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
