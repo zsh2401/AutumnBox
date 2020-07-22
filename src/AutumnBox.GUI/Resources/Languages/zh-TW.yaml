@@ -1,0 +1,276 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xml:space="preserve"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="App.Name">秋之盒</s:String>
+     <s:String x:Key="App.LoadingName">AutumnBox 2020.5-DEV</s:String>
+    <s:String x:Key="App.NameWithVersion">秋之盒 2020.5-DEV</s:String>
+    
+
+    <s:String x:Key="App.Slogan">開源,易用,免費的圖形化ADB工具箱</s:String>
+     <s:String x:Key="TitleSuffixAdmin">[管理員模式]</s:String>
+    
+    <s:String x:Key="Menu.File">檔案(_F)</s:String>
+     <s:String x:Key="Menu.Restart">重新啟動秋之盒(_R)</s:String>
+    <s:String x:Key="Menu.LoggingWindow">日誌視窗(_D)</s:String>
+    <s:String x:Key="Menu.Exit">退出(_X)</s:String>
+     <s:String x:Key="Menu.Edit">編輯(_E)</s:String>
+    <s:String x:Key="Menu.Settings">設定(_S)</s:String>
+    <s:String x:Key="Menu.Terminatal">命令列(_C)</s:String>
+    <s:String x:Key="Menu.CMD">ADB命令列(_V)</s:String>
+    <s:String x:Key="Menu.PS">ADB命令列-Powershell(_B)</s:String>
+    <s:String x:Key="Menu.Help">幫助(_H)</s:String>
+    <s:String x:Key="Menu.Guide">說明書(_G)</s:String>
+    <s:String x:Key="Menu.OpenSource">開源相關(_O)</s:String>
+    <s:String x:Key="Menu.About">關於秋之盒(_A)</s:String>
+    <s:String x:Key="Menu.CheckUpdate">檢測更新</s:String>
+     <s:String x:Key="Menu.Extension">拓展模組(_X)</s:String>
+     <s:String x:Key="Menu.InstallExtension">安裝拓展模組(_I)</s:String>
+    <s:String x:Key="Menu.Libs">已安裝模組資訊(_V)</s:String>
+     <s:String x:Key="Menu.Donate">捐贈(_N)</s:String>
+    <s:String x:Key="Menu.ExtensionHelp">如何安裝拓展模組?(_H)</s:String>
+   <s:String x:Key="Menu.Debug">除錯(_D)</s:String>
+    <s:String x:Key="Menu.DevDocs">秋之盒模組開發文件(_D)</s:String>
+     <s:String x:Key="Menu.OpenExtFloder">開啟拓展模組資料夾(_O)</s:String>
+    <s:String x:Key="Menu.DlExt">下載拓展模組(_D)</s:String>
+    <s:String x:Key="Menu.OfficialWebsite">官網(_W)</s:String>
+   <s:String x:Key="Menu.ShowLoggingWindowNextTime">下次啟動顯示日誌視窗</s:String>
+       <s:String x:Key="Menu.DebugMode">除錯模式</s:String>
+        <s:String x:Key="Menu.RefreshHome">重新整理主頁</s:String>
+    
+      <s:String x:Key="StatusBar.Port">埠</s:String>
+      <s:String x:Key="StatusBar.AdbVersion">ADB版本</s:String>
+    <s:String x:Key="StatusBar.Mode">執行模式</s:String>
+    <s:String x:Key="StatusBar.Mode.RunAsUser">秋之盒目前以&lt;使用者&gt;許可權執行</s:String>
+     <s:String x:Key="StatusBar.Mode.RunAsAdmin">秋之盒目前以&lt;管理員&gt;許可權執行</s:String>
+    <s:String x:Key="StatusBar.Devices.Prev">監測中,已有</s:String>
+    <s:String x:Key="StatusBar.Devices.Suf">台裝置連線</s:String>
+     <s:String x:Key="StatusBar.RunningTask">個正在執行的工作</s:String>
+    
+    <s:String x:Key="DeviceBar.ConnectingHelp">如何連線裝置?</s:String>
+    
+    <s:String x:Key="StateNotRightTipFmt">該功能在裝置處於[{0}]狀態下時可用</s:String>
+    
+      <s:String x:Key="Dash.State.NoDevice">無裝置</s:String>
+      <s:String x:Key="Dash.State.Poweron">開機</s:String>
+     <s:String x:Key="Dash.State.Recovery">恢復模式</s:String>
+     <s:String x:Key="Dash.State.Fastboot">Fastboot</s:String>
+     <s:String x:Key="Dash.State.Sideload">Sideload</s:String>
+     <s:String x:Key="Dash.State.Unauthorized">未允許USB除錯</s:String>
+     <s:String x:Key="Dash.State.Offline">離線</s:String>
+    <s:String x:Key="Dash.State.Unknow">未知</s:String>
+    <s:String x:Key="Dash.CPU.Usage">處理器使用率</s:String>
+    <s:String x:Key="Dash.CPU.Core">處理器核心數目</s:String>
+    <s:String x:Key="Dash.Ram.Usage">記憶體使用率</s:String>
+    <s:String x:Key="Dash.Build.Brand">品牌</s:String>
+    <s:String x:Key="Dash.Build.Model">型號</s:String>
+    <s:String x:Key="Dash.Build.Code">代號</s:String>
+    <s:String x:Key="Dash.Build.AndroidVersion">Android 版本</s:String>
+    <s:String x:Key="Dash.Build.Pixel">解析度</s:String>
+    <s:String x:Key="Dash.Battery.Level">電量</s:String>
+    <s:String x:Key="Dash.Battery.Charging">充電狀態</s:String>
+    <s:String x:Key="Dash.Battery.Voltage">電池電壓</s:String>
+    <s:String x:Key="Dash.Battery.Temperature">電池溫度</s:String>
+    <s:String x:Key="Dash.Boot.LastTime">上次重新啟動</s:String>
+    <s:String x:Key="Dash.Boot.Time">開機時間</s:String>
+
+    <s:String x:Key="Version.AutumnBox">秋之盒版本</s:String>
+    <s:String x:Key="Version.Basic">ADB互動模組</s:String>
+    <s:String x:Key="Version.OpenFx">SDK</s:String>
+    <s:String x:Key="Version.ADB">ADB</s:String>
+    
+    <s:String x:Key="Version.OS">作業系統</s:String>
+    <s:String x:Key="Version.Net">.NET Core</s:String>
+    
+   <s:String x:Key="QQGroup">QQ群組</s:String>
+   <s:String x:Key="EMail">電子郵件</s:String>
+    <s:String x:Key="OpenSource">開放原始碼</s:String>
+    
+    <s:String x:Key="UserLicense.Name">秋之盒使用協議 1.0</s:String>
+    <s:String x:Key="UserLicense.Content">本協議仍然在編寫當中,最終解釋權歸zsh2401所有
+歡迎您使用秋之盒-AutumnBox(下稱本軟體)。
+秋之盒基於LGPL3.0協議,並新增以下條例作為使用者協議
+如果你點選下一步,則視為同意
+
+請您仔細閱讀以下條款，如果您對本協議的任何條款表示異議，您可以選擇退出秋之盒。
+當您同意本條款並開始使用秋之盒，意味著您（即「使用者」）完全接受本協議項下的全部條款。
+本協議基於基於LGPL3.0,新增以下額外條例
+        
+責任相關:
+        1.本軟體不會惡意攻擊您的任何裝置(計算機,手機等)
+        2.因BUG或其它意外造成的損失,本軟體不對此負責
+        3.本軟體開發者沒有義務手把手教導使用者
+        4.本軟體基於LGPL3.0開源協議,任何使用者修改原始碼都必須進行開源
+隱私:
+        本軟體為進行使用者統計,在執行時會匿名傳送您的計算機簡要資訊與位置資訊,但絕不涉及任何敏感隱私,具體可自行參考有關原始碼
+協議修改:
+        1.本協議並不完善,秋之盒有權在必要時對本協議進行修改,任何修改都會立刻公開展示
+        2.無論使用的秋之盒是什麼版本,使用者都需要遵守最新版本使用者協議
+        3.如果對本協議修改不滿,使用者應該立刻停止使用任何版本的本軟體
+    </s:String>
+ <s:String x:Key="BtnOpenSourceLisence">開源協議</s:String>
+    
+    <s:String x:Key="Guide.TitleSettings">一些設定</s:String>
+    <s:String x:Key="Guide.TitleLast">最後,有些東西需要你記住</s:String>
+    <s:String x:Key="Guide.OfficialWebsite">官網:</s:String>
+    <s:String x:Key="Guide.LinkOfficialWebsite">https://www.atmb.top</s:String>
+    <s:String x:Key="Guide.OfficialManual">說明書:</s:String>
+    <s:String x:Key="Guide.LinkOfficialManual">https://www.atmb.top/help</s:String>
+    <s:String x:Key="Guide.QQGroup">QQ群: 246177486</s:String>
+    <s:String x:Key="Guide.Contact">聯絡開發者: zsh2401@163.com</s:String>
+     <s:String x:Key="Guide.BtnPrev">上一步</s:String>
+    <s:String x:Key="Guide.BtnNext">下一步</s:String>
+      <s:String x:Key="Guide.BtnFinish">完成</s:String>
+    <s:String x:Key="Guide.BtnCancel">取消</s:String>
+    
+    <s:String x:Key="SignalSelectViewHint">選一個並單擊! ^_^</s:String>
+     <s:String x:Key="SignalSelectViewCancel">取消</s:String>
+    
+     <!--LibsWindow-->
+    <s:String x:Key="LibsWindow.Title">已載入的拓展模組庫</s:String>
+    
+     <!--Settings-->
+     <s:String x:Key="Settings.Title">設定</s:String>
+        <s:String x:Key="Settings.Theme">主題</s:String>
+      <s:String x:Key="Settings.ThemeLight">亮色</s:String>
+      <s:String x:Key="Settings.ThemeDark">暗色</s:String>
+      <s:String x:Key="Settings.ThemeAuto">自動</s:String>
+     <s:String x:Key="Settings.Ux">互動</s:String>
+    <s:String x:Key="Settings.Sounds">音效</s:String>
+    <s:String x:Key="Settings.SoundsTip">例如功能結束時的音效，但這需要該功能支援</s:String>
+    <s:String x:Key="Settings.Cmd">命令列</s:String>
+    <s:String x:Key="Settings.EnvVarCmdWindow">帶有全域性變數的命令列</s:String>
+    <s:String x:Key="Settings.EnvVarCmdWindowTip">這樣,無論你在命令列中去到哪裡,都可以使用秋之盒的ADB程式</s:String>
+    <s:String x:Key="Settings.CmdAtDesktop">在桌面啟動命令列</s:String>
+    <s:String x:Key="Settings.CmdAtDesktopTip">啟動命令列後,路徑在桌面</s:String>
+    <s:String x:Key="Settings.Language">語言</s:String>
+    <s:String x:Key="Settings.Debug">除錯</s:String>
+    <s:String x:Key="Settings.CreateDebugWindow">顯示除錯視窗</s:String>
+    <s:String x:Key="Settings.LaunchDebugWindowOnNextLaunch">在下次啟動時顯示除錯視窗</s:String>
+    <s:String x:Key="Settings.LaunchDebugWindowOnNextLaunchTip">這是給開發者準備的</s:String>
+    <s:String x:Key="Settings.DeveloperMode">秋之盒除錯模式</s:String>
+    <s:String x:Key="Settings.DeveloperModeTip">Logger.Debug()將可使用,開發中模組也會展示</s:String>
+    <s:String x:Key="Settings.DisplayCmdWindow">顯示命令列視窗</s:String>
+    <s:String x:Key="Settings.DisplayCmdWindowTip">或許你可以通過這個來排查某些疑難雜症,僅在部分情況下支援</s:String>
+    
+    <s:String x:Key="ExtensionsFinder.StateNotCorrectWarning">裝置狀態不正確</s:String>
+    
+    <s:String x:Key="DeviceState.Poweron">開機</s:String>
+    <s:String x:Key="DeviceState.Recovery">恢復模式</s:String>
+    <s:String x:Key="DeviceState.Sideload">Sideload</s:String>
+    <s:String x:Key="DeviceState.Fastboot">Fastboot</s:String>
+    <s:String x:Key="DeviceState.Unknown">未知狀態</s:String>
+    <s:String x:Key="DeviceState.Unauthorized">未授權USB除錯</s:String>
+    <s:String x:Key="DeviceState.Offline">異常離線</s:String>
+        
+    <!--OpenFx-->
+     <s:String x:Key="OpenFxBtnYes">好</s:String>
+     <s:String x:Key="OpenFxBtnNo">取消</s:String>
+    <s:String x:Key="OpenFxExceptionMsgTitleFmt">{0} 發生了錯誤</s:String>
+    <s:String x:Key="OpenFxExceptionSketch">或許,你可以嘗試複製下面的資訊以尋求幫助</s:String>
+    <s:String x:Key="OpenFxTitleError">錯誤</s:String>
+    <s:String x:Key="OpenFxTitleWarning">警告</s:String>
+    <s:String x:Key="OpenFxCantRunMore">此模組已經在執行，你無法多開</s:String>
+    <s:String x:Key="OpenFxTitleMessage">資訊</s:String>
+    <s:String x:Key="OpenFxWrapperException">錯誤：無法建立例項，請檢視log</s:String>
+     <s:String x:Key="OpenFxCantCreateInstance">錯誤：無法建立例項，請檢視log</s:String>
+     <s:String x:Key="OpenFxInstallAppFirst">請先安裝相關應用程式</s:String>
+     <s:String x:Key="OpenFxInstallBtnIgnore">強制繼續!</s:String>
+    <s:String x:Key="OpenFxInstallBtnOk">好吧</s:String>
+    <s:String x:Key="OpenFxNoRoot">這個功能依賴於root，但你的裝置沒有root許可權！請檢查裝置</s:String>
+     <s:String x:Key="OpenFxNoRootIgnore">忽略並繼續</s:String>
+    <s:String x:Key="OpenFxExtensionFailed">功能/模組在執行時遇到嚴重異常，詳情檢視日誌</s:String>
+    <s:String x:Key="OpenFxNeedAdminPermission">此模組需要管理員許可權,是否將秋之盒重啟到管理員模式</s:String>
+    <s:String x:Key="OpenFxLowAndroidVersionFmt">此模組要求 Android 版本為{0},而您的裝置並沒有達到此標準</s:String>
+    <s:String x:Key="OpenFxLowAndroidBtnIgnore">忽略並繼續</s:String>
+    <s:String x:Key="OpenFxLowAndroidBtnCancel">取消</s:String>
+    <s:String x:Key="OpenFxLowAndroidBtnOk">好吧</s:String>
+    <s:String x:Key="OpenFxOverhighAndroidVersionFmt">您的裝置安卓版本太高了,此模組僅支援{0}以下的 Android 版本</s:String>
+    
+    <s:String x:Key="More.Link.Title">更多常用連結</s:String>
+    <s:String x:Key="More.Link.Text.AICP">AICP-ROM</s:String>
+    <s:String x:Key="More.Link.Text.RR">RR-ROM</s:String>
+    <s:String x:Key="More.Link.Text.Gapps">Open-Gapps</s:String>
+    <s:String x:Key="More.Link.Text.MiuiLineFlash">MIUI線刷包</s:String>
+    <s:String x:Key="More.Link.Text.DownloadMiFlash">下載MiFlash工具</s:String>
+    <s:String x:Key="More.Link.Text.MiuiBBS">MIUI論壇</s:String>
+    <s:String x:Key="More.Link.Text.MIUI">MIUI官網</s:String>
+    <s:String x:Key="More.Link.Text.Mokee">下載魔趣ROM</s:String>
+    <s:String x:Key="More.Link.Text.MokeeBBS">魔趣論壇</s:String>
+    <s:String x:Key="More.Link.Text.MtBBS">MT論壇</s:String>
+    <s:String x:Key="More.Link.Text.LineageOS">LineageOS</s:String>
+    <s:String x:Key="More.Link.Text.Coolapk">酷安網</s:String>
+    <s:String x:Key="More.Link.Text.OpenSourceLinks">感謝為開源做出貢獻的人們(相關開源專案)</s:String>
+    <s:String x:Key="More.Link.Text.AutumnBox">秋之盒</s:String>
+    <s:String x:Key="More.Link.Text.Island">Island</s:String>
+    <s:String x:Key="More.Link.Text.Magisk">Magisk</s:String>
+    <s:String x:Key="More.Link.Text.TeamWin">TeamWin</s:String>
+    <s:String x:Key="More.Link.Tip.TeamWin">知道TWRP嗎?</s:String>
+    <s:String x:Key="More.Link.Text.BilibiliDM">bilibili彈幕姬</s:String>
+    <s:String x:Key="More.Link.Tip.BilibiliDM">秋之盒的開發中,參考了許多該開源專案的程式碼</s:String>
+    <s:String x:Key="More.Link.Text.awesome-adb">awesome-adb</s:String>
+    <s:String x:Key="More.Link.Tip.awesome-adb">秋之盒中的許多adb命令是從這裡參考來的</s:String>
+    <s:String x:Key="More.Link.Text.AppOpsX">App Ops X</s:String>
+    <s:String x:Key="More.Link.Text.ShizukuManager">Shizuku Manager</s:String>
+    <s:String x:Key="More.Link.Text.Ice-Box-Docs">冰箱線上文件</s:String>
+    <s:String x:Key="More.Link.Text.NewtonsoftJson">Newtonsoft.Json</s:String>
+    <s:String x:Key="More.Link.Tip.NewtonsoftJson">Newtonsoft.Json是秋之盒的Json庫,同時也是最著名而好用的.NET平台Json庫</s:String>
+    <s:String x:Key="More.Link.Text.TWRP">TWRP</s:String>
+    <s:String x:Key="More.Link.Text.Linux">Linux</s:String>
+    <s:String x:Key="More.Link.Text.DpmBox">Dpm Box</s:String>
+     <s:String x:Key="More.Link.Text.WebsiteOfficial">秋之盒官網開源</s:String>
+    
+    <!--OpenSourceWindow-->
+    <s:String x:Key="OpenSource.Title">開源</s:String>
+    <s:String x:Key="OpenSource.Description">  秋之盒現以LGPL3.0 (寬鬆的GNU公共協議)開源,請在必要時遵守開源協議
+        如果可以的話,希望能夠給專案一個 Star,這是對我開原始碼的認可</s:String>
+    <s:String x:Key="OpenSource.AtmbRepo">秋之盒倉庫</s:String>
+    <s:String x:Key="OpenSource.OfficialWebisteRepo">官網倉庫</s:String>
+    
+    <!--ChoiceWindow-->
+    <s:String x:Key="ChoiceWindowBtnCancel">取消</s:String>
+    <s:String x:Key="ChoiceWindowBtnYes">好</s:String>
+    <s:String x:Key="ChoiceWindowBtnNo">不</s:String>
+      <s:String x:Key="ChoiceWindowBtnAgree">同意</s:String>
+    <s:String x:Key="ChoiceWindowBtnDisagree">不同意</s:String>
+    
+    <!--LoadingWindow-->
+     <s:String x:Key="LoadingWindowMessage">請耐心等待 :)</s:String>
+    
+        <s:String x:Key="Uni.Copy">複製</s:String>
+    
+<!--LeafWindow-->
+    <s:String x:Key="LeafUITipRunning">執行中</s:String>
+    <s:String x:Key="LeafUICannotStop">這個模組無法中途停止</s:String>
+    <s:String x:Key="LeafUIBtnCopy">複製輸出資訊</s:String>
+    <s:String x:Key="LeafUIBtnTip">這些輸出資訊可以用於更好的解決你的問題</s:String>
+    <s:String x:Key="LeafUIEnableFullContentTip">顯示進階輸出資訊</s:String>
+    <s:String x:Key="LeafUITipCodeUnknown">結束</s:String>
+    <s:String x:Key="LeafUITipCode0">成功</s:String>
+    <s:String x:Key="LeafUITipCode-1">失敗</s:String>
+    <s:String x:Key="LeafUITipCode-2">發生了嚴重異常</s:String>
+    <s:String x:Key="LeafUITipCode-3">被使用者強制終止</s:String>
+    <s:String x:Key="LeafUITipCode-4">模組執行時被終止</s:String>
+    <s:String x:Key="LeafUITipUnknow">非正常結束</s:String>
+    
+        <!--PanelDonte-->
+    <s:String x:Key="Donate.PayPal">使用PayPal進行捐贈</s:String>
+     <s:String x:Key="Donate.Page">捐贈名單</s:String>
+    <s:String x:Key="Donate.Description">贈人玫瑰,手留餘香.
+    謝謝你對中國軟體生態做出的貢獻</s:String>
+    
+
+    
+    <!--關於資訊-->
+    <s:String x:Key="AboutMessage">秋之盒是一個ADB圖形化工具箱,讓你用最簡單的方式通過ADB對手機進行操作,幫助小白,方便老鳥
+秋之盒目前以LGPL3.0進行開源,安全,免費,值得信任,在必要時,也請您遵守開源協議
+鳴謝:
+MonoLogueChi,餅乾怪獸,hxy,yume,白瀛,web1n,咖枯,毛線沒有團團,my0402
+Newtonsoft.Json  | Google | Android | Linux | C# | Microsoft | HandyOrg 
+    </s:String>
+    <!--關於資訊-->
+
+    <s:String x:Key="Contact">聯絡開發者</s:String>
+    <s:String x:Key="Donate">捐贈開發者</s:String>
+    
+</ResourceDictionary>
