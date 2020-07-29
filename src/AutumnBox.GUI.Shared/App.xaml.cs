@@ -83,7 +83,7 @@ namespace AutumnBox.GUI
 #endif
             Lake = new SunsetLake();
             ScanComponents();
-            this.GetComponent<IThemeManager>().Reload();
+            //this.GetComponent<IThemeManager>().Initialize();
         }
 
         protected override void OnActivated(EventArgs e)

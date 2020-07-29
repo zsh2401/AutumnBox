@@ -28,8 +28,11 @@ namespace AutumnBox.GUI.Views.Windows
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        App.Current.MainWindow = new MainWindowV3();
-                        App.Current.MainWindow.Show();
+                        if (App.Current.MainWindow.GetType() != typeof(MainWindowV3))
+                        {
+                            App.Current.MainWindow = new MainWindowV3();
+                            App.Current.MainWindow.Show();
+                        }
                         Close();
                     });
                 };
@@ -44,18 +47,21 @@ namespace AutumnBox.GUI.Views.Windows
         {
             public static void Show(Window ownerWindow, AppLoadingException e)
             {
-                var classTextReader = new ClassTextReader(typeof(ErrorMessageBox));//不使用缓存
-                string error_message_fmt = classTextReader["err_msg_fmt"];
-                string error_message = string.Format(error_message_fmt, e.StepName, e.InnerException.InnerException.GetType().Name);
-                string error_title = classTextReader["err_title"];
-                if (MessageBox.Show(ownerWindow,
-                    error_message,
-                    error_title,
-                    MessageBoxButton.YesNoCancel,
-                    MessageBoxImage.Error) == MessageBoxResult.Yes)
+                ownerWindow.Dispatcher.Invoke(() =>
                 {
-                    try { Clipboard.SetText($"step name:{e.StepName}\nexception: {e.InnerException.InnerException}"); } catch { }
-                }
+                    var classTextReader = new ClassTextReader(typeof(ErrorMessageBox));//不使用缓存
+                    string error_message_fmt = classTextReader["err_msg_fmt"];
+                    string error_message = string.Format(error_message_fmt, e.StepName, e.InnerException.InnerException.GetType().Name);
+                    string error_title = classTextReader["err_title"];
+                    if (MessageBox.Show(ownerWindow,
+                        error_message,
+                        error_title,
+                        MessageBoxButton.YesNoCancel,
+                        MessageBoxImage.Error) == MessageBoxResult.Yes)
+                    {
+                        try { Clipboard.SetText($"step name:{e.StepName}\nexception: {e.InnerException.InnerException}"); } catch { }
+                    }
+                });
             }
         }
     }

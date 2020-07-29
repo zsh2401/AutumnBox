@@ -16,6 +16,7 @@
 using AutumnBox.GUI.Util;
 using AutumnBox.Leafx.Container.Support;
 using AutumnBox.Leafx.ObjectManagement;
+using AutumnBox.Logging;
 using System;
 using System.Windows;
 
@@ -32,12 +33,13 @@ namespace AutumnBox.GUI.Services.Impl
                 Reload();
             }
         }
-        ThemeMode _themeMode;
+        ThemeMode _themeMode = ThemeMode.Light;
 
-        private const int INDEX_OF_THEME = 3;
+        private const int INDEX_OF_THEME = 2;
 
         private readonly ResourceDictionary LightTheme;
         private readonly ResourceDictionary DarkTheme;
+
         public ThemeManager(ISettings settings)
         {
             LightTheme = new ResourceDictionary()
@@ -50,13 +52,18 @@ namespace AutumnBox.GUI.Services.Impl
             };
             _themeMode = settings.Theme;
         }
+        public void Initialize()
+        {
+            ApplyTheme(LightTheme);
+        }
         public void Reload()
         {
             var themeDictionary = ThemeMode switch
             {
                 ThemeMode.Light => LightTheme,
                 ThemeMode.Dark => DarkTheme,
-                _ => ShouldUseDarkTheme() ? DarkTheme : LightTheme
+                _ => LightTheme,
+                //_ => ShouldUseDarkTheme() ? DarkTheme : LightTheme
             };
             ApplyTheme(themeDictionary);
         }

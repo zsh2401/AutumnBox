@@ -19,6 +19,7 @@ namespace AutumnBox.GUI.Services
     interface IThemeManager
     {
         ThemeMode ThemeMode { get; set; }
+        void Initialize();
         void Reload();
     }
 }
