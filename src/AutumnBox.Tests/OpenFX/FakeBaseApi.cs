@@ -60,6 +60,8 @@ namespace AutumnBox.Tests.OpenFX
 
         public event EventHandler LanguageChanged;
         public event EventHandler Destorying;
+        public event EventHandler SelectedDeviceChanged;
+        public event EventHandler ConnectedDeviceChanged;
 
         public void AddResource(string key, object value)
         {
@@ -87,6 +89,11 @@ namespace AutumnBox.Tests.OpenFX
         }
 
         public string FakeLanguageCode { get; set; } = "zh-CN";
+
+        public IEnumerable<IDevice> ConnectedDevices => throw new NotImplementedException();
+
+        IDevice IBaseApi.SelectedDevice { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public string GetCurrentLanguageCode() => FakeLanguageCode;
 
         public dynamic GetMainWindow()

@@ -2,6 +2,8 @@
 using AutumnBox.Logging.Management;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 
 namespace AutumnBox.Logging
 {
@@ -30,7 +32,6 @@ namespace AutumnBox.Logging
         {
             LoggingManager.CoreLogger.Log(new Log(nameof(Debug), category, message, e));
         }
-
         /// <summary>
         /// 写出一条CDebug级别的日志信息,当你的程序集使用非DEBUG编译时,对此函数的调用会被忽略
         /// </summary>
