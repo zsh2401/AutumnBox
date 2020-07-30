@@ -104,6 +104,10 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="postbuild.ps1" />
+    <Page Include="Resources\Languages\zh-TW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\CommonResources.xaml">
