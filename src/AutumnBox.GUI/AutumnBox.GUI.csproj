@@ -1,149 +1,75 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{31A08C89-F8F6-4F46-9E15-EF7561A878FA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AutumnBox.GUI</RootNamespace>
-    <AssemblyName>AutumnBox.GUI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <Deterministic>true</Deterministic>
-    <LangVersion>8.0</LangVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\dist\debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET45 USE_NT_JSON NETFX WIN32</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\..\dist\release\</OutputPath>
-    <DefineConstants>TRACE;NET45 USE_NT_JSON NETFX WIN32</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
     <StartupObject>AutumnBox.GUI.Program</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <PropertyGroup>
+    <AssemblyName>AutumnBox.GUI</AssemblyName>
+    <RootNamespace>AutumnBox.GUI</RootNamespace>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
+    <Version>2020.5.30</Version>
+    <AssemblyVersion>2020.5.30.0</AssemblyVersion>
+    <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Canary|AnyCPU'">
-    <OutputPath>bin\Canary\</OutputPath>
-    <DefineConstants>TRACE;NET45 USE_NT_JSON NETFX WIN32</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>8.0</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <OutputPath></OutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE CANARY</DefineConstants>
+    <OutputPath />
+  </PropertyGroup>
+
+  <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
+
   <ItemGroup>
-    <Reference Include="HandyControl, Version=2.5.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HandyControl.2.5.0.2\lib\net45\HandyControl.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <None Remove="Resources\Icons\icon.ico" />
+    <None Remove="Resources\Icons\Menu\cmd.png" />
+    <None Remove="Resources\Icons\Menu\debug.png" />
+    <None Remove="Resources\Icons\Menu\donate.png" />
+    <None Remove="Resources\Icons\Menu\exit.png" />
+    <None Remove="Resources\Icons\Menu\guide-book.png" />
+    <None Remove="Resources\Icons\Menu\icon.png" />
+    <None Remove="Resources\Icons\Menu\powershell.png" />
+    <None Remove="Resources\Icons\Menu\settings.png" />
+    <None Remove="Resources\Icons\new_leaf.ico" />
+    <None Remove="Resources\Images\android_phone.png" />
+    <None Remove="Resources\Images\android_phone2.png" />
+    <None Remove="Resources\Images\donate_alishop.png" />
+    <None Remove="Resources\Images\donate_pot4winter.png" />
+    <None Remove="Resources\Images\donate_wechatpay.jpg" />
+    <None Remove="Resources\Images\github.png" />
+    <None Remove="Resources\Images\icon.png" />
+    <None Remove="Resources\Sounds\ok.wav" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Resources\Languages\Lang.cs" />
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="postbuild.ps1" />
-    <Page Include="Resources\Languages\zh-TW.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Content Include="Resources\Sounds\ok.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+
   <ItemGroup>
-    <Page Include="Resources\CommonResources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Converters.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\en-US.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\zh-CN.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\ThemeDark.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Themes\ThemeLight.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <PackageReference Include="HandyControl" Version="2.5.0.1" />
+    <PackageReference Include="SharpZipLib" Version="1.2.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Resource Include="Resources\Icons\new_leaf.ico" />
-    <Resource Include="Resources\Images\android_phone2.png" />
-    <Resource Include="Resources\Images\android_phone.png" />
-    <Resource Include="Resources\Images\donate_alishop.png" />
-    <Resource Include="Resources\Images\donate_pot4winter.png" />
-    <Resource Include="Resources\Images\donate_wechatpay.jpg" />
-    <Resource Include="Resources\Images\github.png" />
-    <Resource Include="Resources\Images\icon.png" />
+    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\icon.ico" />
     <Resource Include="Resources\Icons\Menu\cmd.png" />
     <Resource Include="Resources\Icons\Menu\debug.png" />
     <Resource Include="Resources\Icons\Menu\donate.png" />
@@ -152,34 +78,39 @@
     <Resource Include="Resources\Icons\Menu\icon.png" />
     <Resource Include="Resources\Icons\Menu\powershell.png" />
     <Resource Include="Resources\Icons\Menu\settings.png" />
-    <Resource Include="Resources\Icons\icon.ico" />
-    <Content Include="Resources\Sounds\ok.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Resources\Icons\new_leaf.ico" />
+    <Resource Include="Resources\Images\android_phone.png" />
+    <Resource Include="Resources\Images\android_phone2.png" />
+    <Resource Include="Resources\Images\donate_alishop.png" />
+    <Resource Include="Resources\Images\donate_pot4winter.png" />
+    <Resource Include="Resources\Images\donate_wechatpay.jpg" />
+    <Resource Include="Resources\Images\github.png" />
+    <Resource Include="Resources\Images\icon.png" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Page Update="Resources\CommonResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Languages\en-US.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Languages\zh-CN.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Themes\ThemeDark.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Themes\ThemeLight.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Core\AutumnBox.Core.csproj">
-      <Project>{0842a8fd-44c3-4423-9dde-488cb3706ed0}</Project>
-      <Name>AutumnBox.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>powershell $(ProjectDir)postbuild.ps1 $(ProjectDir)$(OutDir)</PreBuildEvent>
-  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="powershell $(ProjectDir)afterbuild.ps1 $(TargetDir) $(ConfigurationName)" />
+  </Target>
+
 </Project>

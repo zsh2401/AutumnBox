@@ -32,6 +32,7 @@ namespace AutumnBox.GUI.Resources.Languages
             Langs = new List<(string, string, string)>() {
                 ( "简体中文","zh-CN","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/zh-CN.xaml"),
                 ("English","en-US","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/en-US.xaml"),
+                ("繁體中文","en-US","pack://application:,,,/AutumnBox.GUI;component/Resources/Languages/zh-TW.xaml")
             };
         }
 
