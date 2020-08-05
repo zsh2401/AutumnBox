@@ -20,7 +20,7 @@
     <s:String x:Key="Menu.CMD">ADB命令列(_V)</s:String>
     <s:String x:Key="Menu.PS">ADB命令列-Powershell(_B)</s:String>
     <s:String x:Key="Menu.Help">幫助(_H)</s:String>
-    <s:String x:Key="Menu.Guide">說明書(_G)</s:String>
+    <s:String x:Key="Menu.Guide">使用說明(_G)</s:String>
     <s:String x:Key="Menu.OpenSource">開源相關(_O)</s:String>
     <s:String x:Key="Menu.About">關於秋之盒(_A)</s:String>
     <s:String x:Key="Menu.CheckUpdate">檢測更新</s:String>
@@ -41,9 +41,9 @@
       <s:String x:Key="StatusBar.Port">埠</s:String>
       <s:String x:Key="StatusBar.AdbVersion">ADB版本</s:String>
     <s:String x:Key="StatusBar.Mode">執行模式</s:String>
-    <s:String x:Key="StatusBar.Mode.RunAsUser">秋之盒目前以&lt;使用者&gt;許可權執行</s:String>
-     <s:String x:Key="StatusBar.Mode.RunAsAdmin">秋之盒目前以&lt;管理員&gt;許可權執行</s:String>
-    <s:String x:Key="StatusBar.Devices.Prev">監測中,已有</s:String>
+    <s:String x:Key="StatusBar.Mode.RunAsUser">秋之盒目前以&lt;使用者&gt;權限執行</s:String>
+     <s:String x:Key="StatusBar.Mode.RunAsAdmin">秋之盒目前以&lt;管理員&gt;權限執行</s:String>
+    <s:String x:Key="StatusBar.Devices.Prev">檢測中,已有</s:String>
     <s:String x:Key="StatusBar.Devices.Suf">台裝置連線</s:String>
      <s:String x:Key="StatusBar.RunningTask">個正在執行的工作</s:String>
     
@@ -53,7 +53,7 @@
     
       <s:String x:Key="Dash.State.NoDevice">無裝置</s:String>
       <s:String x:Key="Dash.State.Poweron">開機</s:String>
-     <s:String x:Key="Dash.State.Recovery">恢復模式</s:String>
+     <s:String x:Key="Dash.State.Recovery">Recovery</s:String>
      <s:String x:Key="Dash.State.Fastboot">Fastboot</s:String>
      <s:String x:Key="Dash.State.Sideload">Sideload</s:String>
      <s:String x:Key="Dash.State.Unauthorized">未允許USB除錯</s:String>
@@ -99,14 +99,14 @@
 責任相關:
         1.本軟體不會惡意攻擊您的任何裝置(計算機,手機等)
         2.因BUG或其它意外造成的損失,本軟體不對此負責
-        3.本軟體開發者沒有義務手把手教導使用者
-        4.本軟體基於LGPL3.0開源協議,任何使用者修改原始碼都必須進行開源
+        3.本軟體開發者沒有完全指導使用者的義務
+        4.本軟體基於LGPL3.0開源協議,任何使用者修改原始碼並進行發佈都必須進行開源
 隱私:
         本軟體為進行使用者統計,在執行時會匿名傳送您的計算機簡要資訊與位置資訊,但絕不涉及任何敏感隱私,具體可自行參考有關原始碼
 協議修改:
         1.本協議並不完善,秋之盒有權在必要時對本協議進行修改,任何修改都會立刻公開展示
-        2.無論使用的秋之盒是什麼版本,使用者都需要遵守最新版本使用者協議
-        3.如果對本協議修改不滿,使用者應該立刻停止使用任何版本的本軟體
+        2.無論使用任何版本的秋之盒,使用者都需要遵守最新版本的使用者協議
+        3.如果對本協議的修改存在不滿,使用者應該立刻停止使用任何版本的本軟體
     </s:String>
  <s:String x:Key="BtnOpenSourceLisence">開源協議</s:String>
     
@@ -114,16 +114,16 @@
     <s:String x:Key="Guide.TitleLast">最後,有些東西需要你記住</s:String>
     <s:String x:Key="Guide.OfficialWebsite">官網:</s:String>
     <s:String x:Key="Guide.LinkOfficialWebsite">https://www.atmb.top</s:String>
-    <s:String x:Key="Guide.OfficialManual">說明書:</s:String>
+    <s:String x:Key="Guide.OfficialManual">使用說明:</s:String>
     <s:String x:Key="Guide.LinkOfficialManual">https://www.atmb.top/help</s:String>
-    <s:String x:Key="Guide.QQGroup">QQ群: 246177486</s:String>
+    <s:String x:Key="Guide.QQGroup">QQ群組: 246177486</s:String>
     <s:String x:Key="Guide.Contact">聯絡開發者: zsh2401@163.com</s:String>
      <s:String x:Key="Guide.BtnPrev">上一步</s:String>
     <s:String x:Key="Guide.BtnNext">下一步</s:String>
       <s:String x:Key="Guide.BtnFinish">完成</s:String>
     <s:String x:Key="Guide.BtnCancel">取消</s:String>
     
-    <s:String x:Key="SignalSelectViewHint">選一個並單擊! ^_^</s:String>
+    <s:String x:Key="SignalSelectViewHint">選擇一個並單擊! ^_^</s:String>
      <s:String x:Key="SignalSelectViewCancel">取消</s:String>
     
      <!--LibsWindow-->
@@ -137,21 +137,21 @@
       <s:String x:Key="Settings.ThemeAuto">自動</s:String>
      <s:String x:Key="Settings.Ux">互動</s:String>
     <s:String x:Key="Settings.Sounds">音效</s:String>
-    <s:String x:Key="Settings.SoundsTip">例如功能結束時的音效，但這需要該功能支援</s:String>
+    <s:String x:Key="Settings.SoundsTip">例如功能結束時的音效，但這需要該功能被支援</s:String>
     <s:String x:Key="Settings.Cmd">命令列</s:String>
     <s:String x:Key="Settings.EnvVarCmdWindow">帶有全域性變數的命令列</s:String>
-    <s:String x:Key="Settings.EnvVarCmdWindowTip">這樣,無論你在命令列中去到哪裡,都可以使用秋之盒的ADB程式</s:String>
+    <s:String x:Key="Settings.EnvVarCmdWindowTip">這樣,無論你在何時何處使用命令列,都可以使用秋之盒的ADB程式</s:String>
     <s:String x:Key="Settings.CmdAtDesktop">在桌面啟動命令列</s:String>
-    <s:String x:Key="Settings.CmdAtDesktopTip">啟動命令列後,路徑在桌面</s:String>
+    <s:String x:Key="Settings.CmdAtDesktopTip">啟動命令列後,路徑位於桌面</s:String>
     <s:String x:Key="Settings.Language">語言</s:String>
     <s:String x:Key="Settings.Debug">除錯</s:String>
     <s:String x:Key="Settings.CreateDebugWindow">顯示除錯視窗</s:String>
     <s:String x:Key="Settings.LaunchDebugWindowOnNextLaunch">在下次啟動時顯示除錯視窗</s:String>
-    <s:String x:Key="Settings.LaunchDebugWindowOnNextLaunchTip">這是給開發者準備的</s:String>
+    <s:String x:Key="Settings.LaunchDebugWindowOnNextLaunchTip">為開發者所準備</s:String>
     <s:String x:Key="Settings.DeveloperMode">秋之盒除錯模式</s:String>
     <s:String x:Key="Settings.DeveloperModeTip">Logger.Debug()將可使用,開發中模組也會展示</s:String>
     <s:String x:Key="Settings.DisplayCmdWindow">顯示命令列視窗</s:String>
-    <s:String x:Key="Settings.DisplayCmdWindowTip">或許你可以通過這個來排查某些疑難雜症,僅在部分情況下支援</s:String>
+    <s:String x:Key="Settings.DisplayCmdWindowTip">或許你可以以此來排查某些疑難問題,但僅在部分情況下受支援</s:String>
     
     <s:String x:Key="ExtensionsFinder.StateNotCorrectWarning">裝置狀態不正確</s:String>
     
@@ -164,28 +164,28 @@
     <s:String x:Key="DeviceState.Offline">異常離線</s:String>
         
     <!--OpenFx-->
-     <s:String x:Key="OpenFxBtnYes">好</s:String>
+     <s:String x:Key="OpenFxBtnYes">確定</s:String>
      <s:String x:Key="OpenFxBtnNo">取消</s:String>
     <s:String x:Key="OpenFxExceptionMsgTitleFmt">{0} 發生了錯誤</s:String>
     <s:String x:Key="OpenFxExceptionSketch">或許,你可以嘗試複製下面的資訊以尋求幫助</s:String>
     <s:String x:Key="OpenFxTitleError">錯誤</s:String>
     <s:String x:Key="OpenFxTitleWarning">警告</s:String>
-    <s:String x:Key="OpenFxCantRunMore">此模組已經在執行，你無法多開</s:String>
+    <s:String x:Key="OpenFxCantRunMore">此模組已經在執行，你無法進行多工處理</s:String>
     <s:String x:Key="OpenFxTitleMessage">資訊</s:String>
-    <s:String x:Key="OpenFxWrapperException">錯誤：無法建立例項，請檢視log</s:String>
-     <s:String x:Key="OpenFxCantCreateInstance">錯誤：無法建立例項，請檢視log</s:String>
+    <s:String x:Key="OpenFxWrapperException">錯誤：無法建立例項，請檢視日誌</s:String>
+     <s:String x:Key="OpenFxCantCreateInstance">錯誤：無法建立例項，請檢視日誌</s:String>
      <s:String x:Key="OpenFxInstallAppFirst">請先安裝相關應用程式</s:String>
      <s:String x:Key="OpenFxInstallBtnIgnore">強制繼續!</s:String>
     <s:String x:Key="OpenFxInstallBtnOk">好吧</s:String>
-    <s:String x:Key="OpenFxNoRoot">這個功能依賴於root，但你的裝置沒有root許可權！請檢查裝置</s:String>
+    <s:String x:Key="OpenFxNoRoot">這個功能依賴於root，但你的裝置沒有root權限！請檢查裝置</s:String>
      <s:String x:Key="OpenFxNoRootIgnore">忽略並繼續</s:String>
     <s:String x:Key="OpenFxExtensionFailed">功能/模組在執行時遇到嚴重異常，詳情檢視日誌</s:String>
-    <s:String x:Key="OpenFxNeedAdminPermission">此模組需要管理員許可權,是否將秋之盒重啟到管理員模式</s:String>
-    <s:String x:Key="OpenFxLowAndroidVersionFmt">此模組要求 Android 版本為{0},而您的裝置並沒有達到此標準</s:String>
+    <s:String x:Key="OpenFxNeedAdminPermission">此模組需要管理員權限,是否將秋之盒重新啟動到管理員模式</s:String>
+    <s:String x:Key="OpenFxLowAndroidVersionFmt">此模組要求 Android 版本為{0},而您的裝置並沒有達到此要求</s:String>
     <s:String x:Key="OpenFxLowAndroidBtnIgnore">忽略並繼續</s:String>
     <s:String x:Key="OpenFxLowAndroidBtnCancel">取消</s:String>
     <s:String x:Key="OpenFxLowAndroidBtnOk">好吧</s:String>
-    <s:String x:Key="OpenFxOverhighAndroidVersionFmt">您的裝置安卓版本太高了,此模組僅支援{0}以下的 Android 版本</s:String>
+    <s:String x:Key="OpenFxOverhighAndroidVersionFmt">您的裝置 Android 版本過高,此模組僅支援{0}以下的 Android 版本</s:String>
     
     <s:String x:Key="More.Link.Title">更多常用連結</s:String>
     <s:String x:Key="More.Link.Text.AICP">AICP-ROM</s:String>
@@ -223,7 +223,7 @@
     <!--OpenSourceWindow-->
     <s:String x:Key="OpenSource.Title">開源</s:String>
     <s:String x:Key="OpenSource.Description">  秋之盒現以LGPL3.0 (寬鬆的GNU公共協議)開源,請在必要時遵守開源協議
-        如果可以的話,希望能夠給專案一個 Star,這是對我開原始碼的認可</s:String>
+        如果可以的話,希望能夠給專案一個 Star,這是對我的程式碼的認可</s:String>
     <s:String x:Key="OpenSource.AtmbRepo">秋之盒倉庫</s:String>
     <s:String x:Key="OpenSource.OfficialWebisteRepo">官網倉庫</s:String>
     
@@ -241,9 +241,9 @@
     
 <!--LeafWindow-->
     <s:String x:Key="LeafUITipRunning">執行中</s:String>
-    <s:String x:Key="LeafUICannotStop">這個模組無法中途停止</s:String>
+    <s:String x:Key="LeafUICannotStop">這個模組無法中止</s:String>
     <s:String x:Key="LeafUIBtnCopy">複製輸出資訊</s:String>
-    <s:String x:Key="LeafUIBtnTip">這些輸出資訊可以用於更好的解決你的問題</s:String>
+    <s:String x:Key="LeafUIBtnTip">這些輸出資訊可以用於更好地解決你的問題</s:String>
     <s:String x:Key="LeafUIEnableFullContentTip">顯示進階輸出資訊</s:String>
     <s:String x:Key="LeafUITipCodeUnknown">結束</s:String>
     <s:String x:Key="LeafUITipCode0">成功</s:String>
@@ -257,15 +257,15 @@
     <s:String x:Key="Donate.PayPal">使用PayPal進行捐贈</s:String>
      <s:String x:Key="Donate.Page">捐贈名單</s:String>
     <s:String x:Key="Donate.Description">贈人玫瑰,手留餘香.
-    謝謝你對中國軟體生態做出的貢獻</s:String>
+    感謝您對中國軟體環境做出的貢獻</s:String>
     
 
     
     <!--關於資訊-->
-    <s:String x:Key="AboutMessage">秋之盒是一個ADB圖形化工具箱,讓你用最簡單的方式通過ADB對手機進行操作,幫助小白,方便老鳥
+    <s:String x:Key="AboutMessage">秋之盒是一個ADB圖形化工具箱,讓你用最簡單的方式通過ADB對手機進行操作,幫助新人,方便老用戶
 秋之盒目前以LGPL3.0進行開源,安全,免費,值得信任,在必要時,也請您遵守開源協議
 鳴謝:
-MonoLogueChi,餅乾怪獸,hxy,yume,白瀛,web1n,咖枯,毛線沒有團團,my0402
+MonoLogueChi,饼干怪兽,hxy,yume,白瀛,web1n,咖枯,毛线没有团团,my0402
 Newtonsoft.Json  | Google | Android | Linux | C# | Microsoft | HandyOrg 
     </s:String>
     <!--關於資訊-->
