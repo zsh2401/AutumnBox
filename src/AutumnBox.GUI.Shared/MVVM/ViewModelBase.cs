@@ -11,6 +11,7 @@ using AutumnBox.Logging;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Windows.Input;
 
 namespace AutumnBox.GUI.MVVM
@@ -137,13 +138,33 @@ namespace AutumnBox.GUI.MVVM
         }
         private static void _OpenUrl(object para)
         {
+            string url = para as string;
+            if (url == null) return;
+            //https://brockallen.com/2016/09/24/process-start-for-urls-on-net-core/
             try
             {
-                Process.Start(para as string);
+                Process.Start(url);
             }
-            catch (Exception e)
+            catch
             {
-                SLogger<ViewModelBase>.Warn($"can not open url {para}", e);
+                // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
+                }
             }
         }
         private static void _ShowWindowDialog(object para)

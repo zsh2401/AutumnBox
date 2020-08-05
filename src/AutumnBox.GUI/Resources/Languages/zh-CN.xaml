@@ -2,9 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xml:space="preserve"
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
+    
     <s:String x:Key="App.Name">秋之盒</s:String>
-     <s:String x:Key="App.LoadingName">AutumnBox 2020.5-DEV</s:String>
-    <s:String x:Key="App.NameWithVersion">秋之盒 2020.5-DEV</s:String>
+     <s:String x:Key="App.LoadingName">AutumnBox 2020.8</s:String>
+    <s:String x:Key="App.NameWithVersion">秋之盒 2020.8</s:String>
     
 
     <s:String x:Key="App.Slogan">开源,易用,免费的图形化ADB工具箱</s:String>
@@ -231,46 +232,18 @@
     <s:String x:Key="ChoiceWindowBtnCancel">取消</s:String>
     <s:String x:Key="ChoiceWindowBtnYes">好</s:String>
     <s:String x:Key="ChoiceWindowBtnNo">不</s:String>
-      <s:String x:Key="ChoiceWindowBtnAgree">同意</s:String>
+    <s:String x:Key="ChoiceWindowBtnAgree">同意</s:String>
     <s:String x:Key="ChoiceWindowBtnDisagree">不同意</s:String>
     
     <!--LoadingWindow-->
      <s:String x:Key="LoadingWindowMessage">请耐心等待 :)</s:String>
+     <s:String x:Key="Uni.Copy">复制</s:String>
     
-        <s:String x:Key="Uni.Copy">复制</s:String>
     
-<!--LeafWindow-->
-    <s:String x:Key="LeafUITipRunning">运行中</s:String>
-    <s:String x:Key="LeafUICannotStop">这个模块无法中途停止</s:String>
-    <s:String x:Key="LeafUIBtnCopy">复制输出信息</s:String>
-    <s:String x:Key="LeafUIBtnTip">这些输出信息可以用于更好的解决你的问题</s:String>
-    <s:String x:Key="LeafUIEnableFullContentTip">显示专业输出信息</s:String>
-    <s:String x:Key="LeafUITipCodeUnknown">结束</s:String>
-    <s:String x:Key="LeafUITipCode0">成功</s:String>
-    <s:String x:Key="LeafUITipCode-1">失败</s:String>
-    <s:String x:Key="LeafUITipCode-2">发生了严重异常</s:String>
-    <s:String x:Key="LeafUITipCode-3">被用户强制终止</s:String>
-    <s:String x:Key="LeafUITipCode-4">模块执行时被杀死</s:String>
-    <s:String x:Key="LeafUITipUnknow">非正常结束</s:String>
-    
-        <!--PanelDonte-->
+     <!--PanelDonte-->
     <s:String x:Key="Donate.PayPal">使用PayPal进行捐赠</s:String>
-     <s:String x:Key="Donate.Page">捐赠名单</s:String>
+    <s:String x:Key="Donate.Page">捐赠名单</s:String>
     <s:String x:Key="Donate.Description">赠人玫瑰,手留余香.
     谢谢你对中国软件生态做出的贡献</s:String>
-    
-
-    
-    <!--关于信息-->
-    <s:String x:Key="AboutMessage">秋之盒是一个ADB图形化工具箱,让你用最简单的方式通过ADB对手机进行操作,帮助小白,方便老鸟
-秋之盒目前以LGPL3.0进行开源,安全,免费,值得信任,在必要时,也请您遵守开源协议
-鸣谢:
-MonoLogueChi,饼干怪兽,hxy,yume,白瀛,web1n,咖枯,毛线没有团团,my0402
-Newtonsoft.Json  | Google | Android | Linux | C# | Microsoft | HandyOrg 
-    </s:String>
-    <!--关于信息-->
-
-    <s:String x:Key="Contact">联系开发者</s:String>
-    <s:String x:Key="Donate">捐赠开发者</s:String>
     
 </ResourceDictionary>

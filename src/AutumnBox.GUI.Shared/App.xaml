@@ -20,6 +20,8 @@
 
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
 
+                <ResourceDictionary Source="/Resources/URLs.xaml"/>
+                
                 <ResourceDictionary Source="/Resources/CommonResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

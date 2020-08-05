@@ -32,8 +32,8 @@
                 <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{DynamicResource OpenSource.Description}"/>
                 <StackPanel Margin="0,20,0,0" HorizontalAlignment="Center" Orientation="Horizontal">
                     <controls:ButtonGroup>
-                        <Button Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbRepo}"  Content="{DynamicResource OpenSource.AtmbRepo}"/>
-                        <Button  Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlAtmbWebRepo}"  Content="{DynamicResource OpenSource.OfficialWebisteRepo}"/>
+                        <Button Command="{Binding OpenUrl}" CommandParameter="{DynamicResource URL.OSRepo}"  Content="{DynamicResource OpenSource.AtmbRepo}"/>
+                        <Button  Command="{Binding OpenUrl}" CommandParameter="{DynamicResource URL.WEBOSRepo}"  Content="{DynamicResource OpenSource.OfficialWebisteRepo}"/>
                     </controls:ButtonGroup>
                 </StackPanel>
             </StackPanel>
