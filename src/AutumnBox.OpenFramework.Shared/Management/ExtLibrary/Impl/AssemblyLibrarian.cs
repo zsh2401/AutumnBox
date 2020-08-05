@@ -83,18 +83,32 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             SLogger.Info(GetType().Name, $"librarian {Name} 's ready");
         }
 
-        bool loaded = false;
+
         /// <summary>
         /// 重载内部信息
         /// </summary>
         public virtual void Reload()
         {
-            if (loaded) return;//不可变
-
             if (ManagedAssembly == null)
             {
-                throw new NullReferenceException("ManagedAssembly must be setted");
+                throw new NullReferenceException("Managed assembly not defined.");
             }
+            RefreshExtensions();
+        }
+
+        public virtual void RefreshExtensions()
+        {
+            //Emtpy exist extensions record
+            if (Extensions != null)
+            {
+                foreach (var ext in Extensions)
+                {
+                    var rext = new RegisteredExtensionInfo(ext, this);
+                    LakeProvider.Lake.Get<ILibsManager>().ExtensionRegistry.Remove(rext);
+                }
+            }
+
+            //Rescan and load
             Extensions = from type in ManagedAssembly.GetTypes()
                          where IsExt(type)
                          select CreateExtensionInfo(type);
@@ -103,9 +117,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 var rext = new RegisteredExtensionInfo(ext, this);
                 LakeProvider.Lake.Get<ILibsManager>().ExtensionRegistry.Add(rext);
             }
-            loaded = true;
         }
-
         /// <summary>
         /// 判断某个Type是否是秋之盒拓展
         /// </summary>

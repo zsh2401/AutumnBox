@@ -30,7 +30,7 @@ namespace AutumnBox.Tests.OpenFX
         public static FakeBaseApi FakeApi { get; } = new FakeBaseApi();
         public static void Initialize()
         {
-            OpenFx.Load(FakeApi);
+            OpenFx.Initialize(FakeApi);
             OpenFx.RefreshExtensionsList();
         }
     }

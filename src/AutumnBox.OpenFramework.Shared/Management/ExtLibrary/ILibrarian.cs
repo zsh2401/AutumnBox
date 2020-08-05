@@ -41,6 +41,11 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
         IEnumerable<IExtensionInfo> Extensions { get; }
 
         /// <summary>
+        /// 刷新拓展模块列表
+        /// </summary>
+        void RefreshExtensions();
+
+        /// <summary>
         /// 当入口所代表的程序集被卸载时调用
         /// </summary>
         void Destory();

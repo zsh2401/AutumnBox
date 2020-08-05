@@ -17,22 +17,20 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(IOpenFxManager))]
     class OpenFxManagerImpl : IOpenFxManager
     {
-        public Task<object>[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();
+        public Task<object?>[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();
 
-        public IExtensionInfo[] Extensions => OpenFx.Lake.Get<ILibsManager>().GetAllExtensions().ToArray();
+        public IExtensionInfo[] Extensions => OpenFx.Lake.Get<ILibsManager>().ExtensionRegistry.Select((r)=>r.ExtensionInfo).ToArray();
 
-        private ILogger logger = LoggerFactory.Auto(nameof(OpenFxManagerImpl));
+        private readonly ILogger logger = LoggerFactory.Auto(nameof(OpenFxManagerImpl));
         private readonly Queue<Action> handlers = new Queue<Action>();
         private bool isLoaded = false;
         public void LoadOpenFx()
         {
-            logger.Info("Initializing open framework api");
-            OpenFx.Load(new AutumnBoxGuiBaseApiImpl());
+            logger.Info("Initializing Open Framework " + OpenFramework.BuildInfo.SDK_VERSION);
+            OpenFx.Initialize(new AutumnBoxGuiBaseApiImpl());
             logger.Info("Open framework api system is initialized");
-            logger.Info("Loading extensions");
-            OpenFx.RefreshExtensionsList();
-            ILibsManager libsManager = OpenFx.Lake.Get<ILibsManager>();
-            logger.Info($"There are {libsManager.Librarians.Count()} librarians and {libsManager.GetAllExtensions().Count()} wrappers");
+            var libsManager = OpenFx.Lake.Get<ILibsManager>();
+            logger.Info($"There are {libsManager.Librarians.Count()} librarians and {libsManager.ExtensionRegistry.Count()} wrappers");
             isLoaded = true;
             while (handlers.Any())
             {

@@ -41,7 +41,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             Librarians = ReloadLibs(Check(GetLibManagers(GetAssemblies(GetFiles()))));
             Librarians.All((lib) =>
             {
-                SLogger<DreamLibManager>.Warn($"Call ready method: {lib.Name}");
+                SLogger<DreamLibManager>.Info($"Calling ready method: {lib.Name}");
                 SafeReady(lib);
                 return true;
             });
@@ -111,7 +111,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             }
 
             var extensionFiles = from file in extDir.GetFiles()
-                                 where file.Extension == ".dll" || file.Extension == ".aext"
+                                 where file.Extension == ".dll"
                                  select file;
 
             files.AddRange(extensionFiles);

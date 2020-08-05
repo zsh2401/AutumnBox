@@ -8,6 +8,7 @@ using AutumnBox.OpenFramework.Open.LKit;
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
 using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.Logging;
+using System.Linq;
 
 namespace AutumnBox.OpenFramework.Management
 {
@@ -34,10 +35,11 @@ namespace AutumnBox.OpenFramework.Management
         /// 加载
         /// </summary>
         /// <param name="baseAPI"></param>
-        public static void Load(IBaseApi baseAPI)
+        public static void Initialize(IBaseApi baseAPI)
         {
             Lake = baseAPI.GlobalLake;
             RegisterComponent(baseAPI);
+            Lake.Get<ILibsManager>().Reload();
         }
 
         /// <summary>
@@ -45,7 +47,11 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         public static void RefreshExtensionsList()
         {
-            Lake.Get<ILibsManager>().Reload();
+            Lake.Get<ILibsManager>().Librarians.All(lib =>
+            {
+                lib.RefreshExtensions();
+                return true;
+            });
         }
 
         /// <summary>

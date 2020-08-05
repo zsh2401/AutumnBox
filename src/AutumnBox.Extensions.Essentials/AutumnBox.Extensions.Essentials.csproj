@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>AutumnBox.Extensions.DNCEssentials</AssemblyName>
+    <AssemblyName>AutumnBox.Extensions.Essentials</AssemblyName>
     <RootNamespace>AutumnBox.Extensions.Essentials</RootNamespace>
     <UseWPF>true</UseWPF>
     <Configurations>Debug;Release;Canary</Configurations>

@@ -17,16 +17,14 @@ namespace AutumnBox.GUI.Views.Windows
         public StartupWindow()
         {
             InitializeComponent();
-            App.Current.AppLoaderCreated += (s, e) =>
+            App.Current.AppLoader.Failed += (s, e) =>
             {
-                e.AppLoader.Failed += (s, e) =>
+                ErrorMessageBox.Show(this, e.Exception);
+                Close();
+            };
+            App.Current.AppLoader.Succeced += (s, e) =>
                 {
-                    ErrorMessageBox.Show(this, e.Exception);
-                    Close();
-                };
-                e.AppLoader.Succeced += (s, e) =>
-                {
-                    this.Dispatcher.Invoke(() =>
+                    Dispatcher.Invoke(() =>
                     {
                         if (App.Current.MainWindow.GetType() != typeof(MainWindowV3))
                         {
@@ -36,7 +34,6 @@ namespace AutumnBox.GUI.Views.Windows
                         Close();
                     });
                 };
-            };
         }
 
         [ClassText("err_msg_fmt",

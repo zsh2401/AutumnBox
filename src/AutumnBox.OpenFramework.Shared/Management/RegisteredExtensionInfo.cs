@@ -21,6 +21,7 @@ namespace AutumnBox.OpenFramework.Management
 {
     public interface IRegisteredExtensionInfo
     {
+        string Id { get; }
         IExtensionInfo ExtensionInfo { get; }
         ILibrarian? Librarian { get; }
     }
@@ -28,10 +29,11 @@ namespace AutumnBox.OpenFramework.Management
     {
         public RegisteredExtensionInfo(IExtensionInfo extensionInfo, ILibrarian? librarian)
         {
+            this.Id = extensionInfo.Id;
             ExtensionInfo = extensionInfo ?? throw new ArgumentNullException(nameof(extensionInfo));
             Librarian = librarian;
         }
-
+        public string Id { get; }
         public IExtensionInfo ExtensionInfo { get; }
         public ILibrarian? Librarian { get; }
     }

@@ -70,13 +70,9 @@ namespace AutumnBox.GUI.ViewModels
         public VMStartup()
         {
             RaisePropertyChangedOnUIThread = true;
-            App.Current.AppLoaderCreated += (s, e) =>
-            {
-                var appLoader = e.AppLoader;
-                appLoader.StepFinished += AppLoader_StepFinished;
-                appLoader.Succeced += AppLoader_Succeced;
-                appLoader.Failed += AppLoader_Failed;
-            };
+            App.Current.AppLoader.StepFinished += AppLoader_StepFinished;
+            App.Current.AppLoader.Succeced += AppLoader_Succeced;
+            App.Current.AppLoader.Failed += AppLoader_Failed;
         }
 
         private void AppLoader_Failed(object sender, AppLoaderFailedEventArgs e)

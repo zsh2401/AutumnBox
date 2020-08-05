@@ -34,30 +34,7 @@ namespace AutumnBox.GUI
     /// </summary>
     public partial class App : Application
     {
-        /// <summary>
-        /// AppLoader被创建了
-        /// </summary>
-        internal event EventHandler<AppLoaderCreatedEventArgs> AppLoaderCreated;
-        /// <summary>
-        /// AppLoader创建事件
-        /// </summary>
-        internal class AppLoaderCreatedEventArgs : EventArgs
-        {
-            public AppLoaderCreatedEventArgs(AbstractAppLoader appLoader)
-            {
-                AppLoader = appLoader ?? throw new ArgumentNullException(nameof(appLoader));
-            }
-
-            public AbstractAppLoader AppLoader { get; }
-        }
-        /// <summary>
-        /// 构造应用
-        /// </summary>
-        public App() : base()
-        {
-            Current = this;
-            Thread.CurrentThread.Name = "Application Main Thread";
-        }
+        internal AbstractAppLoader AppLoader { get; }
 
         /// <summary>
         /// 获取全局湖对象
@@ -67,7 +44,20 @@ namespace AutumnBox.GUI
         /// <summary>
         /// 获取当前的应用
         /// </summary>
+#pragma warning disable CS8618 // 不可为 null 的字段未初始化。请考虑声明为可以为 null。
         public static new App Current { get; private set; }
+#pragma warning restore CS8618 // 不可为 null 的字段未初始化。请考虑声明为可以为 null。
+
+        /// <summary>
+        /// 构造应用
+        /// </summary>
+        public App() : base()
+        {
+            Current = this;
+            Thread.CurrentThread.Name = "Application Main Thread";
+            AppLoader = new GeneralAppLoader();
+            Lake = new SunsetLake();
+        }
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -81,23 +71,18 @@ namespace AutumnBox.GUI
                 Shutdown(1);
             }
 #endif
-            Lake = new SunsetLake();
             ScanComponents();
-            //this.GetComponent<IThemeManager>().Initialize();
+#pragma warning disable CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
+            AppLoader.LoadAsync();
+#pragma warning restore CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
         }
 
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
-            var appLoader = new GeneralAppLoader();
-            AppLoaderCreated?.Invoke(this, new AppLoaderCreatedEventArgs(appLoader));
-            _ = appLoader.LoadAsync();
-        }
         private void ScanComponents()
         {
             new ClassComponentsLoader(
             "AutumnBox.GUI.Services.Impl", Lake).Do();
         }
+
         protected override void OnExit(ExitEventArgs e)
         {
             AppUnloader.Unload();
