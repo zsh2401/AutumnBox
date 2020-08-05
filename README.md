@@ -44,3 +44,6 @@
 ## 进行AutumnBox拓展模块开发
 如果您也是一位开发者,欢迎下载SDK开始开发秋之盒拓展模块    
 [**AutumnBox开发文档**](https://atmb.top/dev/docs/)
+
+## 贡献代码
+请在dev分支的基础上进行贡献，PR也请提交到dev分支
