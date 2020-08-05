@@ -3,9 +3,9 @@
 
 
 #Configures
-$DNCGUI = [System.IO.Path]::Combine($PSScriptRoot, "../src/AutumnBox.DNCGUI")
-$StdExt = [System.IO.Path]::Combine($PSScriptRoot, "../src/AutumnBox.Extensions.DNCStandard")
-$EssExt = [System.IO.Path]::Combine($PSScriptRoot, "../src/AutumnBox.Extensions.DNCEssentials")
+$DNCGUI = [System.IO.Path]::Combine($PSScriptRoot, "../src/AutumnBox.GUI")
+$StdExt = [System.IO.Path]::Combine($PSScriptRoot, "../src/AutumnBox.Extensions.Standard")
+$EssExt = [System.IO.Path]::Combine($PSScriptRoot, "../src/AutumnBox.Extensions.Essentials")
 $CanaryPath = [System.IO.Path]::Combine($PSScriptRoot,"../AutumnBox-Canary/");
 $ExtensionsOutputDir = [System.IO.Path]::Combine($CanaryPath, "extensions");
 $AdbOutputDir = [System.IO.Path]::Combine($CanaryPath, "adb_binary");
@@ -32,7 +32,7 @@ Initialize-Canary
 Write-Green "Restoring dependencies"
 dotnet restore src/
 
-Write-Green "Compiling AutumnBox.DNCGUI"
+Write-Green "Compiling AutumnBox.GUI"
 dotnet publish $DNCGUI -c $CompileConfigure -r $Runtime --no-dependencies --self-contained true -o $CanaryPath
 
 #Copying Adb binaries

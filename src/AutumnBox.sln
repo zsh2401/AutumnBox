@@ -25,7 +25,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Extensions.Essent
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.GUI.Shared", "AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.shproj", "{3B1EEF09-325C-4F4F-B449-0E963C68F7D3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Target", "Target", "{29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.GUI", "AutumnBox.GUI\AutumnBox.GUI.csproj", "{F5208B48-2F0D-4D84-A095-5BFFF725FAE8}"
 EndProject
@@ -248,7 +248,7 @@ Global
 		{AFE22E15-E431-41B8-BAE6-89919A71B70A} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
