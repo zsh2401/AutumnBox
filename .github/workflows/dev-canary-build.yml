@@ -3,7 +3,9 @@ name: Dev-Canary Build Test
 on:
   push:
     branch: ["dev"]
-    # tags: ["v*-canary"]
+  pull_request:
+    branch: ["dev"]
+    branch: ["master"]
 
 jobs:
   build:
