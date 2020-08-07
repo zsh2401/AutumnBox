@@ -14,9 +14,11 @@
 
 
 
-[![](https://github.com/zsh2401/AutumnBox/workflows/Test/badge.svg)](https://github.com/zsh2401/AutumnBox/actions?query=workflow%3ATest)
+[![](https://github.com/zsh2401/AutumnBox/workflows/Build+and+Test/badge.svg)](https://github.com/zsh2401/AutumnBox/actions?query=workflow%3ABuild+and+Test)
+
 [![](https://github.com/zsh2401/AutumnBox/workflows/Canary/badge.svg)](https://github.com/zsh2401/AutumnBox/releases)
-[![](https://github.com/zsh2401/AutumnBox/workflows/Dev-Canary%20Build%20Test/badge.svg)](https://github.com/zsh2401/AutumnBox/actions?query=workflow%3A%22Dev-Canary+Build+Test%22)
+
+
 ![](https://img.shields.io/badge/C%23-8.0-brightgreen.svg)
 ![](https://img.shields.io/badge/GUI-WPF-blue.svg)
 [![](https://img.shields.io/badge/开发者群-153424015-orange.svg)](https://jq.qq.com/?_wv=1027&k=M6X9BBCR)

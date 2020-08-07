@@ -1,4 +1,4 @@
-name: Dev-Canary Build Test
+name: Build and Test
 
 on:
   push:
