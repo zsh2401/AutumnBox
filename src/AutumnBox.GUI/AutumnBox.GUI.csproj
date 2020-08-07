@@ -9,8 +9,8 @@
     <AssemblyName>AutumnBox.GUI</AssemblyName>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
-    <Version>2020.5.30</Version>
-    <AssemblyVersion>2020.5.30.0</AssemblyVersion>
+    <Version>2020.8.8</Version>
+    <AssemblyVersion>2020.8.8.0</AssemblyVersion>
     <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
     <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
@@ -29,8 +29,6 @@
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE CANARY</DefineConstants>
     <OutputPath />
   </PropertyGroup>
-
-  <Import Project="..\AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems" Label="Shared" />
 
   <ItemGroup>
     <None Remove="Resources\Icons\icon.ico" />
@@ -62,6 +60,10 @@
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="2.5.0.1" />
     <PackageReference Include="SharpZipLib" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,6 +107,99 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Themes\ThemeLight.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\DeviceDash.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\DeviceSelector.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\ExtensionsFinder.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\MainMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\PanelAbout.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\PanelUpdateLogs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\StatusBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\TabsViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Controls\XCardsViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SubWindowViews\Guide.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SubWindowViews\LeafUIChoiceView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SubWindowViews\LeafUIInputView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SubWindowViews\LeafUIMessageView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SubWindowViews\LeafUISingleSelectView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SubWindowViews\LeafUIYNView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\ChoiceWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\DonateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\ExceptionWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\InputWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\LeafWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\LibsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\LicenseWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\LogWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\MainWindowV3.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\MessageWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\OpenSourceWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\StartupWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Windows\YNWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -6,11 +6,9 @@ $Nuspec = [System.IO.Path]::Combine($PSScriptRoot,"AutumnBox.SDK.nuspec")
 $NugetPackOutputDir = [System.IO.Path]::Combine($PSScriptRoot,"packages")
 $API_KEY_FILE = [System.IO.Path]::Combine($PSScriptRoot,"API_KEY")
 
-Write-Output $CacheDirectory
 function Build-SDK(){
     dotnet build $NetCoreSDK -o "$TmpDir/netcore31" -c SDK
-    # dotnet build $NetFxSDK -o "$TmpDir/net45" -c SDK
-    &$NugetExe pack $Nuspec -OutputDirectory $CacheDirectory
+    &$NugetExe pack $Nuspec -OutputDirectory $NugetPackOutputDir
 }
 function Push-SDK($version){
     $CacheDirPath = $([System.IO.Path]::Combine($PSScriptRoot,[System.Guid]::NewGuid().ToString()))

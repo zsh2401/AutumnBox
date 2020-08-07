@@ -1,0 +1,22 @@
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.Views.Custom"
+    xmlns:controls="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    x:Class="AutumnBox.GUI.Views.Windows.LicenseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+    WindowStartupLocation="CenterOwner"
+    FontFamily="{DynamicResource AutumnBox.Font}"
+        ShowInTaskbar="False"
+    Background="{DynamicResource RegionBrush}"
+    ResizeMode="NoResize"
+        Title="{DynamicResource UserLicense.Name}" Height="300" Width="400">
+    <DockPanel Margin="5">
+        <TextBlock DockPanel.Dock="Top" Text="{DynamicResource UserLicense.Name}" FontSize="25"/>
+        <TextBox DockPanel.Dock="Bottom" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+         ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Background="Transparent" Style="{x:Null}" IsReadOnly="True" Text="{DynamicResource UserLicense.Content}"/>
+
+    </DockPanel>
+</custom:NiceWindow>

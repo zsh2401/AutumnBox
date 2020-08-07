@@ -25,20 +25,24 @@ namespace AutumnBox.OpenFramework.Open
         /// 优先级
         /// </summary>
         int Priority { get; }
+
         /// <summary>
-        /// 界面
+        /// 主要的视图界面,建议为WPF组件
         /// </summary>
         object View { get; }
+
         /// <summary>
         /// 创建
         /// </summary>
         void Create();
+
         /// <summary>
-        /// 更新内容
+        /// 更新内容,这通常在发生语言变更,主题变更等时发生
         /// </summary>
         void Update();
+
         /// <summary>
-        /// 摧毁
+        /// 该XCard被放弃时调用,请释放资源
         /// </summary>
         void Destory();
     }

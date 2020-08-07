@@ -54,7 +54,6 @@ Global
 		AutumnBox.Extensions.Standard.Shared\AutumnBox.Extensions.Standard.projitems*{d41be8e2-8b49-461d-bd30-601f9e34f83f}*SharedItemsImports = 13
 		AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems*{d6013ec3-dd68-4945-916d-f77f1ead7fff}*SharedItemsImports = 13
 		AutumnBox.Extensions.Essentials.Shared\AutumnBox.Extensions.Essentials.Shared.projitems*{e9276362-70de-4fc8-a8d4-8301f270562e}*SharedItemsImports = 5
-		AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems*{f5208b48-2f0d-4d84-a095-5bfff725fae8}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Canary|Any CPU = Canary|Any CPU
@@ -248,7 +247,7 @@ Global
 		{AFE22E15-E431-41B8-BAE6-89919A71B70A} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
+		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
 	EndGlobalSection
 EndGlobal

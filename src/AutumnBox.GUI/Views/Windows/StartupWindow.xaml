@@ -1,0 +1,36 @@
+﻿<custom:NiceWindow
+    xmlns:custom="clr-namespace:AutumnBox.GUI.Views.Custom"
+    x:Class="AutumnBox.GUI.Views.Windows.StartupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModels"
+    mc:Ignorable="d"
+    Topmost="True"
+        ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    Background="{DynamicResource RegionBrush}"
+    Title="{DynamicResource App.Name}"
+    FontFamily="{DynamicResource AutumnBox.Font}"
+    ShowInTaskbar="False"
+        Height="300" Width="500">
+    <Window.DataContext>
+        <viewmodel:VMStartup/>
+    </Window.DataContext>
+    <!--<Window.Background>
+        <ImageBrush  ImageSource="/Resources/Drawable/Startup/startup_2.jpg" Stretch="UniformToFill"/>
+    </Window.Background>-->
+
+    <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+        <Image Source="/Resources/Images/icon.png" Height="100"/>
+
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <TextBlock TextAlignment="Center" FontSize="30" Text="{DynamicResource App.Name}"/>
+            <TextBlock  Margin="20,0,0,0" FontSize="30" Text="{Binding VersionName}"/>
+        </StackPanel>
+
+        <TextBlock TextAlignment="Center" FontSize="13" HorizontalAlignment="Center" Text="{DynamicResource App.Slogan}"/>
+    </StackPanel>
+
+</custom:NiceWindow>

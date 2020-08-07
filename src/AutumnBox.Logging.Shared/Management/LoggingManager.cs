@@ -74,7 +74,11 @@ namespace AutumnBox.Logging.Management
             {
                 lock (Logs)
                 {
-                    Logs.Add(log);
+                    try
+                    {
+                        Logs.Add(log);
+                    }
+                    catch { }
                 }
                 InnerLogger.Log(log);
             }

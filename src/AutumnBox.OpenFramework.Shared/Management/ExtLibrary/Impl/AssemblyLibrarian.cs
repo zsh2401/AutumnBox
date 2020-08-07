@@ -38,7 +38,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
         /// <summary>
         /// 名字
         /// </summary>
-        public virtual string Name { get; } = "Unknown Librarian";
+        public virtual string Name => ManagedAssembly?.GetName().Name ?? "Unknown";
 
         /// <summary>
         /// 最低的秋之盒API

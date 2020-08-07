@@ -204,12 +204,10 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 
         public ILibrarian BuildLibrarian(Assembly assembly)
         {
-            if (assembly == null)
-            {
-                throw new ArgumentNullException(nameof(assembly));
-            }
             var builder = new ObjectBuilder(typeof(AssemblyLibrarian), Lake);
-            return (AssemblyLibrarian)builder.Build();
+            var librarian =  (AssemblyLibrarian)builder.Build();
+            librarian.ManagedAssembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
+            return librarian;
         }
     }
 }

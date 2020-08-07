@@ -1,0 +1,29 @@
+﻿<Application x:Class="AutumnBox.GUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views/Windows/StartupWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!--基础语言-->
+                <ResourceDictionary Source="/Resources/Languages/zh-CN.xaml"/>
+
+                <!--可变更语言-->
+                <ResourceDictionary Source="/Resources/Languages/en-US.xaml"/>
+
+                <!--基础主题-->
+                <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
+
+                <!--可变更主题--><!--
+                <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>-->
+
+                <ResourceDictionary Source="/Resources/Converters.xaml"/>
+
+                <ResourceDictionary Source="/Resources/URLs.xaml"/>
+                
+                <ResourceDictionary Source="/Resources/CommonResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -47,6 +47,7 @@ namespace AutumnBox.Essentials
         readonly IStorageManager storageManager;
 
         public IStorage Storage { get; private set; }
+        
         public override void Ready()
         {
             base.Ready();
@@ -67,22 +68,10 @@ namespace AutumnBox.Essentials
             componentLoader.Do();
         }
 
-        private const string ROUTINE_DO_METHOD_NAME = "Do";
-        private void RunRoutines<T>()
+        public override void Destory()
         {
-            Task.Run(() =>
-            {
-                try
-                {
-                    var instance = new ObjectBuilder(typeof(T), Lake).Build();
-                    var mProxy = new MethodProxy(instance, ROUTINE_DO_METHOD_NAME, Lake);
-                    mProxy.Invoke();
-                }
-                catch (Exception e)
-                {
-                    SLogger<EssentialsLibrarin>.Warn("Routine is failed", e);
-                }
-            });
+            base.Destory();
+            Storage.ClearCache();
         }
     }
 }

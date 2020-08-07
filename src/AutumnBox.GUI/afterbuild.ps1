@@ -17,4 +17,6 @@ if (![System.IO.Directory]::Exists($ExtensionsOutputDir)) {
 dotnet build -c $ConfigurationName $StdExt -o $ExtensionsOutputDir
 dotnet build -c $ConfigurationName $EssExt -o $ExtensionsOutputDir
 
-Remove-Item $([System.IO.Path]::Combine($ExtensionsOutputDir, "*")) -Exclude "AutumnBox.Extensions.*.dll"
+Remove-Item $([System.IO.Path]::Combine($ExtensionsOutputDir, "AutumnBox.Core.*")) 
+
+echo "Build script has finished"

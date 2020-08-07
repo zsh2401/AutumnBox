@@ -10,7 +10,7 @@ namespace AutumnBox.OpenFramework.Management
     public interface ILibsManager
     {
         /// <summary>
-        /// 重载
+        /// 初始化
         /// </summary>
         void Initialize();
 
