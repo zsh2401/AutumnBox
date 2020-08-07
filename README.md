@@ -14,8 +14,7 @@
 
 
 
-[![](https://github.com/zsh2401/AutumnBox/workflows/Build+and+Test/badge.svg)](https://github.com/zsh2401/AutumnBox/actions?query=workflow%3ABuild+and+Test)
-
+[![](https://github.com/zsh2401/AutumnBox/workflows/Build%20and%20Test/badge.svg)](https://github.com/zsh2401/AutumnBox/actions?query=workflow%3ABuild+and+Test)
 [![](https://github.com/zsh2401/AutumnBox/workflows/Canary/badge.svg)](https://github.com/zsh2401/AutumnBox/releases)
 
 
@@ -28,8 +27,8 @@
 ## 简介
 秋之盒是一个对Google ADB工具包进行GUI封装的Windows桌面应用,方便小白,帮助老鸟. 
 - 技术关键词: C# / .NET / WPF / ADB
-- 支持的操作系统: Windows 7-Windows 10
-- 运行环境: .Net Framework 4.5.2 (将在未来基于MAUI进行跨平台)
+- 支持的操作系统: Windows 7 - Windows 10
+- 运行环境: `.Net Core 3.1` (发布时已自带运行时)
 
 ![](https://s2.ax1x.com/2020/03/03/34mXNt.png)
 
@@ -48,4 +47,4 @@
 [**AutumnBox开发文档**](https://atmb.top/dev/docs/)
 
 ## 贡献代码
-请在dev分支的基础上进行贡献，PR也请提交到dev分支
+请在`dev`分支的基础上进行贡献，PR也请提交到`dev`分支
