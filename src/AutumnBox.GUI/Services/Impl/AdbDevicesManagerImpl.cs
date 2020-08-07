@@ -1,10 +1,18 @@
-﻿using AutumnBox.Basic.Device;
+﻿using AutumnBox.Basic;
+using AutumnBox.Basic.Calling;
+using AutumnBox.Basic.Device;
+using AutumnBox.Basic.Device.Management.OS;
+using AutumnBox.Basic.Device.ManagementV2.OS;
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.Leafx.Container.Support;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AutumnBox.GUI.Services.Impl
@@ -38,10 +46,7 @@ namespace AutumnBox.GUI.Services.Impl
             devicesMonitor.DevicesChanged += DevicesMonitor_DevicesChanged;
             devicesMonitor.DevicesChanged += (s, e) =>
             {
-                Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Devices Changed", new Dictionary<string, string>()
-                {
-                        { "Count of Devices",e.Devices.Count().ToString()},
-                });
+                TrackDevicesInfo(e.Devices);
             };
         }
 
@@ -103,5 +108,48 @@ namespace AutumnBox.GUI.Services.Impl
             // GC.SuppressFinalize(this);
         }
         #endregion
+
+
+        private static readonly List<string> reportedDevice = new List<string>();
+        private static void TrackDevicesInfo(IEnumerable<IDevice> devices)
+        {
+            if (devices.Count() == 0) return;
+            var devicesChangedData = new Dictionary<string, string>()
+                {
+                        { "Count of Devices",devices.Count().ToString()},
+                };
+            Analytics.TrackEvent("Devices Changed", devicesChangedData);
+
+            Task.Run(() =>
+            {
+                Thread.CurrentThread.Name = "Device Info Reporter Thread";
+                lock (reportedDevice)
+                {
+                    using var executor = new HestExecutor(BasicBooter.CommandProcedureManager);
+                    foreach (var device in devices)
+                    {
+                        try
+                        {
+                            if (reportedDevice.Contains(device.SerialNumber)) return;
+                            var buildReader = new CachedBuildReader(device, executor, true);
+
+                            var buildPropData = new Dictionary<string, string>()
+                            {
+                                    { "Android Version",buildReader.Get(BuildPropKeys.AndroidVersion)},
+                                    { "Model",buildReader.Get(BuildPropKeys.Model)},
+                                    { "Brand",buildReader.Get(BuildPropKeys.Brand)},
+                            };
+
+                            Analytics.TrackEvent("Using Device", buildPropData);
+                            reportedDevice.Add(device.SerialNumber);
+                        }
+                        catch (Exception e)
+                        {
+                            Crashes.TrackError(e);
+                        }
+                    }
+                }
+            });
+        }
     }
 }

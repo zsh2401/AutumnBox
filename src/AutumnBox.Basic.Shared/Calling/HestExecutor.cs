@@ -37,10 +37,31 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         private readonly object _executingLock = new object();
 
+        private readonly ICommandProcedureManager procedureManager;
+
         /// <summary>
         /// 当前正在执行命令
         /// </summary>
         private ICommandProcedure? commandProcedure = null;
+
+        /// <summary>
+        /// 构造一个HestExecutor
+        /// </summary>
+        public HestExecutor() : this(BasicBooter.CommandProcedureManager) { }
+
+        /// <summary>
+        /// 构造一个HestExecutor
+        /// </summary>
+        /// <param name="procedureManager"></param>
+        public HestExecutor(ICommandProcedureManager procedureManager)
+        {
+            if (procedureManager is null)
+            {
+                throw new ArgumentNullException(nameof(procedureManager));
+            }
+
+            this.procedureManager = procedureManager;
+        }
 
         /// <summary>
         /// 执行命令
@@ -57,7 +78,7 @@ namespace AutumnBox.Basic.Calling
                 //记录开始时间
                 DateTime start = DateTime.Now;
                 //开始进程
-                commandProcedure = BasicBooter.CommandProcedureManager.OpenCommand(fileName, args);
+                commandProcedure = this.procedureManager.OpenCommand(fileName, args);
                 commandProcedure.OutputReceived += OnOutputReceived;
 
                 //触发事件
