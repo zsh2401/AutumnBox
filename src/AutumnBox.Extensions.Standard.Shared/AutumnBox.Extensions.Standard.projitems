@@ -46,6 +46,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EOemLock.cs" />
+    <Compile Include="..\AutumnBox.Extensions.Standard.Shared\Extensions\Fastboot\ESwitchABSlot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Mix\EDeviceOwnerRemover.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Mix\EFilePusher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\Dpm\DeviceOwnerSetter.cs" />
@@ -84,5 +85,8 @@
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Res\dpmpro" />
     <None Include="$(MSBuildThisFileDirectory)Res\godpower.apk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\a_b.png" />
   </ItemGroup>
 </Project>
