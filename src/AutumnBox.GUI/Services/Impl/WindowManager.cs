@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Leafx.Container.Support;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace AutumnBox.GUI.Services.Impl
@@ -17,8 +18,22 @@ namespace AutumnBox.GUI.Services.Impl
             return window;
         }
 
-        public void Show(string windowName) => CreateWindow(windowName).Show();
+        public void Show(string windowName)
+        {
+            CreateWindow(windowName).Show();
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Show Window", new Dictionary<string, string>()
+                {
+                        { "Window Name",windowName},
+                });
+        }
 
-        public void ShowDialog(string windowName) => CreateWindow(windowName).ShowDialog();
+        public void ShowDialog(string windowName)
+        {
+            CreateWindow(windowName).ShowDialog();
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Show Dialog Window", new Dictionary<string, string>()
+                {
+                        { "Window Name",windowName},
+                });
+        }
     }
 }

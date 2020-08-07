@@ -28,6 +28,13 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
                     threadReceiver(Thread.CurrentThread);
                     procedure.Source = source;
                     procedure.Args = args;
+
+                    Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Run Extension", new Dictionary<string, string>()
+                    {
+                        { "Name",info.Name()},
+                        { "Id",info.Id}
+                    });
+
                     return procedure.Run();
                 }
                 catch (Exception e)

@@ -28,6 +28,7 @@ using Microsoft.AppCenter.Crashes;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using System.Globalization;
 
 namespace AutumnBox.GUI
 {
@@ -65,10 +66,7 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            //It's a secret, you see nothing.
-            AppCenter.Start("c41ffd94-f04a-47e9-b43f-6ecca159e3c7", typeof(Analytics), typeof(Crashes));
-
+            ConfigureAppCenter();
 #if DEBUG && STRICT_CHECK
             if (!Lang.FileCheck())
             {
@@ -84,6 +82,17 @@ namespace AutumnBox.GUI
 #pragma warning restore CS4014 // 由于此调用不会等待，因此在调用完成前将继续执行当前方法
         }
 
+        private void ConfigureAppCenter()
+        {
+            DispatcherUnhandledException += (s, e) =>
+              {
+                  Crashes.TrackError(e.Exception);
+              };
+            AppCenter.SetCountryCode(RegionInfo.CurrentRegion.TwoLetterISORegionName);
+            //It's a secret, you see nothing.
+            AppCenter.Start("c41ffd94-f04a-47e9-b43f-6ecca159e3c7", typeof(Analytics), typeof(Crashes));
+            //Crashes.GenerateTestCrash();
+        }
         private void ScanComponents()
         {
             new ClassComponentsLoader(

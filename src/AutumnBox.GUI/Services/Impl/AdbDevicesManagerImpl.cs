@@ -36,6 +36,13 @@ namespace AutumnBox.GUI.Services.Impl
         public AdbDevicesManagerImpl()
         {
             devicesMonitor.DevicesChanged += DevicesMonitor_DevicesChanged;
+            devicesMonitor.DevicesChanged += (s, e) =>
+            {
+                Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Devices Changed", new Dictionary<string, string>()
+                {
+                        { "Count of Devices",e.Devices.Count().ToString()},
+                });
+            };
         }
 
         private void DevicesMonitor_DevicesChanged(object sender, DevicesChangedEventArgs e)

@@ -145,6 +145,10 @@ namespace AutumnBox.GUI.ViewModels
             {
                 languageManager.Current = value;
                 RaisePropertyChanged();
+                Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Language Changed", new Dictionary<string, string>()
+                {
+                        { "Code",value.Code},
+                });
             }
         }
 
