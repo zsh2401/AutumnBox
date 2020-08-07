@@ -4,8 +4,7 @@ on:
   push:
     branch: ["dev"]
   pull_request:
-    branch: ["dev"]
-    branch: ["master"]
+    branch: ["dev","master"]
 
 jobs:
   build:
@@ -28,6 +27,9 @@ jobs:
       
     - name: Building with script
       run: ./scripts/build_canary.ps1
+
+    - name: Unit Test
+      run: dotnet test src/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
