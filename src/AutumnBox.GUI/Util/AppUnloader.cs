@@ -18,10 +18,12 @@ namespace AutumnBox.GUI.Util
     {
         public static void Unload()
         {
+            var mins = Convert.ToInt32((DateTime.Now - Process.GetCurrentProcess().StartTime).TotalMinutes);
             Analytics.TrackEvent("App Shutdown", new Dictionary<string, string>()
             {
-                { "Run Time", (DateTime.Now -  Process.GetCurrentProcess().StartTime).ToString()},
+                { "Run Time (mins)", mins.ToString()},
             });
+
 
             try { App.Current.Lake.GetComponent<ISettings>().Save(); } catch { }
             try { OpenFx.Unload(); } catch { }
