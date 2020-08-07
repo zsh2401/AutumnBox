@@ -25,7 +25,7 @@ namespace AutumnBox.OpenFramework.Management
         IExtensionInfo ExtensionInfo { get; }
         ILibrarian? Librarian { get; }
     }
-    public class RegisteredExtensionInfo : IRegisteredExtensionInfo
+    internal class RegisteredExtensionInfo : IRegisteredExtensionInfo
     {
         public RegisteredExtensionInfo(IExtensionInfo extensionInfo, ILibrarian? librarian)
         {

@@ -6,29 +6,41 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AutumnBox.Leafx.Container;
 using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.Logging;
 
 namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 {
+    /// <summary>
+    /// LibsManager的主要实现
+    /// 用于对所有拓展模块实现一站式管理
+    /// </summary>
     internal sealed class DreamLibManager : ILibsManager
     {
-        [AutoInject] IManagementObjectBuilder? MObjBuilder { get; set; }
-
-        private const string PATTERN_DEFAULT = "*.dll";
-        private const string PATTERN_ATMBEXT = "*.aext";
-        private const string PATTERN_OEXT = "*.aoext";
+        [AutoInject] ILake Lake { get; set; }
 
         public event EventHandler? ExtensionRegistryModified;
 
         public IEnumerable<ILibrarian> Librarians { get; private set; } = new ILibrarian[0];
 
-        public ICollection<IRegisteredExtensionInfo> ExtensionRegistry => InnerRegistry;
-        readonly ObservableCollection<IRegisteredExtensionInfo> InnerRegistry = new ObservableCollection<IRegisteredExtensionInfo>();
+        /// <summary>
+        /// 公开获取注册表的方法
+        /// </summary>
+        public IExtensionRegistry Registry => registry;
+        readonly RegisterImpl registry = new RegisterImpl();
 
+        /// <summary>
+        /// 内部的注册表实现
+        /// </summary>
+        private class RegisterImpl : ObservableCollection<IRegisteredExtensionInfo>, IExtensionRegistry { }
+
+        /// <summary>
+        /// 构造DreamLibManager
+        /// </summary>
         public DreamLibManager()
         {
-            InnerRegistry.CollectionChanged += (s, e) =>
+            registry.CollectionChanged += (s, e) =>
             {
                 Task.Run(() =>
                 {
@@ -36,7 +48,8 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 });
             };
         }
-        public void Reload()
+
+        public void Initialize()
         {
             Librarians = ReloadLibs(Check(GetLibManagers(GetAssemblies(GetFiles()))));
             Librarians.All((lib) =>
@@ -126,15 +139,16 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             {
                 try
                 {
-                    if (file.Extension == PATTERN_OEXT.Substring(1))
-                    {
-                        SLogger<DreamLibManager>.Info($"{file} is an aoext");
-                        result.Add(Assembly.LoadFile(file.FullName));
-                    }
-                    else
-                    {
-                        result.Add(Assembly.Load(File.ReadAllBytes(file.FullName)));
-                    }
+                    result.Add(Assembly.LoadFile(file.FullName));
+                    //if (file.Extension == PATTERN_OEXT.Substring(1))
+                    //{
+                    //    SLogger<DreamLibManager>.Info($"{file} is an aoext");
+                    //    result.Add(Assembly.LoadFile(file.FullName));
+                    //}
+                    //else
+                    //{
+                    //    result.Add(Assembly.Load(File.ReadAllBytes(file.FullName)));
+                    //}
                 }
                 catch (Exception e)
                 {
@@ -158,11 +172,11 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 
                     if (libManagerTypes.Any())
                     {
-                        result.Add(MObjBuilder!.BuildLibrarian(libManagerTypes.First()));
+                        result.Add(BuildLibrarian(libManagerTypes.First()));
                     }
                     else
                     {
-                        result.Add(MObjBuilder!.BuildLibrarian(assembly));
+                        result.Add(BuildLibrarian(assembly));
                     }
                 }
                 catch (Exception e)
@@ -176,6 +190,26 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 SLogger<DreamLibManager>.Info($"{lib.Name}");
             }
             return result;
+        }
+
+        public ILibrarian BuildLibrarian(Type libType)
+        {
+            if (libType == null)
+            {
+                throw new ArgumentNullException(nameof(libType));
+            }
+            var builder = new ObjectBuilder(libType, Lake);
+            return (ILibrarian)builder.Build();
+        }
+
+        public ILibrarian BuildLibrarian(Assembly assembly)
+        {
+            if (assembly == null)
+            {
+                throw new ArgumentNullException(nameof(assembly));
+            }
+            var builder = new ObjectBuilder(typeof(AssemblyLibrarian), Lake);
+            return (AssemblyLibrarian)builder.Build();
         }
     }
 }

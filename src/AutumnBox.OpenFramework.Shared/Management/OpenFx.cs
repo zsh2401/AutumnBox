@@ -29,17 +29,20 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 获取OpenFx总湖
         /// </summary>
+#pragma warning disable CS8618 // 不可为 null 的字段未初始化。请考虑声明为可以为 null。
         public static IRegisterableLake Lake { get; private set; }
+#pragma warning restore CS8618 // 不可为 null 的字段未初始化。请考虑声明为可以为 null。
 
         /// <summary>
-        /// 加载
+        /// 初始化整个框架
         /// </summary>
         /// <param name="baseAPI"></param>
         public static void Initialize(IBaseApi baseAPI)
         {
             Lake = baseAPI.GlobalLake;
             RegisterComponent(baseAPI);
-            Lake.Get<ILibsManager>().Reload();
+            //加载拓展模块
+            Lake.Get<ILibsManager>().Initialize();
         }
 
         /// <summary>
@@ -59,6 +62,11 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         public static void Unload()
         {
+            Lake.Get<ILibsManager>().Librarians.All(lib =>
+            {
+                lib.Destory();
+                return true;
+            });
             //TODO
         }
 
@@ -75,7 +83,6 @@ namespace AutumnBox.OpenFramework.Management
             SLogger.Info(nameof(OpenFx), "Base components are registered");
 
             //管理层面的组件
-            Lake.RegisterSingleton<IManagementObjectBuilder, ManagementObjectBuilder>();
             Lake.RegisterSingleton<ILibsManager, DreamLibManager>();
             Lake.RegisterSingleton<IExtensionTaskManager, ExtensionTaskManagerV2>();
             SLogger.Info(nameof(OpenFx), "Management components are registered");

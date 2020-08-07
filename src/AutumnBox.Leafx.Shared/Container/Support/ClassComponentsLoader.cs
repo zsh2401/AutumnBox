@@ -52,7 +52,7 @@ namespace AutumnBox.Leafx.Container.Support
             foreach (var assembly in assemblies)
             {
                 var components = from type in assembly.GetTypes()
-                                 where type.FullName.StartsWith(prefix)
+                                 where type.FullName?.StartsWith(prefix) ?? false
                                  where type.GetCustomAttribute<ComponentAttribute>() != null
                                  select type;
                 componentsResult.AddRange(components);

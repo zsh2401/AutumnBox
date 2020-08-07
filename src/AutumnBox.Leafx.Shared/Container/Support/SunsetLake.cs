@@ -42,7 +42,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// <param name="factory"></param>
         public void RegisterComponent(string id, ComponentFactory factory)
         {
-            RegisterFactory(id, factory);
+            InnerRegister(id, factory);
         }
 
         /// <summary>

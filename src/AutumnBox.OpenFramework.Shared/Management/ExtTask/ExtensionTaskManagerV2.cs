@@ -75,7 +75,7 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
             {
                 throw new InvalidOperationException("Librarian has not been inject to here!");
             }
-            var types = (from rext in libsManager.ExtensionRegistry
+            var types = (from rext in libsManager.Registry
                          where rext.ExtensionInfo.Id == id
                          select rext.ExtensionInfo);
             if (types.Any())

@@ -19,7 +19,7 @@ namespace AutumnBox.GUI.Services.Impl
     {
         public Task<object?>[] RunningTasks => OpenFx.Lake.Get<IExtensionTaskManager>().RunningTasks.ToArray();
 
-        public IExtensionInfo[] Extensions => OpenFx.Lake.Get<ILibsManager>().ExtensionRegistry.Select((r)=>r.ExtensionInfo).ToArray();
+        public IExtensionInfo[] Extensions => OpenFx.Lake.Get<ILibsManager>().Registry.Select((r)=>r.ExtensionInfo).ToArray();
 
         private readonly ILogger logger = LoggerFactory.Auto(nameof(OpenFxManagerImpl));
         private readonly Queue<Action> handlers = new Queue<Action>();
@@ -30,7 +30,7 @@ namespace AutumnBox.GUI.Services.Impl
             OpenFx.Initialize(new AutumnBoxGuiBaseApiImpl());
             logger.Info("Open framework api system is initialized");
             var libsManager = OpenFx.Lake.Get<ILibsManager>();
-            logger.Info($"There are {libsManager.Librarians.Count()} librarians and {libsManager.ExtensionRegistry.Count()} wrappers");
+            logger.Info($"There are {libsManager.Librarians.Count()} librarians and {libsManager.Registry.Count()} wrappers");
             isLoaded = true;
             while (handlers.Any())
             {

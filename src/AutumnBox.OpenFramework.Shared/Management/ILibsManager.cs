@@ -12,7 +12,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 重载
         /// </summary>
-        void Reload();
+        void Initialize();
 
         /// <summary>
         /// 已加载的库管理器
@@ -22,7 +22,7 @@ namespace AutumnBox.OpenFramework.Management
         /// <summary>
         /// 拓展模块注册表
         /// </summary>
-        ICollection<IRegisteredExtensionInfo> ExtensionRegistry { get; }
+        IExtensionRegistry Registry { get; }
 
         /// <summary>
         /// 当拓展模块注册表发生变化时触发

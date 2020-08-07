@@ -51,6 +51,7 @@ namespace AutumnBox.OpenFramework
         internal const string AUTUMNBOX_LOGGING_ASSEMBLY_NAME = "AutumnBox.Logging";
 
         const string DEFAULT_EXTENSION_PATH = "extensions";
+
         static BuildInfo()
         {
             ExtensionStore = new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, DEFAULT_EXTENSION_PATH));

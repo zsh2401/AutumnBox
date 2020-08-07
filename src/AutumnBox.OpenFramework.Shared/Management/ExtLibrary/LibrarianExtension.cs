@@ -19,7 +19,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary
         [Obsolete("Use LibsManager.ExtensionRegistry to instead")]
         public static IEnumerable<IExtensionInfo> GetAllExtensions(this ILibsManager libsManager)
         {
-            return libsManager.ExtensionRegistry.Select((item)=>item.ExtensionInfo);
+            return libsManager.Registry.Select((item)=>item.ExtensionInfo);
             //var result = new List<IExtensionInfo>();
             //libsManager.Librarians.All((lib) =>
             //{

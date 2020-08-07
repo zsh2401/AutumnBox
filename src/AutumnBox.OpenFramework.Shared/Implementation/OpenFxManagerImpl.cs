@@ -39,7 +39,7 @@ namespace AutumnBox.OpenFramework.Implementation
             };
         }
 
-        public IEnumerable<IExtensionInfo> Extensions => libsManager.ExtensionRegistry.Select(item => item.ExtensionInfo);
+        public IEnumerable<IExtensionInfo> Extensions => libsManager.Registry.Select(item => item.ExtensionInfo);
 
         public IEnumerable<ILibrarian> Librarians => libsManager.Librarians;
 
@@ -55,7 +55,7 @@ namespace AutumnBox.OpenFramework.Implementation
             {
                 throw new ArgumentNullException(nameof(context));
             }
-            return (from rext in libsManager.ExtensionRegistry
+            return (from rext in libsManager.Registry
                     where (rext.ExtensionInfo is ClassExtensionInfo ceInf && ceInf.ClassExtensionType == context.GetType())
                     select rext.Librarian).FirstOrDefault();
         }

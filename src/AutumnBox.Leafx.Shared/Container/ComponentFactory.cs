@@ -21,5 +21,5 @@ namespace AutumnBox.Leafx.Container
     /// 组件工厂
     /// </summary>
     /// <returns></returns>
-    public delegate object? ComponentFactory();
+    public delegate object ComponentFactory();
 }

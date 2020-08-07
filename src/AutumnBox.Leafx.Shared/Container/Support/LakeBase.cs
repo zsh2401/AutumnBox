@@ -41,9 +41,9 @@ namespace AutumnBox.Leafx.Container.Support
         /// <returns></returns>
         public virtual object? GetComponent(string id)
         {
-            if (Factories.TryGetValue(id, out ComponentFactory factory))
+            if (Factories.TryGetValue(id, out ComponentFactory? factory))
             {
-                return factory();
+                return factory.Invoke();
             }
             else
             {
@@ -56,7 +56,7 @@ namespace AutumnBox.Leafx.Container.Support
         /// </summary>
         /// <param name="id"></param>
         /// <param name="factory"></param>
-        protected virtual void RegisterFactory(string id, ComponentFactory factory)
+        protected virtual void InnerRegister(string id, ComponentFactory factory)
         {
             this.Factories[id] = factory;
         }

@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extension\StatusMessages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implementation\OpenFxManagerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtInfo\ClassExtensionProcedure.cs" />
+    <Compile Include="..\AutumnBox.OpenFramework.Shared\Management\IExtensionRegistry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\RegisteredExtensionInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\IStorageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ClassTextReaderExtension.cs" />
@@ -50,8 +51,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtLibrary\Impl\AssemblyLibrarian.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\ExtTask\ExtensionTaskManagerV2.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\IManagementObjectBuilder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Management\ManagementObjectBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\OpenFx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\ILanguageManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Open\INotificationManager.cs" />

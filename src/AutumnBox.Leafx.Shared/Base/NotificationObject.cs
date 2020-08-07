@@ -28,13 +28,13 @@ namespace AutumnBox.Leafx.Base
     public class NotificationObject : INotifyPropertyChanged
     {
         /// <inheritdoc/>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// 触发属性变更事件
         /// </summary>
         /// <param name="memberName"></param>
-        protected virtual void RaisePropertyChanged([CallerMemberName]string memberName = null)
+        protected virtual void RaisePropertyChanged([CallerMemberName]string? memberName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(memberName));
         }

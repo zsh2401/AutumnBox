@@ -14,17 +14,12 @@
 *
 * ==============================================================================
 */
-
-using System;
-//using System.Collections;
-//using System.Collections.Generic;
-
 namespace AutumnBox.Leafx.Container
 {
     /// <summary>
-    /// 标准的湖接口
+    /// 标准的湖接口,湖是一种IoC中的容器概念,不可动态修改
     /// </summary>
-    public interface ILake /*: IEnumerable, IEnumerable<ComponentFactory>*/
+    public interface ILake
     {
         /// <summary>
         /// 组件数量
@@ -37,11 +32,6 @@ namespace AutumnBox.Leafx.Container
         /// <param name="id"></param>
         /// <exception cref="IdNotFoundException">当ID不存在时触发</exception>
         /// <returns>被注册的值</returns>
-        object? GetComponent(string id);
+        object GetComponent(string id);
     }
-    //public interface LakeRecord
-    //{
-    //    string Id { get; }
-    //    ComponentFactory Factory { get; }
-    //}
 }

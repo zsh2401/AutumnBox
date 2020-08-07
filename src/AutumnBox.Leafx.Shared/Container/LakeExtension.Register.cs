@@ -134,7 +134,7 @@ namespace AutumnBox.Leafx.Container
         /// <returns></returns>
         public static IRegisterableLake RegisterSingleton<T>(this IRegisterableLake lake, T value)
         {
-            RegisterSingletonBase(lake, typeof(T), () => value);
+            RegisterSingletonBase(lake, typeof(T), () => value ?? throw new NullReferenceException("Should not be NULL"));
             return lake;
         }
 
@@ -316,7 +316,7 @@ namespace AutumnBox.Leafx.Container
                     created = true;
                     cache = factory();
                 }
-                return cache;
+                return cache ?? new NullReferenceException("Component should not be null");
             };
         }
     }

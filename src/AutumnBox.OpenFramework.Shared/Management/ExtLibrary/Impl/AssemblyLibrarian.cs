@@ -104,7 +104,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 foreach (var ext in Extensions)
                 {
                     var rext = new RegisteredExtensionInfo(ext, this);
-                    LakeProvider.Lake.Get<ILibsManager>().ExtensionRegistry.Remove(rext);
+                    LakeProvider.Lake.Get<ILibsManager>().Registry.Remove(rext);
                 }
             }
 
@@ -115,7 +115,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
             foreach (var ext in Extensions)
             {
                 var rext = new RegisteredExtensionInfo(ext, this);
-                LakeProvider.Lake.Get<ILibsManager>().ExtensionRegistry.Add(rext);
+                LakeProvider.Lake.Get<ILibsManager>().Registry.Add(rext);
             }
         }
         /// <summary>

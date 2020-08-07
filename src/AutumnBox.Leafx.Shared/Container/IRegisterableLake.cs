@@ -14,12 +14,11 @@
 *
 * ==============================================================================
 */
-using System;
 
 namespace AutumnBox.Leafx.Container
 {
     /// <summary>
-    /// 可动态注册湖
+    /// 可动态注册的湖容器
     /// </summary>
     public interface IRegisterableLake : ILake
     {

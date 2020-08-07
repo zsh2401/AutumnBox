@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 namespace AutumnBox.OpenFramework.Management
 {
     /// <summary>
-    /// 基础秋之盒主程序的API
+    /// 基础秋之盒主程序的API,提供开放框架与秋之盒主程序的交互
     /// </summary>
 #if SDK
     internal 

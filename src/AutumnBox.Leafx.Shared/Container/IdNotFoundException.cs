@@ -12,7 +12,6 @@
         public IdNotFoundException(string id) :
             base($"Id '{id}' has not been found in lake")
         {
-
         }
     }
 }
