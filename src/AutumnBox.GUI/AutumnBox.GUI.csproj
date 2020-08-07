@@ -11,7 +11,7 @@
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
     <Version>2020.8.8</Version>
     <AssemblyVersion>2020.8.8.0</AssemblyVersion>
-    <ApplicationManifest>..\AutumnBox.GUI.Shared\Properties\app.manifest</ApplicationManifest>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
@@ -58,7 +58,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HandyControl" Version="2.5.0.1" />
+    <PackageReference Include="HandyControl" Version="2.5.0.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.0" />
     <PackageReference Include="SharpZipLib" Version="1.2.0" />
   </ItemGroup>
 

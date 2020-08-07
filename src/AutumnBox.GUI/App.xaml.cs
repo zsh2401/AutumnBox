@@ -22,6 +22,9 @@ using AutumnBox.Leafx.Container.Support;
 using System;
 using System.Linq;
 using System.Reflection;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
@@ -62,6 +65,10 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+            //It's a secret, you see nothing.
+            AppCenter.Start("c41ffd94-f04a-47e9-b43f-6ecca159e3c7", typeof(Analytics), typeof(Crashes));
+
 #if DEBUG && STRICT_CHECK
             if (!Lang.FileCheck())
             {
