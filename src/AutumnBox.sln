@@ -23,8 +23,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Extensions.Standa
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.Extensions.Essentials.Shared", "AutumnBox.Extensions.Essentials.Shared\AutumnBox.Extensions.Essentials.Shared.shproj", "{296957AE-70AB-40D6-B291-55EB291CE4A3}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AutumnBox.GUI.Shared", "AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.shproj", "{3B1EEF09-325C-4F4F-B449-0E963C68F7D3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Target", "Target", "{29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutumnBox.GUI", "AutumnBox.GUI\AutumnBox.GUI.csproj", "{F5208B48-2F0D-4D84-A095-5BFFF725FAE8}"
@@ -42,7 +40,6 @@ Global
 		AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 5
 		AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 5
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{2cff3b20-4778-47ef-8d8b-b106f7617954}*SharedItemsImports = 5
-		AutumnBox.GUI.Shared\AutumnBox.GUI.Shared.projitems*{3b1eef09-325c-4f4f-b449-0e963c68f7d3}*SharedItemsImports = 13
 		AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems*{49e6d09e-b234-4aa4-97b0-e82fb60c36d2}*SharedItemsImports = 13
 		AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems*{70c20f62-e87b-49e6-b263-41a53825a706}*SharedItemsImports = 5
 		AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems*{70c20f62-e87b-49e6-b263-41a53825a706}*SharedItemsImports = 5
@@ -240,14 +237,13 @@ Global
 		{8E101F07-8C10-4AB6-A427-F24618C25DE5} = {2377CBDA-1330-43FC-BBD0-9D6B26FD9DA2}
 		{D41BE8E2-8B49-461D-BD30-601F9E34F83F} = {EDF2D8E5-4D04-46FA-990A-FFB9CD914614}
 		{296957AE-70AB-40D6-B291-55EB291CE4A3} = {EDF2D8E5-4D04-46FA-990A-FFB9CD914614}
-		{3B1EEF09-325C-4F4F-B449-0E963C68F7D3} = {2377CBDA-1330-43FC-BBD0-9D6B26FD9DA2}
 		{F5208B48-2F0D-4D84-A095-5BFFF725FAE8} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 		{70C20F62-E87B-49E6-B263-41A53825A706} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 		{E9276362-70DE-4FC8-A8D4-8301F270562E} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 		{AFE22E15-E431-41B8-BAE6-89919A71B70A} = {29E64621-6E31-4C24-8F7D-B8DBDD8B1EFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 		SolutionGuid = {E8E55705-AE5C-4952-B4C7-9D7F81C38731}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.PolicyInjection.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
