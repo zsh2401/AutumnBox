@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <summary>
         /// 内部维护尚未被析构的cp
         /// </summary>
-        private HashSet<ICommandProcedure>? notDisposeds;
+        private HashSet<ICommandProcedure> notDisposedSet;
 
         /// <summary>
         /// 构建基础的命令进程管理器
@@ -25,7 +25,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <param name="adbPort"></param>
         public ProcedureManager(DirectoryInfo? adbClientDir = null, ushort adbPort = 6605)
         {
-            notDisposeds = new HashSet<ICommandProcedure>();
+            notDisposedSet = new HashSet<ICommandProcedure>();
             this.adbClientDir = adbClientDir ?? new DirectoryInfo(".");
             this.adbPort = adbPort;
         }
@@ -39,7 +39,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         private readonly DirectoryInfo adbClientDir;
         private readonly ushort adbPort;
 
-       /// <inheritdoc/>
+        /// <inheritdoc/>
         public ICommandProcedure OpenCommand(string commandName, params string[] args)
         {
             lock (openCommandLock)
@@ -51,7 +51,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 };
                 commandProcedure.InitializeAdbEnvironment(this.adbClientDir, this.adbPort);
                 commandProcedure.Disposed += CommandProcedure_Disposed;
-                notDisposeds?.Add(commandProcedure);
+                lock (notDisposedSet)
+                {
+                    notDisposedSet?.Add(commandProcedure);
+                }
                 return commandProcedure;
             }
         }
@@ -61,7 +64,10 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             if (sender is ICommandProcedure cp)
             {
                 cp.Disposed -= CommandProcedure_Disposed;
-                notDisposeds?.Remove(cp);
+                lock (notDisposedSet)
+                {
+                    notDisposedSet?.Remove(cp);
+                }
             }
         }
 
@@ -81,8 +87,8 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             {
                 if (disposing)
                 {
-                    var _cps = this.notDisposeds;
-                    this.notDisposeds = null;
+                    var _cps = this.notDisposedSet;
+                    //this.notDisposedSet = null;
                     _cps.All((p) =>
                     {
                         try

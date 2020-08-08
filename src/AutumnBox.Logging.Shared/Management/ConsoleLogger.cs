@@ -14,6 +14,7 @@
 * ==============================================================================
 */
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Logging.Management
@@ -40,12 +41,12 @@ namespace AutumnBox.Logging.Management
             {
                 Task.Run(() =>
                 {
-                    Console.WriteLine(log.ToFormatedString());
+                    Trace.WriteLine(log.ToFormatedString());
                 });
             }
             else
             {
-                Console.WriteLine(log);
+                Trace.WriteLine(log.ToFormatedString());
             }
         }
     }
