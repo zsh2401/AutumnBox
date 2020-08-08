@@ -32,7 +32,7 @@ namespace AutumnBox.OpenFramework.Extension.Leaf
         /// <param name="exitCode"></param>
         public static void EFinish(this ILeafUI ui, int exitCode = 0)
         {
-            ui.Finish(exitCode.ToString());
+            ui.Finish(exitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
             throw new LeafExtensionTerminatedException();
         }
 

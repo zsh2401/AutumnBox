@@ -3,6 +3,7 @@
 ** date:  2018/9/4 13:11:24 (UTC +8:00)
 ** desc： ...
 *************************************************/
+using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Util;
 using System;
 
@@ -35,7 +36,11 @@ namespace AutumnBox.Basic.Device
             device.ThrowIfNotAlive();
             if (device.State == DeviceState.Fastboot)
             {
-                device.Fastboot("reboot").ThrowIfExitCodeNotEqualsZero();
+                using var executor = new HestExecutor(BasicBooter.CommandProcedureManager);
+                new FastbootFixedExecutor(device, executor, "reboot")
+                { Timeout = 1000 }
+                .Execute().ThrowIfExitCodeIsNotZero();
+                //device.Fastboot("reboot").ThrowIfExitCodeNotEqualsZero();
             }
             else
             {

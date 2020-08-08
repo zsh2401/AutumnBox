@@ -73,9 +73,8 @@ namespace AutumnBox.Extensions.Standard.Extensions.Fastboot
                 catch (Exception e)
                 {
                     DisplayNotSupportMessage(ui);
-                    SLogger<ESwitchABSlot>.Info(e);
-                    ui.WriteLineToDetails(e.ToString());
-                    ui.Finish(StatusMessages.Failed);
+                    SLogger<ESwitchABSlot>.Warn(e);
+                    ui.Shutdown();
                 }
             }
         }

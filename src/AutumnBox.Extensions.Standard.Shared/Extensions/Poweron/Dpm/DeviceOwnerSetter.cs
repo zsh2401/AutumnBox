@@ -254,7 +254,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 #pragma warning restore CS0618 // 类型或成员已过时
             var isInstall = pm.IsInstall(packageName);
             return isInstall || ui.DoChoice(text["HaveNotInstallApp"],
-                btnYes: text["BtnOkay"], btnNo: text["BtnIgnore"],
+                btnYes: text["BtnOk"], btnNo: text["BtnIgnore"],
                btnCancel: text["BtnCancel"]) == false;
         }
         #endregion

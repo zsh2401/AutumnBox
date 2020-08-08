@@ -7,7 +7,7 @@
              Background="White"
              FontFamily="{DynamicResource AutumnBox.Font}"
              x:Name="mThis"
-             Width="350" Height="200">
+             Width="300" Height="200">
     <DockPanel>
         <Button Click="Button_Click" Margin="5" IsCancel="True" DockPanel.Dock="Bottom" Content="{DynamicResource SignalSelectViewCancel}"/>
         <TextBlock Margin="5" TextWrapping="Wrap" x:Name="TBHint" DockPanel.Dock="Top" Text="{DynamicResource SignalSelectViewHint}"/>

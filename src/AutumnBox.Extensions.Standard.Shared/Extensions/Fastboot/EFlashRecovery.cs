@@ -34,11 +34,17 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
                     fileDialog.Title = text["Title"];
                     fileDialog.Filter = text["Filter"];
                     fileDialog.Multiselect = false;
-                    if (fileDialog.ShowDialog() != true) ui.EFinish();
-                    executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
-                    executor.Fastboot(device, $"flash recovery \"{fileDialog.FileName}\"");
-                    var result = executor.Fastboot(device, $"boot \"{fileDialog.FileName}\"");
-                    ui.Finish(result.ExitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
+                    if (fileDialog.ShowDialog() == true)
+                    {
+                        executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
+                        executor.Fastboot(device, $"flash recovery \"{fileDialog.FileName}\"");
+                        var result = executor.Fastboot(device, $"boot \"{fileDialog.FileName}\"");
+                        ui.Finish(result.ExitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
+                    }
+                    else
+                    {
+                        ui.Shutdown();
+                    }
                 }
             }
         }
