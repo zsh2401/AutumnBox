@@ -17,9 +17,11 @@ using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
 using AutumnBox.Leafx.Enhancement.ClassTextKit;
+using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Open.LKit;
+using System;
 using System.Text.RegularExpressions;
 
 namespace AutumnBox.Extensions.Standard.Extensions.Fastboot
@@ -39,6 +41,7 @@ namespace AutumnBox.Extensions.Standard.Extensions.Fastboot
         {
             using (ui)
             {
+                ui.Icon = this.GetIcon();
                 ui.Show();
                 ui.Closing += (s, e) =>
                 {
@@ -48,55 +51,49 @@ namespace AutumnBox.Extensions.Standard.Extensions.Fastboot
                 executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
 
                 //Checking if device support A/B slot.
-                CommandResult result = executor.Fastboot(device, "getvar current-slot 2");
-
-                bool? crtSlot = GetCurrentSlot(result.Output.ToString());
-
-                if (crtSlot != null || AskIfContinueWithMayNotSupport(ui))
+                try
                 {
-                    //Ask if continue
-                    var targetSlot = (bool)crtSlot ? "b" : "a";
+                    ui.StatusInfo = text.RxGetClassText("status_getting_crt_slot");
+                    string slot = device.GetVar("current-slot");
+                    var targetSlot = slot == "a" ? "b" : "a";
                     if (AskIfContinueToSwitch(ui))
                     {
-                        executor.Fastboot(device, "--set-active=" + targetSlot);
+                        ui.StatusInfo = text.RxGetClassText("status_switching");
+                        var result = executor.Fastboot(device, "--set-active=" + targetSlot);
+                        if (result.ExitCode == 0)
+                        {
+                            ui.Finish(StatusMessages.Success);
+                        }
+                        else
+                        {
+                            ui.Finish(StatusMessages.Failed);
+                        }
                     }
                 }
-                else
+                catch (Exception e)
                 {
-                    ui.Shutdown();
+                    DisplayNotSupportMessage(ui);
+                    SLogger<ESwitchABSlot>.Info(e);
+                    ui.WriteLineToDetails(e.ToString());
+                    ui.Finish(StatusMessages.Failed);
                 }
             }
         }
-        static readonly Regex slotParseRegex = new Regex(@"^current-slot:\s(?<slot>\w)$");
 
-        /// <summary>
-        /// return true if a ,false if b else null;
-        /// </summary>
-        /// <param name="output"></param>
-        /// <returns></returns>
-        static bool? GetCurrentSlot(string output)
+        static void DisplayNotSupportMessage(ILeafUI ui)
         {
-            var match = slotParseRegex.Match(output);
-            if (match.Success)
-                return match.Result("${slot}") == "a";
-            else
-                return null;
-        }
-
-        static bool AskIfContinueWithMayNotSupport(ILeafUI ui)
-        {
-            var msg = text.RxGetClassText("not_support");
-            var btnContinueForcely = text.RxGetClassText("continue_force");
-            return ui.DoChoice(msg, btnContinueForcely) == true;
+            ui.ShowMessage(text.RxGetClassText("not_support"));
         }
 
         static bool AskIfContinueToSwitch(ILeafUI ui)
         {
             return ui.DoYN(text.RxGetClassText("if_continue"));
         }
+
+        [ClassText("status_getting_crt_slot", "Getting current slot", "zh-cn:正在获取当前槽位")]
+        [ClassText("status_switching", "Switching", "zh-cn:正在切换")]
         [ClassText("not_support", "You device is not support A/B slot.", "zh-cn:你的设备不支持A/B槽位切换")]
-        [ClassText("continue_force", "Continue forcely.", "zh-cn:强行基础")]
-        [ClassText("if_continue", "Are you sure to continue? It's may be dangerous.", "zh-cn:确定要继续吗?这可能很危险。")]
-        private class TextCarrier { }
+        [ClassText("if_continue", "Are you sure to continue? It's may be dangerous.", "zh-cn:您的设备支持AB槽切换，确定要继续吗？这可能很危险！")]
+        private sealed class TextCarrier { }
     }
 }
