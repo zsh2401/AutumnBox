@@ -45,7 +45,7 @@
             <MenuItem InputGestureText="Shift + O" Header="{DynamicResource Menu.OpenExtFloder}" Command="{Binding OpenExtFloder}"/>
         </MenuItem>
         <MenuItem Header="{DynamicResource Menu.Debug}">
-            <MenuItem InputGestureText="Shift + D" Command="{Binding ShowWindow}" CommandParameter="Log" Header="{DynamicResource Menu.LoggingWindow}">
+            <MenuItem InputGestureText="Shift + D" Command="{Binding ShowWindow}" CommandParameter="LogEasy" Header="{DynamicResource Menu.LoggingWindow}">
                 <MenuItem.Icon>
                     <Image Source="/Resources/Icons/Menu/debug.png"></Image>
                 </MenuItem.Icon>
