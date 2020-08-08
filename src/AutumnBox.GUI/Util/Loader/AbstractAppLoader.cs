@@ -59,7 +59,7 @@ namespace AutumnBox.GUI.Util.Loader
                     return;
                 }
             }
-            Logger.Info("All done!");
+            Logger.Info("Done!");
             Succeced?.Invoke(this, new EventArgs());
         }
 

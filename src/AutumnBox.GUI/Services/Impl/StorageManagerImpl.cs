@@ -25,14 +25,21 @@ namespace AutumnBox.GUI.Services.Impl
     {
         public StorageManagerImpl()
         {
+            InitializeVarDirectory();
             InitializeCacheDirectory();
             InitializeStorageDirectory();
+        }
+
+        private void InitializeVarDirectory()
+        {
+            CacheDirectory = new DirectoryInfo("var");
+            if (!CacheDirectory.Exists) CacheDirectory.Create();
         }
 
         private void InitializeCacheDirectory()
         {
 #if DEBUG || GREEN_RELEASE
-            CacheDirectory = new DirectoryInfo("cache");
+            CacheDirectory = new DirectoryInfo("var/cache");
 #else
             string temp = Environment.GetEnvironmentVariable("TEMP");
             CacheDirectory = new DirectoryInfo(Path.Combine(temp, "AutumnBox"));
@@ -43,7 +50,7 @@ namespace AutumnBox.GUI.Services.Impl
         private void InitializeStorageDirectory()
         {
 #if DEBUG || GREEN_RELEASE
-            var atmbDirectory = new DirectoryInfo("storage");
+            var atmbDirectory = new DirectoryInfo("var/storage");
             if (!atmbDirectory.Exists) atmbDirectory.Create();
 #else
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

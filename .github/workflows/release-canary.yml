@@ -27,11 +27,11 @@ jobs:
       id: tag
       uses: dawidd6/action-get-tag@v1
 
-    - name: Create archive
-      uses: DuckSoft/create-7z-action@master
-      with:
-        pathSource: AutumnBox-Canary
-        pathTarget: archive.zip
+    # - name: Create archive
+    #   uses: DuckSoft/create-7z-action@master
+    #   with:
+    #     pathSource: AutumnBox-Canary
+    #     pathTarget: archive.zip
 
     - name: Create release
       id: create_release

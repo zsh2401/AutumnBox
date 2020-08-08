@@ -9,6 +9,7 @@
 *.exe.config
 *.exp
 *.ipch
+*.7z
 *.metagen
 *.ncb
 *.nupkg
