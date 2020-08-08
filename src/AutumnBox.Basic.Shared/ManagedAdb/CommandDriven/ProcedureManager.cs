@@ -16,7 +16,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <summary>
         /// 内部维护尚未被析构的cp
         /// </summary>
-        private HashSet<ICommandProcedure> notDisposedSet;
+        readonly HashSet<ICommandProcedure> notDisposedSet = new HashSet<ICommandProcedure>();
 
         /// <summary>
         /// 构建基础的命令进程管理器
@@ -25,7 +25,6 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <param name="adbPort"></param>
         public ProcedureManager(DirectoryInfo? adbClientDir = null, ushort adbPort = 6605)
         {
-            notDisposedSet = new HashSet<ICommandProcedure>();
             this.adbClientDir = adbClientDir ?? new DirectoryInfo(".");
             this.adbPort = adbPort;
         }
@@ -61,12 +60,12 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 
         private void CommandProcedure_Disposed(object sender, EventArgs e)
         {
-            if (sender is ICommandProcedure cp)
+            if (handleDisposedEvent && sender is ICommandProcedure cp)
             {
                 cp.Disposed -= CommandProcedure_Disposed;
                 lock (notDisposedSet)
                 {
-                    notDisposedSet?.Remove(cp);
+                    notDisposedSet.Remove(cp);
                 }
             }
         }
@@ -77,6 +76,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// </summary>
         public bool DisposedValue { get; private set; } = false;
 
+        private bool handleDisposedEvent = true;
         /// <summary>
         /// 释放函数内部实现
         /// </summary>
@@ -87,22 +87,20 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             {
                 if (disposing)
                 {
-                    var _cps = this.notDisposedSet;
-                    //this.notDisposedSet = null;
-                    _cps.All((p) =>
-                    {
-                        try
-                        {
-                            p.Dispose();
-                        }
-                        catch (Exception e)
-                        {
-                            SLogger<CommandProcedure>.CDebug("can not dispose command procedure", e);
-                        }
-
-                        return true;
-                    });
-                    _cps!.Clear();
+                    handleDisposedEvent = false;
+                    notDisposedSet.All((p) =>
+                     {
+                         try
+                         {
+                             p.Dispose();
+                         }
+                         catch (Exception e)
+                         {
+                             SLogger<CommandProcedure>.CDebug("can not dispose command procedure", e);
+                         }
+                         return true;
+                     });
+                    this.notDisposedSet.Clear();
                     // TODO: 释放托管状态(托管对象)。
                 }
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
