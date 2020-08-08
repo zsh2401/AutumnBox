@@ -1,1 +1,0 @@
-There should be macos x64 adb files.
