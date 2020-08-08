@@ -15,11 +15,6 @@ namespace AutumnBox.GUI.Views.Windows
         public MainWindowV3()
         {
             InitializeComponent();
-        }
-
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
             this.GetComponent<INotificationManager>().Token = "mainv3";
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
             {
@@ -29,5 +24,6 @@ namespace AutumnBox.GUI.Views.Windows
                 this.GetComponent<INotificationManager>().Info("Canary");
 #endif
         }
+
     }
 }
