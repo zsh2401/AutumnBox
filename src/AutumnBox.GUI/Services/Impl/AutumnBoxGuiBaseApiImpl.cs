@@ -264,13 +264,15 @@ namespace AutumnBox.GUI.Services.Impl
 
         public void ShowException(string title, string sketch, string exceptionMessage)
         {
-            new ExceptionWindow()
-            {
-                MessageTitle = title,
-                ExceptionMessage = exceptionMessage,
-                Sketch = sketch,
-                Owner = App.Current.MainWindow
-            }.Show();
+            //this.GetComponent<INotificationManager>().Info($"{title}\n{exceptionMessage}");
+            this.GetComponent<INotificationManager>().Warn($"{title}\n{exceptionMessage}");
+            //new ExceptionWindow()
+            //{
+            //    MessageTitle = title,
+            //    ExceptionMessage = exceptionMessage,
+            //    Sketch = sketch,
+            //    Owner = App.Current.MainWindow
+            //}.Show();
         }
 
         public ILeafUI NewLeafUI()

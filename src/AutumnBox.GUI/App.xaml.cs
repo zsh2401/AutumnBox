@@ -66,7 +66,11 @@ namespace AutumnBox.GUI
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
+#if !DEBUG
             ConfigureAppCenter();
+#endif
+
 #if DEBUG && STRICT_CHECK
             if (!Lang.FileCheck())
             {

@@ -223,6 +223,7 @@ namespace AutumnBox.GUI.ViewModels
         private void BindingViewEvents()
         {
             if (CurrentState != State.Ready) return;
+            if (View == null) return;
             View.Closing += OnLeafWindowClosing;
         }
 

@@ -36,6 +36,10 @@ namespace AutumnBox.GUI.Services.Impl
                     Growl.Info(msg, Token);
                 });
             }
+            else
+            {
+                Growl.Info(msg, Token);
+            }
         }
 
         public async void Warn(string msg)
@@ -47,6 +51,10 @@ namespace AutumnBox.GUI.Services.Impl
                 {
                     Growl.Warning(msg, Token);
                 });
+            }
+            else
+            {
+                Growl.Warning(msg, Token);
             }
         }
 
@@ -81,6 +89,10 @@ namespace AutumnBox.GUI.Services.Impl
                 {
                     Growl.Success(ParseMsg(msg), Token);
                 });
+            }
+            else
+            {
+                Growl.Success(msg, Token);
             }
         }
 

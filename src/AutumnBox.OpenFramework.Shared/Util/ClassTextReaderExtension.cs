@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Leafx.Container;
 using AutumnBox.OpenFramework.Open;
+using System;
 
 #nullable enable
 namespace AutumnBox.Leafx.Enhancement.ClassTextKit
@@ -53,11 +54,18 @@ namespace AutumnBox.Leafx.Enhancement.ClassTextKit
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="key"></param>
-        /// <returns>应得的文本,发生错误时将返回key值</returns>
+        /// <exception cref="System.InvalidOperationException">传入了错误的对象,如:ClassTextReader</exception>
         /// <returns>应得的文本,发生错误时将返回key值</returns>
         public static string RxGetClassText(this object obj, string key)
         {
-            return RxGet(ClassTextReaderCache.Acquire(obj.GetType()), key);
+            if (obj.GetType() == typeof(ClassTextReader))
+            {
+                throw new InvalidOperationException();
+            }
+            else
+            {
+                return RxGet(ClassTextReaderCache.Acquire(obj.GetType()), key);
+            }
         }
     }
 }

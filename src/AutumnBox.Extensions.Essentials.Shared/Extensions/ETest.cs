@@ -32,6 +32,7 @@ namespace AutumnBox.Essentials.Extensions
         public void EntryPoint(ILeafUI _ui, IDevice device)
         {
             using var ui = _ui;
+            throw new Exception("Fuck");
             ui.Show();
             ui.ShowMessage(device.GetVar("product"));
             ui.ShowMessage(device.GetVar("unlocked"));

@@ -9,16 +9,16 @@
         FontFamily="{DynamicResource AutumnBox.Font}"
         WindowStartupLocation="CenterOwner"
         MinHeight="280" MinWidth="300"
-    ShowInTaskbar="False"
+        ShowInTaskbar="False"
+        Background="{DynamicResource RegionBrush}"
         MouseDown="Window_MouseDown"
         Title="{Binding MessageTitle}" Height="270" Width="350">
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Margin="10">
                 <TextBlock FontSize="30" Foreground="OrangeRed" Text="{Binding MessageTitle}" TextWrapping="Wrap"/>
-                <TextBlock FontSize="15" Text="{Binding Sketch}" TextWrapping="Wrap"/>
             </StackPanel>
-            <TextBox TextWrapping="Wrap" IsReadOnly="True" DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
+            <TextBox HorizontalScrollBarVisibility="Auto" TextWrapping="NoWrap" IsReadOnly="True" DockPanel.Dock="Bottom" Style="{x:Null}" Margin="5" Text="{Binding ExceptionMessage}"/>
         </DockPanel>
     </Grid>
 </custom:NiceWindow>

@@ -1,5 +1,6 @@
 ﻿using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
 namespace AutumnBox.Tests.Leafx
@@ -26,14 +27,33 @@ namespace AutumnBox.Tests.Leafx
 
         [ClassText("test", "English", "zh-CN:中文")]
         private class I18NClassTextTestObject { }
+
         [TestMethod]
         public void I18NLanguageSupport()
         {
             var tr = new ClassTextReader(typeof(I18NClassTextTestObject));
 
             Assert.AreEqual(tr["test"], "English");
-            Assert.AreEqual(tr["test","zh-CN"], "中文");
+            Assert.AreEqual(tr["test", "zh-CN"], "中文");
             Assert.AreEqual(tr["test", "zh-SG"], "English");
         }
+
+        [TestMethod]
+        public void StaticClassText()
+        {
+            var text = ClassTextReaderCache.Acquire(typeof(F));
+            Assert.AreEqual("A", text.Get("error_title_fmt", "en-us"));
+            Assert.AreEqual("A", text.Get("error_title_fmt", "zh-tw"));
+            Assert.AreEqual("a", text.Get("error_title_fmt", "zh-cn"));
+        }
+
+        [TestMethod]
+        public void MixGetClassText()
+        {
+            var text = ClassTextReaderCache.Acquire(typeof(F));
+            Assert.ThrowsException<InvalidOperationException>(() => text.RxGetClassText("error_title_fmt"));
+        }
     }
+    [ClassText("error_title_fmt", "A", "zh-cn:a")]
+    static class F { }
 }

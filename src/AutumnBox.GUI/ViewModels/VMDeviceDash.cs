@@ -20,6 +20,20 @@ namespace AutumnBox.GUI.ViewModels
         public const int REFRESH_INTERVAL = 1 * 1000;
         private readonly ICommandExecutor executor = new HestExecutor();
 
+        public string BootloaderStatus
+        {
+            get
+            {
+                return _bootloaderStatus;
+            }
+            set
+            {
+                _bootloaderStatus = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _bootloaderStatus;
+
         public double CpuUsed
         {
             get
@@ -310,6 +324,10 @@ namespace AutumnBox.GUI.ViewModels
                 Device = null;
                 Reset();
             }
+        }
+        private void RefreshBootloader()
+        {
+            executor.Fastboot();
         }
         private void RefreshCpu()
         {

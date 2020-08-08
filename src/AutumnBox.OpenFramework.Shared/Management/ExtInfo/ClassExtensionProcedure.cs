@@ -19,6 +19,7 @@ using AutumnBox.Leafx.ObjectManagement;
 using AutumnBox.OpenFramework.Extension;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace AutumnBox.OpenFramework.Management.ExtInfo
@@ -55,10 +56,17 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <returns></returns>
         public object? Run()
         {
-            var source = Source ?? LakeExtension.Empty;
-            var objBuilder = new ObjectBuilder(classExtensionType, source);
-            var instance = (IExtension)objBuilder.Build(Args);
-            return instance.Main(Args ?? new Dictionary<string, object>());
+            try
+            {
+                var source = Source ?? LakeExtension.Empty;
+                var objBuilder = new ObjectBuilder(classExtensionType, source);
+                var instance = (IExtension)objBuilder.Build(Args);
+                return instance.Main(Args ?? new Dictionary<string, object>());
+            }
+            catch (TargetInvocationException e)
+            {
+                throw e.InnerException ?? e;
+            }
         }
 
         #region IDisposable Support
