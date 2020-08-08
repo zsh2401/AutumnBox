@@ -22,11 +22,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxGuideViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxRestarter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EAutumnBoxUpdateChecker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ECmdLauncher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EDeviceRebooter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EDonateCardRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EEnableCurrentDeviceNetDebugging.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceConnecter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceDisconnecter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EPSLauncher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ETest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\cmd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\ps.png" />
   </ItemGroup>
 </Project>

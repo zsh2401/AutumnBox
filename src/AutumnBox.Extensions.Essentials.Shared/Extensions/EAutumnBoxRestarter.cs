@@ -14,7 +14,6 @@ namespace AutumnBox.Essentials.Extensions
         public void EntryPoint(INotificationManager notificationManager,
             IAppManager appManager)
         {
-
             //notificationManager.Info(appManager.CurrentLanguageCode);
             var task = notificationManager.Ask(this.RxGetClassText("confirm"));
             task.Wait();

@@ -15,6 +15,7 @@ using AutumnBox.Leafx.Container.Support;
 using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
+using AutumnBox.GUI.ViewModels;
 
 namespace AutumnBox.GUI.Services.Impl
 {
@@ -338,6 +339,9 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 case "show_donate_window":
                     this.GetComponent<IWindowManager>().Show("Donate");
+                    break;
+                case "open_command_line":
+                    VMMainMenu.OpenShellMethod((string)arg);
                     break;
                 default:
                     break;

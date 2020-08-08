@@ -72,7 +72,7 @@ namespace AutumnBox.GUI.ViewModels
             });
             ViewLibs = new MVVMCommand(p => windowManager.ShowDialog("Libs"));
         }
-        private void OpenShellMethod(string fileName)
+        public static void OpenShellMethod(string fileName)
         {
             ProcessStartInfo info = new ProcessStartInfo
             {
@@ -82,12 +82,13 @@ namespace AutumnBox.GUI.ViewModels
                 Verb = "runas",
             };
             info.EnvironmentVariables["ANDROID_ADB_SERVER_PORT"] = BasicBooter.ServerEndPoint.Port.ToString();
-            if (Settings.EnvVarCmdWindow)
+            var settings = App.Current.GetComponent<ISettings>();
+            if (settings.EnvVarCmdWindow)
             {
                 var pathEnv = info.EnvironmentVariables["path"];
                 info.EnvironmentVariables["path"] = $"{BasicBooter.AdbClientDirectory.FullName};" + pathEnv;
             }
-            if (Settings.StartCmdAtDesktop)
+            if (settings.StartCmdAtDesktop)
             {
                 info.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
