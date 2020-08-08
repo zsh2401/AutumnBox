@@ -13,6 +13,7 @@
 *
 * ==============================================================================
 */
+using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Open.LKit;
@@ -23,15 +24,17 @@ using System.Text;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtName("test")]
+    [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ExtDeveloperMode]
     class ETest : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI _ui)
+        public void EntryPoint(ILeafUI _ui, IDevice device)
         {
             using var ui = _ui;
             ui.Show();
-            throw new Exception("test_error");
+            ui.ShowMessage(device.GetVar("product"));
+            ui.ShowMessage(device.GetVar("unlocked"));
         }
     }
 }
