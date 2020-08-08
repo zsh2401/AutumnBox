@@ -46,6 +46,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EFlashBoot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EFlashRecovery.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Fastboot\EOemLock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\Poweron\EPermissionDogActivator.cs" />
     <Compile Include="..\AutumnBox.Extensions.Standard.Shared\Extensions\Fastboot\ESwitchABSlot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Mix\EDeviceOwnerRemover.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Mix\EFilePusher.cs" />
@@ -88,5 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\a_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\permissiondog.png" />
   </ItemGroup>
 </Project>
