@@ -24,8 +24,16 @@ using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Device
 {
-    class FastbootFixedExecutor
+    /// <summary>
+    /// 在部分设备上，fastboot执行的操作可能要多次尝试才能够成功
+    /// 这个执行器正是为此而生：一旦操作超时，则进行重试。
+    /// </summary>
+    public sealed class FastbootFixedExecutor
     {
+
+        /// <summary>
+        /// 超时上限，用于决定何时重试
+        /// </summary>
         public int Timeout
         {
             get
@@ -39,6 +47,9 @@ namespace AutumnBox.Basic.Device
         }
         int _timeout = 1000;
 
+        /// <summary>
+        /// 最大尝试次数
+        /// </summary>
         public int MaxTimes
         {
             get
@@ -51,6 +62,7 @@ namespace AutumnBox.Basic.Device
             }
         }
         int _maxTimes = 10;
+
         const int INTERVAL = 50;
         const int WAIT_TIME = 500;
         private readonly IDevice device;
@@ -78,6 +90,12 @@ namespace AutumnBox.Basic.Device
             this.executor = executor;
             this.command = command;
         }
+
+        /// <summary>
+        /// 开始执行
+        /// </summary>
+        /// <exception cref="CommandErrorException">达到重试上限</exception>
+        /// <returns></returns>
         public CommandResult Execute()
         {
             CommandResult? result = null;
@@ -98,6 +116,10 @@ namespace AutumnBox.Basic.Device
             return result ?? throw new CommandErrorException("Reachec limit of try.");
         }
 
+        /// <summary>
+        /// 异步执行
+        /// </summary>
+        /// <returns></returns>
         public Task<CommandResult> ExecuteAsync() => Task.Run(Execute);
     }
 }
