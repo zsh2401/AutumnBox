@@ -24,7 +24,6 @@ namespace AutumnBox.GUI.Util
                 { "Run Time (mins)", mins.ToString()},
             });
 
-
             try { App.Current.Lake.GetComponent<ISettings>().Save(); } catch { }
             try { OpenFx.Unload(); } catch { }
             try { BasicBooter.Free(); } catch { }

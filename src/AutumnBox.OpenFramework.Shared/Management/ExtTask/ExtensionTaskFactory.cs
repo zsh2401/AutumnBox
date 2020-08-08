@@ -29,11 +29,7 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
                     procedure.Source = source;
                     procedure.Args = args;
 
-                    Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Run Extension", new Dictionary<string, string>()
-                    {
-                        { "Name",info.Name()},
-                        { "Id",info.Id}
-                    });
+                    TrackRunExtension(info);
 
                     return procedure.Run();
                 }
@@ -56,6 +52,29 @@ namespace AutumnBox.OpenFramework.Management.ExtTask
                     return default;
                 }
             });
+        }
+
+        private static void TrackRunExtension(IExtensionInfo info)
+        {
+            try
+            {
+                switch (info.Id)
+                {
+                    case "EAutumnBoxAdFetcher":
+                    case "EDonateCardRegister":
+                    case "EAutumnBoxUpdateChecker":
+                        break;
+                    default:
+                        Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Run Extension", new Dictionary<string, string>()
+                            {
+                                { "Name",info.Name()},
+                                { "Id",info.Id},
+                                { "Author",info.Author()}
+                            });
+                        break;
+                }
+            }
+            catch { }
         }
     }
 }

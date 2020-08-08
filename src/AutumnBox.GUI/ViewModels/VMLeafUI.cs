@@ -487,5 +487,15 @@ namespace AutumnBox.GUI.ViewModels
         {
             AppendDetails(_str, false);
         }
+
+        public void Println(string line)
+        {
+            AppendDetails(line, true);
+        }
+
+        public void Print(string _str)
+        {
+            AppendDetails(_str, false);
+        }
     }
 }

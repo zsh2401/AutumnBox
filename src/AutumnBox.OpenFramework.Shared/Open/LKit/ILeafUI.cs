@@ -82,6 +82,18 @@ namespace AutumnBox.OpenFramework.Open.LKit
         /// </summary>
         /// <param name="_str"></param>
         void WriteToDetails(string _str);
+
+        /// <summary>
+        /// WriteLineToDetails换个名字
+        /// </summary>
+        /// <param name="line"></param>
+        void Println(string line);
+
+        /// <summary>
+        /// WriteToDetails换个名字
+        /// </summary>
+        /// <param name="_str"></param>
+        void Print(string _str);
         #endregion
 
         /// <summary>

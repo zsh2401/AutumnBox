@@ -18,8 +18,11 @@ namespace AutumnBox.GUI.Util
         private readonly static string[] blockListForExceptionSource = {
             "PresentationCore"
         };
+        private static bool blocked = false;
         public static void Current_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            if (blocked) return;
+            blocked = true;
             var logger = LoggerFactory.Auto(nameof(FatalHandler));
             string src = e.Exception.Source;
             if (blockListForExceptionSource.Contains(src))
@@ -38,6 +41,7 @@ namespace AutumnBox.GUI.Util
             try { logger.Warn(exstr); } catch { }
             ShowErrorToUser(exstr);
             e.Handled = true;
+            AppUnloader.Unload();
             App.Current.Shutdown(1);
         }
         private static void ShowErrorToUser(string exstr)
