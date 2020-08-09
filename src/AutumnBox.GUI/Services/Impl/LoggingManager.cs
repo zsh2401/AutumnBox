@@ -13,10 +13,7 @@ namespace AutumnBox.GUI.Services.Impl
         public DirectoryInfo LogsDirectory { get; }
         public LoggingManager(IStorageManager storageManager)
         {
-            //Initlize directory
-            var storageDir = storageManager.StorageDirectory;
-            LogsDirectory = new DirectoryInfo(Path.Combine(storageDir.FullName, "logs"));
-            if (!LogsDirectory.Exists) LogsDirectory.Create();
+            LogsDirectory  = storageManager.LogsDirectory;
         }
         public void Initialize()
         {

@@ -24,6 +24,7 @@ namespace AutumnBox.GUI.Services
     {
         DirectoryInfo CacheDirectory { get; }
         DirectoryInfo StorageDirectory { get; }
+        DirectoryInfo LogsDirectory { get; }
         bool IsFirstLaunch { get; }
     }
 }

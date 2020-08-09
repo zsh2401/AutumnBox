@@ -23,13 +23,22 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(IStorageManager))]
     class StorageManagerImpl : IStorageManager
     {
+        const string VAR_DIR = "var";
+        const string STORAGE_DIR = "var/storage";
+        const string CACHE_DIR = "var/cache";
+        const string LOGS_DIR = "var/logs";
         public StorageManagerImpl()
         {
             InitializeVarDirectory();
+            InitializeLogsDirectory();
             InitializeCacheDirectory();
             InitializeStorageDirectory();
         }
 
+        private void InitializeLogsDirectory() {
+            LogsDirectory = new DirectoryInfo(LOGS_DIR);
+            if (!LogsDirectory.Exists) LogsDirectory.Create();
+        }
         private void InitializeVarDirectory()
         {
             CacheDirectory = new DirectoryInfo("var");
@@ -39,7 +48,7 @@ namespace AutumnBox.GUI.Services.Impl
         private void InitializeCacheDirectory()
         {
 #if DEBUG || GREEN_RELEASE
-            CacheDirectory = new DirectoryInfo("var/cache");
+            CacheDirectory = new DirectoryInfo(CACHE_DIR);
 #else
             string temp = Environment.GetEnvironmentVariable("TEMP");
             CacheDirectory = new DirectoryInfo(Path.Combine(temp, "AutumnBox"));
@@ -50,7 +59,7 @@ namespace AutumnBox.GUI.Services.Impl
         private void InitializeStorageDirectory()
         {
 #if DEBUG || GREEN_RELEASE
-            var atmbDirectory = new DirectoryInfo("var/storage");
+            var atmbDirectory = new DirectoryInfo(STORAGE_DIR);
             if (!atmbDirectory.Exists) atmbDirectory.Create();
 #else
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -71,5 +80,7 @@ namespace AutumnBox.GUI.Services.Impl
         public DirectoryInfo StorageDirectory { get; private set; }
 
         public bool IsFirstLaunch { get; private set; } = false;
+
+        public DirectoryInfo LogsDirectory { get; private set; }
     }
 }
