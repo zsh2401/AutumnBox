@@ -9,11 +9,11 @@
     <AssemblyName>AutumnBox.GUI</AssemblyName>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
-    <Version>2020.8.9.1</Version>
-    <AssemblyVersion>2020.8.9.1</AssemblyVersion>
+    <Version>2020.8.9.2</Version>
+    <AssemblyVersion>2020.8.9.2</AssemblyVersion>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <Configurations>Debug;Release;Canary</Configurations>
-    <FileVersion>2020.8.9.1</FileVersion>
+    <FileVersion>2020.8.9.2</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

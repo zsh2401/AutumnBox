@@ -6,12 +6,12 @@
     <AssemblyName>AutumnBox.Core</AssemblyName>
     <RootNamespace>AutumnBox.Core</RootNamespace>
     <Nullable>enable</Nullable>
-    <Version>11.7.1</Version>
+    <Version>11.8</Version>
     <Configurations>Debug;Release;SDK;Canary</Configurations>
     <Authors>zsh2401</Authors>
     <Company>zsh2401</Company>
-    <AssemblyVersion>11.7.1.0</AssemblyVersion>
-    <FileVersion>11.7.1.0</FileVersion>
+    <AssemblyVersion>11.8.0.0</AssemblyVersion>
+    <FileVersion>11.8.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
