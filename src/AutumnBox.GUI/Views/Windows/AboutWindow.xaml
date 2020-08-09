@@ -12,9 +12,11 @@
     WindowStartupLocation="CenterOwner"
       Background="{DynamicResource RegionBrush}"
     FontFamily="{DynamicResource AutumnBox.Font}"
-        Title="{DynamicResource App.Name}" Height="430" Width="700">
-    <DockPanel >
-        <panel:PanelAbout  Effect="{DynamicResource EffectShadow2}" DockPanel.Dock="Left"/>
-        <panel:PanelUpdateLogs DockPanel.Dock="Right"/>
-    </DockPanel>
+    Width="400"
+    Height="200"
+        Title="{DynamicResource App.NameWithVersion}" >
+    <!--<DockPanel >-->
+        <panel:PanelAbout  Effect="{DynamicResource EffectShadow2}"/>
+        <!--<panel:PanelUpdateLogs DockPanel.Dock="Right"/>-->
+    <!--</DockPanel>-->
 </custom:NiceWindow>

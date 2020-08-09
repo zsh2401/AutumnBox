@@ -13,7 +13,7 @@ Background="{DynamicResource RegionBrush}"
     ResizeMode="NoResize"
         ShowInTaskbar="False"
     FontFamily="{DynamicResource AutumnBox.Font}"
-        Title="{DynamicResource Donate}" Width="550" Height="350">
+        Title="{DynamicResource Donate.Title}" Width="550" Height="350">
     <Window.DataContext>
         <mvvm:ViewModelBase/>
     </Window.DataContext>
@@ -23,7 +23,7 @@ Background="{DynamicResource RegionBrush}"
                 <Image  Source="/Resources/Images/donate_pot4winter.png"  Width="160" HorizontalAlignment="Center"></Image>
 
                 <StackPanel VerticalAlignment="Center" Margin="0,20,0,20">
-                    <TextBlock FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center">向冬之盆中投入您对秋之盒的支持</TextBlock>
+                    <TextBlock FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{DynamicResource Donate.P4W}"/>
                 </StackPanel>
                 <controls:ButtonGroup Orientation="Vertical">
                     <Button Command="{Binding OpenUrl}" CommandParameter="https://www.paypal.me/zsh2401"  Content="{DynamicResource Donate.PayPal}"/>

@@ -10,12 +10,22 @@
              Foreground="{DynamicResource PrimaryTextBrush}"
              FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModels"
-             d:DesignHeight="450" d:DesignWidth="400">
+             d:DesignHeight="150" d:DesignWidth="400">
     <UserControl.DataContext>
         <viewmodel:VMAbout/>
     </UserControl.DataContext>
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,10">
+    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel DockPanel.Dock="Left">
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
+                <StackPanel>
+                    <TextBlock FontSize="20" Text="{DynamicResource  App.NameWithVersion}"/>
+                    <TextBlock Text="{DynamicResource App.Slogan}" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <hc:Shield Command="{Binding OpenUrl}" CommandParameter="mailto:zsh2401@163.com" Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
+            <hc:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
             <TextBlock HorizontalAlignment="Center" Text="www.atmb.top" TextDecorations="Underline">
                 <TextBlock.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding OpenUrl}" CommandParameter="{DynamicResource UrlOfficialWebsite}"/>
@@ -32,18 +42,12 @@
                 </TextBlock.InputBindings>
             </TextBlock>
         </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,10">
+           
+        </StackPanel>
 
         <StackPanel DockPanel.Dock="Top">
-            <StackPanel Margin="10" Orientation="Horizontal">
-                <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
-                <StackPanel>
-                    <TextBlock FontSize="20" Text="{DynamicResource  App.NameWithVersion}"/>
-                    <TextBlock Text="{DynamicResource App.Slogan}" Foreground="{DynamicResource SecondaryTextBrush}"/>
-                </StackPanel>
-            </StackPanel>
-
-            <hc:Shield Command="{Binding OpenUrl}" CommandParameter="mailto:zsh2401@163.com" Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
-            <hc:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
+            
 
             <DockPanel Margin="30,10,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.GUIString}"/>

@@ -241,8 +241,11 @@
     
     
      <!--PanelDonte-->
+        <s:String x:Key="Donate.Title">捐赠秋之盒</s:String>
     <s:String x:Key="Donate.PayPal">使用PayPal进行捐赠</s:String>
     <s:String x:Key="Donate.Page">捐赠名单</s:String>
+  <s:String x:Key="Donate.P4W">向冬之盆中投入您对秋之盒的支持</s:String>
+    
     <s:String x:Key="Donate.Description">赠人玫瑰,手留余香.
     谢谢你对中国软件生态做出的贡献</s:String>
     

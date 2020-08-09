@@ -23,11 +23,11 @@ namespace AutumnBox.Essentials.Extensions
         private readonly WebClient webClient = new WebClient() { Encoding = Encoding.UTF8 };
 
         [LMain]
-        public void EntryPoint(INotificationManager notificationManager, ClassTextReader reader)
+        public void EntryPoint(INotificationManager notificationManager, ClassTextReader text)
         {
-            notificationManager.Info(reader[STR_KEY_CHECKING_UPDATE]);
+            notificationManager.Info(text.RxGet(STR_KEY_CHECKING_UPDATE));
             Thread.Sleep(5000);
-            notificationManager.Warn(reader[STR_KEY_FAIL]);
+            notificationManager.Warn(text.RxGet(STR_KEY_FAIL));
         }
     }
 }
