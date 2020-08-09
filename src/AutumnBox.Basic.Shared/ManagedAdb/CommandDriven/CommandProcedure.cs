@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <summary>
         /// 输出内容构造器
         /// </summary>
-        private OutputBuilder? outputBuilder;
+        private readonly OutputBuilder outputBuilder = new OutputBuilder();
 
         /// <inheritdoc/>
         public CommandStatus Status { get; private set; } = CommandStatus.Ready;
@@ -120,16 +121,27 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 process.BeginOutputReadLine();
                 process.BeginErrorReadLine();
                 process.WaitForExit();
+
+                //process has been disposed in other thread.
+                if (process == null)
+                {
+                    this.Status = CommandStatus.Cancelled;
+                    throw new CommandCancelledException(FileName, Arguments, outputBuilder.ToOutput());
+                }
                 process.CancelErrorRead();
                 process.CancelOutputRead();
-                this.Status = CommandStatus.Succeeded;
+                this.Status = CommandStatus.Executed;
                 Result = new CommandResult(process.ExitCode, outputBuilder!.ToOutput());
+            }
+            catch (CommandCancelledException e)
+            {
+                throw e;
             }
             catch (Exception e)
             {
                 Exception = e;
-                Status = CommandStatus.Failed;
-                Result = new CommandResult(1, outputBuilder!.ToOutput());
+                Status = CommandStatus.InnerException;
+                Result = new CommandResult(1, outputBuilder.ToOutput());
             }
             Finished?.Invoke(this, new EventArgs());
             return Result;
@@ -234,7 +246,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             ProcessKiller.FKill(pid);
         }
 
-#region IDisposable Support
+        #region IDisposable Support
 
         /// <summary>
         /// 指示是否被释放
@@ -269,7 +281,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。
                 process = null;
-                outputBuilder = null;
+                //outputBuilder = null;
                 disposedValue = true;
                 Disposed?.Invoke(this, new EventArgs());
             }
@@ -291,6 +303,6 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             GC.SuppressFinalize(this);
         }
-#endregion
+        #endregion
     }
 }

@@ -64,7 +64,7 @@ namespace AutumnBox.Tests.Basic.CommandDriven
             using var cp = cpm.OpenCommand("asdasdsa");
             (cp as CommandProcedure).DirectExecute = true;
             cp.Execute();
-            Assert.IsTrue(cp.Status == CommandStatus.Failed);
+            Assert.IsTrue(cp.Status == CommandStatus.InnerException);
             Assert.IsTrue(cp.Exception.GetType() == typeof(Win32Exception));
         }
 

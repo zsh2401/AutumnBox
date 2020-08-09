@@ -2,6 +2,8 @@
 using AutumnBox.Basic.Data;
 using System.Threading.Tasks;
 using System;
+using AutumnBox.Basic.Exceptions;
+
 namespace AutumnBox.Basic.ManagedAdb.CommandDriven
 {
     /// <summary>
@@ -29,6 +31,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
         /// <exception cref="ObjectDisposedException">已经被释放</exception>
+        /// <exception cref="CommandCancelledException">命令被外部终止</exception>
         /// <returns></returns>
         CommandResult Execute();
 
@@ -37,6 +40,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// </summary>
         /// <exception cref="InvalidOperationException">操作无效,如命令已经在执行</exception>
         /// <exception cref="ObjectDisposedException">已经被释放</exception>
+        /// <exception cref="CommandCancelledException">命令被外部终止</exception>
         /// <returns></returns>
         Task<CommandResult> ExecuteAsync();
 

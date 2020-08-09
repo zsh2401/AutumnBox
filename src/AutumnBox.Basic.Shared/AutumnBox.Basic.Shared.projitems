@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Size.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\FastbootFixedExecutor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Device\ManagementV2\OS\BatteryInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\CommandCancelledException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\CommandDrivenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\Unix\UnixCPM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInfo.cs" />

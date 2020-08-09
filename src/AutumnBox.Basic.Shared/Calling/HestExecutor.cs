@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutumnBox.Basic.Data;
+using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.ManagedAdb.CommandDriven;
 
 namespace AutumnBox.Basic.Calling
@@ -77,25 +78,35 @@ namespace AutumnBox.Basic.Calling
 
                 //记录开始时间
                 DateTime start = DateTime.Now;
+
                 //开始进程
                 commandProcedure = this.procedureManager.OpenCommand(fileName, args);
                 commandProcedure.OutputReceived += OnOutputReceived;
 
                 //触发事件
                 CommandExecuting?.Invoke(this, new CommandExecutingEventArgs(fileName, args));
-                var cmdResult = commandProcedure.Execute();
-                commandProcedure.Dispose();
-                //记录结束时间
-                DateTime end = DateTime.Now;
+                try
+                {
+                    var cmdResult = commandProcedure.Execute();
+                    commandProcedure.OutputReceived -= OnOutputReceived;
+                    commandProcedure.Dispose();
 
-                //构造结果对象
-                var result = new CommandResult(cmdResult.ExitCode, cmdResult.Output);
+                    //构造结果对象
+                    var result = new CommandResult(cmdResult.ExitCode, cmdResult.Output);
 
-                //触发结束事件
-                CommandExecuted?.Invoke(this, new CommandExecutedEventArgs(fileName, args, result, end - start));
+                    //记录结束时间
+                    DateTime end = DateTime.Now;
 
-                //返回结果
-                return result;
+                    //触发结束事件
+                    CommandExecuted?.Invoke(this, new CommandExecutedEventArgs(fileName, args, result!, end - start));
+
+                    //返回结果
+                    return result;
+                }
+                catch (CommandCancelledException e)
+                {
+                    throw e;
+                }
             };
         }
 

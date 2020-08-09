@@ -13,13 +13,20 @@
         /// 正在执行
         /// </summary>
         Executing,
+
         /// <summary>
         /// 成功
         /// </summary>
-        Succeeded,
+        Executed,
+
         /// <summary>
         /// 失败
         /// </summary>
-        Failed
+        InnerException,
+
+        /// <summary>
+        /// 被取消
+        /// </summary>
+        Cancelled
     }
 }

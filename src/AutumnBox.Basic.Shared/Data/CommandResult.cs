@@ -24,6 +24,11 @@ namespace AutumnBox.Basic.Data
         public int ExitCode { get; }
 
         /// <summary>
+        /// 指示其是否是被强制中断的
+        /// </summary>
+        public bool Cancelled { get; set; } = false;
+
+        /// <summary>
         /// 输出
         /// </summary>
         public Output Output { get; }

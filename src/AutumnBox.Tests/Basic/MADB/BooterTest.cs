@@ -17,7 +17,7 @@ namespace AutumnBox.Tests.Basic.MADB
             using var cpm = BasicBooter.CommandProcedureManager;
             using var cmd = cpm.OpenCommand("adb", "devices");
             cmd.Execute();
-            if (cmd.Status == AutumnBox.Basic.ManagedAdb.CommandDriven.CommandStatus.Failed)
+            if (cmd.Status == AutumnBox.Basic.ManagedAdb.CommandDriven.CommandStatus.InnerException)
             {
                 Debug.WriteLine(cmd.Exception);
             }

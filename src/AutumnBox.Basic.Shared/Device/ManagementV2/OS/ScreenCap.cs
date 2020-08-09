@@ -32,10 +32,10 @@ namespace AutumnBox.Basic.Device.ManagementV2.OS
         /// 截图
         /// </summary>
         /// <exception cref="CommandErrorException">命令执行失败</exception>
+        /// <exception cref="CommandCancelledException">命令被外部进程终止</exception>
         /// <returns>保存到PC上的截图文件名</returns>
         public FileInfo Cap(bool wakeUpDevice = true)
         {
-
             if (wakeUpDevice)
             {
                 new KeyInputer(device, executor).RaiseKeyEvent(AndroidKeyCode.WakeUp);

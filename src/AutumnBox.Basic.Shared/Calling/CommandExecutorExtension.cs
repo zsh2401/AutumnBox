@@ -1,16 +1,13 @@
 ﻿using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
-using AutumnBox.Basic.ManagedAdb;
+using AutumnBox.Basic.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AutumnBox.Basic.Calling
 {
     /// <summary>
-    /// CommandExecutor的拓展方法们
+    /// CommandExecutor的一系列实用拓展方法
     /// </summary>
     public static class CommandExecutorExtension
     {
@@ -19,6 +16,8 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="executor"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static async Task<CommandResult> CmdAsync(this ICommandExecutor executor, params string[] args)
         {
@@ -34,6 +33,8 @@ namespace AutumnBox.Basic.Calling
         /// <param name="executor"></param>
         /// <param name="device"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static async Task<CommandResult> AdbShellAsync(this ICommandExecutor executor, IDevice device, params string[] args)
         {
@@ -49,6 +50,8 @@ namespace AutumnBox.Basic.Calling
         /// <param name="executor"></param>
         /// <param name="device"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static async Task<CommandResult> FastbootAsync(this ICommandExecutor executor, IDevice device, params string[] args)
         {
@@ -64,6 +67,8 @@ namespace AutumnBox.Basic.Calling
         /// <param name="executor"></param>
         /// <param name="device"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static async Task<CommandResult> AdbAsync(this ICommandExecutor executor, IDevice device, params string[] args)
         {
@@ -78,6 +83,8 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="executor"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static async Task<CommandResult> FastbootAsync(this ICommandExecutor executor, params string[] args)
         {
@@ -92,6 +99,8 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="executor"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static async Task<CommandResult> AdbAsync(this ICommandExecutor executor, params string[] args)
         {
@@ -106,6 +115,8 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="executor"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static CommandResult Cmd(this ICommandExecutor executor, params string[] args)
         {
@@ -125,6 +136,8 @@ namespace AutumnBox.Basic.Calling
         /// <param name="executor"></param>
         /// <param name="device"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static CommandResult AdbShell(this ICommandExecutor executor, IDevice device, params string[] args)
         {
@@ -143,6 +156,8 @@ namespace AutumnBox.Basic.Calling
         /// <param name="executor"></param>
         /// <param name="device"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static CommandResult Fastboot(this ICommandExecutor executor, IDevice device, params string[] args)
         {
@@ -162,6 +177,8 @@ namespace AutumnBox.Basic.Calling
         /// <param name="executor"></param>
         /// <param name="device"></param>
         /// <param name="args"></param>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
         /// <returns></returns>
         public static CommandResult Adb(this ICommandExecutor executor, IDevice device, params string[] args)
         {
@@ -179,6 +196,8 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="executor"></param>
         /// <param name="args"></param>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         /// <returns></returns>
         public static CommandResult Fastboot(this ICommandExecutor executor, params string[] args)
         {
@@ -197,6 +216,8 @@ namespace AutumnBox.Basic.Calling
         /// </summary>
         /// <param name="executor"></param>
         /// <param name="args"></param>
+        /// <exception cref="CommandCancelledException">命令被外部中断</exception>
+        /// <exception cref="ArgumentNullException">参数为空</exception>
         /// <returns></returns>
         public static CommandResult Adb(this ICommandExecutor executor, params string[] args)
         {
