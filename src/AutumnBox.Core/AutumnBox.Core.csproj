@@ -11,7 +11,16 @@
     <Authors>zsh2401</Authors>
     <Company>zsh2401</Company>
     <AssemblyVersion>11.8.0.0</AssemblyVersion>
-    <FileVersion>11.8.1.0</FileVersion>
+    <FileVersion>11.8.0.0</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Let's Develop AutumnBox Extension!</Description>
+    <PackageId>AutumnBox.SDK</PackageId>
+    <Product>AutumnBox.SDK</Product>
+    <RepositoryUrl>https://github.com/zsh2401/AutumnBox</RepositoryUrl>
+    <PackageReleaseNotes>11.8 update: bug fixes.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/zsh2401/AutumnBox</PackageProjectUrl>
+    <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
