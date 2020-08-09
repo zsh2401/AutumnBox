@@ -49,21 +49,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'dist/Release'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: 'AutumnBox.zip'
-    replaceExistingArchive: true
-    verbose: true
-
 - task: AppCenterDistribute@3
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     serverEndpoint: 'AppCenter'
     appSlug: 'Autumn2077/AutumnBox'
-    appFile: 'AutumnBox.zip'
+    appFile: 'archive.zip'
     buildVersion: '$(Build.SourceVersion)'
     releaseNotesOption: 'input'
     releaseNotesInput: '$(Build.SourceVersionMessage)'
@@ -75,7 +66,7 @@ steps:
   inputs:
     serverEndpoint: 'AppCenter'
     appSlug: 'Autumn2077/AutumnBox'
-    appFile: 'AutumnBox.zip'
+    appFile: 'archive.zip'
     buildVersion: '$(Build.SourceVersion)'
     releaseNotesOption: 'input'
     releaseNotesInput: '$(Build.SourceVersionMessage)'
