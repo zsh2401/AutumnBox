@@ -234,11 +234,11 @@ namespace AutumnBox.GUI.ViewModels
                 return;
             }
             RaisePropertyChangedOnUIThread = true;
-            Title = "LeafUI Window";
+            Title = App.Current.Resources["LeafUI.DefaultTitle"] as string ?? "Default Title";
             Progress = -1;
-            StatusInfo = App.Current.Resources["LeafUITipRunning"] as string;
+            StatusInfo = App.Current.Resources["LeafUI.StatusExecuting"] as string ?? "Executing";
             StatusDescription = "--";
-            Icon = null;
+            Icon = new byte[0];
             Copy = new FlexiableCommand(() =>
             {
                 try
@@ -267,18 +267,17 @@ namespace AutumnBox.GUI.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    AppendDetails(ex);
+                    Println(ex.ToString());
                 }
 
+                e.Cancel = true;
                 if (closeResult == true)
                 {
-                    e.Cancel = true;
-                    Finish(0);
+                    Finish(StatusMessages.CancelledByUser);
                 }
                 else
                 {
-                    e.Cancel = true;
-                    AppendDetails(App.Current.Resources["LeafUICannotStop"]);
+                    Println(App.Current.Resources["LeafUICannotStop"]?.ToString() ?? "");
                 }
             }
         }
@@ -327,7 +326,7 @@ namespace AutumnBox.GUI.ViewModels
             CurrentState = State.Shutdown;
             View.Dispatcher.Invoke(() =>
             {
-                View?.Close();
+                View.Close();
             });
         }
 

@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              Background="White"
+             MinWidth="150"
+             MinHeight="100"
              >
     <Border CornerRadius="10">
         <DockPanel>
-            <Button Click="Button_Click" IsCancel="True" IsDefault="True"  Margin="10" DockPanel.Dock="Bottom">OK</Button>
+            <Button Click="Button_Click" IsCancel="True" IsDefault="True"  Margin="10" DockPanel.Dock="Bottom">√</Button>
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                 <TextBlock TextWrapping="Wrap" x:Name="TBContent"/>
             </ScrollViewer>

@@ -28,9 +28,12 @@
                 <ProgressBar Visibility="{Binding ProgressBarVisibility}" BorderBrush="Transparent" Background="Transparent"  Value="{Binding Progress}"/>
                 <controls:Divider Margin="0,0,0,0"/>
                 <TextBlock Margin="2" Text="{Binding StatusInfo}" FontSize="30" />
-                <TextBlock Margin="2" Text="{Binding StatusDescription}" FontSize="15"/>
+                <!--<TextBlock Margin="2" Text="{Binding StatusDescription}" FontSize="15"/>-->
             </StackPanel>
-            <TextBox Margin="5" DockPanel.Dock="Bottom" TextAlignment="Justify" IsReadOnly="True" Text="{Binding DetailsContent,Mode=OneWay}" TextChanged="DetailsTextBoxTextChanged"/>
+            <TextBox Margin="5" DockPanel.Dock="Bottom" 
+                     VerticalContentAlignment="Top" HorizontalContentAlignment="Left"
+                     VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"
+                     TextAlignment="Justify" IsReadOnly="True" Text="{Binding DetailsContent,Mode=OneWay}" TextChanged="DetailsTextBoxTextChanged"/>
         </DockPanel>
     </Grid>
 </custom:NiceWindow>

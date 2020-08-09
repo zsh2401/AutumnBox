@@ -13,10 +13,10 @@ using AutumnBox.OpenFramework.Open.LKit;
 
 namespace AutumnBox.CoreModules.Extensions.Poweron
 {
-    [ExtName("修改DPI", "en-us:Modify dpi without root")]
+    [ExtName("Modify dpi without root", "zh-cn:修改DPI")]
     [ExtIcon("Icons.dpi.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
-    [ClassText("msg", "What't your want?", "zh-cn:您要做哪一个操作")]
+    [ClassText("msg", "Which is your want?", "zh-cn:您要做哪一个操作")]
     [ClassText("modify", "Modify DPI", "zh-cn:修改DPI")]
     [ClassText("reset", "Reset DPI", "zh-cn:重设DPI")]
     [ClassText("hint", "Input modify dpi", "zh-cn:请输入要修改的DPI,一定要慎重(建议300-1000)")]
@@ -31,7 +31,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 {
                     var text = ClassTextReaderCache.Acquire<EDpiModifier>();
                     ui.Show();
-                    var choiceResult = ui.DoChoice(text["msg"], text["modify"], text["reset"]);
+                    var choiceResult = ui.DoChoice(text.RxGet("msg"), text.RxGet("modify"), text.RxGet("reset"));
                     var wm = new WindowManager(device, executor);
                     switch (choiceResult)
                     {

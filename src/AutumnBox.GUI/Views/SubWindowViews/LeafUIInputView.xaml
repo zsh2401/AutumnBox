@@ -6,14 +6,15 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" 
              Background="White"
+             MinWidth="150"
              MinHeight="120" MaxWidth="250">
     <DockPanel>
         <hc:ButtonGroup DockPanel.Dock="Bottom" Margin="5">
-            <Button Click="Button_Click_1" Content="X" />
-            <Button Click="Button_Click" Content="OK"/>
+            <Button Click="Button_Click_1"  IsCancel="True" MinWidth="70" Content="X" />
+            <Button Click="Button_Click"  IsDefault="True" Content="√"/>
         </hc:ButtonGroup>
         <DockPanel>
-            <TextBlock DockPanel.Dock="Top" Margin="5" FontSize="15" x:Name="TBHint" TextWrapping="Wrap"/>
+            <TextBlock DockPanel.Dock="Top" Padding="10" FontSize="15" x:Name="TBHint" TextWrapping="Wrap"/>
             <TextBox Height="10" x:Name="TBInput" Margin="5" TextWrapping="Wrap"/>
         </DockPanel>
     </DockPanel>

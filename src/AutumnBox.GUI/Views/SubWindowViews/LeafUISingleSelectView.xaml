@@ -7,6 +7,7 @@
              Background="White"
              FontFamily="{DynamicResource AutumnBox.Font}"
              x:Name="mThis"
+             MaxWidth="300" MaxHeight="200"
              Width="300" Height="200">
     <DockPanel>
         <Button Click="Button_Click" Margin="5" IsCancel="True" DockPanel.Dock="Bottom" Content="{DynamicResource SignalSelectViewCancel}"/>

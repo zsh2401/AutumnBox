@@ -4,28 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:hc="https://handyorg.github.io/handycontrol"
              FontFamily="{DynamicResource AutumnBox.Font}"
              Background="White"
-             MinWidth="200" MinHeight="100">
+             MinWidth="300" MinHeight="180">
     <DockPanel>
         <Grid DockPanel.Dock="Bottom">
             <Button Click="BtnCancel_Click" Margin="5" IsCancel="True" x:Name="BtnCancel" HorizontalAlignment="Left" Content="{DynamicResource ChoiceWindowBtnCancel}"/>
             <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Click="BtnNo_Click" x:Name="BtnNo"  Content="{DynamicResource ChoiceWindowBtnNo}">
-                    <Button.CommandParameter>
-                        <system:Boolean>False</system:Boolean>
-                    </Button.CommandParameter>
-                </Button>
-                <Button Click="BtnYes_Click"  Margin="5" IsDefault="True" x:Name="BtnYes"  Content="{DynamicResource ChoiceWindowBtnYes}">
-                    <Button.CommandParameter>
-                        <system:Boolean>True</system:Boolean>
-                    </Button.CommandParameter>
-                </Button>
+                <hc:ButtonGroup Margin="5">
+                    <Button Click="BtnNo_Click" MinWidth="100" x:Name="BtnNo"  Content="{DynamicResource ChoiceWindowBtnNo}">
+                        <Button.CommandParameter>
+                            <system:Boolean>False</system:Boolean>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button Click="BtnYes_Click"  IsDefault="True" x:Name="BtnYes"  Content="{DynamicResource ChoiceWindowBtnYes}">
+                        <Button.CommandParameter>
+                            <system:Boolean>True</system:Boolean>
+                        </Button.CommandParameter>
+                    </Button>
+                </hc:ButtonGroup>
+              
             </StackPanel>
         </Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" DockPanel.Dock="Top">
-            <TextBlock  TextWrapping="Wrap" x:Name="TBContent" />
+            <TextBlock  Padding="10" TextWrapping="Wrap" x:Name="TBContent" />
         </ScrollViewer>
     </DockPanel>
 </UserControl>

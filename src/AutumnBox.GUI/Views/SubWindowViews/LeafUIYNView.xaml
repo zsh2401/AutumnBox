@@ -4,18 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
              FontFamily="{DynamicResource AutumnBox.Font}"
-             Background="White"
+             Background="{DynamicResource RegionBrush}"
              mc:Ignorable="d" 
+             MaxWidth="300"
+             MaxHeight="250"
                MinWidth="170" MinHeight="130"
              >
     <DockPanel >
-        <StackPanel Margin="5" Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center">
-            <Button Click="BtnNo_Click" IsCancel="True" x:Name="BtnNo" HorizontalAlignment="Left"  Content="{DynamicResource ChoiceWindowBtnNo}"/>
-            <Button Click="BtnYes_Click" IsDefault="True" Margin="30,0,0,0" x:Name="BtnYes" HorizontalAlignment="Right" Content="{DynamicResource ChoiceWindowBtnYes}"/>
-        </StackPanel>
-        <hc:Divider DockPanel.Dock="Bottom" Margin="0"/>
-        <TextBlock Margin="10" TextWrapping="Wrap" x:Name="TBContent" />
+        <hc:ButtonGroup DockPanel.Dock="Bottom" Margin="10">
+            <Button Click="BtnNo_Click" IsCancel="True" x:Name="BtnNo" MinWidth="70"  Content="{DynamicResource ChoiceWindowBtnNo}"/>
+            <Button Click="BtnYes_Click" IsDefault="True" x:Name="BtnYes" Content="{DynamicResource ChoiceWindowBtnYes}"/>
+        </hc:ButtonGroup>
+        <TextBlock Padding="10" DockPanel.Dock="Top" TextWrapping="Wrap" x:Name="TBContent" />
+
+        <!--<hc:Divider DockPanel.Dock="Bottom" />-->
     </DockPanel>
 </UserControl>

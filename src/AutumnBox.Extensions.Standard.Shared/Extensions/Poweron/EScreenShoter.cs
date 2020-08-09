@@ -6,6 +6,8 @@
 using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Device.ManagementV2.OS;
+using AutumnBox.Basic.Exceptions;
+using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using AutumnBox.Logging;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
@@ -18,6 +20,7 @@ namespace AutumnBox.CoreModules.Extensions
     [ExtName("Screen capture", "zh-cn:截图")]
     [ExtIcon("Icons.screenshotv2.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
+    [ClassText("error", "Can not get screenshot.Plz unlock device at least once or replug it.", "zh-cn:截图失败，请至少解锁一次手机或重新拔插设备")]
     internal class EScreenShoter : LeafExtensionBase
     {
         [LMain]
@@ -29,24 +32,34 @@ namespace AutumnBox.CoreModules.Extensions
                 //初始化LeafUI并展示
                 executor.OutputReceived += (s, e) =>
                 {
-                    ui.WriteLineToDetails(e.Text);
+                    ui.Println(e.Text);
                 };
                 ui.Closing += (s, e) =>
                 {
-                    executor.Dispose();
+                    try { executor.Dispose(); } catch { }
                     return true;
                 };
 
                 ui.Show();
 
-                var screencap = new ScreenCap(device, executor, storage.CacheDirectory.FullName);
-                var file = screencap.Cap();
-
-                ui.WriteLineToDetails(file.FullName);
-                ShowOnUI(app, file.FullName);
-                //显示出来了,进度窗也没啥用了,直接关闭
-                //ui.Finish();
-                ui.Shutdown();
+                try
+                {
+                    var screencap = new ScreenCap(device, executor, storage.CacheDirectory.FullName);
+                    var file = screencap.Cap();
+                    ui.Println(file.FullName);
+                    ShowOnUI(app, file.FullName);
+                    ui.Shutdown();
+                }
+                catch (CommandCancelledException)
+                {
+                    ui.Println("Cancelled");
+                }
+                catch (CommandErrorException e)
+                {
+                    ui.ShowMessage(this.RxGetClassText("error"));
+                    ui.Println(e.ToString());
+                    ui.Finish(StatusMessages.Failed);
+                }
             }
         }
         private static void ShowOnUI(IAppManager app, string pngFile)

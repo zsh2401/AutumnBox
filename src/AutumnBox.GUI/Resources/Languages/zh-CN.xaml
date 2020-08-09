@@ -246,4 +246,6 @@
     <s:String x:Key="Donate.Description">赠人玫瑰,手留余香.
     谢谢你对中国软件生态做出的贡献</s:String>
     
+     <s:String x:Key="LeafUI.StatusExecuting">执行中</s:String>
+     <s:String x:Key="LeafUI.DefaultTitle">拓展模块-百叶窗</s:String>
 </ResourceDictionary>
