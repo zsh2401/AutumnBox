@@ -31,23 +31,9 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: VSBuild@1
+- task: PowerShell@2
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/t:restore'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    filePath: 'scripts/build_canary.ps1'
 
 - task: AppCenterDistribute@3
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
