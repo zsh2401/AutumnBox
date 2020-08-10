@@ -44,6 +44,11 @@ namespace AutumnBox.OpenFramework.Implementation
 
         public bool ShouldDisplayCmdWindow => sourceApi.ShouldDisplayCmdWindow;
 
+        /// <summary>
+        /// 尚未实现
+        /// </summary>
+        public bool EnableAD => true;
+
         public dynamic GetMainWindow()
         {
             return sourceApi.GetMainWindow();

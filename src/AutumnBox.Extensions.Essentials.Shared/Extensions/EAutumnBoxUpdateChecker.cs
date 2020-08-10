@@ -76,6 +76,7 @@ namespace AutumnBox.Essentials.Extensions
                     this.Version = new Version(value);
                 }
             }
+
             [JsonIgnore]
             public Version Version { get; private set; }
 

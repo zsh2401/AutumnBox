@@ -8,6 +8,11 @@ namespace AutumnBox.OpenFramework.Open
     public interface IAppManager
     {
         /// <summary>
+        /// 指示是否允许展示广告
+        /// </summary>
+        bool EnableAD { get; }
+
+        /// <summary>
         /// 以某种显眼的方式显示异常信息
         /// </summary>
         /// <param name="title"></param>
