@@ -16,45 +16,31 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
+- task: DeleteFiles@1
+  inputs:
+    Contents: 'adb_binary'
+
+- task: CmdLine@2
+  inputs:
+    script: 'git clone https://github.com/zsh2401/AutumnBox-AdbBinaries-Store.git adb_binary -q'
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
 
-- task: VSBuild@1
+- task: PowerShell@2
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/t:restore'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'dist/Release'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: 'AutumnBox.zip'
-    replaceExistingArchive: true
-    verbose: true
+    filePath: 'scripts/build_canary.ps1'
 
 - task: AppCenterDistribute@3
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     serverEndpoint: 'AppCenter'
     appSlug: 'Autumn2077/AutumnBox'
-    appFile: 'AutumnBox.zip'
+    appFile: 'archive.zip'
     buildVersion: '$(Build.SourceVersion)'
     releaseNotesOption: 'input'
     releaseNotesInput: '$(Build.SourceVersionMessage)'
@@ -66,7 +52,7 @@ steps:
   inputs:
     serverEndpoint: 'AppCenter'
     appSlug: 'Autumn2077/AutumnBox'
-    appFile: 'AutumnBox.zip'
+    appFile: 'archive.zip'
     buildVersion: '$(Build.SourceVersion)'
     releaseNotesOption: 'input'
     releaseNotesInput: '$(Build.SourceVersionMessage)'

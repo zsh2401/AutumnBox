@@ -44,7 +44,7 @@ function Setup-ADB{
     $ADBGitStore = "https://github.com/zsh2401/AutumnBox-AdbBinaries-Store"
     $BranchName = "1.0.41"
     $Target = [System.IO.Path]::Combine($CanaryPath,"adb_binary")
-    git clone --depth 1 -b $BranchName $ADBGitStore $Target
+    git clone --depth 1 -b $BranchName $ADBGitStore $Target -q
     Remove-Item -Force -Recurse $([System.IO.Path]::Combine($Target,".git"))
 }
 function Make-Archive{
