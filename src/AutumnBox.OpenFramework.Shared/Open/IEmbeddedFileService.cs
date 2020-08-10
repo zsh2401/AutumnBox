@@ -15,16 +15,19 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <returns></returns>
         Stream GetStream();
+
         /// <summary>
         /// 提取到指定文件
         /// </summary>
         /// <param name="targetFile"></param>
         void ExtractTo(FileInfo targetFile);
+
         /// <summary>
         /// 复制内容到指定流
         /// </summary>
         /// <param name="stream"></param>
         void CopyTo(Stream stream);
+
         /// <summary>
         /// 写入到流
         /// </summary>
@@ -41,6 +44,7 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         /// <param name="assembly">内嵌资源所在程序集</param>
         /// <param name="innerResPath"></param>
+        /// <exception cref="Exception">无法获取资源</exception>
         /// <returns></returns>
         IEmbeddedFile Get(Assembly assembly, string innerResPath);
     }

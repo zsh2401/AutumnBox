@@ -11,10 +11,12 @@ namespace AutumnBox.OpenFramework.Open
         /// 当前是否以管理员模式运行
         /// </summary>
         bool IsRunAsAdmin { get; }
+
         /// <summary>
         /// 当前系统是否为WIN10
         /// </summary>
         bool IsWindows10 { get; }
+
         /// <summary>
         /// 安装驱动
         /// </summary>

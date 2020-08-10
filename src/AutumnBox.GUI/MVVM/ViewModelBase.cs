@@ -129,7 +129,7 @@ namespace AutumnBox.GUI.MVVM
             var goPre = App.Current.Resources["UrlGoPrefix"] as string;
             try
             {
-                Process.Start(goPre + para);
+                _OpenUrl(goPre + para);
             }
             catch (Exception e)
             {

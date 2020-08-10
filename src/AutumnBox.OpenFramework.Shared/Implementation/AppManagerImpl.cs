@@ -7,6 +7,8 @@ using AutumnBox.Leafx.Container.Support;
 using AutumnBox.OpenFramework.Management;
 using AutumnBox.OpenFramework.Open;
 using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace AutumnBox.OpenFramework.Implementation
 {
@@ -65,6 +67,37 @@ namespace AutumnBox.OpenFramework.Implementation
             }
 
             return sourceApi.GetResouce(key) as TReturn;
+        }
+
+        public void OpenUrl(string url)
+        {
+            if (url == null) return;
+            //https://brockallen.com/2016/09/24/process-start-for-urls-on-net-core/
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
 
         public void RefreshExtensionView()

@@ -13,6 +13,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="path"></param>
         /// <returns></returns>
         string GetMd5(string path);
+
         /// <summary>
         /// 检查某个文件的MD5是否符合特定MD5
         /// </summary>

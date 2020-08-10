@@ -16,6 +16,7 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
+using AutumnBox.OpenFramework.Open;
 using AutumnBox.OpenFramework.Open.LKit;
 using System;
 using System.Collections.Generic;
@@ -24,18 +25,14 @@ using System.Text;
 namespace AutumnBox.Essentials.Extensions
 {
     [ExtName("test")]
-    [ExtRequiredDeviceStates(DeviceState.Fastboot)]
+    [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtDeveloperMode]
     class ETest : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI _ui, IDevice device)
+        public void EntryPoint(ILeafUI _ui, IDevice device,ISoundService soundService)
         {
-            using var ui = _ui;
-            throw new Exception("Fuck");
-            ui.Show();
-            ui.ShowMessage(device.GetVar("product"));
-            ui.ShowMessage(device.GetVar("unlocked"));
+            soundService.OK();
         }
     }
 }

@@ -8,7 +8,7 @@ using System;
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
-    /// 秋之盒用户交互API
+    /// 最原始的秋之盒用户交互接口
     /// </summary>
     public interface IUx
     {
@@ -18,6 +18,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="message"></param>
         /// <returns></returns>
         bool Agree(string message);
+
         /// <summary>
         /// 进行是否的抉择
         /// </summary>
@@ -25,7 +26,7 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="btnOK"></param>
         /// <param name="btnNO"></param>
         /// <returns></returns>
-        bool DoYN(string message, string btnOK = null, string btnNO = null);
+        bool DoYN(string? message, string? btnOK = null, string? btnNO = null);
 
         /// <summary>
         /// 让用户做选择
@@ -35,7 +36,8 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="btnRight"></param>
         /// <param name="btnCancel"></param>
         /// <returns></returns>
-        ChoiceResult DoChoice(string message, string btnLeft = null, string btnRight = null, string btnCancel = null);
+        ChoiceResult DoChoice(string message, string? btnLeft = null, string? btnRight = null, string? btnCancel = null);
+
         /// <summary>
         /// 要求用户输入一个数字
         /// </summary>
@@ -44,7 +46,8 @@ namespace AutumnBox.OpenFramework.Open
         /// <param name="max">最大值</param>
         /// <exception cref="Exceptions.UserDeniedException">用户取消输入时抛出此异常</exception>
         /// <returns></returns>
-        int InputNumber(string hint = null, int min = int.MinValue, int max = int.MaxValue);
+        int InputNumber(string? hint = null, int min = int.MinValue, int max = int.MaxValue);
+
         /// <summary>
         /// 输入字符串
         /// </summary>
@@ -52,32 +55,38 @@ namespace AutumnBox.OpenFramework.Open
         /// <exception cref="Exceptions.UserDeniedException">用户取消输入时抛出此异常</exception>
         /// <returns></returns>
         string InputString(string hint);
+
         /// <summary>
         /// 信息，通常情况下，此方法会阻塞至用户确认
         /// 使用默认标题
         /// </summary>
         /// <param name="message">信息</param>
         void Message(string message);
+
         /// <summary>
         /// 显示信息，通常情况下，此方法会阻塞至用户确认
         /// </summary>
         /// <param name="title">标题</param>
         /// <param name="message">信息</param>
         void Message(string title, string message);
+
         /// <summary>
         /// 警告，通常情况下，此方法会阻塞至用户确认
         /// </summary>
         /// <param name="message"></param>
         void Warn(string message);
+
         /// <summary>
         /// 错误，通常情况下，此方法会阻塞至用户确认
         /// </summary>
         /// <param name="message"></param>
         void Error(string message);
+
         /// <summary>
         /// 显示调试窗口
         /// </summary>
         void ShowDebuggingWindow();
+
         /// <summary>
         /// 显示加载窗口
         /// </summary>
@@ -88,6 +97,7 @@ namespace AutumnBox.OpenFramework.Open
         /// </summary>
         [Obsolete]
         void CloseLoadingWindow();
+
         /// <summary>
         /// 在UI线程中运行代码
         /// </summary>

@@ -14,6 +14,8 @@
 * ==============================================================================
 */
 
+using System;
+
 namespace AutumnBox.OpenFramework.Open
 {
     /// <summary>
@@ -55,11 +57,14 @@ namespace AutumnBox.OpenFramework.Open
         /// 注册一个LeafPanel
         /// </summary>
         /// <param name="card"></param>
+        /// <exception cref="InvalidOperationException">重复注册</exception>
         void Register(IXCard card);
+
         /// <summary>
         /// 取消注册一个LeafPanel
         /// </summary>
         /// <param name="card"></param>
+        /// <exception cref="InvalidOperationException">不存在的卡片</exception>
         void Unregister(IXCard card);
     }
 }

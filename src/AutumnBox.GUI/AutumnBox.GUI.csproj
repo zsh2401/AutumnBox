@@ -53,9 +53,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Sounds\ok.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="Resources\Sounds\ok.wav">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
