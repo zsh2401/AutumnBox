@@ -26,7 +26,20 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
             {
                 return extensionInfo.Metadata[ExtensionMetadataKeys.NAME]?.Invoke() as string ?? DEFAULT_VALUE;
             }
-            catch (Exception e)
+            catch (Exception)
+            {
+                return DEFAULT_VALUE;
+            }
+        }
+
+        public static Version Version(this IExtensionInfo extensionInfo)
+        {
+            var DEFAULT_VALUE = new Version(1, 0, 0);
+            try
+            {
+                return extensionInfo.Metadata[ExtensionMetadataKeys.VERSION]?.Invoke() as Version ?? DEFAULT_VALUE;
+            }
+            catch (Exception)
             {
                 return DEFAULT_VALUE;
             }
