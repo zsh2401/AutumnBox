@@ -30,9 +30,13 @@ namespace AutumnBox.Essentials.Extensions
     class ETest : LeafExtensionBase
     {
         [LMain]
-        public void EntryPoint(ILeafUI _ui, IDevice device,ISoundService soundService)
+        public void EntryPoint(ILeafUI ui)
         {
-            soundService.OK();
+            ui.Show();
+            ui.StatusInfo = "少女祈祷中...";
+            ui.ShowMessage("你好!秋之盒");
+            ui.Println("测试信息");
+            ui.Finish();
         }
     }
 }

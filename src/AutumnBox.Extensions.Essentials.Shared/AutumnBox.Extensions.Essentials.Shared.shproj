@@ -10,4 +10,7 @@
   <PropertyGroup />
   <Import Project="AutumnBox.Extensions.Essentials.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
+  <ItemGroup>
+    <Resource Remove="Resources\Icons\icon.ico" />
+  </ItemGroup>
 </Project>

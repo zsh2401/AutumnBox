@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EDeviceRebooter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EDonateCardRegister.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EEnableCurrentDeviceNetDebugging.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ELeafUIDemo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceConnecter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceDisconnecter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EPSLauncher.cs" />
@@ -36,5 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\ps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="$(MSBuildThisFileDirectory)Resources\Icons\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\icon.ico" />
   </ItemGroup>
 </Project>
