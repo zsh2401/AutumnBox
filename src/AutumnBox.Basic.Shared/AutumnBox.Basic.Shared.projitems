@@ -24,7 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ManagedAdb\CommandDriven\Unix\UnixCPM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MultipleDevices\DevicesCollection.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Util\AdbServerKiller.cs" />
+    <Compile Include="..\AutumnBox.Basic.Shared\Util\LocalAdbServerKiller.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Util\ProcessExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\CommandResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\INotifyOutput.cs" />

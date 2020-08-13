@@ -10,12 +10,31 @@ namespace AutumnBox.GUI.Services.Impl
     {
         public Window MainWindow => App.Current.MainWindow;
 
+        /// <summary>
+        /// 创建窗口
+        /// </summary>
+        /// <param name="windowName"></param>
+        /// <param name="args"></param>
+        /// <exception cref="Exception">窗口未找到</exception>
+        /// <returns></returns>
         public Window CreateWindow(string windowName, params object[] args)
         {
-            var type = Type.GetType("AutumnBox.GUI.Views.Windows." + windowName + "Window");
-            var window = (Window)Activator.CreateInstance(type, args);
-            window.Owner = App.Current.MainWindow;
-            return window;
+            if (Type.GetType("AutumnBox.GUI.Views.Windows." + windowName + "Window") is Type type
+                &&
+                Activator.CreateInstance(type, args) is Window win)
+            {
+                App.Current.MainWindow.Closed += (s, e) =>
+                {
+                    try {
+                        win.Close();
+                    } catch { }
+                };
+                return win;
+            }
+            else
+            {
+                throw new Exception("Window not found");
+            }
         }
 
         public void Show(string windowName)

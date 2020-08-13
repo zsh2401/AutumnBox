@@ -20,7 +20,7 @@ namespace AutumnBox.GUI.Services.Impl
     [Component(Type = typeof(IAdbDevicesManager))]
     sealed class AdbDevicesManagerImpl : IAdbDevicesManager, IDisposable
     {
-        public IDevice SelectedDevice
+        public IDevice? SelectedDevice
         {
             get => _selectedDevice; set
             {
@@ -31,15 +31,15 @@ namespace AutumnBox.GUI.Services.Impl
                 });
             }
         }
-        private IDevice _selectedDevice;
+        private IDevice? _selectedDevice;
 
-        public IEnumerable<IDevice> ConnectedDevices { get; private set; }
+        public IEnumerable<IDevice> ConnectedDevices { get; private set; } = new IDevice[0];
 
-        public event EventHandler DeviceSelectionChanged;
+        public event EventHandler? DeviceSelectionChanged;
 
-        private DevicesMonitor devicesMonitor = new DevicesMonitor();
+        private readonly DevicesMonitor devicesMonitor = new DevicesMonitor();
 
-        public event DevicesChangedHandler ConnectedDevicesChanged;
+        public event DevicesChangedHandler? ConnectedDevicesChanged;
 
         public AdbDevicesManagerImpl()
         {
@@ -84,7 +84,6 @@ namespace AutumnBox.GUI.Services.Impl
                     // TODO: 释放托管状态(托管对象)。
                 }
                 devicesMonitor.Cancel();
-                devicesMonitor = null;
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
                 // TODO: 将大型字段设置为 null。
 
@@ -118,8 +117,10 @@ namespace AutumnBox.GUI.Services.Impl
                 {
                         { "Count of Devices",devices.Count().ToString()},
                 };
+
             Analytics.TrackEvent("Devices Changed", devicesChangedData);
 
+#if ENABLE_DEVICE_REPORTER
             Task.Run(() =>
             {
                 Thread.CurrentThread.Name = "Device Info Reporter Thread";
@@ -150,6 +151,7 @@ namespace AutumnBox.GUI.Services.Impl
                     }
                 }
             });
+#endif
         }
     }
 }

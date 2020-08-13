@@ -100,7 +100,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         {
             lock (concurrentLock)
             {
-              
+
                 using var cmd = new CommandProcedure()
                 {
                     FileName = AdbExecutableFile.ToString(),
@@ -109,9 +109,9 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 };
                 cmd.InitializeAdbEnvironment(AdbClientDirectory, (ushort)ServerEndPoint.Port);
 
-                 new AdbServerKiller(cmd).Kill().Wait();
+                new LocalAdbServerKiller(cmd).Kill().Wait();
 
-                SLogger.Info(this, "server killed");
+                SLogger.Info(this, "Adb Server has been stopped.");
             }
         }
 

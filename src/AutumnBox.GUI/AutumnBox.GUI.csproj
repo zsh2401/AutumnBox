@@ -9,15 +9,15 @@
     <AssemblyName>AutumnBox.GUI</AssemblyName>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
-    <Version>2020.8.9.2</Version>
-    <AssemblyVersion>2020.8.9.2</AssemblyVersion>
+    <Version>2020.8.14.0</Version>
+    <AssemblyVersion>2020.8.14.0</AssemblyVersion>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <Configurations>Debug;Release;Canary</Configurations>
-    <FileVersion>2020.8.9.2</FileVersion>
+    <FileVersion>2020.8.14.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE ENABLE_DEVICE_REPORTER</DefineConstants>
     <OutputPath></OutputPath>
   </PropertyGroup>
 

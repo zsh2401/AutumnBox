@@ -28,6 +28,6 @@ namespace AutumnBox.Basic
         /// 指示版本
         /// </summary>
         public static Version Version => Version.Parse(VERSION_STR);
-        const string VERSION_STR = "2020.8.9";
+        const string VERSION_STR = "2020.8.14";
     }
 }

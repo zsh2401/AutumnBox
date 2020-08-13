@@ -32,6 +32,7 @@ namespace AutumnBox.Basic.Util
         {
             this.commandKillServer = killServerCommand ?? throw new ArgumentNullException(nameof(killServerCommand));
         }
+
         public Task Kill()
         {
             return Task.Run(() =>
@@ -51,6 +52,7 @@ namespace AutumnBox.Basic.Util
             });
 
         }
+
         private void KilProcesses()
         {
             using var cmd = new CommandProcedure()
