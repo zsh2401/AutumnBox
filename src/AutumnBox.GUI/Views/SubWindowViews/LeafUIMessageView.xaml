@@ -10,9 +10,9 @@
              >
     <Border CornerRadius="10">
         <DockPanel>
-            <Button Click="Button_Click" IsCancel="True" IsDefault="True"  Margin="10" DockPanel.Dock="Bottom">√</Button>
+            <Button Click="Button_Click" IsCancel="True" IsDefault="True"  Margin="10" DockPanel.Dock="Bottom" Content="{DynamicResource OpenFxBtnYes}"/>
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                <TextBlock TextWrapping="Wrap" x:Name="TBContent"/>
+                <TextBlock Padding="10" TextWrapping="Wrap" x:Name="TBContent"/>
             </ScrollViewer>
         </DockPanel>
     </Border>

@@ -25,9 +25,11 @@ namespace AutumnBox.GUI.Services.Impl
             {
                 App.Current.MainWindow.Closed += (s, e) =>
                 {
-                    try {
+                    try
+                    {
                         win.Close();
-                    } catch { }
+                    }
+                    catch { }
                 };
                 return win;
             }

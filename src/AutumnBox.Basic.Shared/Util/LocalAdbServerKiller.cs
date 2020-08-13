@@ -26,7 +26,7 @@ namespace AutumnBox.Basic.Util
 {
     internal sealed class LocalAdbServerKiller
     {
-        private const int MAX_TIMEOUT = 3000;
+        private const int MAX_TIMEOUT = 1000;
         private readonly ICommandProcedure commandKillServer;
         private readonly ILogger logger;
         public LocalAdbServerKiller(ICommandProcedure killServerCommand)
@@ -71,7 +71,7 @@ namespace AutumnBox.Basic.Util
             proc.OutputDataReceived += (s, e) => SLogger<LocalAdbServerKiller>.Info(e.Data);
             proc.ErrorDataReceived += (s, e) => SLogger<LocalAdbServerKiller>.Warn(e.Data);
             //proc.WaitForExit();
-            Thread.Sleep(MAX_TIMEOUT);
+            Thread.Sleep(3000);
             if (proc.HasExited)
             {
                 if (proc.ExitCode != 0)
