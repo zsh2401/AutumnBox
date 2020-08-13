@@ -10,11 +10,11 @@
              Foreground="{DynamicResource PrimaryTextBrush}"
              FontFamily="{DynamicResource AutumnBox.Font}"
              xmlns:viewmodel="clr-namespace:AutumnBox.GUI.ViewModels"
-             d:DesignHeight="150" d:DesignWidth="400">
+             d:DesignHeight="250" d:DesignWidth="450">
     <UserControl.DataContext>
         <viewmodel:VMAbout/>
     </UserControl.DataContext>
-    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+    <DockPanel VerticalAlignment="Center">
         <StackPanel DockPanel.Dock="Left">
             <StackPanel Margin="10" Orientation="Horizontal">
                 <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
@@ -46,7 +46,7 @@
            
         </StackPanel>
 
-        <StackPanel DockPanel.Dock="Top">
+        <StackPanel DockPanel.Dock="Top" Width="200">
             
 
             <DockPanel Margin="30,10,30,0">
