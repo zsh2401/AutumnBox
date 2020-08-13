@@ -11,7 +11,7 @@
     </UserControl.DataContext>
     <Menu VerticalAlignment="Center" DockPanel.Dock="Left" Background="Transparent">
         <MenuItem Header="{DynamicResource Menu.File}">
-            <MenuItem Header="{DynamicResource Menu.Restart}" InputGestureText="Shift + R" Command="{Binding Restart}"/>
+            <!--<MenuItem Header="{DynamicResource Menu.Restart}" InputGestureText="Shift + R" Command="{Binding Restart}"/>-->
             <MenuItem Command="{Binding Exit}" Header="{DynamicResource Menu.Exit}" InputGestureText="Alt + F4">
                 <MenuItem.Icon>
                     <Image Source="/Resources/Icons/Menu/exit.png"></Image>

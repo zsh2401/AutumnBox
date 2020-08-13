@@ -25,7 +25,7 @@
     </Window.Background>-->
 
     <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
-        <Image Source="/Resources/Images/icon.png" Height="100"/>
+        <Image Source="/Resources/Images/icon.png" Height="130"/>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
             <TextBlock TextAlignment="Center" FontSize="30" Text="{DynamicResource App.Name}"/>
