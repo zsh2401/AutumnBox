@@ -18,6 +18,7 @@ namespace AutumnBox.Logging
         {
             return new Internal.LoggerImpl(typeof(TCategoryClass).Name);
         }
+
         /// <summary>
         /// 传入字符串的Category名,并获取日志器
         /// </summary>
@@ -27,6 +28,7 @@ namespace AutumnBox.Logging
         {
             return new Internal.LoggerImpl(categoryName);
         }
+
         /// <summary>
         /// 获取Logger
         /// </summary>
@@ -36,6 +38,7 @@ namespace AutumnBox.Logging
         {
             return new LoggerImpl<TCategoryClass>();
         }
+
         /// <summary>
         /// 通过需要的日志器类型,自动构造
         /// </summary>

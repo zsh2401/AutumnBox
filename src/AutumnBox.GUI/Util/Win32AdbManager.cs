@@ -11,6 +11,7 @@ namespace AutumnBox.GUI.Util
         const string WIN32_ADB_BINARY_DIRECTORY = "adb_binary/win32";
         const string LINUX_ADB_BINARY_DIRECTORY = "adb_binary/linux";
         const string DARWIN_ADB_BINARY_DIRECTORY = "adb_binary/macos";
+
         protected override DirectoryInfo InitializeClientFiles()
         {
             //Just support win32 currently.

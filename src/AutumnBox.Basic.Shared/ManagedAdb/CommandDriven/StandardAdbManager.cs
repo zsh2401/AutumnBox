@@ -1,5 +1,6 @@
 ﻿#nullable enable
 using AutumnBox.Basic.ManagedAdb.CommandDriven;
+using AutumnBox.Basic.Util;
 using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
@@ -99,6 +100,7 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         {
             lock (concurrentLock)
             {
+              
                 using var cmd = new CommandProcedure()
                 {
                     FileName = AdbExecutableFile.ToString(),
@@ -107,13 +109,8 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 };
                 cmd.InitializeAdbEnvironment(AdbClientDirectory, (ushort)ServerEndPoint.Port);
 
-                int line = 0;
-                cmd.OutputReceived += (s, e) =>
-                {
-                    line++;
-                    SLogger.Info(this, $"killing adb server {line}:{e.Text}");
-                };
-                cmd.Execute();
+                 new AdbServerKiller(cmd).Kill().Wait();
+
                 SLogger.Info(this, "server killed");
             }
         }

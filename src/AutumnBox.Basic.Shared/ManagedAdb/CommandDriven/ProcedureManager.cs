@@ -88,19 +88,22 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
                 if (disposing)
                 {
                     handleDisposedEvent = false;
-                    notDisposedSet.All((p) =>
-                     {
-                         try
-                         {
-                             p.Dispose();
-                         }
-                         catch (Exception e)
-                         {
-                             SLogger<CommandProcedure>.CDebug("can not dispose command procedure", e);
-                         }
-                         return true;
-                     });
-                    this.notDisposedSet.Clear();
+                    lock (notDisposedSet)
+                    {
+                        notDisposedSet.All((p) =>
+                        {
+                            try
+                            {
+                                p.Dispose();
+                            }
+                            catch (Exception e)
+                            {
+                                SLogger<CommandProcedure>.Warn("can not dispose command procedure", e);
+                            }
+                            return true;
+                        });
+                        this.notDisposedSet.Clear();
+                    }
                     // TODO: 释放托管状态(托管对象)。
                 }
                 // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
