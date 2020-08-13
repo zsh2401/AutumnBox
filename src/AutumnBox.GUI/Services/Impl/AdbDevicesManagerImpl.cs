@@ -120,7 +120,7 @@ namespace AutumnBox.GUI.Services.Impl
 
             Analytics.TrackEvent("Devices Changed", devicesChangedData);
 
-#if ENABLE_DEVICE_REPORTER
+            if (!Program.CliOptions.DeviceReport) return;
             Task.Run(() =>
             {
                 Thread.CurrentThread.Name = "Device Info Reporter Thread";
@@ -151,7 +151,6 @@ namespace AutumnBox.GUI.Services.Impl
                     }
                 }
             });
-#endif
         }
     }
 }

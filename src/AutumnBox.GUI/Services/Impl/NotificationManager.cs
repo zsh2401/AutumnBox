@@ -29,33 +29,29 @@ namespace AutumnBox.GUI.Services.Impl
         public async void Info(string msg)
         {
             await WaitForTokenLoaded();
-            if (Thread.CurrentThread != App.Current.Dispatcher.Thread)
+            App.Current.Dispatcher.Invoke(() =>
             {
-                App.Current.Dispatcher.Invoke(() =>
+                if (Program.CliOptions.GlobalNotification)
+                {
+                    Growl.InfoGlobal(msg);
+                }
+                else
                 {
                     Growl.Info(msg, Token);
-                });
-            }
-            else
-            {
-                Growl.Info(msg, Token);
-            }
+                }
+            });
         }
 
         public async void Warn(string msg)
         {
             await WaitForTokenLoaded();
-            if (Thread.CurrentThread != App.Current.Dispatcher.Thread)
+            App.Current.Dispatcher.Invoke(() =>
             {
-                App.Current.Dispatcher.Invoke(() =>
-                {
+                if (Program.CliOptions.GlobalNotification)
+                    Growl.WarningGlobal(msg);
+                else
                     Growl.Warning(msg, Token);
-                });
-            }
-            else
-            {
-                Growl.Warning(msg, Token);
-            }
+            });
         }
 
         public Task<bool> Ask(string msg)
@@ -83,17 +79,13 @@ namespace AutumnBox.GUI.Services.Impl
         public async void Success(string msg)
         {
             await WaitForTokenLoaded();
-            if (Thread.CurrentThread != App.Current.Dispatcher.Thread)
+            App.Current.Dispatcher.Invoke(() =>
             {
-                App.Current.Dispatcher.Invoke(() =>
-                {
+                if (Program.CliOptions.GlobalNotification)
+                    Growl.SuccessGlobal(ParseMsg(msg));
+                else
                     Growl.Success(ParseMsg(msg), Token);
-                });
-            }
-            else
-            {
-                Growl.Success(msg, Token);
-            }
+            });
         }
 
         private string ParseMsg(string msg)

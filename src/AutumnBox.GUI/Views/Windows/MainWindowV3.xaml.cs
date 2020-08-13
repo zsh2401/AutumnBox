@@ -24,6 +24,5 @@ namespace AutumnBox.GUI.Views.Windows
                 this.GetComponent<INotificationManager>().Info("Canary");
 #endif
         }
-
     }
 }

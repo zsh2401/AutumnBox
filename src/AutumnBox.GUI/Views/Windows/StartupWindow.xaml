@@ -14,6 +14,8 @@
     Title="{DynamicResource App.Name}"
     FontFamily="{DynamicResource AutumnBox.Font}"
     ShowInTaskbar="False"
+            xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+           hc:Dialog.Token="startupWindow"
         Height="300" Width="500">
     <Window.DataContext>
         <viewmodel:VMStartup/>

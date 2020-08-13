@@ -37,7 +37,7 @@
         <viewmodel:VMMainWindowV3/>
     </Window.DataContext>
 
-    <Grid Background="{Binding WallpaperBrush}">
+    <Grid  Background="{Binding WallpaperBrush}">
 
         <DockPanel>
             <hc:ScrollViewer Padding="0,0,0,22" DockPanel.Dock="Left">
