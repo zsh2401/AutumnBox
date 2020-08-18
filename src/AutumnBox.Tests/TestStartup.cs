@@ -25,12 +25,12 @@ namespace AutumnBox.Tests
         [AssemblyInitialize]
         public static void Startup(TestContext context)
         {
-            BasicBooter.Use<Win32AdbManager>();
+            //BasicBooter.Use<Win32AdbManager>();
         }
         [AssemblyCleanup]
         public static void Cleanup()
         {
-            BasicBooter.Free();
+            //BasicBooter.Free();
         }
     }
 }

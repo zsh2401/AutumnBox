@@ -2,19 +2,20 @@
 using AutumnBox.Basic.MultipleDevices;
 using AutumnBox.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
 namespace AutumnBox.Tests.Basic.Devices
 {
     [TestClass]
-    public class DevicesTest
+    public class DevicesTest : IDisposable
     {
         public DevicesTest()
         {
             BasicBooter.Use<Win32AdbManager>();
         }
-        ~DevicesTest()
+        public void Dispose()
         {
             BasicBooter.Free();
         }
@@ -28,7 +29,6 @@ namespace AutumnBox.Tests.Basic.Devices
                 Debug.WriteLine(dev);
                 return true;
             }); ;
-            BasicBooter.Free();
         }
     }
 }

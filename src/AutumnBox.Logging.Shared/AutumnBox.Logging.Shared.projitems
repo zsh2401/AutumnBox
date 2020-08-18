@@ -9,6 +9,8 @@
     <Import_RootNamespace>AutumnBox.Logging</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Aogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CallerQuerier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\LoggerImpl.Generic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoggerExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Management\AsyncBufferedRealtimeFileLogger.cs" />
