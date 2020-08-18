@@ -118,7 +118,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <returns></returns>
         public static int Priority(this IExtensionInfo extensionInfo)
         {
-            const int DEFAULT_VALUE = 0;
+            const int DEFAULT_VALUE = ExtPriority.NORMAL;
             try
             {
                 return (extensionInfo.Metadata[ExtensionMetadataKeys.PRIORITY]?.Invoke() as int?)
@@ -155,7 +155,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <returns></returns>
         public static DeviceState RequiredDeviceState(this IExtensionInfo extensionInfo)
         {
-            const DeviceState DEFAULT_VALUE = AutumnBoxExtension.AllState;
+            const DeviceState DEFAULT_VALUE = AutumnBoxExtension.NoMatter;
             try
             {
                 return extensionInfo.Metadata[ExtensionMetadataKeys.REQ_DEV_STATE]?.Invoke() as DeviceState?
@@ -175,7 +175,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <returns></returns>
         public static bool IsRunnableCheck(this IExtensionInfo extInf, IDevice? currentDevice)
         {
-            const bool DEFAULT_VALUE = false;
+            const bool DEFAULT_VALUE = true;
             try
             {
                 var attr = (extInf.Metadata[ExtensionMetadataKeys.RUNNABLE_POLICY]() as ExtRunnablePolicyAttribute);
@@ -213,7 +213,7 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
         /// <returns></returns>
         public static bool DeveloperMode(this IExtensionInfo extensionInfo)
         {
-            const bool DEFAULT_VALUE = true;
+            const bool DEFAULT_VALUE = false;
             try
             {
                 return extensionInfo.Metadata[ExtensionMetadataKeys.IS_DEVELOPING]?.Invoke() as bool? ?? DEFAULT_VALUE;
