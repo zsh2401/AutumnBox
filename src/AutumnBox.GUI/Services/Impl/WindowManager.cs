@@ -1,4 +1,5 @@
-﻿using AutumnBox.Leafx.Container.Support;
+﻿using AutumnBox.GUI.Views.Windows;
+using AutumnBox.Leafx.Container.Support;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -23,14 +24,21 @@ namespace AutumnBox.GUI.Services.Impl
                 &&
                 Activator.CreateInstance(type, args) is Window win)
             {
-                App.Current.MainWindow.Closed += (s, e) =>
+                if (type != typeof(LogEasyWindow) && type != typeof(LogWindow))
                 {
-                    try
+                    win.Owner = App.Current.MainWindow;
+                }
+                else
+                {
+                    App.Current.MainWindow.Closed += (s, e) =>
                     {
-                        win.Close();
-                    }
-                    catch { }
-                };
+                        try
+                        {
+                            win.Close();
+                        }
+                        catch { }
+                    };
+                }
                 return win;
             }
             else
