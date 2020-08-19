@@ -13,22 +13,19 @@ namespace AutumnBox.Logging.Management
         /// <summary>
         /// 日志站
         /// </summary>
-        internal static ICoreLogger CoreLogger => proxy;
+        internal static ICoreLogger CoreLogger => proxy.InnerLogger;
 
         /// <summary>
         /// 已记录的日志
         /// </summary>
         public static ILogsCollection Logs => proxy.Logs;
 
-        /// <summary>
-        /// 优化已记录日志
-        /// </summary>
-        public static void OptimizeLogsCollection() { }
         static readonly CoreLoggerProxy proxy = new CoreLoggerProxy();
         static LoggingManager()
         {
-            proxy.InnerLogger = new ConsoleLogger(false);
+            proxy.InnerLogger = new TraceLogger();
         }
+
         /// <summary>
         /// 使用某个日志器
         /// </summary>

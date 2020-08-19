@@ -32,7 +32,7 @@ namespace AutumnBox.Tests.Logging
             LoggingManager.Use(_defaultCoreLogger);
         }
 
-        private ICoreLogger _defaultCoreLogger;
+        private  readonly ICoreLogger _defaultCoreLogger;
 
         public AoggerTest()
         {
