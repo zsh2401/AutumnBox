@@ -35,7 +35,7 @@ namespace AutumnBox.GUI.Services.Impl
         }
         ThemeMode _themeMode = ThemeMode.Light;
 
-        private const int INDEX_OF_THEME = 2;
+        private const int INDEX_OF_THEME = 3;
 
         private readonly ResourceDictionary LightTheme;
         private readonly ResourceDictionary DarkTheme;
@@ -67,6 +67,7 @@ namespace AutumnBox.GUI.Services.Impl
             };
             ApplyTheme(themeDictionary);
         }
+
         private void ApplyTheme(ResourceDictionary themeDictionary)
         {
             App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = themeDictionary;

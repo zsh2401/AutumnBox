@@ -15,8 +15,8 @@
                 <!--基础主题-->
                 <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>
 
-                <!--可变更主题--><!--
-                <ResourceDictionary Source="/Resources/Themes/ThemeLight.xaml"/>-->
+                <!--可变更主题-->
+                <ResourceDictionary Source="/Resources/Themes/ThemeDark.xaml"/>
 
                 <ResourceDictionary Source="/Resources/Converters.xaml"/>
 

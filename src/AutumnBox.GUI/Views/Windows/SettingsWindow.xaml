@@ -35,14 +35,14 @@ xmlns:hc="https://handyorg.github.io/handycontrol"
                     </DockPanel>
                     <DockPanel Margin="5">
 
-                        <!--<StackPanel Orientation="Vertical" DockPanel.Dock="Left">
+                        <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
                             <TextBlock Margin="0,0,0,10" Text="{DynamicResource Settings.Theme}"/>
                             <hc:ButtonGroup>
                                 <RadioButton  IsChecked="{Binding ShouldUseLightTheme}" Content="{DynamicResource Settings.ThemeLight}"/>
                                 <RadioButton IsChecked="{Binding ShouldUseAutoTheme}" Content="{DynamicResource Settings.ThemeAuto}"/>
                                 <RadioButton  IsChecked="{Binding ShouldUseDarkTheme}" Content="{DynamicResource Settings.ThemeDark}"/>
                             </hc:ButtonGroup>
-                        </StackPanel>-->
+                        </StackPanel>
                     </DockPanel>
 
                 </StackPanel>
