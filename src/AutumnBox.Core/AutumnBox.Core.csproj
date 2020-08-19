@@ -6,19 +6,19 @@
     <AssemblyName>AutumnBox.Core</AssemblyName>
     <RootNamespace>AutumnBox.Core</RootNamespace>
     <Nullable>enable</Nullable>
-    <Version>11.8.1</Version>
+    <Version>11.9</Version>
     <Configurations>Debug;Release;SDK;Canary</Configurations>
     <Authors>zsh2401</Authors>
     <Company>zsh2401</Company>
-    <AssemblyVersion>11.8.1.0</AssemblyVersion>
-    <FileVersion>11.8.1.0</FileVersion>
+    <AssemblyVersion>11.9.0.0</AssemblyVersion>
+    <FileVersion>11.9.0.0</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>Let's Develop AutumnBox Extension!</Description>
     <PackageId>AutumnBox.SDK</PackageId>
     <Product>AutumnBox.SDK</Product>
     <RepositoryUrl>https://github.com/zsh2401/AutumnBox</RepositoryUrl>
-    <PackageReleaseNotes>11.8 update: bug fixes.</PackageReleaseNotes>
+    <PackageReleaseNotes>11.9 update: bug fixes.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/zsh2401/AutumnBox</PackageProjectUrl>
     <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
