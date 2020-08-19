@@ -18,41 +18,22 @@ using AutumnBox.Logging.Management;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace AutumnBox.Tests.Logging
 {
     [TestClass]
-    public class AoggerTest : ICoreLogger, IDisposable
+    public class AoggerTest
     {
-        public void Dispose()
-        {
-            LoggingManager.Use(_defaultCoreLogger);
-        }
-
-        private  readonly ICoreLogger _defaultCoreLogger;
-
-        public AoggerTest()
-        {
-            _defaultCoreLogger = LoggingManager.CoreLogger;
-            LoggingManager.Use(this);
-        }
-
         [TestMethod]
-        public void Info()
+        public void NormalTest()
         {
+            LoggingManager.Logs.CollectionChanged += (s, e) =>
+            {
+                var latest = (ILog)e.NewItems[0]!;
+                Assert.AreEqual(nameof(AoggerTest), latest.Category);
+                Assert.AreEqual(nameof(Aogger.Info), latest.Level);
+            };
             Aogger.Info("f");
-            var last = logs.Last();
-            Assert.AreEqual(nameof(AoggerTest), last.Category);
-            Assert.AreEqual(nameof(Aogger.Info), last.Level);
-        }
-
-        private readonly List<ILog> logs = new List<ILog>();
-        public void Log(ILog log)
-        {
-            logs.Add(log);
         }
     }
 }

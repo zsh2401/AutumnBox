@@ -13,7 +13,17 @@ namespace AutumnBox.Logging.Management
         /// <summary>
         /// 日志站
         /// </summary>
-        internal static ICoreLogger CoreLogger => proxy.InnerLogger;
+        public static ICoreLogger CoreLogger
+        {
+            get => proxy.InnerLogger; set
+            {
+                if (value is null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+                proxy.InnerLogger = value;
+            }
+        }
 
         /// <summary>
         /// 已记录的日志
@@ -21,27 +31,19 @@ namespace AutumnBox.Logging.Management
         public static ILogsCollection Logs => proxy.Logs;
 
         static readonly CoreLoggerProxy proxy = new CoreLoggerProxy();
-        static LoggingManager()
-        {
-            proxy.InnerLogger = new TraceLogger();
-        }
 
         /// <summary>
         /// 使用某个日志器
         /// </summary>
         /// <param name="coreLogger"></param>
+        [Obsolete("Use CoreLogger.Setter to instead of.")]
         public static void Use(ICoreLogger coreLogger)
         {
-            if (coreLogger is null)
-            {
-                throw new ArgumentNullException(nameof(coreLogger));
-            }
-
-            proxy.InnerLogger = coreLogger;
+            CoreLogger = coreLogger;
         }
 
         /// <summary>
-        /// 释放日志器
+        /// 释放所有日志资源，不可恢复
         /// </summary>
         public static void Free()
         {
@@ -56,7 +58,7 @@ namespace AutumnBox.Logging.Management
         {
             public class LogsCollection : ObservableCollection<ILog>, ILogsCollection { }
             public LogsCollection Logs { get; private set; }
-            public ICoreLogger InnerLogger { get; set; }
+            public ICoreLogger InnerLogger { get; set; } = new TraceLogger();
             public CoreLoggerProxy()
             {
                 //用这种奇葩方法初始化是为了防止线程问题
@@ -65,7 +67,6 @@ namespace AutumnBox.Logging.Management
                     Logs = new LogsCollection();
                 }));
             }
-
 
             public void Log(ILog log)
             {
@@ -83,6 +84,7 @@ namespace AutumnBox.Logging.Management
             public void Dispose()
             {
                 InnerLogger.Dispose();
+                InnerLogger = null;
             }
         }
     }

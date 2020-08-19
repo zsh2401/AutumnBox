@@ -32,6 +32,8 @@ namespace AutumnBox.Leafx.Container
         /// </summary>
         /// <param name="lake"></param>
         /// <param name="id"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public static IEnumerable<object> GetComponents(this ILake lake, string id)
         {
@@ -46,12 +48,13 @@ namespace AutumnBox.Leafx.Container
                 throw new ArgumentException("message", nameof(id));
             }
             var method = lake.GetType().GetMethod(METHOD_NAME, BindingFlags.Public | BindingFlags.Instance);
-            if (method == null || 
+            if (method == null ||
                 method.ReturnType != typeof(IEnumerable<object>) ||
                 method.GetParameters().Length != 1 ||
                 method.GetParameters()[0].ParameterType != typeof(string))
             {
-                throw new NotSupportedException($"This lake ({lake?.GetType()?.FullName}) does not support: IEnumerable<object> GetComponents(string)");
+                return new object[] { lake.GetComponent(id) };
+                //throw new NotSupportedException($"This lake ({lake?.GetType()?.FullName}) does not support: IEnumerable<object> GetComponents(string)");
             }
             return (IEnumerable<object>)method.Invoke(lake, new object[] { id });
         }

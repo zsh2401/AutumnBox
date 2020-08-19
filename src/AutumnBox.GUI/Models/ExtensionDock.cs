@@ -18,6 +18,7 @@ using AutumnBox.OpenFramework.Management.ExtTask;
 using AutumnBox.OpenFramework.Exceptions;
 using AutumnBox.OpenFramework.Management.ExtInfo;
 using AutumnBox.Logging;
+using AutumnBox.Leafx.Container;
 
 namespace AutumnBox.GUI.Models
 {
@@ -29,7 +30,7 @@ namespace AutumnBox.GUI.Models
         {
             get
             {
-                return $"{ExtensionInfo.Name()}{Environment.NewLine}{ExtensionInfo.Author()}";
+                return $"{ExtensionInfo.Name()}{Environment.NewLine}v{ExtensionInfo.Version()}  by {ExtensionInfo.Author()}";
             }
         }
 
@@ -40,14 +41,14 @@ namespace AutumnBox.GUI.Models
         {
             get
             {
-                if (icon == null)
+                if (iconCache == null)
                 {
-                    icon = ExtensionInfo.Icon().ToExtensionIcon();
+                    iconCache = ExtensionInfo.Icon().ToExtensionIcon();
                 }
-                return icon;
+                return iconCache;
             }
         }
-        private ImageSource icon;
+        private ImageSource? iconCache;
 
         public Color RemarksColor
         {
@@ -63,15 +64,12 @@ namespace AutumnBox.GUI.Models
         }
         private Color _remarksColor;
 
-        private string _remarks;
-
         public string Remarks
         {
             get { return _remarks; }
             set { _remarks = value; RaisePropertyChanged(); }
         }
-
-
+        private string _remarks;
 
         public FlexiableCommand Execute
         {
@@ -81,32 +79,31 @@ namespace AutumnBox.GUI.Models
                 RaisePropertyChanged();
             }
         }
-
-
         private FlexiableCommand _execute;
 
-        [AutoInject]
-        private readonly IAdbDevicesManager devicesManager;
+        readonly IAdbDevicesManager devicesManager = App.Current.Lake.Get<IAdbDevicesManager>();
 
-        [AutoInject]
-        private readonly INotificationManager notificationManager;
+        readonly INotificationManager notificationManager = App.Current.Lake.Get<INotificationManager>();
+
+        private const string MARK_NEED_ROOT = "ROOT";
+        private const string MARK_NO_ROOT = "";
 
         public ExtensionDock(IExtensionInfo extInf)
         {
             this.ExtensionInfo = extInf;
-            RemarksColor = extInf.NeedRoot() ? Colors.Red : Colors.GreenYellow;
-            Remarks = extInf.NeedRoot() ? "ROOT" : "---";
-            Execute = new FlexiableCommand(p =>
+            _remarksColor = extInf.NeedRoot() ? Colors.Red : Colors.GreenYellow;
+            _remarks = extInf.NeedRoot() ? MARK_NEED_ROOT : MARK_NO_ROOT;
+            _execute = new FlexiableCommand(p =>
             {
                 ExecuteImpl();
             })
             {
-                CanExecuteProp = ExtensionInfo.IsRunnableCheck(devicesManager.SelectedDevice)
+                CanExecuteProp = ExtensionInfo.IsRunnableCheck(devicesManager?.SelectedDevice)
             };
-            devicesManager.DeviceSelectionChanged += DeviceSelectionChanged;
+            devicesManager!.DeviceSelectionChanged += DeviceSelectionChanged;
         }
 
-        private void DeviceSelectionChanged(object sender, EventArgs e)
+        private void DeviceSelectionChanged(object? sender, EventArgs e)
         {
             Execute.CanExecuteProp = ExtensionInfo.IsRunnableCheck(devicesManager.SelectedDevice);
         }
@@ -128,20 +125,20 @@ namespace AutumnBox.GUI.Models
             var reqState = ExtensionInfo.RequiredDeviceState();
             List<string> statesString = new List<string>();
             if (reqState.HasFlag(DeviceState.Poweron))
-                statesString.Add(App.Current.Resources[$"Dash.State.Poweron"].ToString());
+                statesString.Add(App.Current.Resources[$"Dash.State.Poweron"]?.ToString() ?? String.Empty);
             if (reqState.HasFlag(DeviceState.Recovery))
-                statesString.Add(App.Current.Resources[$"Dash.State.Recovery"].ToString());
+                statesString.Add(App.Current.Resources[$"Dash.State.Recovery"]?.ToString() ?? String.Empty);
             if (reqState.HasFlag(DeviceState.Fastboot))
-                statesString.Add(App.Current.Resources[$"Dash.State.Fastboot"].ToString());
+                statesString.Add(App.Current.Resources[$"Dash.State.Fastboot"]?.ToString() ?? String.Empty);
             if (reqState.HasFlag(DeviceState.Sideload))
-                statesString.Add(App.Current.Resources[$"Dash.State.Sideload"].ToString());
+                statesString.Add(App.Current.Resources[$"Dash.State.Sideload"]?.ToString() ?? String.Empty);
             if (reqState.HasFlag(DeviceState.Unauthorized))
-                statesString.Add(App.Current.Resources[$"Dash.State.Unauthorized"].ToString());
+                statesString.Add(App.Current.Resources[$"Dash.State.Unauthorized"]?.ToString() ?? String.Empty);
             if (reqState.HasFlag(DeviceState.Offline))
-                statesString.Add(App.Current.Resources[$"Dash.State.Offline"].ToString());
+                statesString.Add(App.Current.Resources[$"Dash.State.Offline"]?.ToString() ?? String.Empty);
             if (reqState.HasFlag(DeviceState.Unknown))
-                statesString.Add(App.Current.Resources[$"Dash.State.Unknown"].ToString());
-            string fmt = App.Current.Resources[$"StateNotRightTipFmt"].ToString();
+                statesString.Add(App.Current.Resources[$"Dash.State.Unknown"]?.ToString() ?? String.Empty);
+            string fmt = App.Current.Resources[$"StateNotRightTipFmt"]?.ToString() ?? String.Empty;
             return string.Format(fmt, string.Join(",", statesString.ToArray()));
         }
     }

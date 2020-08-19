@@ -18,7 +18,7 @@ namespace AutumnBox.GUI.Services.Impl
         public void Initialize()
         {
             var logger = new TraceLogger() + new AsyncFileLogger(OpenLogFileStream());
-            Logging.Management.LoggingManager.Use(logger);
+            Logging.Management.LoggingManager.CoreLogger = logger;
         }
         private FileStream OpenLogFileStream()
         {

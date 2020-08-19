@@ -25,21 +25,22 @@ namespace AutumnBox.Logging
     /// </summary>
     public static class Aogger
     {
+        const int CALLER_POSITION = 1;
         public static void WriteToLog(this Exception e, object? additionMessage = null)
         {
-            SLogger.Warn(CallerQuerier.Get(2).TypeName, additionMessage ?? String.Empty, e);
+            SLogger.Warn(CallerQuerier.Get(CALLER_POSITION).TypeName, additionMessage ?? String.Empty, e);
         }
         public static void Info(object message)
         {
-            SLogger.Info(CallerQuerier.Get(2).TypeName, message);
+            SLogger.Info(CallerQuerier.Get(CALLER_POSITION).TypeName, message);
         }
         public static void Warn(object message)
         {
-            SLogger.Warn(CallerQuerier.Get(2).TypeName, message);
+            SLogger.Warn(CallerQuerier.Get(CALLER_POSITION).TypeName, message);
         }
         public static void Exception(Exception e)
         {
-            SLogger.Exception(CallerQuerier.Get(2).TypeName, e);
+            SLogger.Exception(CallerQuerier.Get(CALLER_POSITION).TypeName, e);
         }
     }
 }

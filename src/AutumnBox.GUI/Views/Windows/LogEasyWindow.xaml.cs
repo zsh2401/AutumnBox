@@ -26,7 +26,7 @@ namespace AutumnBox.GUI.Views.Windows
         public LogEasyWindow()
         {
             InitializeComponent();
-             logMg = this.GetComponent<ILoggingManager>();
+            logMg = this.GetComponent<ILoggingManager>();
             logMg.Logs.All((log) =>
             {
                 logBox.AppendText(log.ToFormatedString() + "\n");

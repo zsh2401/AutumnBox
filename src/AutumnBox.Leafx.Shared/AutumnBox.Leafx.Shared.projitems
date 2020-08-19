@@ -55,4 +55,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectCache.General.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Enhancement\Runtime\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Enhancement\DependenciesManager\" />
+  </ItemGroup>
 </Project>

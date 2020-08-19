@@ -40,16 +40,11 @@ namespace AutumnBox.Tests.Leafx
         }
 
         [TestMethod]
-        public void CheckTest()
+        public void GetComponentsCompatibilitTest()
         {
-            Assert.ThrowsException<NotSupportedException>(() =>
-            {
-                ILake lake = new SunsetLake();
-                lake.GetComponents("t");
-            });
-
-            ILake lake = new TestLake();
-            Assert.IsTrue(lake.GetComponents("t").Count() == 0);
+            IRegisterableLake lake = new SunsetLake();
+            lake.RegisterSingleton("t","2401");
+            Assert.AreEqual("2401", lake.GetComponents("t").FirstOrDefault());
         }
 
         private class TestLake : ILake
