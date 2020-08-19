@@ -189,7 +189,10 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
                     {
                         SLogger.Warn(typeof(ExtensionInfoExtension).Name, $"There is no Runnable Prolicy defined for {extInf.Id}", e);
                     }
-                    SLogger.Warn(typeof(ExtensionInfoExtension).Name, $"Could not finish runnable check for {extInf.Id}", e);
+                    else
+                    {
+                        SLogger.Warn(typeof(ExtensionInfoExtension).Name, $"Could not finish runnable check for {extInf.Id}", e);
+                    }
                 }
                 catch
                 {

@@ -11,26 +11,31 @@ namespace AutumnBox.Logging.Management
     public static class LoggingManager
     {
         /// <summary>
-        /// 日志站
+        /// 核心的日志处理器
         /// </summary>
         public static ICoreLogger CoreLogger
         {
-            get => proxy.InnerLogger; set
+            get => Proxy.InnerLogger;
+            set
             {
                 if (value is null)
                 {
                     throw new ArgumentNullException(nameof(value));
                 }
-                proxy.InnerLogger = value;
+                Proxy.InnerLogger = value;
             }
         }
 
         /// <summary>
+        /// 代理日志器，额外提供了记录日志的相关功能
+        /// </summary>
+        internal static CoreLoggerProxy Proxy { get; } = new CoreLoggerProxy();
+
+        /// <summary>
         /// 已记录的日志
         /// </summary>
-        public static ILogsCollection Logs => proxy.Logs;
+        public static ILogsCollection Logs => Proxy.Logs;
 
-        static readonly CoreLoggerProxy proxy = new CoreLoggerProxy();
 
         /// <summary>
         /// 使用某个日志器
@@ -47,14 +52,14 @@ namespace AutumnBox.Logging.Management
         /// </summary>
         public static void Free()
         {
-            proxy.Logs.Clear();
-            proxy.Dispose();
+            Proxy.Logs.Clear();
+            Proxy.Dispose();
         }
 
         /// <summary>
         /// 核心日志器代理
         /// </summary>
-        private class CoreLoggerProxy : ICoreLogger
+        internal class CoreLoggerProxy : ICoreLogger
         {
             public class LogsCollection : ObservableCollection<ILog>, ILogsCollection { }
             public LogsCollection Logs { get; private set; }

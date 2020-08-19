@@ -13,12 +13,12 @@ namespace AutumnBox.Logging.Internal
         protected LoggerImpl() { }
         public void Log(string level, object message)
         {
-            LoggingManager.CoreLogger.Log(new Log(level, CategoryName, message));
+            LoggingManager.Proxy.Log(new Log(level, CategoryName, message));
         }
 
         public void Log(string level, object message, Exception e)
         {
-            LoggingManager.CoreLogger.Log(new Log(level, CategoryName, message, e));
+            LoggingManager.Proxy.Log(new Log(level, CategoryName, message, e));
         }
     }
 }
