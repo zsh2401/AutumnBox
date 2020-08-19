@@ -25,7 +25,7 @@ using System.Text;
 namespace AutumnBox.Tests.Logging
 {
     [TestClass]
-    public class AoggerTest : ICoreLogger
+    public class AoggerTest : ICoreLogger, IDisposable
     {
         public void Dispose()
         {
@@ -53,7 +53,6 @@ namespace AutumnBox.Tests.Logging
         public void Log(ILog log)
         {
             logs.Add(log);
-            Debug.WriteLine(log.ToFormatedString());
         }
     }
 }

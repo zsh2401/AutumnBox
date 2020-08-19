@@ -29,6 +29,7 @@ namespace AutumnBox.Logging
         }
         public static Result Get(int startAt)
         {
+            if (startAt < 0) throw new ArgumentException("Start at should not smaller than zero.");
             Result? result = null;
             var frames = new StackTrace().GetFrames();
             for (int i = startAt; i < frames.Length; i++)
