@@ -120,7 +120,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
 
             foreach (var file in extDir.GetFiles())
             {
-                SLogger<DreamLibManager>.Info($"{file.Name}{file.Extension}");
+                SLogger<DreamLibManager>.Info($"Found file: {file.Name}");
             }
 
             var extensionFiles = from file in extDir.GetFiles()
@@ -152,7 +152,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 }
                 catch (Exception e)
                 {
-                    SLogger<DreamLibManager>.Warn($"can not load extension: {file.Name}", e);
+                    SLogger<DreamLibManager>.Warn($"Could not load assembly: {file.Name}", e);
                 }
             }
             SLogger<DreamLibManager>.Debug($"There are {result.Count()} assemblies");
@@ -181,7 +181,7 @@ namespace AutumnBox.OpenFramework.Management.ExtLibrary.Impl
                 }
                 catch (Exception e)
                 {
-                    SLogger<DreamLibManager>.Warn($"Can not create the instance of {assembly.GetName().Name}'s librarian", e);
+                    SLogger<DreamLibManager>.Warn($"Could not create the instance of {assembly.GetName().Name}'s librarian", e);
                 }
             }
             SLogger<DreamLibManager>.Info($"There are {result.Count()} librarians");
