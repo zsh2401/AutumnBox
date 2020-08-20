@@ -27,24 +27,28 @@
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE SDK</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <Import Project="..\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />
