@@ -8,8 +8,11 @@ using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
 using AutumnBox.Logging;
+using AutumnBox.OpenFramework.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -59,14 +62,15 @@ namespace AutumnBox.Basic.Device
         /// <param name="device"></param>
         /// <param name="key"></param>
         /// <exception cref="CommandErrorException">命令执行失败</exception>
-        /// <exception cref="InvalidOperationException">设备状态有误</exception>
+        /// <exception cref="DeviceStateIsNotCorrectException">设备状态有误</exception>
         /// <exception cref="KeyNotFoundException">未找到对应键的值</exception>
         /// <returns></returns>
         public static string GetVar(this IDevice device, string key)
         {
             if (device.State != DeviceState.Fastboot)
             {
-                throw new InvalidOperationException("Device's state not correct: should be bootloader mode");
+                throw new DeviceStateIsNotCorrectException(
+                    DeviceState.Fastboot, device.State);
             }
             string command = $"getvar {key}";
             using var hestExecutor = new HestExecutor(BasicBooter.CommandProcedureManager);
@@ -99,7 +103,7 @@ namespace AutumnBox.Basic.Device
                 }
             }
 
-            //达到尝试上线或已经获取到正确结果
+            //达到尝试上限或已经获取到正确结果
 
             if (result == null)
             {
@@ -115,16 +119,55 @@ namespace AutumnBox.Basic.Device
             }
             else
             {
-                var match = Regex.Match(result.Output, key + @":\s(?<value>[\w|\d]+)");
-                if (match.Success)
+                var matches = Regex.Matches(result.Output, key + @":\s(?<value>[\w|\d]+)");
+                if (matches.FirstOrDefault().Success)
                 {
-                    return match.Result("${value}");
+                    return matches.FirstOrDefault().Result("${value}");
                 }
                 else
                 {
                     throw new CommandErrorException("Fail to parse output: " + result.Output, result.ExitCode);
                 }
             }
+        }
+
+
+        private static readonly Regex regexAllVar = new Regex(@"(?<key>[\w|\d|-|_]+):(?<value>.+)$"
+                    , RegexOptions.Multiline | RegexOptions.Compiled);
+
+        /// <summary>
+        /// 在fastboot模式下获取所有变量
+        /// </summary>
+        /// <param name="device"></param>
+        /// <exception cref="TimeoutException">内部获取命令超时</exception>
+        /// <exception cref="CommandErrorException">命令执行，但最终结果是失败的</exception>
+        /// <exception cref="DeviceStateIsNotCorrectException">设备状态不正确</exception>
+        /// <returns></returns>
+        public static IReadOnlyDictionary<string, string> GetAllVar(this IDevice device)
+        {
+            if (device.State != DeviceState.Fastboot)
+            {
+                throw new DeviceStateIsNotCorrectException(
+                    DeviceState.Fastboot, device.State);
+            }
+
+            using var hestExecutor = new HestExecutor(BasicBooter.CommandProcedureManager);
+            var result = hestExecutor.FastbootWithRetry("getvar all", device).ThrowIfExitCodeIsNotZero();
+
+            //return (from match in regexAllVar.Matches(result.Output.ToString())
+            //        where match.Success
+            //        select match)
+            //        .ToDictionary(m => m.Result("${key}"), m => m.Result("${value}"));
+
+            var matches = (from match in regexAllVar.Matches(result.Output.ToString())
+                           where match.Success
+                           select match);
+            var dictionary = new Dictionary<string, string>();
+            foreach (var match in matches)
+            {
+                dictionary[match.Result("${key}")] = match.Result("${value}");
+            }
+            return dictionary;
         }
 
         /// <summary>

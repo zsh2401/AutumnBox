@@ -2,7 +2,10 @@
 using AutumnBox.Basic.Device;
 using AutumnBox.Basic.Exceptions;
 using System;
+using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace AutumnBox.Basic.Calling
 {
@@ -91,6 +94,26 @@ namespace AutumnBox.Basic.Calling
             return await Task.Run(() =>
             {
                 return Fastboot(executor, args);
+            });
+        }
+
+        /// <summary>
+        /// 异步执行FastbootWithRetry
+        /// </summary>
+        /// <param name="executor"></param>
+        /// <param name="args"></param>
+        /// <param name="device"></param>
+        /// <param name="retryTimes"></param>
+        /// <param name="maxTimeout"></param>
+        /// <exception cref="TimeoutException">超过重试次数</exception>
+        /// <exception cref="ArgumentException">参数不合理</exception>
+        /// <returns></returns>
+        public static Task<CommandResult> FastbootWithRetryAsync(this ICommandExecutor executor, string args
+            , IDevice device, int retryTimes = 10, int maxTimeout = 300)
+        {
+            return Task.Run(() =>
+            {
+                return FastbootWithRetry(executor, args, device, retryTimes, maxTimeout);
             });
         }
 
@@ -209,6 +232,59 @@ namespace AutumnBox.Basic.Calling
             string joined = string.Join(" ", args);
             string compCommand = $"{joined}";
             return executor.Execute("fastboot.exe", compCommand);
+        }
+
+        /// <summary>
+        /// 带有超时重试功能的fastboot指令执行器
+        /// </summary>
+        /// <param name="executor"></param>
+        /// <param name="args"></param>
+        /// <param name="retryTimes"></param>
+        /// <param name="maxTimeout"></param>
+        /// <exception cref="TimeoutException">超过重试次数</exception>
+        /// <exception cref="ArgumentException">参数不合理</exception>
+        /// <returns></returns>
+        public static CommandResult FastbootWithRetry(this ICommandExecutor executor, string args,
+            IDevice? device = null, int retryTimes = 10, int maxTimeout = 300)
+        {
+            if (retryTimes * maxTimeout <= 0)
+            {
+                throw new ArgumentException("retryTimes and maxTimeout should not be smaller than 0");
+            }
+            const int INTERVAL_BETWEEN_PER_RETRY = 20;
+            /*
+            * 由于某些原因,部分设备上的fastboot指令会有玄学问题
+            *因此此处实现了一个重试机制,尽可能获取到正确的值
+            */
+            CommandResult? result = null;
+            for (int crtTime = 1; crtTime <= retryTimes; crtTime++)
+            {
+                CommandResult routine()
+                {
+                    return device == null ? executor.Fastboot(args) : executor.Fastboot(device, args);
+                }
+                Task.Run(() =>
+                {
+                    result = routine();
+                });
+
+                Thread.Sleep((int)maxTimeout);
+
+                if (result != null && !result.Output.Contains("GetVar Variable Not found"))
+                {
+                    break;
+                }
+                else
+                {
+                    executor.CancelCurrent();
+                    Thread.Sleep(INTERVAL_BETWEEN_PER_RETRY);
+                }
+            }
+            if (result == null)
+            {
+                throw new TimeoutException();
+            }
+            return result;
         }
 
         /// <summary>
