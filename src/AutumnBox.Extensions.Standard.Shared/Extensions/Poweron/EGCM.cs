@@ -10,6 +10,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtRegions("zh-CN")]
     [ExtName("激活极客内存清理")]
     [ExtIcon("Icons.gcm.png")]
+    [ExtAuth("zsh2401")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ClassText("isNet", "The target is already net device", "zh-cn:已经是网络设备,无需再次激活")]
     [ClassText("notsupport", "Do not support this type of device", "zh-cn:不支持当前设备")]

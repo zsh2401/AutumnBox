@@ -15,6 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
     [ExtName("加上BL锁", "en-us:Lock oem")]
     [ExtDesc("觉得解BL后不安全?想养老了?", "en-us:Do you want to relock oem for your device?")]
     [ExtIcon("Icons.lock.png")]
+    [ExtAuth("zsh2401")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ClassText("warn", "This will erase all the data on your device, OK?", "zh-cn:此操作将可能清空你设备上的所有数据,确定吗?")]
     [ClassText("warn2", "Once again, this will erase all the data on your device, OK?", "zh-cn:再问一次,此操作将 可 能 清空你设备上的所有数据,确定吗?")]

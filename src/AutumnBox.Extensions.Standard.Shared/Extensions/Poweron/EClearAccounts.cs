@@ -18,6 +18,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtName("Clear all accounts", "zh-CN:暴力清空所有账号")]
     [ExtDesc("Use the tech by web1n", "zh-CN:使用web1n提供的黑科技暴力清空账号")]
     [ExtIcon("Icons.nuclear.png")]
+    [ExtAuth("zsh2401")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ClassText("warn", "Read it in detail, otherwise the consequences will be at your own risk!!\nThere is only one thing you need to do manually: clear the screen lock and fingerprint lock, do it now, make sure there is no screen lock and fingerprint lock, click agree", "zh-cn:详细阅读，否则后果自负!!!\n你需要手动做的只有一件事：清除屏幕锁和指纹锁，现在立刻去做，确保没有屏幕锁和指纹锁后，请点击同意将开始执行操作")]
     [ClassText("pushing", "pushing DpmPro to device", "zh-cn:推送DPMPRO")]

@@ -15,6 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Mix
 {
     [ExtName("推送文件到手机主目录", "en-us:Push file to device")]
     [ExtIcon("Icons.filepush.png")]
+    [ExtAuth("zsh2401")]
     [ExtRequiredDeviceStates(DeviceState.Poweron | DeviceState.Recovery)]
     [ClassText("title", "Select a file", "zh-cn:选择一个文件")]
     [ClassText("filter", "Any file", "zh-cn:任意文件(*.*)|*.*")]

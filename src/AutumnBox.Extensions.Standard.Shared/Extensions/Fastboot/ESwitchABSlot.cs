@@ -14,7 +14,6 @@
 * ==============================================================================
 */
 using AutumnBox.Basic.Calling;
-using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Device;
 using AutumnBox.Leafx.Enhancement.ClassTextKit;
 using AutumnBox.Logging;
@@ -22,12 +21,12 @@ using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Open.LKit;
 using System;
-using System.Text.RegularExpressions;
 
 namespace AutumnBox.Extensions.Standard.Extensions.Fastboot
 {
     [ExtName("Switch A/B slot", "zh-cn:切换AB槽位")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
+    [ExtAuth("zsh2401")]
     [ExtIcon("Icons.a_b.png")]
     /// <summary>
     /// https://github.com/zsh2401/AutumnBox/issues/19

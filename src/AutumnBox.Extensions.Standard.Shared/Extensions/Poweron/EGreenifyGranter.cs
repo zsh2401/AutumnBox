@@ -17,6 +17,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("Greenify Aggressive Doze", "zh-CN:绿色守护免ROOT模式")]
     [ExtVersion(2019, 1, 3)]
+    [ExtAuth("zsh2401")]
     [ExtIcon("Icons.Greenify.png")]
     [ClassText("notice", "This activator activates most of its ROOT-free functions with reference to the green daemon file. Activation may not be successful due to problems with the Android platform.", "zh-cn:本激活器参照绿色守护文档对其大部分免ROOT功能进行激活,由于安卓平台的问题,激活不一定可以成功")]
     [ClassText("tip", "MaybeSuccess", "zh-cn:可能成功")]

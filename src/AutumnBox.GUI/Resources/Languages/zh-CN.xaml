@@ -155,6 +155,7 @@
     <s:String x:Key="Settings.DisplayCmdWindowTip">或许你可以通过这个来排查某些疑难杂症,仅在部分情况下支持</s:String>
     
     <s:String x:Key="ExtensionsFinder.StateNotCorrectWarning">设备状态不正确</s:String>
+    <s:String x:Key="ExtensionsFinder.DefaultDescription">无说明</s:String>
     
     <s:String x:Key="DeviceState.Poweron">开机</s:String>
     <s:String x:Key="DeviceState.Recovery">恢复模式</s:String>

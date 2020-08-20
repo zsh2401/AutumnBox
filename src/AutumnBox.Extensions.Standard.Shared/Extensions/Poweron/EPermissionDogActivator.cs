@@ -24,6 +24,7 @@ namespace AutumnBox.Extensions.Standard.Extensions.Poweron
     [ExtName("Permission Dog Activator", "zh-cn:权限狗ADB模式")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtIcon("Icons.permissiondog")]
+    [ExtAuth("zsh2401")]
     class EPermissionDogActivator : LeafExtensionBase
     {
         [LMain]

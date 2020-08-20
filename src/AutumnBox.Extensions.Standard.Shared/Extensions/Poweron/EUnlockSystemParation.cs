@@ -17,7 +17,9 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ExtRequireRoot(true)]
     [ExtIcon("Icons.unlock.png")]
+    [ExtAuth("zsh2401")]
     [ClassText("reboot", "Reboot device?", "zh-cn:似乎成功了.\n重启设备生效,是否重启?")]
+    [ClassText("warn", "This function is not making your device's boot loader partion unlocked.", "zh-cn:这个模块不是用于解锁手机BL的！")]
     internal class EUnlockSystemParation : LeafExtensionBase
     {
         [LMain]
@@ -29,6 +31,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
                 {
                     var text = ClassTextReaderCache.Acquire<EUnlockSystemParation>();
                     ui.Show();
+                    ui.EAgree(text.RxGet("warn"));
                     executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
                     executor.Adb(device, "root");
                     var result = executor.Adb(device, "disable-verity");

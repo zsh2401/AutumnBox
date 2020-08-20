@@ -44,6 +44,11 @@ namespace AutumnBox.OpenFramework.Extension
         public static string Fatal => carrier.RxGetClassText(KEY_FATAL);
 
         /// <summary>
+        /// 可能成功
+        /// </summary>
+        public static string PossibleSuccess => carrier.RxGetClassText(KEY_MAY_SUCCESS);
+
+        /// <summary>
         /// 文本载体
         /// </summary>
         private static readonly TextCarrier carrier = new TextCarrier();
@@ -53,14 +58,17 @@ namespace AutumnBox.OpenFramework.Extension
             ClassTextReaderCache.Acquire(typeof(TextCarrier));
         }
         private const string KEY_SUCCESS = "success";
+        private const string KEY_MAY_SUCCESS = "may_success";
         private const string KEY_FAILED = "failed";
         private const string KEY_FATAL = "fatal";
         private const string KEY_CANCELLED_BY_USER = "cancelled_by_user";
+
 
         /// <summary>
         /// 载体
         /// </summary>
         [ClassText(KEY_SUCCESS, "Success", "zh-cn:成功")]
+        [ClassText(KEY_MAY_SUCCESS, "Possible success ", "zh-cn:可能成功")]
         [ClassText(KEY_FAILED, "Failed", "zh-cn:失败")]
         [ClassText(KEY_CANCELLED_BY_USER, "Cancelled by user", "zh-cn:被用户取消")]
         [ClassText(KEY_FATAL, "Fatal Error", "zh-cn:致命问题")]

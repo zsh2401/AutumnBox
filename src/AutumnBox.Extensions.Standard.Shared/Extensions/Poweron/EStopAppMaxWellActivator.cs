@@ -9,6 +9,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     [ExtName("StopApp MaxWell Mode", "zh-cn:激活小黑屋麦克斯韦妖模式")]
     [ExtAuth("zsh2401")]
     [ExtPriority(ExtPriority.HIGH - 1)]
+    [ExtAuth("zsh2401")]
     [ExtIcon("Icons.stopapp.png")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     class EStopAppMaxWellActivator : LeafExtensionBase

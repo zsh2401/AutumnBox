@@ -30,7 +30,9 @@ namespace AutumnBox.GUI.Models
         {
             get
             {
-                return $"{ExtensionInfo.Name()}{Environment.NewLine}v{ExtensionInfo.Version()}  by {ExtensionInfo.Author()}";
+                string? desc = ExtensionInfo.Description();
+                desc = desc == String.Empty ?  App.Current.Resources["ExtensionsFinder.DefaultDescription"]?.ToString() : desc;
+                return $"{ExtensionInfo.Name()}{Environment.NewLine}v{ExtensionInfo.Version()}(BY {ExtensionInfo.Author()}){Environment.NewLine}{desc ?? "--"}";
             }
         }
 

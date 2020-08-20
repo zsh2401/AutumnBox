@@ -16,13 +16,10 @@
 using AutumnBox.OpenFramework.Extension;
 using AutumnBox.OpenFramework.Extension.Leaf;
 using AutumnBox.OpenFramework.Management;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutumnBox.Extensions.Essentials.Extensions
 {
-    [ExtName("Launch ADB-CMD(PS)", "zh-cn:ADB-Powershell命令行")]
+    [ExtName("Launch ADB-CMD(PS)", "zh-cn:ADB-PS命令行")]
     [ExtRequiredDeviceStates(AutumnBoxExtension.NoMatter)]
     [ExtIcon("Resources.Icons.ps.png")]
     class EPSLauncher : LeafExtensionBase

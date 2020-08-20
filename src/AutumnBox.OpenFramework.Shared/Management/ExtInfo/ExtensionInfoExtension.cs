@@ -32,6 +32,29 @@ namespace AutumnBox.OpenFramework.Management.ExtInfo
             }
         }
 
+        /// <summary>
+        /// 获取解释信息
+        /// </summary>
+        /// <param name="extensionInfo"></param>
+        /// <returns></returns>
+        public static string Description(this IExtensionInfo extensionInfo)
+        {
+            string DEFAULT_VALUE = String.Empty;
+            try
+            {
+                return extensionInfo.Metadata[ExtensionMetadataKeys.DESCRIPTION]?.Invoke() as string ?? DEFAULT_VALUE;
+            }
+            catch (Exception)
+            {
+                return DEFAULT_VALUE;
+            }
+        }
+
+        /// <summary>
+        /// 获取版本号
+        /// </summary>
+        /// <param name="extensionInfo"></param>
+        /// <returns></returns>
         public static Version Version(this IExtensionInfo extensionInfo)
         {
             var DEFAULT_VALUE = new Version(1, 0, 0);

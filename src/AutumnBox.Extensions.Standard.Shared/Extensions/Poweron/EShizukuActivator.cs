@@ -15,6 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("Activate ShizukuManager", "zh-cn:激活ShizukuManager")]
     [ExtIcon("Icons.ShizukuManager.png")]
+    [ExtAuth("zsh2401")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ClassText("launchFirst", "Click OK after ShizukuManager has been launched", "zh-cn:启动Shizuku Manager后点击确认")]
     internal class EShizukuActivator : LeafExtensionBase

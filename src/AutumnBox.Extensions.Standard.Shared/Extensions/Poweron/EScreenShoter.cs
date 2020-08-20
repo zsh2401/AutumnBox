@@ -19,6 +19,7 @@ namespace AutumnBox.CoreModules.Extensions
 {
     [ExtName("Screen capture", "zh-cn:截图")]
     [ExtIcon("Icons.screenshotv2.png")]
+    [ExtAuth("zsh2401")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ClassText("error", "Can not get screenshot.Plz unlock device at least once or replug it.", "zh-cn:截图失败，请至少解锁一次手机或重新拔插设备")]
     internal class EScreenShoter : LeafExtensionBase

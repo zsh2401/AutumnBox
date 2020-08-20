@@ -15,6 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
 {
     [ExtName("Modify dpi without root", "zh-cn:修改DPI")]
     [ExtIcon("Icons.dpi.png")]
+    [ExtAuth("zsh2401")]
     [ExtRequiredDeviceStates(DeviceState.Poweron)]
     [ClassText("msg", "Which is your want?", "zh-cn:您要做哪一个操作")]
     [ClassText("modify", "Modify DPI", "zh-cn:修改DPI")]

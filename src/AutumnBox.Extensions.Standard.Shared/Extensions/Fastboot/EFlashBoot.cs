@@ -13,9 +13,12 @@ using Microsoft.Win32;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
-    [ExtName("刷入Boot.img", "en-us:Flash boot.img")]
+    [ExtName("Flash Boot Partion", "zh-cn:刷入Boot分区")]
+    [ExtDesc("Support A/B Slot now!", "zh-cn:现已支持A/B槽位切换!")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ExtIcon("Icons.cd.png")]
+    [ExtVersion(2, 0, 0)]
+    [ExtAuth("zsh2401")]
     [ClassText("EFlashBootSelectingTitle", "Select a image file", "zh-cn:选择一个文件")]
     [ClassText("EFlashBootSelectingFilter", "Image file(*.img)|*.img|Any file(*.*)|*.*", "zh-cn:镜像文件(*.img)|*.img|全部文件(*.*)|*.*")]
     internal class EFlashBoot : LeafExtensionBase
