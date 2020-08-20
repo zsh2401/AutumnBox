@@ -30,7 +30,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceConnecter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ENetDeviceDisconnecter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\EPSLauncher.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ETest.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\cmd.png" />

@@ -30,7 +30,7 @@ namespace AutumnBox.GUI.Services.Impl
             OpenFx.Initialize(new AutumnBoxGuiBaseApiImpl());
             logger.Info("Open framework api system is initialized");
             var libsManager = OpenFx.Lake.Get<ILibsManager>();
-            logger.Info($"There are {libsManager.Librarians.Count()} librarians and {libsManager.Registry.Count()} wrappers");
+            logger.Info($"There are {libsManager.Librarians.Count()} librarian(s) and {libsManager.Registry.Count()} registered extension(s).");
             libsManager.Registry.All((extInf) =>
             {
                 logger.Info(extInf.ExtensionInfo.Id + " has been registerd by " + extInf.Librarian?.Name);
