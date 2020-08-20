@@ -23,6 +23,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReaderCache.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enhancement\ClassTextKit\ClassTextReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enhancement\Runtime\MethodReplaceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enhancement\Runtime\MethodReplacer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\AroundMethodAttribute.cs" />
@@ -56,7 +58,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ObjectManagement\ObjectCache.General.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Enhancement\Runtime\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Enhancement\DependenciesManager\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Enhancement\DependencyManagement\" />
   </ItemGroup>
 </Project>

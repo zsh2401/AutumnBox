@@ -13,9 +13,12 @@ using Microsoft.Win32;
 
 namespace AutumnBox.CoreModules.Extensions.Fastboot
 {
-    [ExtName("刷入REC", "en-us:Flash recovery.img")]
+    [ExtName("Flash Recovery", "zh-cn:刷入Rec")]
+    [ExtDesc("Support A/B Slot now!", "zh-cn:现已支持A/B槽位切换!")]
     [ExtRequiredDeviceStates(DeviceState.Fastboot)]
     [ExtIcon("Icons.cd.png")]
+    [ExtVersion(2, 0, 0)]
+    [ExtAuth("zsh2401")]
     [ClassText("Title", "Select a image file", "zh-cn:选择一个文件")]
     [ClassText("Filter", "Image file(*.img)|*.img|Any file(*.*)|*.*", "zh-cn:镜像文件(*.img)|*.img|全部文件(*.*)|*.*")]
     internal class EFlashRecovery : LeafExtensionBase
@@ -27,6 +30,7 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
             {
                 using (executor)
                 {
+                    executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
                     var text = ClassTextReaderCache.Acquire<EFlashRecovery>();
                     ui.Show();
                     OpenFileDialog fileDialog = new OpenFileDialog();
@@ -36,9 +40,22 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
                     fileDialog.Multiselect = false;
                     if (fileDialog.ShowDialog() == true)
                     {
-                        executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
-                        executor.Fastboot(device, $"flash recovery \"{fileDialog.FileName}\"");
-                        var result = executor.Fastboot(device, $"boot \"{fileDialog.FileName}\"");
+                        string flashCommand;
+                        string bootCommand;
+                        bool? slot = device.GetSlot();
+                        if (slot.HasValue)
+                        {
+                            string slotString = slot.Value ? "a" : "b";
+                            flashCommand = $"flash recovery_{slotString} \"{fileDialog.FileName}\"";
+                            bootCommand = $"boot_{slotString} \"{fileDialog.FileName}\"";
+                        }
+                        else
+                        {
+                            flashCommand = $"flash recovery \"{fileDialog.FileName}\"";
+                            bootCommand = $"boot \"{fileDialog.FileName}\"";
+                        }
+                        executor.Fastboot(device, flashCommand);
+                        var result = executor.Fastboot(device, bootCommand);
                         ui.Finish(result.ExitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
                     }
                     else
