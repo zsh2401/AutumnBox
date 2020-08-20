@@ -7,5 +7,7 @@
     <s:String x:Key="URL.Donate">http://atmb.top/donate</s:String>
     <s:String x:Key="URL.DonateWithPaypal">https://www.paypal.com/paypalme/zsh2401</s:String>
     <s:String x:Key="URL.About">http://atmb.top/about</s:String>
-    
+
+
+    <s:String x:Key="URL.OfficiWebsite">http://atmb.top</s:String>
 </ResourceDictionary>
