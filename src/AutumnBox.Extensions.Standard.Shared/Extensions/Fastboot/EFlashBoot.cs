@@ -36,9 +36,20 @@ namespace AutumnBox.CoreModules.Extensions.Fastboot
             fileDialog.Multiselect = false;
             if (fileDialog.ShowDialog() == true)
             {
-                executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
-                var result = executor.Fastboot(device, $"flash boot \"{fileDialog.FileName}\"");
-                ui.Finish(result.ExitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
+                bool? slot = device.GetSlot();
+                if (slot.HasValue)
+                {
+                    //Support A/B slot
+                    executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
+                    var result = executor.Fastboot(device, $"flash boot_{(slot.Value ? "a" : "b")} \"{fileDialog.FileName}\"");
+                    ui.Finish(result.ExitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
+                }
+                else
+                {
+                    executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
+                    var result = executor.Fastboot(device, $"flash boot \"{fileDialog.FileName}\"");
+                    ui.Finish(result.ExitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
+                }
             }
             else
             {

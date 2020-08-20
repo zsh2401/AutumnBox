@@ -7,6 +7,7 @@ using AutumnBox.Basic.Calling;
 using AutumnBox.Basic.Data;
 using AutumnBox.Basic.Exceptions;
 using AutumnBox.Basic.Util;
+using AutumnBox.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -123,6 +124,27 @@ namespace AutumnBox.Basic.Device
                 {
                     throw new CommandErrorException("Fail to parse output: " + result.Output, result.ExitCode);
                 }
+            }
+        }
+
+        /// <summary>
+        /// 获取AB槽位信息
+        /// </summary>
+        /// <returns>
+        /// A: true
+        /// B: false
+        /// null:  Not support A/B Slot or failed to get.
+        /// </returns>
+        public static bool? GetSlot(this IDevice device)
+        {
+            try
+            {
+                return device.GetVar("current-slot") == "a";
+            }
+            catch (Exception e)
+            {
+                e.WriteToLog();
+                return null;
             }
         }
 
