@@ -15,7 +15,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron.Dpm
 {
     internal class DpmPro
     {
-        public const string PATH_OF_EMB_APK = "Res.dpmpro";
+        public const string PATH_OF_EMB_APK = "Resources.dpmpro.file";
         public const string PATH_OF_TMP_APK = "dpmpro";
         public const string PATH_OF_COMMAND_CLASS = "com.android.commands.dpm.Dpm";
         public const string PATH_OF_ATMP_APK = "/data/local/tmp/dpmpro";

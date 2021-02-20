@@ -56,12 +56,19 @@ namespace AutumnBox.CoreModules.Extensions
                 {
                     files.Add(new FileInfo(fileName));
                 }
-                Install(files);
-                ui.Finish(StatusMessages.Success);
+                var result = Install(files);
+                if (result.Item3 == 0)
+                {
+                    ui.Finish(StatusMessages.PossibleSuccess);
+                }
+                else
+                {
+                    ui.Finish(StatusMessages.Failed);
+                }
             }
         }
 
-        private void Install(List<FileInfo> files)
+        private Tuple<int, int, int> Install(List<FileInfo> files)
         {
             int successed = 0;
             int error = 0;
@@ -95,6 +102,7 @@ namespace AutumnBox.CoreModules.Extensions
             };
             string fmtString = this.RxGetClassText("result_fmt");
             ui.StatusDescription = (string.Format(fmtString, successed, error, totalCount));
+            return new Tuple<int, int, int>(totalCount, successed, error);
         }
 
         private void SetTip(double crt, double total)

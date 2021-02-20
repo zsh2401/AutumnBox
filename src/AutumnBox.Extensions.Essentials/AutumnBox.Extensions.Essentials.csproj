@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <AssemblyName>AutumnBox.Extensions.Essentials</AssemblyName>
     <RootNamespace>AutumnBox.Extensions.Essentials</RootNamespace>
     <UseWPF>true</UseWPF>

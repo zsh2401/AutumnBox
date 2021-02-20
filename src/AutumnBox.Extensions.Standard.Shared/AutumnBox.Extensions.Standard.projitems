@@ -84,8 +84,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Res\dpmpro" />
-    <None Include="$(MSBuildThisFileDirectory)Res\godpower.apk" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\dpmpro.file" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\godpower.apk" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Icons\a_b.png" />
