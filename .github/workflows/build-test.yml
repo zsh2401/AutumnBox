@@ -2,7 +2,7 @@ name: Unit Test
 
 on:
   push:
-    branch: ["dev"]
+    branch: ["dev","ci-net5"]
   pull_request:
     branch: ["dev","master"]
 
