@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWpf>true</UseWpf>
+    <AssemblyName>AutumnBox.Core</AssemblyName>
+    <RootNamespace>AutumnBox.Core</RootNamespace>
+    <Nullable>enable</Nullable>
+    <Version>11.10</Version>
+    <Configurations>Debug;Release;SDK;Canary</Configurations>
+    <Authors>zsh2401</Authors>
+    <Company>zsh2401</Company>
+    <AssemblyVersion>11.9.0.0</AssemblyVersion>
+    <FileVersion>11.9.0.0</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Let's Develop AutumnBox Extension!</Description>
+    <PackageId>AutumnBox.SDK</PackageId>
+    <Product>AutumnBox.SDK</Product>
+    <RepositoryUrl>https://github.com/zsh2401/AutumnBox</RepositoryUrl>
+    <PackageReleaseNotes>11.9 update: bug fixes.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/zsh2401/AutumnBox</PackageProjectUrl>
+    <PackageLicenseExpression></PackageLicenseExpression>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SDK|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE SDK</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <Import Project="..\AutumnBox.Basic.Shared\AutumnBox.Basic.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\AutumnBox.Leafx.Shared\AutumnBox.Leafx.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\AutumnBox.Logging.Shared\AutumnBox.Logging.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\AutumnBox.OpenFramework.Shared\AutumnBox.OpenFramework.Shared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.0" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+
+</Project>

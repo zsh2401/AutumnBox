@@ -4,8 +4,8 @@
                     xmlns:s="clr-namespace:System;assembly=mscorlib">
     
     <s:String x:Key="App.Name">秋之盒</s:String>
-     <s:String x:Key="App.LoadingName">AutumnBox 2020.8</s:String>
-    <s:String x:Key="App.NameWithVersion">秋之盒 2020.8</s:String>
+     <s:String x:Key="App.LoadingName">AutumnBox 2021.2</s:String>
+    <s:String x:Key="App.NameWithVersion">秋之盒 2021.2</s:String>
     
 
     <s:String x:Key="App.Slogan">开源,易用,免费的图形化ADB工具箱</s:String>

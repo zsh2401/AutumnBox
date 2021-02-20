@@ -9,7 +9,7 @@
     <AssemblyName>AutumnBox.GUI</AssemblyName>
     <RootNamespace>AutumnBox.GUI</RootNamespace>
     <ApplicationIcon>Resources\Icons\icon.ico</ApplicationIcon>
-    <Version>2020.8.19.0</Version>
+    <Version>2021.2.20</Version>
     <AssemblyVersion>2020.8.19.0</AssemblyVersion>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <Configurations>Debug;Release;Canary</Configurations>

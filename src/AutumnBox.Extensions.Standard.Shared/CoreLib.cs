@@ -4,6 +4,7 @@
 ** desc： ...
 *************************************************/
 using AutumnBox.OpenFramework.Management.ExtLibrary.Impl;
+using System;
 
 namespace AutumnBox.CoreModules
 {
@@ -12,5 +13,6 @@ namespace AutumnBox.CoreModules
         public const string STORAGE_ID = "AutumnBox.CoreModules.Storage";
         public static CoreLib Current { get; private set; }
         public override string Name => "AutumnBox Core Modules";
+        public override Version Version => new Version(1, 2, 0);
     }
 }

@@ -28,7 +28,7 @@ namespace AutumnBox.Essentials
 
         public override string Name => "autumnbox-essentials";
 
-        public override Version Version => new Version(1, 5, 5);
+        public override Version Version => new Version(1, 6, 0);
 
         public override int MinApiLevel => 11;
 
@@ -47,7 +47,7 @@ namespace AutumnBox.Essentials
         readonly IStorageManager storageManager;
 
         public IStorage Storage { get; private set; }
-        
+
         public override void Ready()
         {
             base.Ready();
