@@ -208,8 +208,8 @@
     </Page>
   </ItemGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell $(ProjectDir)afterbuild.ps1 $(TargetDir) $(ConfigurationName)" />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="powershell $(ProjectDir)place_adb.ps1 $(TargetDir) $(ConfigurationName)&#xD;&#xA;powershell $(ProjectDir)build_ext.ps1 $(TargetDir) $(ConfigurationName)&#xD;&#xA;powershell $(ProjectDir)create_build_info.ps1 $(TargetDir) $(ConfigurationName)" />
   </Target>
 
 </Project>
