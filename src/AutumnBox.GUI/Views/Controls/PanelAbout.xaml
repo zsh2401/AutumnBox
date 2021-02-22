@@ -19,10 +19,15 @@
             <StackPanel Margin="10" Orientation="Horizontal">
                 <Image Source="/Resources/Drawable/Icon.ico" Height="30" Margin="5"/>
                 <StackPanel>
-                    <TextBlock FontSize="20" Text="{DynamicResource  App.NameWithVersion}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="20" Text="{DynamicResource  App.Name}"/>
+                        <TextBlock FontSize="20" Text="{Binding VersionName}"/>
+                    </StackPanel>
+
                     <TextBlock Text="{DynamicResource App.Slogan}" Foreground="{DynamicResource SecondaryTextBrush}"/>
                 </StackPanel>
             </StackPanel>
+
 
             <hc:Shield Command="{Binding OpenUrl}" CommandParameter="mailto:zsh2401@163.com" Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource EMail}" Status="zsh2401@163.com" Color="#d8624c"/>
             <hc:Shield Margin="2" HorizontalAlignment="Center" Subject="{DynamicResource QQGroup}" Status="246177486" Color="#1182c3"/>
@@ -43,17 +48,18 @@
             </TextBlock>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Margin="0,0,0,10">
-           
+
         </StackPanel>
 
-        <StackPanel DockPanel.Dock="Top" Width="200">
-            
+        <StackPanel DockPanel.Dock="Top">
+
 
             <DockPanel Margin="30,10,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.GUIString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.AutumnBox}"/>
             </DockPanel>
-            
+
+
             <DockPanel Margin="30,0,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.BasicString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Basic}"/>
@@ -90,6 +96,18 @@
             <DockPanel Margin="30,0,30,0">
                 <TextBlock DockPanel.Dock="Right" Text="{x:Static util:VersionInfos.SharpZipLibString}"/>
                 <TextBlock DockPanel.Dock="Left" Text="SharpZipLib"/>
+            </DockPanel>
+
+            <Grid Height="1" Margin="25,5,25,5" Background="LightGray"/>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{Binding Commit}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Commit}"/>
+            </DockPanel>
+
+            <DockPanel Margin="30,0,30,0">
+                <TextBlock DockPanel.Dock="Right" Text="{Binding Tag}"/>
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Version.Tag}"/>
             </DockPanel>
         </StackPanel>
     </DockPanel>

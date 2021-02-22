@@ -79,13 +79,17 @@
     <s:String x:Key="Version.Basic">ADB交互模块</s:String>
     <s:String x:Key="Version.OpenFx">SDK</s:String>
     <s:String x:Key="Version.ADB">ADB</s:String>
-    
+        <s:String x:Key="Version.Commit">提交（Commit）</s:String>
+     <s:String x:Key="Version.Tag">标签（Tag）</s:String>
     <s:String x:Key="Version.OS">操作系统</s:String>
-    <s:String x:Key="Version.Net">.NET Core</s:String>
+    <s:String x:Key="Version.Net">.Net</s:String>
     
+    <!--关于-->
    <s:String x:Key="QQGroup">QQ群</s:String>
    <s:String x:Key="EMail">电子邮件</s:String>
     <s:String x:Key="OpenSource">开放源代码</s:String>
+    
+    
     
     <s:String x:Key="UserLicense.Name">秋之盒使用协议 1.0</s:String>
     <s:String x:Key="UserLicense.Content">本协议仍然在编写当中,最终解释权归zsh2401所有

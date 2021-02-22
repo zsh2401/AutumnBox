@@ -12,8 +12,8 @@
     WindowStartupLocation="CenterOwner"
       Background="{DynamicResource RegionBrush}"
     FontFamily="{DynamicResource AutumnBox.Font}"
-    Width="410"
-    Height="210"
+    Width="510"
+    Height="300"
         Title="{DynamicResource App.NameWithVersion}" >
     <!--<DockPanel >-->
         <panel:PanelAbout  Effect="{DynamicResource EffectShadow2}"/>

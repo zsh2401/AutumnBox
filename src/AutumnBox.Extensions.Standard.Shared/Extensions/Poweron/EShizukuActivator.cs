@@ -22,17 +22,22 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     {
         private const string PKG_NAME = "moe.shizuku.privileged.api";
         private const string SH_PATH = "/sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh";
+     
         [LMain]
+#pragma warning disable CA1822 // 将成员标记为 static
         public void EntryPoint(ILeafUI ui, IDevice device, ICommandExecutor executor)
+#pragma warning restore CA1822 // 将成员标记为 static
         {
             using (ui)
             {
                 using (executor)
                 {
+                    executor.OutputReceived += (s, e) => ui.WriteLineToDetails(e.Text);
                     var text = ClassTextReaderCache.Acquire<EShizukuActivator>();
                     ui.Show();
                     ui.AppPropertyCheck(device, PKG_NAME);
                     ui.ShowMessage(text["launchFirst"]);
+
                     var result = executor.AdbShell(device, $"sh {SH_PATH}");
                     ui.Finish(result.ExitCode == 0 ? StatusMessages.Success : StatusMessages.Failed);
                 }

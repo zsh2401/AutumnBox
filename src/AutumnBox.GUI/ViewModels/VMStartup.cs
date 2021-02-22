@@ -1,5 +1,8 @@
 ﻿using AutumnBox.GUI.MVVM;
+using AutumnBox.GUI.Services;
 using AutumnBox.GUI.Util.Loader;
+using AutumnBox.Leafx.Container;
+using AutumnBox.Leafx.ObjectManagement;
 using System;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
@@ -25,16 +28,23 @@ namespace AutumnBox.GUI.ViewModels
         }
         private string _status;
 
-        public string VersionName => GetType()?.Assembly?.GetName()?.Version?.ToString(3) +
+        [AutoInject]
+        private IBuildInfo build
+        {
+            get;
+            set;
+        }
 
-#if CANARY
-            "-canary"
-#elif DEBUG
-            "-debug"
-#else
-            ""
-#endif
-            ;
+        public string VersionName
+        {
+            get => _versionName;
+            set
+            {
+                _versionName = value;
+                RaisePropertyChanged();
+            }
+        }
+        private string _versionName;
 
         public double Progress
         {
@@ -100,6 +110,20 @@ namespace AutumnBox.GUI.ViewModels
         private void AppLoader_StepFinished(object sender, StepFinishedEventArgs e)
         {
             Progress = 100.0 * e.FinishedStep / e.TotalStepCount;
+
+            if (VersionName == null)
+            {
+                var build = App.Current.Lake.Get<IBuildInfo>();
+                VersionName = build.Version +
+#if CANARY
+                    "-canary"
+#elif DEBUG
+                    "-debug"
+#else
+                    ""
+#endif
+                    ;
+            }
         }
     }
 }

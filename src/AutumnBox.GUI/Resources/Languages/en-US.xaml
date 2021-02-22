@@ -102,9 +102,12 @@
     <s:String x:Key="Version.OpenFx">Open Framework</s:String>
      <s:String x:Key="Version.Logging">Logging Framework</s:String>
      <s:String x:Key="Version.OS">Operating System</s:String>
-      <s:String x:Key="Version.Net">.Net Environment</s:String>
+            <s:String x:Key="Version.Commit">Commit</s:String>
+     <s:String x:Key="Version.Tag">Tag</s:String>
+      <s:String x:Key="Version.Net">.Net</s:String>
+    
+    
     <s:String x:Key="QQGroup">QQ Group</s:String>
-   <s:String x:Key="EMail">E-Mail</s:String>
    <s:String x:Key="OpenSource">Open source</s:String>
             <s:String x:Key="UpdateCheck">Update check</s:String>
     

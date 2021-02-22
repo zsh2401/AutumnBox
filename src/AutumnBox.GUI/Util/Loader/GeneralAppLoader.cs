@@ -66,15 +66,16 @@ namespace AutumnBox.GUI.Util.Loader
         }
 
         [Step(1)]
-        private void PrintInformations()
+        private void PrintInformations(IBuildInfo buildInfo)
         {
             Logger.Info("======================");
             Logger.Info($"Installed as {Environment.CurrentDirectory}");
-            Logger.Info($"Run as {(Self.HaveAdminPermission ? "Admin" : "Normal user")}");
+            Logger.Info($"Run as {(Self.HaveAdminPermission ? "Administrator" : "Normal user")}");
             Logger.Info($"AutumnBox version: {Self.Version}");
             Logger.Info($"Core library version: {BuildInfo.SDK_VERSION}");
             Logger.Info($"Windows version: {Environment.OSVersion.Version}");
             Logger.Info($"Clr version: {Environment.Version}");
+            Logger.Info($"Commit: {buildInfo.LatestCommit}");
             Logger.Info("======================");
         }
 
