@@ -6,4 +6,4 @@ if ($ADBBinariesDirectory.Exists) {
     Remove-Item $ADBBinariesDirectory.FullName -Force -Recurse;
     $ADBBinariesDirectory.Create();
 }
-git clone -b $BranchName $ADBGitStore $ADBBinariesDirectory.FullName
+git clone -b $BranchName $ADBGitStore $ADBBinariesDirectory.FullName --depth=1
