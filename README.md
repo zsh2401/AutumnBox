@@ -27,9 +27,9 @@
 ## 简介
 秋之盒是一个对[谷歌安卓调试桥(Android Debug Bridge)](https://developer.android.com/studio/command-line/adb/?gclid=CjwKCAjw4MP5BRBtEiwASfwAL0zKSD761d9W05bQmMc4Q7AjJSNvnfQrmdg3rvmfzkixmXfCqFbCyxoCu3gQAvD_BwE&gclsrc=aw.ds)命令行工具进行图形化封装的微软视窗操作系统应用。   
 “方便小白，帮助老鸟”
-- 技术关键词: C# / .NET Core / WPF / ADB
+- 技术关键词: C# / .NET 5 / WPF / ADB
 - 支持的操作系统: Windows 7 - Windows 10
-- 运行环境/框架技术: `.Net Core 3.1` (发布时已自带运行时)
+- 运行环境/框架技术: `.Net 5` (发布时已自带运行时)
 
 ![](https://atmb.top/assets/img/1.dedcd74c.png)
 
@@ -66,7 +66,7 @@ git clone https://github.com/zsh2401/AutumnBox.git
 使用`Visual Studio 2019`打开`src/AutumnBox.sln`即可。
 ### 4.编译与运行
 将启动项目设置为`AutumnBox.GUI`，然后按下`F5`即可以调试模式启动`AutumnBox`。   
-标准拓展模块会被./src/AutumBox.GUI/afterbuild.ps1构建，如果修改了，请重新生成项目。
+标准拓展模块会被./src/AutumBox.GUI/build_ext.ps1构建并放置到合适的文件夹，如果修改了模块代码，请重新生成整个项目。
 ### 5.贡献
 #### 5.1 分支结构
 目前秋之盒有以下主要分支:
