@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <StartupObject>AutumnBox.GUI.Program</StartupObject>
@@ -14,6 +14,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <Configurations>Debug;Release;Canary</Configurations>
     <FileVersion>2021.2.22.0</FileVersion>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

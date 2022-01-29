@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
     <UseWpf>true</UseWpf>
     <AssemblyName>AutumnBox.Core</AssemblyName>
     <RootNamespace>AutumnBox.Core</RootNamespace>
@@ -21,6 +21,7 @@
     <PackageReleaseNotes>11.9 update: bug fixes.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/zsh2401/AutumnBox</PackageProjectUrl>
     <PackageLicenseExpression></PackageLicenseExpression>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

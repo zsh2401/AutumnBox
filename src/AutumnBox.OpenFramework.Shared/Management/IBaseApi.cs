@@ -106,7 +106,7 @@ namespace AutumnBox.OpenFramework.Management
         /// </summary>
         /// <param name="view"></param>
         void RemovePanel(object view);
-        
+
         /// <summary>
         /// 刷新拓展模块列表
         /// </summary>
@@ -255,5 +255,18 @@ namespace AutumnBox.OpenFramework.Management
         IDevice SelectedDevice { get; set; }
         event EventHandler SelectedDeviceChanged;
         event EventHandler ConnectedDeviceChanged;
+
+        //int LeafCreate();
+        //void LeafDisplay(int handle);
+        //void LeafResize(int handle, int h, int w);
+        //void LeafSetTitle(int handle, string title);
+        //void LeafSetDescription(int handle, string description);
+        //void LeafSetProgress(int handle, double progress);
+        //void LeafSetResizable(int handle, bool resizable);
+        //void LeafChangeStatus(int handle, int status);
+        //void LeafSetStep(int handle, int current, int total, string stepName);
+        //void LeafWrite(int handle, char[] buffer);
+        //void LeafDialog(int handle, int type, string[] texts, ref string result);
+        //void LeafClose(int handle);
     }
 }
