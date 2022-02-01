@@ -35,7 +35,7 @@ namespace AutumnBox.GUI.Util.Loader
         [Step(2)]
         private void InitHandyControl()
         {
-            ConfigHelper.Instance.SystemVersionInfo = GetSystemVersionInfo();
+            //ConfigHelper.Instance.SystemVersionInfo = GetSystemVersionInfo();
         }
 
         [Step(6)]

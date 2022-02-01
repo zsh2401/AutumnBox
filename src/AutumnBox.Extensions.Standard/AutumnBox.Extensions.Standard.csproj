@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HandyControl" Version="2.5.0.1" />
+    <PackageReference Include="HandyControl" Version="3.3.0" />
   </ItemGroup>
 
   <ItemGroup>

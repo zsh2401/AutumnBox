@@ -34,7 +34,7 @@ xmlns:hc="https://handyorg.github.io/handycontrol"
                         </StackPanel>
                     </DockPanel>
                     
-                    <!--<DockPanel Margin="5">
+                    <DockPanel Margin="5">
 
                         <StackPanel Orientation="Vertical" DockPanel.Dock="Left">
                             <TextBlock Margin="0,0,0,10" Text="{DynamicResource Settings.Theme}"/>
@@ -44,7 +44,7 @@ xmlns:hc="https://handyorg.github.io/handycontrol"
                                 <RadioButton  IsChecked="{Binding ShouldUseDarkTheme}" Content="{DynamicResource Settings.ThemeDark}"/>
                             </hc:ButtonGroup>
                         </StackPanel>
-                    </DockPanel>-->
+                    </DockPanel>
 
                 </StackPanel>
             </TabItem>
