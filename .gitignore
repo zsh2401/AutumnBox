@@ -45,3 +45,5 @@ DemoPic/
 packages/
 ##do_not
 !AutumnBox.GUI/Resources/AdbExecutable/*.*
+
+AppPackages

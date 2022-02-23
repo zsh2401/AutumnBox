@@ -17,7 +17,7 @@ namespace AutumnBox.OpenFramework
         /// <summary>
         /// 拓展模块路径
         /// </summary>
-        public const string DEFAULT_EXTENSION_PATH = "..\\exts";
+        public static string DEFAULT_EXTENSION_PATH = System.AppDomain.CurrentDomain.BaseDirectory + "/../exts";
         /// <summary>
         /// SDK版本,不设计为Const是为了防止编译器优化
         /// </summary>

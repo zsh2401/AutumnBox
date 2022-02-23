@@ -12,10 +12,10 @@ namespace AutumnBox.GUI.Util
     {
         public IAdbServer Server { get; } = LocalAdbServer.Instance;
 
-        public FileInfo AdbFile { get; } = new FileInfo("Resources/AdbExecutable/adb.exe");
+        public FileInfo AdbFile { get; } = new FileInfo(System.Windows.Forms.Application.StartupPath+"/Resources/AdbExecutable/adb.exe");
 
-        public FileInfo FastbootFile { get; } = new FileInfo("Resources/AdbExecutable/fastboot.exe");
+        public FileInfo FastbootFile { get; } = new FileInfo(System.Windows.Forms.Application.StartupPath+"/Resources/AdbExecutable/fastboot.exe");
 
-        public DirectoryInfo ToolsDir { get; } = new DirectoryInfo("Resources/AdbExecutable/");
+        public DirectoryInfo ToolsDir { get; } = new DirectoryInfo(System.Windows.Forms.Application.StartupPath+"/Resources/AdbExecutable/");
     }
 }

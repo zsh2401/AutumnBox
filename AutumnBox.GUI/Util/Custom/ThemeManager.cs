@@ -78,7 +78,7 @@ namespace AutumnBox.GUI.Util.Custom
             }
             App.Current.Resources.MergedDictionaries[INDEX_OF_THEME] = theme.Resource;
             Settings.Default.Theme = theme.Name;
-            Settings.Default.Save();
+            //Settings.Default.Save();
         }
 
         private class ThemeImpl : ITheme

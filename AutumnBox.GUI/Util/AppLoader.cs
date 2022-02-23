@@ -83,14 +83,14 @@ namespace AutumnBox.GUI.Util
             InitErrorHandlerSystem();
             InitLanguageSystem();
             InitThemeSystem();
-            InitLogSystem();
+            //InitLogSystem();
             ShowDebugWindowIfNeed();
             ShowGuideIfNeed();
             PrintInformations();
             InitAutumnBoxBasic();
             InitAutumnBoxOpenFx();
             RunDeviceListener();
-            FetchRemoteData();
+            //FetchRemoteData();
 
             OnLoaded();
         }
@@ -209,7 +209,7 @@ namespace AutumnBox.GUI.Util
             });
             Statistics.Do();
             ToastMotd.Do();
-            Banner.Check();
+            //Banner.Check();
         }
         private void OnLoading()
         {
