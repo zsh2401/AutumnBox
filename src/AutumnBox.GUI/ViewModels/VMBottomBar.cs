@@ -105,7 +105,7 @@ namespace AutumnBox.GUI.ViewModels
         {
             try
             {
-                CountOfTaskRunning = taskManager.RunningTasks.Count();
+                CountOfTaskRunning = taskManager?.RunningTasks?.Count() ?? 0;
             }
             catch { }
         }

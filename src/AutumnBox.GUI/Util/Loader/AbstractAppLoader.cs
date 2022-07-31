@@ -44,13 +44,22 @@ namespace AutumnBox.GUI.Util.Loader
 
         public void Load()
         {
+            bool interrupted = false;
             for (int i = 0; i < stepMethods.Count(); i++)
             {
                 try
                 {
                     Logger.Info($"Loading: {stepMethods.ElementAt(i).Name}()");
                     var methodProxy = new MethodProxy(this, stepMethods.ElementAt(i), App.Current.Lake);
-                    methodProxy.Invoke();
+                    var result = methodProxy.Invoke();
+                    if (result != null && result.GetType() == typeof(bool))
+                    {
+                        interrupted = (bool)result == false;
+                        if (interrupted)
+                        {
+                            break;
+                        }
+                    }
                     StepFinished?.Invoke(this, new StepFinishedEventArgs((uint)i, (uint)stepMethods.Count()));
                 }
                 catch (Exception e)
@@ -59,8 +68,18 @@ namespace AutumnBox.GUI.Util.Loader
                     return;
                 }
             }
-            Logger.Info("Done!");
-            Succeced?.Invoke(this, new EventArgs());
+            if (interrupted)
+            {
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    App.Current.Shutdown();
+                });
+            }
+            else
+            {
+                Logger.Info("Done!");
+                Succeced?.Invoke(this, new EventArgs());
+            }
         }
 
         protected virtual void OnError(string msg, AppLoadingException e)

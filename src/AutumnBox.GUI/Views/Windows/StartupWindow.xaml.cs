@@ -19,8 +19,12 @@ namespace AutumnBox.GUI.Views.Windows
             InitializeComponent();
             App.Current.AppLoader.Failed += (s, e) =>
             {
-                ErrorMessageBox.Show(this, e.Exception);
-                Close();
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    ErrorMessageBox.Show(this, e.Exception);
+                    Close();
+                });
+
             };
             App.Current.AppLoader.Succeced += (s, e) =>
                 {

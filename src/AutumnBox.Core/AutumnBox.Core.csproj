@@ -22,6 +22,7 @@
     <PackageProjectUrl>https://github.com/zsh2401/AutumnBox</PackageProjectUrl>
     <PackageLicenseExpression></PackageLicenseExpression>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -48,7 +49,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;USE_SYS_JSON WIN32 NETCORE31 GREEN_RELEASE</DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>D:\Source\AutumnBoxWorkingSpace\AutumnBox\src\AutumnBox.Core\AutumnBox.Core.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 

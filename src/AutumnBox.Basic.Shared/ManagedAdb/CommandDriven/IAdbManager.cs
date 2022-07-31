@@ -40,5 +40,11 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <exception cref="ObjectDisposedException">对象被释放</exception>
         /// <exception cref="InvalidOperationException">服务状态异常</exception>
         IPEndPoint ServerEndPoint { get; }
+
+        /// <summary>
+        /// 进行初始化
+        /// </summary>
+
+        void Initialize();
     }
 }

@@ -22,12 +22,12 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         /// <summary>
         /// ADB客户端文件夹
         /// </summary>
-        public DirectoryInfo AdbClientDirectory { get; }
+        public DirectoryInfo AdbClientDirectory { get; private set; }
 
         /// <summary>
         /// ADB服务器终端点
         /// </summary>
-        public IPEndPoint ServerEndPoint { get; }
+        public IPEndPoint ServerEndPoint { get; private set; }
 
         /// <summary>
         /// <inheritdoc/>
@@ -59,6 +59,13 @@ namespace AutumnBox.Basic.ManagedAdb.CommandDriven
         public StandardAdbManager()
         {
             OpeningDpmSet = new HashSet<ICommandProcedureManager>();
+        }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        public void Initialize()
+        {
             AdbClientDirectory = InitializeClientFiles();
             ServerEndPoint = StartServer();
         }

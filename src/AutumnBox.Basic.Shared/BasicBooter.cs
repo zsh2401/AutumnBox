@@ -108,7 +108,18 @@ namespace AutumnBox.Basic
         /// <typeparam name="TAdbManager"></typeparam>
         public static void Use<TAdbManager>() where TAdbManager : IAdbManager, new()
         {
-            _adbManager = new TAdbManager();
+            Use(new TAdbManager());
+        }
+
+        /// <summary>
+        /// 加载ADB管理器
+        /// </summary>
+        /// <typeparam name="TAdbManager"></typeparam>
+        /// <param name="adbManagerInstance"></param>
+        public static void Use<TAdbManager>(TAdbManager adbManagerInstance) where TAdbManager : IAdbManager
+        {
+            _adbManager = adbManagerInstance;
+            _adbManager.Initialize();
         }
 
         /// <summary>

@@ -9,11 +9,18 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Threading;
 
 namespace AutumnBox.GUI.Util.Loader
 {
     sealed class GeneralAppLoader : AbstractAppLoader
     {
+        public class RequiringPlatformToolsEventArgs : EventArgs
+        {
+            public DirectoryInfo? Result { get; set; }
+        }
+        public event EventHandler<RequiringPlatformToolsEventArgs>? RequiringPlatformTools;
+
 #pragma warning disable IDE0051 // 删除未使用的私有成员
 
         private SystemVersionInfo GetSystemVersionInfo()
@@ -80,20 +87,57 @@ namespace AutumnBox.GUI.Util.Loader
         }
 
         [Step(3)]
-        private void InitAutumnBoxBasic(IOperatingSystemService operatingSystemService)
+        private bool InitAutumnBoxBasic(IOperatingSystemService operatingSystemService)
         {
             try
             {
-                Logger.Info("killing other adb processes");
-                operatingSystemService.KillProcess("adb.exe");
-                Logger.Info("autumnbox-adb-server is starting");
-                BasicBooter.Use<Win32AdbManager>();
-                Logger.Info($"autumnbox-adb-server is started at {BasicBooter.ServerEndPoint}");
+                //如果检测到本地自带的ADB程序
+                if (Win32AdbManager.Avaliable)
+                {
+                    Logger.Info("Kill other adb processes.");
+                    operatingSystemService.KillProcess("adb.exe");
+                    Logger.Info("autumnbox-adb-server is starting");
+                    BasicBooter.Use<Win32AdbManager>();
+                    Logger.Info($"autumnbox-adb-server is started at {BasicBooter.ServerEndPoint}");
+                    return true;
+                }
+                else
+                {
+                    string? dirPath = null;
+                    //否则，问用户索取
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+
+                        Ookii.Dialogs.Wpf.VistaFolderBrowserDialog dialog = new()
+                        {
+                            Description = "选择ADB文件夹",
+                            Multiselect = false
+                        };
+                        if (dialog.ShowDialog(App.Current.MainWindow) == true)
+                        {
+                            dirPath = dialog.SelectedPath;
+                        }
+                        else
+                        {
+                            dirPath = null;
+                        }
+                    });
+                    if (dirPath == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        BasicBooter.Use(new Win32AdbManager(dirPath));
+                        return true;
+                    }
+                }
+
             }
             catch (Exception e)
             {
                 Logger.Warn("there's some error happened while starting autumnbox-adb-server", e);
-                throw e;
+                throw;
             }
         }
 
