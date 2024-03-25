@@ -21,7 +21,7 @@ namespace AutumnBox.CoreModules.Extensions.Poweron
     internal class EShizukuActivator : LeafExtensionBase
     {
         private const string PKG_NAME = "moe.shizuku.privileged.api";
-        private const string SH_PATH = "/sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh";
+        private const string SH_PATH = "/sdcard/Android/data/moe.shizuku.privileged.api/start.sh";
      
         [LMain]
 #pragma warning disable CA1822 // 将成员标记为 static
